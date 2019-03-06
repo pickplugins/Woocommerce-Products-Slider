@@ -224,7 +224,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 							?>
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Slider Thumbnail Size', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Slider Thumbnail Size', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
 
                                 <?php
@@ -284,13 +284,13 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items thumbnail link\'s to', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items thumbnail link\'s to', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <select name="wcps_items_thumb_link_to" >
-                                    <option value="product" <?php if($wcps_items_thumb_link_to=="product")echo "selected"; ?>><?php _e('Product', wcps_textdomain);?></option>
-                                    <option value="category" <?php if($wcps_items_thumb_link_to=="category")echo "selected"; ?>><?php _e('Category', wcps_textdomain);?></option>
-                                    <option value="_product_url" <?php if($wcps_items_thumb_link_to=="_product_url")echo "selected"; ?>><?php _e('External/Affiliate product link', wcps_textdomain);?></option>
-                                    <option value="meta_value" <?php if($wcps_items_thumb_link_to=="meta_value")echo "selected"; ?>><?php _e('Meta Value', wcps_textdomain);?></option>
+                                    <option value="product" <?php if($wcps_items_thumb_link_to=="product")echo "selected"; ?>><?php _e('Product', 'woocommerce-products-slider');?></option>
+                                    <option value="category" <?php if($wcps_items_thumb_link_to=="category")echo "selected"; ?>><?php _e('Category', 'woocommerce-products-slider');?></option>
+                                    <option value="_product_url" <?php if($wcps_items_thumb_link_to=="_product_url")echo "selected"; ?>><?php _e('External/Affiliate product link', 'woocommerce-products-slider');?></option>
+                                    <option value="meta_value" <?php if($wcps_items_thumb_link_to=="meta_value")echo "selected"; ?>><?php _e('Meta Value', 'woocommerce-products-slider');?></option>
                                 </select>
 
                                 <p class="option-info">Meta Key</p>
@@ -298,10 +298,10 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
                                 <p class="option-info">Link target</p>
                                 <select name="wcps_items_thumb_link_target" >
-                                    <option value="_blank" <?php if($wcps_items_thumb_link_target=="_blank")echo "selected"; ?>><?php _e('_blank', wcps_textdomain);?></option>
-                                    <option value="_self" <?php if($wcps_items_thumb_link_target=="_self")echo "selected"; ?>><?php _e('_self', wcps_textdomain);?></option>
-                                    <option value="_parent" <?php if($wcps_items_thumb_link_target=="_parent")echo "selected"; ?>><?php _e('_parent', wcps_textdomain);?></option>
-                                    <option value="_top" <?php if($wcps_items_thumb_link_target=="_top")echo "selected"; ?>><?php _e('_top', wcps_textdomain);?></option>
+                                    <option value="_blank" <?php if($wcps_items_thumb_link_target=="_blank")echo "selected"; ?>><?php _e('_blank', 'woocommerce-products-slider');?></option>
+                                    <option value="_self" <?php if($wcps_items_thumb_link_target=="_self")echo "selected"; ?>><?php _e('_self', 'woocommerce-products-slider');?></option>
+                                    <option value="_parent" <?php if($wcps_items_thumb_link_target=="_parent")echo "selected"; ?>><?php _e('_parent', 'woocommerce-products-slider');?></option>
+                                    <option value="_top" <?php if($wcps_items_thumb_link_target=="_top")echo "selected"; ?>><?php _e('_top', 'woocommerce-products-slider');?></option>
 
 
 
@@ -314,25 +314,25 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Slider thumb max hieght(px)', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Slider thumb max hieght(px)', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_thumb_max_hieght" placeholder="14px" id="wcps_items_thumb_max_hieght" value="<?php echo $wcps_items_thumb_max_hieght; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Display Thumbnail Zoom button', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Display Thumbnail Zoom button', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <select name="wcps_items_thumb_zoom" >
-                                <option value="no" <?php if($wcps_items_thumb_zoom=="no")echo "selected"; ?>><?php _e('No', wcps_textdomain);?></option>
-                                <option value="yes" <?php if($wcps_items_thumb_zoom=="yes")echo "selected"; ?>><?php _e('Yes', wcps_textdomain);?></option>
+                                <option value="no" <?php if($wcps_items_thumb_zoom=="no")echo "selected"; ?>><?php _e('No', 'woocommerce-products-slider');?></option>
+                                <option value="yes" <?php if($wcps_items_thumb_zoom=="yes")echo "selected"; ?>><?php _e('Yes', 'woocommerce-products-slider');?></option>
 
                                 </select>
                             </div>
 
 
 				<div class="option-box">
-                    <p class="option-title"><?php _e('Empty Thumbnail', wcps_textdomain);?></p>
-                    <p class="option-info"><?php _e('Custom thumbnail image url', wcps_textdomain);?></p>
+                    <p class="option-title"><?php _e('Empty Thumbnail', 'woocommerce-products-slider');?></p>
+                    <p class="option-info"><?php _e('Custom thumbnail image url', 'woocommerce-products-slider');?></p>
 					<input type="text" name="wcps_items_empty_thumb" id="wcps_items_empty_thumb" value="<?php echo $wcps_items_empty_thumb; ?>" /><br /><br />
                     <input id="wcps_items_empty_thumb_upload" class="wcps_items_empty_thumb_upload button" type="button" value="Upload Image" />
                        <br /><br />
@@ -408,22 +408,22 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 							?>
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Add to cart button Style', wcps_textdomain);?></p>
-                                <p class="option-info"><?php _e('You can hide items Add to cart button on slider.', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Add to cart button Style', 'woocommerce-products-slider');?></p>
+                                <p class="option-info"><?php _e('You can hide items Add to cart button on slider.', 'woocommerce-products-slider');?></p>
                                 <select name="wcps_cart_style" >
-                                <option value="default" <?php if($wcps_cart_style=="default")echo "selected"; ?>><?php _e('Default', wcps_textdomain);?></option>
-                                <option value="custom" <?php if($wcps_cart_style=="custom")echo "selected"; ?>><?php _e('Custom', wcps_textdomain);?></option>
+                                <option value="default" <?php if($wcps_cart_style=="default")echo "selected"; ?>><?php _e('Default', 'woocommerce-products-slider');?></option>
+                                <option value="custom" <?php if($wcps_cart_style=="custom")echo "selected"; ?>><?php _e('Custom', 'woocommerce-products-slider');?></option>
                                 </select>
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Add to cart custom text', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Add to cart custom text', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_cart_text" class="" id="wcps_cart_text" value="<?php echo $wcps_cart_text; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Add to cart Background Color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Add to cart Background Color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_cart_bg" class="wcps_color" id="wcps_cart_bg" value="<?php echo $wcps_cart_bg; ?>" />
                             </div>
@@ -433,17 +433,17 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Add to cart Text Color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Add to cart Text Color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_cart_text_color" class="wcps_color"  id="wcps_cart_text_color" value="<?php echo $wcps_cart_text_color; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Cart Text Align', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Cart Text Align', 'woocommerce-products-slider');?></p>
                                 <select name="wcps_cart_text_align" >
-                                <option value="left" <?php if($wcps_cart_text_align=="left")echo "selected"; ?>><?php _e('Left', wcps_textdomain);?></option>
-                                <option value="right" <?php if($wcps_cart_text_align=="right")echo "selected"; ?>><?php _e('Right', wcps_textdomain);?></option>
-                                <option value="center" <?php if($wcps_cart_text_align=="center")echo "selected"; ?>><?php _e('Center', wcps_textdomain);?></option>
+                                <option value="left" <?php if($wcps_cart_text_align=="left")echo "selected"; ?>><?php _e('Left', 'woocommerce-products-slider');?></option>
+                                <option value="right" <?php if($wcps_cart_text_align=="right")echo "selected"; ?>><?php _e('Right', 'woocommerce-products-slider');?></option>
+                                <option value="center" <?php if($wcps_cart_text_align=="center")echo "selected"; ?>><?php _e('Center', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
@@ -451,10 +451,10 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Display quantity', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Display quantity', 'woocommerce-products-slider');?></p>
                                 <select name="wcps_cart_display_quantity" >
-                                    <option value="yes" <?php if($wcps_cart_display_quantity=="yes")echo "selected"; ?>><?php _e('Yes', wcps_textdomain);?></option>
-                                    <option value="no" <?php if($wcps_cart_display_quantity=="no")echo "selected"; ?>><?php _e('No', wcps_textdomain);?></option>
+                                    <option value="yes" <?php if($wcps_cart_display_quantity=="yes")echo "selected"; ?>><?php _e('Yes', 'woocommerce-products-slider');?></option>
+                                    <option value="no" <?php if($wcps_cart_display_quantity=="no")echo "selected"; ?>><?php _e('No', 'woocommerce-products-slider');?></option>
 
                                 </select>
 
@@ -493,7 +493,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Sale marker icon url', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Sale marker icon url', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
 								<input type="text" name="wcps_sale_icon_url" placeholder="" id="wcps_sale_icon_url" value="<?php echo $wcps_sale_icon_url; ?>" />
                             </div>
@@ -512,25 +512,25 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Title Color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Title Color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_title_color" class="wcps_color" id="wcps_items_title_color" value="<?php echo $wcps_items_title_color; ?>" />
                             </div>
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Title Font Size', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Title Font Size', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_title_font_size" placeholder="14px" id="wcps_items_title_font_size" value="<?php echo $wcps_items_title_font_size; ?>" />
                             </div>
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Title Text Align', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Title Text Align', 'woocommerce-products-slider');?></p>
 
 
                                 <select name="wcps_items_title_text_align" >
-                                <option value="left" <?php if($wcps_items_title_text_align=="left")echo "selected"; ?>><?php _e('Left', wcps_textdomain);?></option>
-                                <option value="right" <?php if($wcps_items_title_text_align=="right")echo "selected"; ?>><?php _e('Right', wcps_textdomain);?></option>
-                                <option value="center" <?php if($wcps_items_title_text_align=="center")echo "selected"; ?>><?php _e('Center', wcps_textdomain);?></option>
+                                <option value="left" <?php if($wcps_items_title_text_align=="left")echo "selected"; ?>><?php _e('Left', 'woocommerce-products-slider');?></option>
+                                <option value="right" <?php if($wcps_items_title_text_align=="right")echo "selected"; ?>><?php _e('Right', 'woocommerce-products-slider');?></option>
+                                <option value="center" <?php if($wcps_items_title_text_align=="center")echo "selected"; ?>><?php _e('Center', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
@@ -543,7 +543,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 							?>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Featured marker icon url', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Featured marker icon url', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
 								<input type="text" name="wcps_featured_icon_url" placeholder="" id="wcps_featured_icon_url" value="<?php echo $wcps_featured_icon_url; ?>" />
                             </div>
@@ -555,12 +555,12 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 							?>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Price format on slider', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Price format on slider', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <select name="wcps_total_items_price_format">
-                                    <option value="full" <?php if(($wcps_total_items_price_format=="full")) echo "selected"; ?> ><?php _e('Full Format', wcps_textdomain);?></option>
-                                    <option value="sale" <?php if(($wcps_total_items_price_format=="sale")) echo "selected"; ?> ><?php _e('Sale price', wcps_textdomain);?></option>
-                                    <option value="regular" <?php if(($wcps_total_items_price_format=="regular")) echo "selected"; ?> ><?php _e('Regular price', wcps_textdomain);?></option>
+                                    <option value="full" <?php if(($wcps_total_items_price_format=="full")) echo "selected"; ?> ><?php _e('Full Format', 'woocommerce-products-slider');?></option>
+                                    <option value="sale" <?php if(($wcps_total_items_price_format=="sale")) echo "selected"; ?> ><?php _e('Sale price', 'woocommerce-products-slider');?></option>
+                                    <option value="regular" <?php if(($wcps_total_items_price_format=="regular")) echo "selected"; ?> ><?php _e('Regular price', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
@@ -569,13 +569,13 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Price Color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Price Color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_price_color" class="wcps_color" id="wcps_items_price_color" value="<?php echo $wcps_items_price_color; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items price Font Size', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items price Font Size', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_price_font_size" placeholder="14px" id="wcps_items_price_font_size" value="<?php echo $wcps_items_price_font_size; ?>" />
                             </div>
@@ -583,13 +583,13 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Price Text Align', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Price Text Align', 'woocommerce-products-slider');?></p>
 
 
                                 <select name="wcps_items_price_text_align" >
-                                <option value="left" <?php if($wcps_items_price_text_align=="left")echo "selected"; ?>><?php _e('Left', wcps_textdomain);?></option>
-                                <option value="right" <?php if($wcps_items_price_text_align=="right")echo "selected"; ?>><?php _e('Right', wcps_textdomain);?></option>
-                                <option value="center" <?php if($wcps_items_price_text_align=="center")echo "selected"; ?>><?php _e('Center', wcps_textdomain);?></option>
+                                <option value="left" <?php if($wcps_items_price_text_align=="left")echo "selected"; ?>><?php _e('Left', 'woocommerce-products-slider');?></option>
+                                <option value="right" <?php if($wcps_items_price_text_align=="right")echo "selected"; ?>><?php _e('Right', 'woocommerce-products-slider');?></option>
+                                <option value="center" <?php if($wcps_items_price_text_align=="center")echo "selected"; ?>><?php _e('Center', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
@@ -608,27 +608,27 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 							?>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Rating Text Align', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Rating Text Align', 'woocommerce-products-slider');?></p>
 
 
                                 <select name="wcps_ratings_text_align" >
-                                <option value="left" <?php if($wcps_ratings_text_align=="left")echo "selected"; ?>><?php _e('Left', wcps_textdomain);?></option>
-                                <option value="right" <?php if($wcps_ratings_text_align=="right")echo "selected"; ?>><?php _e('Right', wcps_textdomain);?></option>
-                                <option value="center" <?php if($wcps_ratings_text_align=="center")echo "selected"; ?>><?php _e('Center', wcps_textdomain);?></option>
+                                <option value="left" <?php if($wcps_ratings_text_align=="left")echo "selected"; ?>><?php _e('Left', 'woocommerce-products-slider');?></option>
+                                <option value="right" <?php if($wcps_ratings_text_align=="right")echo "selected"; ?>><?php _e('Right', 'woocommerce-products-slider');?></option>
+                                <option value="center" <?php if($wcps_ratings_text_align=="center")echo "selected"; ?>><?php _e('Center', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items ratings Font Size', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items ratings Font Size', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_ratings_font_size" placeholder="14px" id="wcps_items_ratings_font_size" value="<?php echo $wcps_items_ratings_font_size; ?>" />
                             </div>
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Ratings Color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Ratings Color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_ratings_color" class="wcps_color" id="wcps_items_ratings_color" value="<?php echo $wcps_items_ratings_color; ?>" />
                             </div>
@@ -645,39 +645,39 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 							?>
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Excerpt word count', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Excerpt word count', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
 								<input type="text" name="wcps_items_excerpt_count" placeholder="30" id="wcps_items_excerpt_count" value="<?php echo $wcps_items_excerpt_count; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Excerpt read more text', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Excerpt read more text', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
 								<input type="text" name="wcps_items_excerpt_read_more" placeholder="View product." id="wcps_items_excerpt_read_more" value="<?php echo $wcps_items_excerpt_read_more; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Excerpt Font Size', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Excerpt Font Size', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_excerpt_font_size" placeholder="14px" id="wcps_items_excerpt_font_size" value="<?php echo $wcps_items_excerpt_font_size; ?>" />
                             </div>
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Excerpt Text Align', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Excerpt Text Align', 'woocommerce-products-slider');?></p>
 
 
                                 <select name="wcps_items_excerpt_text_align" >
-                                <option value="left" <?php if($wcps_items_excerpt_text_align=="left")echo "selected"; ?>><?php _e('Left', wcps_textdomain);?></option>
-                                <option value="right" <?php if($wcps_items_excerpt_text_align=="right")echo "selected"; ?>><?php _e('Right', wcps_textdomain);?></option>
+                                <option value="left" <?php if($wcps_items_excerpt_text_align=="left")echo "selected"; ?>><?php _e('Left', 'woocommerce-products-slider');?></option>
+                                <option value="right" <?php if($wcps_items_excerpt_text_align=="right")echo "selected"; ?>><?php _e('Right', 'woocommerce-products-slider');?></option>
 
-                                <option value="center" <?php if($wcps_items_excerpt_text_align=="center")echo "selected"; ?>><?php _e('Center', wcps_textdomain);?></option>
+                                <option value="center" <?php if($wcps_items_excerpt_text_align=="center")echo "selected"; ?>><?php _e('Center', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Excerpt Font color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Excerpt Font color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" class="wcps_color" name="wcps_items_excerpt_font_color" placeholder="14px" id="wcps_items_excerpt_font_color" value="<?php echo $wcps_items_excerpt_font_color; ?>" />
                             </div>
@@ -699,20 +699,20 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Category Font Size', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Category Font Size', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" name="wcps_items_cat_font_size" placeholder="14px" id="wcps_items_cat_font_size" value="<?php echo $wcps_items_cat_font_size; ?>" />
                             </div>
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Category Text Align', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Category Text Align', 'woocommerce-products-slider');?></p>
 
 
                                 <select name="wcps_items_cat_text_align" >
-                                <option value="left" <?php if($wcps_items_cat_text_align=="left")echo "selected"; ?>><?php _e('Left', wcps_textdomain);?></option>
-                                <option value="right" <?php if($wcps_items_cat_text_align=="right")echo "selected"; ?>><?php _e('Right', wcps_textdomain);?></option>
-                                <option value="center" <?php if($wcps_items_cat_text_align=="center")echo "selected"; ?>><?php _e('Center', wcps_textdomain);?></option>
+                                <option value="left" <?php if($wcps_items_cat_text_align=="left")echo "selected"; ?>><?php _e('Left', 'woocommerce-products-slider');?></option>
+                                <option value="right" <?php if($wcps_items_cat_text_align=="right")echo "selected"; ?>><?php _e('Right', 'woocommerce-products-slider');?></option>
+                                <option value="center" <?php if($wcps_items_cat_text_align=="center")echo "selected"; ?>><?php _e('Center', 'woocommerce-products-slider');?></option>
                                 </select>
 
                             </div>
@@ -721,13 +721,13 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Category Font color', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Category Font color', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" class="wcps_color" name="wcps_items_cat_font_color" placeholder="14px" id="wcps_items_cat_font_color" value="<?php echo $wcps_items_cat_font_color; ?>" />
                             </div>
 
                             <div class="option-box">
-                                <p class="option-title"><?php _e('Items Category separator', wcps_textdomain);?></p>
+                                <p class="option-title"><?php _e('Items Category separator', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
                                 <input type="text" class="" name="wcps_items_cat_separator" placeholder="," id="wcps_items_cat_separator" value="<?php echo $wcps_items_cat_separator; ?>" />
                             </div>
@@ -1018,7 +1018,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
         $wcps_more_query = get_post_meta( $post_id, 'wcps_more_query', true );
         $wcps_query_order = get_post_meta( $post_id, 'wcps_query_order', true );
         $wcps_query_orderby = get_post_meta( $post_id, 'wcps_query_orderby', true );
-
+        $wcps_query_orderby = !empty($wcps_query_orderby) ? $wcps_query_orderby : array('none');
 
         $wcps_hide_out_of_stock = get_post_meta( $post_id, 'wcps_hide_out_of_stock', true );
         $wcps_product_featured = get_post_meta( $post_id, 'wcps_product_featured', true );
@@ -1026,10 +1026,12 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
         $wcps_product_only_discounted = get_post_meta( $post_id, 'wcps_product_only_discounted', true );
         $wcps_product_best_selling = get_post_meta( $post_id, 'wcps_product_best_selling', true );
         $wcps_product_filter_by = get_post_meta( $post_id, 'wcps_product_filter_by', true );
+        $wcps_product_filter_by = !empty($wcps_product_filter_by) ? $wcps_product_filter_by : 'none';
+
         $wcps_product_ids = get_post_meta( $post_id, 'wcps_product_ids', true );
         $wcps_product_sku = get_post_meta( $post_id, 'wcps_product_sku', true );
         $wcps_upsells_crosssells = get_post_meta( $post_id, 'wcps_upsells_crosssells', true );
-
+        $wcps_upsells_crosssells = !empty($wcps_upsells_crosssells) ? $wcps_upsells_crosssells : 'none';
 
 
         ?>
@@ -1075,7 +1077,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 echo wcps_meta_query_args($wcps_meta_query);
                 ?>
             </div>
-            <div class="button add-meta-query"><?php _e('Add more', wcps_textdomain); ?></div>
+            <div class="button add-meta-query"><?php _e('Add more', 'woocommerce-products-slider'); ?></div>
 
             <script>
                 jQuery(document).ready(function($)
@@ -1467,13 +1469,13 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             ob_start();
 
             ?>
-            <div><?php _e('In Destop: (min:1000px and max)', wcps_textdomain);?></div>
+            <div><?php _e('In Destop: (min:1000px and max)', 'woocommerce-products-slider');?></div>
             <input type="text" placeholder="4"   name="wcps_column_number" value="<?php echo $wcps_column_number;  ?>" />
 
-            <div><?php _e('In Tablet & Small Desktop: (900px max width)', wcps_textdomain);?></div>
+            <div><?php _e('In Tablet & Small Desktop: (900px max width)', 'woocommerce-products-slider');?></div>
             <input type="text" placeholder="2"  name="wcps_column_number_tablet" value="<?php echo $wcps_column_number_tablet;  ?>" />
 
-            <div><?php _e('In Mobile: (479px max width)', wcps_textdomain);?></div>
+            <div><?php _e('In Mobile: (479px max width)', 'woocommerce-products-slider');?></div>
             <input type="text" placeholder="1"  name="wcps_column_number_mobile" value="<?php echo $wcps_column_number_mobile;  ?>" />
             <?php
 
@@ -1517,13 +1519,13 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             ob_start();
 
             ?>
-            <div><?php _e('In Desktop: (min:1000px and max)', wcps_textdomain);?></div>
+            <div><?php _e('In Desktop: (min:1000px and max)', 'woocommerce-products-slider');?></div>
             <input type="text" placeholder="2"   name="wcps_rows_desktop" value="<?php echo $wcps_rows_desktop;  ?>" />
 
-            <div><?php _e('In Tablet & Small Desktop: (900px max width)', wcps_textdomain);?></div>
+            <div><?php _e('In Tablet & Small Desktop: (900px max width)', 'woocommerce-products-slider');?></div>
             <input type="text" placeholder="1"  name="wcps_rows_tablet" value="<?php echo $wcps_rows_tablet;  ?>" />
 
-            <div><?php _e('In Mobile: (479px max width)', wcps_textdomain);?></div>
+            <div><?php _e('In Mobile: (479px max width)', 'woocommerce-products-slider');?></div>
             <input type="text" placeholder="1"  name="wcps_rows_mobile" value="<?php echo $wcps_rows_mobile;  ?>" />
             <?php
 

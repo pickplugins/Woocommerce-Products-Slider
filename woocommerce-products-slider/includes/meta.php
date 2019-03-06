@@ -4,7 +4,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 function wcps_posttype_register() {
 
         $labels = array(
-                'name' => __('WCPS',  wcps_textdomain),
+                'name' => __('WCPS',  'woocommerce-products-slider'),
                 'singular_name' => __('WCPS',  wcps_textdomain),
                 'add_new' => __('New WCPS',  wcps_textdomain),
                 'add_new_item' => __('New WCPS', wcps_textdomain),
@@ -2094,7 +2094,6 @@ function meta_boxes_wcps_save( $post_id ) {
 	update_post_meta( $post_id, 'wcps_query_orderby', $wcps_query_orderby );
 
 	update_post_meta( $post_id, 'wcps_hide_out_of_stock', $wcps_hide_out_of_stock );
-;
 
 	update_post_meta( $post_id, 'wcps_ribbon_name', $wcps_ribbon_name );
 	update_post_meta( $post_id, 'wcps_ribbon_custom', $wcps_ribbon_custom );

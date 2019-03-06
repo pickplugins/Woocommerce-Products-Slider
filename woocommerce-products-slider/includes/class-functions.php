@@ -347,17 +347,17 @@ class class_wcps_functions  {
 	public function wcps_grid_items($grid_items = array()){
 		
 			$grid_items = array(
-							'thumb'=>__('Thumbnail', wcps_textdomain),
-							'title'=>__('Title', wcps_textdomain),
-							'excerpt'=>__('Excerpt', wcps_textdomain),
-							'category'=>__('Category', wcps_textdomain),
-							'price'=>__('Price', wcps_textdomain),
-							'rating'=>__('Rating', wcps_textdomain),
-							'cart'=>__('Cart', wcps_textdomain),
-							'sale'=>__('Sale', wcps_textdomain),
-							//'quick_view'=>__('Quick view', wcps_textdomain),
-							'featured'=>__('Featured', wcps_textdomain),
-							//'popup_thumb'=>__('Popup Thumbnail', wcps_textdomain),
+							'thumb'=>__('Thumbnail', 'woocommerce-products-slider'),
+							'title'=>__('Title', 'woocommerce-products-slider'),
+							'excerpt'=>__('Excerpt', 'woocommerce-products-slider'),
+							'category'=>__('Category', 'woocommerce-products-slider'),
+							'price'=>__('Price', 'woocommerce-products-slider'),
+							'rating'=>__('Rating', 'woocommerce-products-slider'),
+							'cart'=>__('Cart', 'woocommerce-products-slider'),
+							'sale'=>__('Sale', 'woocommerce-products-slider'),
+							//'quick_view'=>__('Quick view', 'woocommerce-products-slider'),
+							'featured'=>__('Featured', 'woocommerce-products-slider'),
+							//'popup_thumb'=>__('Popup Thumbnail', 'woocommerce-products-slider'),
 							);
 
 

@@ -100,7 +100,7 @@
 /*input*/
 
 .settings-tabs input[type="text"], .settings-tabs textarea, .settings-tabs select, .settings-tabs input[type="range"]{
-    width: 260px;
+    width: 360px;
 }
 
 

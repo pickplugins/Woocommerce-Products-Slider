@@ -181,7 +181,7 @@ class class_wcps_shortcodes{
 				wp_reset_query();
 				
 				else :
-					$html.= __('No Product to Slide', wcps_textdomain);
+					$html.= __('No Product to Slide', 'woocommerce-products-slider');
 			
 				endif;
 

@@ -219,25 +219,28 @@ function wcps_track_product_view() {
 	
 	$wcps_track_product_view = get_option( 'wcps_track_product_view' );
 	
-	if($wcps_track_product_view=='yes'){
-			global $post;
-		
-			if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) )
-				$viewed_products = array();
-			else
-				$viewed_products = (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] );
-		
-			if ( ! in_array( $post->ID, $viewed_products ) ) {
-				$viewed_products[] = $post->ID;
-			}
-		
-			if ( sizeof( $viewed_products ) > 15 ) {
-				array_shift( $viewed_products );
-			}
-		
-			// Store for session only
-			wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
-		}
+	if($wcps_track_product_view=='yes' && is_singular('product')){
+        global $post;
+
+        if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) )
+            $viewed_products = array();
+        else
+            $viewed_products = (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] );
+
+        if ( ! in_array( $post->ID, $viewed_products ) ) {
+            $viewed_products[] = $post->ID;
+        }
+
+        if ( sizeof( $viewed_products ) > 15 ) {
+            array_shift( $viewed_products );
+        }
+
+        //var_dump($viewed_products);
+
+
+        // Store for session only
+        wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
+    }
 
 
 }
@@ -265,7 +268,7 @@ function wcps_track_product_view() {
 
 function wcps_add_shortcode_column( $columns ) {
     return array_merge( $columns, 
-        array( 'shortcode' => __( 'Shortcode',  wcps_textdomain ) ) );
+        array( 'shortcode' => __( 'Shortcode',  'woocommerce-products-slider' ) ) );
 }
 add_filter( 'manage_wcps_posts_columns' , 'wcps_add_shortcode_column' );
 
@@ -297,10 +300,10 @@ function wcps_grid_items_reset(){
 		$wcps_id = sanitize_text_field($_POST['wcps_id']);
 		
 		if(delete_post_meta($wcps_id, 'wcps_grid_items')){
-			echo __('Reset done!', wcps_textdomain);
+			echo __('Reset done!', 'woocommerce-products-slider');
 			}
 		else{
-			echo __('Reset failed!', wcps_textdomain);
+			echo __('Reset failed!', 'woocommerce-products-slider');
 			}
 			
 		}
@@ -366,7 +369,7 @@ function wcps_get_product_categories($postid)
 	
 	if(empty($categories))
 		{
-		echo __('No categories found!', wcps_textdomain);
+		echo __('No categories found!', 'woocommerce-products-slider');
 			$categories = array();
 		}
 	
@@ -513,7 +516,7 @@ function wcps_dark_color($input_color)
 					$admin_url = get_admin_url();
 					
 					$html.= '<div class="update-nag">';
-					$html.= sprintf(__('Please activate your license for <b>%s &raquo; <a href="%sedit.php?post_type=wcps&page=wcps_menu_license">License</a></b>', wcps_textdomain) ,wcps_plugin_name, $admin_url);					
+					$html.= sprintf(__('Please activate your license for <b>%s &raquo; <a href="%sedit.php?post_type=wcps&page=wcps_menu_license">License</a></b>', 'woocommerce-products-slider') ,wcps_plugin_name, $admin_url);
 					
 					
 					$html.= '</div>';	

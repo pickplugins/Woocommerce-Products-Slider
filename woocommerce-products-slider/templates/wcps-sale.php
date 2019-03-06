@@ -16,5 +16,5 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	if(!empty($sale_price))
 		{
-		$html.= '<div '.$wcps_sale_style.' title="'.__('Sale Product', wcps_textdomain).'" class="wcps-items-sale"></div>';
+		$html.= '<div '.$wcps_sale_style.' title="'.__('Sale Product', 'woocommerce-products-slider').'" class="wcps-items-sale"></div>';
 		}

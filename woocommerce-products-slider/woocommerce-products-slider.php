@@ -23,28 +23,29 @@ class WoocommerceProductsSlider{
 		define('wcps_plugin_url', plugins_url('/', __FILE__)  );
 		define('wcps_plugin_dir', plugin_dir_path( __FILE__ ) );
 		define('wcps_wp_url', 'https://wordpress.org/plugins/woocommerce-products-slider/' );
-		define('wcps_wp_reviews', 'http://wordpress.org/support/view/plugin-reviews/woocommerce-products-slider' );
-		define('wcps_pro_url','http://pickplugins.com/items/woocommerce-product-slider-for-wordpress/' );
-		define('wcps_demo_url', 'http://pickplugins.com/demo/woocommerce-products-slider/' );
-		define('wcps_conatct_url', 'http://pickplugins.com/contact/' );
+		define('wcps_wp_reviews_link', 'https://wordpress.org/support/plugin/woocommerce-products-slider/reviews/?filter=5' );
+		define('wcps_pro_url','https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/' );
+		define('wcps_demo_url', 'https://pickplugins.com/demo/woocommerce-products-slider/' );
+		define('wcps_conatct_url', 'https://pickplugins.com/contact/' );
 		define('wcps_qa_url', 'http://pickplugins.com/questions/' );
-		define('wcps_plugin_name', 'Woocommerce Products Slider' );
+		define('wcps_plugin_name', 'WooCommerce Products Slider' );
 		define('wcps_plugin_version', '2.2.24' );
 		define('wcps_customer_type', 'pro' );	 // pro & free
 		define('wcps_share_url', 'https://wordpress.org/plugins/woocommerce-products-slider/' );
 		define('wcps_tutorial_video_url', '//www.youtube.com/embed/B0sOSp3h9fE?rel=0' );
 		define('wcps_textdomain', 'woocommerce-products-slider' );
 
-		define('WCPS_SPECIAL_SECRET_KEY', '55c3abbae04ff7.17215234');
-		define('WCPS_LICENSE_SERVER_URL', 'http://pickplugins.com');
-		define('WCPS_ITEM_REFERENCE', 4357);
-		define('WCPS_LICENSE_KEYS_PAGE', 'http://pickplugins.com/license-keys/');
+
+        define('wcps_version', '2.2.24' );
+        define('wcps_server_url', 'http://pickplugins.com' );
+        define('wcps_plugin_basename', plugin_basename( __FILE__ ) );
+
 
         require_once( plugin_dir_path( __FILE__ ) . 'includes/wcps-meta-box.php');
 		//require_once( plugin_dir_path( __FILE__ ) . 'includes/meta.php');
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-meta-box.php');
-
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-settings.php');
 
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-functions.php');
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-shortcodes.php');
@@ -52,6 +53,11 @@ class WoocommerceProductsSlider{
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-update.php');
 
         require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-settings-tabs.php');
+
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wcps-license.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wp-autoupdate.php');
+
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wcps-support.php');
 
 
 		// to work upload button
@@ -75,7 +81,7 @@ class WoocommerceProductsSlider{
 
 
 	public function wcps_load_textdomain() {
-	  load_plugin_textdomain( wcps_textdomain, false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
+	  load_plugin_textdomain( 'woocommerce-products-slider', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 
 

@@ -1,10 +1,10 @@
-=== Woocommerce Products Slider ===
+=== PickPlugins WooCommerce Products Slider ===
 	Contributors: pickplugins
 	Donate link: http://pickplugins.com
 	Tags: carousel, product, slider, woocommerce, carousel slider, product slider, woocommerce slider, Woocommerce Product slider
 	Requires at least: 3.8
-	Tested up to: 5.0
-	Stable tag: 2.2.25
+	Tested up to: 5.1
+	Stable tag: 2.2.26
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,9 @@ then paste this shortcode anywhere in your page to display slider<br />
 
 
 == Changelog ==
+
+	= 2.2.26 =
+    * 05/03/2019 fix - recent viewed product bug issue fixed.
 
 
 	= 2.2.25 =

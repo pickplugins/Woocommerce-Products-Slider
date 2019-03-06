@@ -19,5 +19,5 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	if($product_is_featured=='yes')
 		{
-		$html.= '<div '.$wcps_featured_style.' title="'.__('Featured Product', wcps_textdomain).'" class="wcps-featured"></div>';
+		$html.= '<div '.$wcps_featured_style.' title="'.__('Featured Product', 'woocommerce-products-slider').'" class="wcps-featured"></div>';
 		}

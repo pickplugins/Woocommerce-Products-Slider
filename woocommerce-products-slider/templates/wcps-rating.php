@@ -38,7 +38,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		
 		<div class="rating-list">		
 		<div class="pg-rating woocommerce">
-		<div class="woocommerce-product-rating"><div class="star-rating" style="padding-bottom:10px;" title="'.__('Rated', wcps_textdomain).' '.$rating.'"><span style="width:'.$rating.'%;"></span></div></div>
+		<div class="woocommerce-product-rating"><div class="star-rating" style="padding-bottom:10px;" title="'.__('Rated', 'woocommerce-products-slider').' '.$rating.'"><span style="width:'.$rating.'%;"></span></div></div>
 		</div>		
 		</div>
 		</div>';
