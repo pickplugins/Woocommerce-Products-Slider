@@ -19,22 +19,16 @@ class class_wcps_settings{
 	public function admin_menu() {
 
 		add_submenu_page('edit.php?post_type=wcps', __('Settings', 'woocommerce-products-slider'), __('Settings', 'woocommerce-products-slider'), 'manage_options', 'wcps_menu_settings', array( $this, 'settings_page' ));
-	
-		//add_submenu_page('edit.php?post_type=wcps', __('License', 'woocommerce-products-slider'), __('License', 'woocommerce-products-slider'), 'manage_options', 'wcps_menu_license', array( $this, 'license_page' ));
 
 	}
 	
 	public function settings_page(){
 		
-		include( 'menu/settings-new.php' );
+		include( wcps_plugin_dir.'includes/menu/settings.php' );
 		
 		}
 	
-	public function license_page(){
-		
-		include( 'menu/license.php' );	
-		
-		}
+
 		
 	}
 

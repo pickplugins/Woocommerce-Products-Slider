@@ -72,7 +72,7 @@ class class_wcps_license{
 	
 		// Check for error in the response
 		if (is_wp_error($response)){
-			echo __("Unexpected Error! The query returned with an error.", 'post-grid');
+			echo __("Unexpected Error! The query returned with an error.", 'woocommerce-products-slider');
 			}
 		else{
             //var_dump($response);//uncomment it if you want to look at the full response

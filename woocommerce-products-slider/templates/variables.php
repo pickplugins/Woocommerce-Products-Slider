@@ -211,6 +211,13 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 	$wcps_query_order = get_post_meta( $post_id, 'wcps_query_order', true );
     $wcps_query_orderby = get_post_meta( $post_id, 'wcps_query_orderby', true );
+
+    if(is_array($wcps_query_orderby)){
+        $wcps_query_orderby = implode(' ', $wcps_query_orderby);
+    }
+
+
+
 	$wcps_query_orderby_metakey = get_post_meta( $post_id, 'wcps_query_orderby_metakey', true );
     $wcps_hide_out_of_stock = get_post_meta( $post_id, 'wcps_hide_out_of_stock', true );
 

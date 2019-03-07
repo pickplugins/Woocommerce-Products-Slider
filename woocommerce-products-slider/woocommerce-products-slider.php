@@ -25,15 +25,9 @@ class WoocommerceProductsSlider{
 		define('wcps_wp_url', 'https://wordpress.org/plugins/woocommerce-products-slider/' );
 		define('wcps_wp_reviews_link', 'https://wordpress.org/support/plugin/woocommerce-products-slider/reviews/?filter=5' );
 		define('wcps_pro_url','https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/' );
-		define('wcps_demo_url', 'https://pickplugins.com/demo/woocommerce-products-slider/' );
-		define('wcps_conatct_url', 'https://pickplugins.com/contact/' );
 		define('wcps_qa_url', 'http://pickplugins.com/questions/' );
 		define('wcps_plugin_name', 'WooCommerce Products Slider' );
-		define('wcps_plugin_version', '2.2.24' );
 		define('wcps_customer_type', 'pro' );	 // pro & free
-		define('wcps_share_url', 'https://wordpress.org/plugins/woocommerce-products-slider/' );
-		define('wcps_tutorial_video_url', '//www.youtube.com/embed/B0sOSp3h9fE?rel=0' );
-		define('wcps_textdomain', 'woocommerce-products-slider' );
 
 
         define('wcps_version', '2.2.24' );
@@ -42,22 +36,22 @@ class WoocommerceProductsSlider{
 
 
         require_once( plugin_dir_path( __FILE__ ) . 'includes/wcps-meta-box.php');
-		//require_once( plugin_dir_path( __FILE__ ) . 'includes/meta.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-meta-box.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-settings.php');
 
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-functions.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-shortcodes.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-settings.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-update.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-functions.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-shortcodes.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-settings.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-update.php');
 
         require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-settings-tabs.php');
 
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wcps-license.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wp-autoupdate.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-wp-autoupdate.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-wcps-license.php');
 
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wcps-support.php');
+
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-wcps-support.php');
 
 
 		// to work upload button
@@ -69,7 +63,7 @@ class WoocommerceProductsSlider{
 		add_action( 'wp_enqueue_scripts', array( $this, 'wcps_front_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'wcps_admin_scripts' ) );
 
-		add_action( 'plugins_loaded', array( $this, 'wcps_load_textdomain' ));
+		add_action( 'plugins_loaded', array( $this, 'textdomain' ));
 
 
 		register_activation_hook( __FILE__, array( $this, 'wcps_install' ) );
@@ -80,7 +74,7 @@ class WoocommerceProductsSlider{
 
 
 
-	public function wcps_load_textdomain() {
+	public function textdomain() {
 	  load_plugin_textdomain( 'woocommerce-products-slider', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 

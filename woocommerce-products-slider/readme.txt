@@ -1,4 +1,4 @@
-=== PickPlugins WooCommerce Products Slider ===
+=== WooCommerce Products Slider ===
 	Contributors: pickplugins
 	Donate link: http://pickplugins.com
 	Tags: carousel, product, slider, woocommerce, carousel slider, product slider, woocommerce slider, Woocommerce Product slider

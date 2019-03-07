@@ -31,8 +31,8 @@ if(!function_exists('wcps_meta_tab_content_custom_scripts')) {
             $args = array(
                 'id'		=> 'wcps_items_custom_css',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Custom CSS','post-grid'),
-                'details'	=> __('Add your own CSS..','post-grid'),
+                'title'		=> __('Custom CSS','woocommerce-products-slider'),
+                'details'	=> __('Add your own CSS..','woocommerce-products-slider'),
                 'type'		=> 'scripts_css',
                 'value'		=> $wcps_items_custom_css,
                 'default'		=> '.wcps-container #wcps-133{}&#10; .wcps-container #wcps-133 .wcps-items{}&#10;.wcps-container #wcps-133 .wcps-items-thumb{}&#10;',
@@ -778,7 +778,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
             $html = ob_get_clean();
             $args = array(
                 'id' => 'wcps_elements',
-                'title' => __('Elements', 'post-grid'),
+                'title' => __('Elements', 'woocommerce-products-slider'),
                 'details' => '',
                 'type' => 'custom_html',
                 'html' => $html,
@@ -841,8 +841,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_themes',
                 //'parent'		=> '',
-                'title'		=> __('Slider themes','post-grid'),
-                'details'	=> __('Choose slider product themes.','post-grid'),
+                'title'		=> __('Slider themes','woocommerce-products-slider'),
+                'details'	=> __('Choose slider product themes.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_themes,
                 'default'		=> 'OR',
@@ -866,8 +866,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_ribbon_name',
                 //'parent'		=> '',
-                'title'		=> __('Slider ribbon','post-grid'),
-                'details'	=> __('Choose slider ribbon.','post-grid'),
+                'title'		=> __('Slider ribbon','woocommerce-products-slider'),
+                'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
                 'type'		=> 'radio_image',
                 'value'		=> $wcps_ribbon_name,
                 'default'		=> 'OR',
@@ -883,8 +883,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_ribbon_custom',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Custom ribbon','post-grid'),
-                'details'	=> __('Choose custom ribbon, image source url.','post-grid'),
+                'title'		=> __('Custom ribbon','woocommerce-products-slider'),
+                'details'	=> __('Choose custom ribbon, image source url.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_ribbon_custom,
                 'default'		=> '',
@@ -898,8 +898,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_items_padding',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Items padding','post-grid'),
-                'details'	=> __('Set custom padding for item.','post-grid'),
+                'title'		=> __('Items padding','woocommerce-products-slider'),
+                'details'	=> __('Set custom padding for item.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_items_padding,
                 'default'		=> '',
@@ -911,8 +911,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_items_bg_color',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Item background color','post-grid'),
-                'details'	=> __('Set custom background color for item.','post-grid'),
+                'title'		=> __('Item background color','woocommerce-products-slider'),
+                'details'	=> __('Set custom background color for item.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $wcps_items_bg_color,
                 'default'		=> '',
@@ -930,8 +930,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_container_padding',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Container Padding','post-grid'),
-                'details'	=> __('Set custom padding for container.','post-grid'),
+                'title'		=> __('Container Padding','woocommerce-products-slider'),
+                'details'	=> __('Set custom padding for container.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_container_padding,
                 'default'		=> '',
@@ -942,8 +942,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_container_bg_color',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Container background color','post-grid'),
-                'details'	=> __('Set custom background color for container.','post-grid'),
+                'title'		=> __('Container background color','woocommerce-products-slider'),
+                'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $wcps_container_bg_color,
                 'default'		=> '',
@@ -956,8 +956,8 @@ if(!function_exists('wcps_meta_tab_content_style')) {
             $args = array(
                 'id'		=> 'wcps_bg_img',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Container background image','post-grid'),
-                'details'	=> __('Set custom background image for container.','post-grid'),
+                'title'		=> __('Container background image','woocommerce-products-slider'),
+                'details'	=> __('Set custom background image for container.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_bg_img,
                 'default'		=> '',
@@ -1045,8 +1045,8 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_total_items',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Max number of product','post-grid'),
-                'details'	=> __('Set custom number you want to display maximum number of product','post-grid'),
+                'title'		=> __('Max number of product','woocommerce-products-slider'),
+                'details'	=> __('Set custom number you want to display maximum number of product','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_total_items,
                 'default'		=> '10',
@@ -1061,7 +1061,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $html = ob_get_clean();
             $args = array(
                 'id' => 'wcps_categories',
-                'title' => __('Product categories & terms', 'post-grid'),
+                'title' => __('Product categories & terms', 'woocommerce-products-slider'),
                 'details' => '',
                 'type' => 'custom_html',
                 'html' => $html,
@@ -1090,7 +1090,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $html = ob_get_clean();
             $args = array(
                 'id' => 'wcps_meta_query',
-                'title' => __('Product meta query', 'post-grid'),
+                'title' => __('Product meta query', 'woocommerce-products-slider'),
                 'details' => '',
                 'type' => 'custom_html',
                 'html' => $html,
@@ -1101,14 +1101,14 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_meta_query_relation',
                 //'parent'		=> '',
-                'title'		=> __('Meta query relation','post-grid'),
-                'details'	=> __('Set meta query relation.','post-grid'),
+                'title'		=> __('Meta query relation','woocommerce-products-slider'),
+                'details'	=> __('Set meta query relation.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_meta_query_relation,
                 'default'		=> 'OR',
                 'args'		=> array(
-                    'OR'=>__('OR','post-grid'),
-                    'AND'=>__('AND','post-grid'),
+                    'OR'=>__('OR','woocommerce-products-slider'),
+                    'AND'=>__('AND','woocommerce-products-slider'),
 
 
 
@@ -1123,14 +1123,14 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_query_order',
                 //'parent'		=> '',
-                'title'		=> __('Query order','post-grid'),
-                'details'	=> __('Set query order.','post-grid'),
+                'title'		=> __('Query order','woocommerce-products-slider'),
+                'details'	=> __('Set query order.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_query_order,
                 'default'		=> 'DESC',
                 'args'		=> array(
-                    'DESC'=>__('Descending','post-grid'),
-                    'ASC'=>__('Ascending','post-grid'),
+                    'DESC'=>__('Descending','woocommerce-products-slider'),
+                    'ASC'=>__('Ascending','woocommerce-products-slider'),
 
 
 
@@ -1144,23 +1144,23 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_query_orderby',
                 //'parent'		=> '',
-                'title'		=> __('Query orderby','post-grid'),
-                'details'	=> __('Set query orderby.','post-grid'),
+                'title'		=> __('Query orderby','woocommerce-products-slider'),
+                'details'	=> __('Set query orderby.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'multiple'		=> true,
                 'value'		=> $wcps_query_orderby,
                 'default'		=> array('none'),
                 'args'		=> array(
-                    'none'=>__('None','post-grid'),
-                    'ID'=>__('ID','post-grid'),
-                    'date'=>__('date','post-grid'),
-                    'rand'=>__('rand','post-grid'),
-                    'comment_count'=>__('comment_count','post-grid'),
-                    'author'=>__('author','post-grid'),
-                    'title'=>__('title','post-grid'),
-                    'type'=>__('type','post-grid'),
-                    'menu_order'=>__('menu order','post-grid'),
-                    'meta_value_num'=>__('meta value number','post-grid'),
+                    'none'=>__('None','woocommerce-products-slider'),
+                    'ID'=>__('ID','woocommerce-products-slider'),
+                    'date'=>__('date','woocommerce-products-slider'),
+                    'rand'=>__('rand','woocommerce-products-slider'),
+                    'comment_count'=>__('comment_count','woocommerce-products-slider'),
+                    'author'=>__('author','woocommerce-products-slider'),
+                    'title'=>__('title','woocommerce-products-slider'),
+                    'type'=>__('type','woocommerce-products-slider'),
+                    'menu_order'=>__('menu order','woocommerce-products-slider'),
+                    'meta_value_num'=>__('meta value number','woocommerce-products-slider'),
                 ),
             );
 
@@ -1176,8 +1176,8 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_more_query',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('More query parameter','post-grid'),
-                'details'	=> __('Set custom query parameter.','post-grid'),
+                'title'		=> __('More query parameter','woocommerce-products-slider'),
+                'details'	=> __('Set custom query parameter.','woocommerce-products-slider'),
                 'type'		=> 'textarea',
                 'value'		=> $wcps_more_query,
                 'default'		=> '',
@@ -1191,15 +1191,15 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_hide_out_of_stock',
                 //'parent'		=> '',
-                'title'		=> __('Hide out of stock items','post-grid'),
-                'details'	=> __('You can hide out of stock items from query.','post-grid'),
+                'title'		=> __('Hide out of stock items','woocommerce-products-slider'),
+                'details'	=> __('You can hide out of stock items from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_hide_out_of_stock,
                 'default'		=> 'no_check',
                 'args'		=> array(
-                    'yes'=>__('Yes','post-grid'),
-                    'no'=>__('No','post-grid'),
-                    'no_check'=>__('No Check','post-grid'),
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
+                    'no_check'=>__('No Check','woocommerce-products-slider'),
 
 
                 ),
@@ -1212,15 +1212,15 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_featured',
                 //'parent'		=> '',
-                'title'		=> __('Featured product display','post-grid'),
-                'details'	=> __('You include/exclude featured product on query.','post-grid'),
+                'title'		=> __('Featured product display','woocommerce-products-slider'),
+                'details'	=> __('You include/exclude featured product on query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_product_featured,
                 'default'		=> 'no_check',
                 'args'		=> array(
-                    'yes'=>__('Yes','post-grid'),
-                    'no'=>__('No','post-grid'),
-                    'no_check'=>__('No Check','post-grid'),
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
+                    'no_check'=>__('No Check','woocommerce-products-slider'),
 
 
                 ),
@@ -1233,14 +1233,14 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_on_sale',
                 //'parent'		=> '',
-                'title'		=> __('On Sale Product display','post-grid'),
-                'details'	=> __('You include/exclude on sale product on query.','post-grid'),
+                'title'		=> __('On Sale Product display','woocommerce-products-slider'),
+                'details'	=> __('You include/exclude on sale product on query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_product_on_sale,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'yes'=>__('Yes','post-grid'),
-                    'no'=>__('No','post-grid'),
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
 
 
                 ),
@@ -1252,14 +1252,14 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_only_discounted',
                 //'parent'		=> '',
-                'title'		=> __('Only discounted','post-grid'),
-                'details'	=> __('You include/exclude discounted product on query.','post-grid'),
+                'title'		=> __('Only discounted','woocommerce-products-slider'),
+                'details'	=> __('You include/exclude discounted product on query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_product_only_discounted,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'yes'=>__('Yes','post-grid'),
-                    'no'=>__('No','post-grid'),
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
 
 
                 ),
@@ -1271,14 +1271,14 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_best_selling',
                 //'parent'		=> '',
-                'title'		=> __('Best selling product display','post-grid'),
-                'details'	=> __('You query best selling product on query.','post-grid'),
+                'title'		=> __('Best selling product display','woocommerce-products-slider'),
+                'details'	=> __('You query best selling product on query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_product_best_selling,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'yes'=>__('Yes','post-grid'),
-                    'no'=>__('No','post-grid'),
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
 
 
                 ),
@@ -1290,15 +1290,15 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_filter_by',
                 //'parent'		=> '',
-                'title'		=> __('Product filter by','post-grid'),
-                'details'	=> __('Choose filter you want to display product.','post-grid'),
+                'title'		=> __('Product filter by','woocommerce-products-slider'),
+                'details'	=> __('Choose filter you want to display product.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_product_filter_by,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'none'=>__('None','post-grid'),
-                    'top_rated'=>__('Top rated','post-grid'),
-                    'featured_first'=>__('Featured product at first','post-grid'),
+                    'none'=>__('None','woocommerce-products-slider'),
+                    'top_rated'=>__('Top rated','woocommerce-products-slider'),
+                    'featured_first'=>__('Featured product at first','woocommerce-products-slider'),
 
                 ),
             );
@@ -1312,8 +1312,8 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_ids',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Product display by Product ID','post-grid'),
-                'details'	=> __('You can display custom product by ids.','post-grid'),
+                'title'		=> __('Product display by Product ID','woocommerce-products-slider'),
+                'details'	=> __('You can display custom product by ids.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_product_ids,
                 'default'		=> '',
@@ -1325,8 +1325,8 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_product_sku',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Product display by SKU','post-grid'),
-                'details'	=> __('You can display custom product by sku, use (,) comma separated','post-grid'),
+                'title'		=> __('Product display by SKU','woocommerce-products-slider'),
+                'details'	=> __('You can display custom product by sku, use (,) comma separated','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_product_sku,
                 'default'		=> '',
@@ -1340,16 +1340,16 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
             $args = array(
                 'id'		=> 'wcps_upsells_crosssells',
                 //'parent'		=> '',
-                'title'		=> __('Product filter by','post-grid'),
-                'details'	=> __('Choose filter you want to display product.','post-grid'),
+                'title'		=> __('Product filter by','woocommerce-products-slider'),
+                'details'	=> __('Choose filter you want to display product.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $wcps_upsells_crosssells,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'none'=>__('None','post-grid'),
-                    'upsells'=>__('Upsells','post-grid'),
-                    'cross_sells'=>__('Cross-sells','post-grid'),
-                    'both'=>__('Both','post-grid'),
+                    'none'=>__('None','woocommerce-products-slider'),
+                    'upsells'=>__('Upsells','woocommerce-products-slider'),
+                    'cross_sells'=>__('Cross-sells','woocommerce-products-slider'),
+                    'both'=>__('Both','woocommerce-products-slider'),
 
 
                 ),
@@ -1483,7 +1483,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $html = ob_get_clean();
             $args = array(
                 'id' => 'wcps_shortcodes',
-                'title' => __('Slider column number', 'post-grid'),
+                'title' => __('Slider column number', 'woocommerce-products-slider'),
                 'details' => '',
                 'type' => 'custom_html',
                 'html' => $html,
@@ -1496,14 +1496,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_rows_enable',
                 //'parent'		=> '',
-                'title'		=> __('Enable slider row','post-grid'),
-                'details'	=> __('Enable or disable slider rows.','post-grid'),
+                'title'		=> __('Enable slider row','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider rows.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_rows_enable,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'no'=>__('No','post-grid'),
-                    'yes'=>__('Yes','post-grid'),
+                    'no'=>__('No','woocommerce-products-slider'),
+                    'yes'=>__('Yes','woocommerce-products-slider'),
 
 
 
@@ -1533,7 +1533,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $html = ob_get_clean();
             $args = array(
                 'id' => 'wcps_rows',
-                'title' => __('Slider row number', 'post-grid'),
+                'title' => __('Slider row number', 'woocommerce-products-slider'),
                 'details' => '',
                 'type' => 'custom_html',
                 'html' => $html,
@@ -1545,14 +1545,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_auto_play',
                 //'parent'		=> '',
-                'title'		=> __('Slider auto play','post-grid'),
-                'details'	=> __('Enable or disable slider autoplay.','post-grid'),
+                'title'		=> __('Slider auto play','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider autoplay.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_auto_play,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
 
 
 
@@ -1565,8 +1565,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_auto_play_speed',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slider auto play speed','post-grid'),
-                'details'	=> __('Custom value for auto play speed, 1000 = 1 second','post-grid'),
+                'title'		=> __('Slider auto play speed','woocommerce-products-slider'),
+                'details'	=> __('Custom value for auto play speed, 1000 = 1 second','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_auto_play_speed,
                 'default'		=> '500',
@@ -1578,8 +1578,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_auto_play_timeout',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slider auto play timeout','post-grid'),
-                'details'	=> __('Custom value for auto play timeout, 1000 = 1 second','post-grid'),
+                'title'		=> __('Slider auto play timeout','woocommerce-products-slider'),
+                'details'	=> __('Custom value for auto play timeout, 1000 = 1 second','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_auto_play_timeout,
                 'default'		=> '600',
@@ -1591,8 +1591,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slide_speed',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slide speed','post-grid'),
-                'details'	=> __('Custom value for slide speed, 1000 = 1 second','post-grid'),
+                'title'		=> __('Slide speed','woocommerce-products-slider'),
+                'details'	=> __('Custom value for slide speed, 1000 = 1 second','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_slide_speed,
                 'default'		=> '600',
@@ -1604,8 +1604,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_pagination_slide_speed',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Pagination Slide Speed','post-grid'),
-                'details'	=> __('Custom value for pagination slide speed, 1000 = 1 second','post-grid'),
+                'title'		=> __('Pagination Slide Speed','woocommerce-products-slider'),
+                'details'	=> __('Custom value for pagination slide speed, 1000 = 1 second','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_pagination_slide_speed,
                 'default'		=> '600',
@@ -1616,8 +1616,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slideBy',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slider slideby count','post-grid'),
-                'details'	=> __('Custom value for slideby','post-grid'),
+                'title'		=> __('Slider slideby count','woocommerce-products-slider'),
+                'details'	=> __('Custom value for slideby','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_slideBy,
                 'default'		=> '1',
@@ -1629,14 +1629,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_rewind',
                 //'parent'		=> '',
-                'title'		=> __('Slider rewind','post-grid'),
-                'details'	=> __('Enable or disable slider rewind.','post-grid'),
+                'title'		=> __('Slider rewind','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider rewind.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_rewind,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1645,14 +1645,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_loop',
                 //'parent'		=> '',
-                'title'		=> __('Slider loop','post-grid'),
-                'details'	=> __('Enable or disable slider loop.','post-grid'),
+                'title'		=> __('Slider loop','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider loop.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_loop,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1662,14 +1662,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_center',
                 //'parent'		=> '',
-                'title'		=> __('Slider center','post-grid'),
-                'details'	=> __('Enable or disable slider center. please set odd number of slider column to work slider center.','post-grid'),
+                'title'		=> __('Slider center','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider center. please set odd number of slider column to work slider center.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_center,
                 'default'		=> 'false',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1679,14 +1679,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_stop_on_hover',
                 //'parent'		=> '',
-                'title'		=> __('Slider stop on hover','post-grid'),
-                'details'	=> __('Enable or disable slider stop on hover.','post-grid'),
+                'title'		=> __('Slider stop on hover','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider stop on hover.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_stop_on_hover,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1697,14 +1697,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_navigation',
                 //'parent'		=> '',
-                'title'		=> __('Slider navigation at top','post-grid'),
-                'details'	=> __('Enable or disable slider navigation at Top.','post-grid'),
+                'title'		=> __('Slider navigation at top','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider navigation at Top.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_navigation,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1714,15 +1714,15 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_navigation_position',
                 //'parent'		=> '',
-                'title'		=> __('Slider navigation position','post-grid'),
-                'details'	=> __('Choose slider navigation position.','post-grid'),
+                'title'		=> __('Slider navigation position','woocommerce-products-slider'),
+                'details'	=> __('Choose slider navigation position.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_navigation_position,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'topright'=>__('Top Right','post-grid'),
-                    'middle'=>__('Middle','post-grid'),
-                    'middle-fixed'=>__('Middle fixed','post-grid'),
+                    'topright'=>__('Top Right','woocommerce-products-slider'),
+                    'middle'=>__('Middle','woocommerce-products-slider'),
+                    'middle-fixed'=>__('Middle fixed','woocommerce-products-slider'),
 
                 ),
             );
@@ -1734,14 +1734,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_pagination',
                 //'parent'		=> '',
-                'title'		=> __('Slider Pagination at bottom','post-grid'),
-                'details'	=> __('Enable or disable slider Pagination at bottom.','post-grid'),
+                'title'		=> __('Slider Pagination at bottom','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider Pagination at bottom.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_navigation,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1754,8 +1754,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_pagination_bg',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Pagination background color','post-grid'),
-                'details'	=> __('Choose custom pagination background color','post-grid'),
+                'title'		=> __('Pagination background color','woocommerce-products-slider'),
+                'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $wcps_slider_pagination_bg,
                 'default'		=> '#ddd',
@@ -1767,8 +1767,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_pagination_text_color',
                 //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Pagination text color','post-grid'),
-                'details'	=> __('Choose custom pagination text color','post-grid'),
+                'title'		=> __('Pagination text color','woocommerce-products-slider'),
+                'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $wcps_slider_pagination_text_color,
                 'default'		=> '#999',
@@ -1782,14 +1782,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_pagination_count',
                 //'parent'		=> '',
-                'title'		=> __('Slider pagination number counting','post-grid'),
-                'details'	=> __('Enable or disable slider pagination number counting.','post-grid'),
+                'title'		=> __('Slider pagination number counting','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider pagination number counting.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_pagination_count,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1801,14 +1801,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_touch_drag',
                 //'parent'		=> '',
-                'title'		=> __('Slider touch drag enable','post-grid'),
-                'details'	=> __('Enable or disable slider touch drag.','post-grid'),
+                'title'		=> __('Slider touch drag enable','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider touch drag.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_touch_drag,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1819,14 +1819,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_mouse_drag',
                 //'parent'		=> '',
-                'title'		=> __('Slider mouse drag enable','post-grid'),
-                'details'	=> __('Enable or disable slider mouse drag.','post-grid'),
+                'title'		=> __('Slider mouse drag enable','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider mouse drag.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_mouse_drag,
                 'default'		=> 'true',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1836,14 +1836,14 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_rtl',
                 //'parent'		=> '',
-                'title'		=> __('RTL enable','post-grid'),
-                'details'	=> __('Enable or disable slider RTL.','post-grid'),
+                'title'		=> __('RTL enable','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider RTL.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_rtl,
                 'default'		=> 'false',
                 'args'		=> array(
-                    'true'=>__('True','post-grid'),
-                    'false'=>__('False','post-grid'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1854,29 +1854,29 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_animateout',
                 //'parent'		=> '',
-                'title'		=> __('Animate Out','post-grid'),
-                'details'	=> __('Choose animation on out.','post-grid'),
+                'title'		=> __('Animate Out','woocommerce-products-slider'),
+                'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_animateout,
                 'default'		=> 'false',
                 'args'		=> array(
-                    'fadeOut'=>__('fadeOut','post-grid'),
-                    'bounce'=>__('bounce','post-grid'),
-                    'flash'=>__('flash','post-grid'),
-                    'pulse'=>__('pulse','post-grid'),
-                    'shake'=>__('shake','post-grid'),
-                    'swing'=>__('swing','post-grid'),
-                    'tada'=>__('tada','post-grid'),
-                    'wobble'=>__('wobble','post-grid'),
-                    'flip'=>__('flip','post-grid'),
-                    'flipInX'=>__('flipInX','post-grid'),
-                    'flipInY'=>__('flipInY','post-grid'),
-                    'fadeIn'=>__('fadeIn','post-grid'),
-                    'fadeInDown'=>__('fadeInDown','post-grid'),
-                    'fadeInUp'=>__('fadeInUp','post-grid'),
-                    'bounceIn'=>__('bounceIn','post-grid'),
-                    'bounceInDown'=>__('bounceInDown','post-grid'),
-                    'bounceInUp'=>__('bounceInUp','post-grid'),
+                    'fadeOut'=>__('fadeOut','woocommerce-products-slider'),
+                    'bounce'=>__('bounce','woocommerce-products-slider'),
+                    'flash'=>__('flash','woocommerce-products-slider'),
+                    'pulse'=>__('pulse','woocommerce-products-slider'),
+                    'shake'=>__('shake','woocommerce-products-slider'),
+                    'swing'=>__('swing','woocommerce-products-slider'),
+                    'tada'=>__('tada','woocommerce-products-slider'),
+                    'wobble'=>__('wobble','woocommerce-products-slider'),
+                    'flip'=>__('flip','woocommerce-products-slider'),
+                    'flipInX'=>__('flipInX','woocommerce-products-slider'),
+                    'flipInY'=>__('flipInY','woocommerce-products-slider'),
+                    'fadeIn'=>__('fadeIn','woocommerce-products-slider'),
+                    'fadeInDown'=>__('fadeInDown','woocommerce-products-slider'),
+                    'fadeInUp'=>__('fadeInUp','woocommerce-products-slider'),
+                    'bounceIn'=>__('bounceIn','woocommerce-products-slider'),
+                    'bounceInDown'=>__('bounceInDown','woocommerce-products-slider'),
+                    'bounceInUp'=>__('bounceInUp','woocommerce-products-slider'),
 
 
                 ),
@@ -1888,29 +1888,29 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_animatein',
                 //'parent'		=> '',
-                'title'		=> __('Animate Out','post-grid'),
-                'details'	=> __('Choose animation on out.','post-grid'),
+                'title'		=> __('Animate Out','woocommerce-products-slider'),
+                'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_animatein,
                 'default'		=> 'false',
                 'args'		=> array(
-                    'fadeOut'=>__('fadeOut','post-grid'),
-                    'bounce'=>__('bounce','post-grid'),
-                    'flash'=>__('flash','post-grid'),
-                    'pulse'=>__('pulse','post-grid'),
-                    'shake'=>__('shake','post-grid'),
-                    'swing'=>__('swing','post-grid'),
-                    'tada'=>__('tada','post-grid'),
-                    'wobble'=>__('wobble','post-grid'),
-                    'flip'=>__('flip','post-grid'),
-                    'flipInX'=>__('flipInX','post-grid'),
-                    'flipInY'=>__('flipInY','post-grid'),
-                    'fadeIn'=>__('fadeIn','post-grid'),
-                    'fadeInDown'=>__('fadeInDown','post-grid'),
-                    'fadeInUp'=>__('fadeInUp','post-grid'),
-                    'bounceIn'=>__('bounceIn','post-grid'),
-                    'bounceInDown'=>__('bounceInDown','post-grid'),
-                    'bounceInUp'=>__('bounceInUp','post-grid'),
+                    'fadeOut'=>__('fadeOut','woocommerce-products-slider'),
+                    'bounce'=>__('bounce','woocommerce-products-slider'),
+                    'flash'=>__('flash','woocommerce-products-slider'),
+                    'pulse'=>__('pulse','woocommerce-products-slider'),
+                    'shake'=>__('shake','woocommerce-products-slider'),
+                    'swing'=>__('swing','woocommerce-products-slider'),
+                    'tada'=>__('tada','woocommerce-products-slider'),
+                    'wobble'=>__('wobble','woocommerce-products-slider'),
+                    'flip'=>__('flip','woocommerce-products-slider'),
+                    'flipInX'=>__('flipInX','woocommerce-products-slider'),
+                    'flipInY'=>__('flipInY','woocommerce-products-slider'),
+                    'fadeIn'=>__('fadeIn','woocommerce-products-slider'),
+                    'fadeInDown'=>__('fadeInDown','woocommerce-products-slider'),
+                    'fadeInUp'=>__('fadeInUp','woocommerce-products-slider'),
+                    'bounceIn'=>__('bounceIn','woocommerce-products-slider'),
+                    'bounceInDown'=>__('bounceInDown','woocommerce-products-slider'),
+                    'bounceInUp'=>__('bounceInUp','woocommerce-products-slider'),
 
 
                 ),
@@ -2004,7 +2004,7 @@ if(!function_exists('wcps_meta_tab_content_shortcode')) {
             $html = ob_get_clean();
             $args = array(
                 'id' => 'wcps_shortcodes',
-                'title' => __('Get shortcode', 'post-grid'),
+                'title' => __('Get shortcode', 'woocommerce-products-slider'),
                 'details' => '',
                 'type' => 'custom_html',
                 'html' => $html,

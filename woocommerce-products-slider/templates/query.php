@@ -305,7 +305,7 @@ if($wcps_product_best_selling=='yes'){
 
 */
 	
-	//var_dump($query_args);
+	var_dump($wcps_query_orderby);
 
 	
 	

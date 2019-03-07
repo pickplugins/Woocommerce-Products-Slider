@@ -54,9 +54,9 @@ function meta_boxes_wcps(){
 
 
     foreach ( $screens as $screen ){
-        add_meta_box('wcps_metabox',__('WCPS Options', 'post-grid'),'meta_boxes_wcps_input', $screen);
-        //add_meta_box('wcps_metabox_side',__('Post Grid Information', 'post-grid'),'meta_boxes_wcps_side', $screen,'side');
-        add_meta_box('wcps_metabox_side',__('PickPlugins WooCommerce Products Slider Information', 'post-grid'),'meta_boxes_wcps_side', $screen,'side');
+        add_meta_box('wcps_metabox',__('WCPS Options', 'woocommerce-products-slider'),'meta_boxes_wcps_input', $screen);
+        //add_meta_box('wcps_metabox_side',__('Post Grid Information', 'woocommerce-products-slider'),'meta_boxes_wcps_side', $screen,'side');
+        add_meta_box('wcps_metabox_side',__('PickPlugins WooCommerce Products Slider Information', 'woocommerce-products-slider'),'meta_boxes_wcps_side', $screen,'side');
 
     }
 
@@ -82,7 +82,7 @@ function meta_boxes_wcps_input( $post ) {
 
     $wcps_settings_tab[] = array(
         'id' => 'shortcode',
-        'title' => __('<i class="fas fa-laptop-code"></i> Shortcode','post-grid'),
+        'title' => __('<i class="fas fa-laptop-code"></i> Shortcode','woocommerce-products-slider'),
         'priority' => 1,
         'active' => false,
     );
@@ -90,35 +90,35 @@ function meta_boxes_wcps_input( $post ) {
 
     $wcps_settings_tab[] = array(
         'id' => 'options',
-        'title' => __('<i class="fa fa-cogs"></i> Options','post-grid'),
+        'title' => __('<i class="fa fa-cogs"></i> Options','woocommerce-products-slider'),
         'priority' => 2,
         'active' => true,
     );
 
     $wcps_settings_tab[] = array(
         'id' => 'query_product',
-        'title' => __('<i class="fas fa-qrcode"></i> Query Product','post-grid'),
+        'title' => __('<i class="fas fa-qrcode"></i> Query Product','woocommerce-products-slider'),
         'priority' => 3,
         'active' => false,
     );
 
     $wcps_settings_tab[] = array(
         'id' => 'style',
-        'title' => __('<i class="fas fa-palette"></i> Style','post-grid'),
+        'title' => __('<i class="fas fa-palette"></i> Style','woocommerce-products-slider'),
         'priority' => 4,
         'active' => false,
     );
 
     $wcps_settings_tab[] = array(
         'id' => 'elements',
-        'title' => __('<i class="fa fa-magic"></i> Elements','post-grid'),
+        'title' => __('<i class="fa fa-magic"></i> Elements','woocommerce-products-slider'),
         'priority' => 5,
         'active' => false,
     );
 
     $wcps_settings_tab[] = array(
         'id' => 'custom_scripts',
-        'title' => __('<i class="far fa-file-code"></i> Custom CSS','post-grid'),
+        'title' => __('<i class="far fa-file-code"></i> Custom CSS','woocommerce-products-slider'),
         'priority' => 6,
         'active' => false,
     );
