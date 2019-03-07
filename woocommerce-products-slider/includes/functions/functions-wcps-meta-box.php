@@ -1,9 +1,4 @@
 <?php
-/*
-* @Author 		pickplugins
-* Copyright: 	2015 pickplugins
-*/
-
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
@@ -1011,6 +1006,8 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
         $settings_tabs_field = new settings_tabs_field();
 
         $wcps_total_items = get_post_meta( $post_id, 'wcps_total_items', true );
+        if(empty($wcps_total_items)){ $wcps_total_items = '10'; }
+
         $wcps_meta_query = get_post_meta( $post_id, 'wcps_meta_query', true );
         if(empty($wcps_meta_query)){$wcps_meta_query = array(); }
 
@@ -1842,8 +1839,9 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'value'		=> $wcps_slider_rtl,
                 'default'		=> 'false',
                 'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
                     'false'=>__('False','woocommerce-products-slider'),
+                    'true'=>__('True','woocommerce-products-slider'),
+
                 ),
             );
 
@@ -1888,8 +1886,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_animatein',
                 //'parent'		=> '',
-                'title'		=> __('Animate Out','woocommerce-products-slider'),
-                'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
+                'title'		=> __('Animate In','woocommerce-products-slider'),
+                'details'	=> __('Choose animation on in.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_animatein,
                 'default'		=> 'false',

@@ -10,7 +10,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	$rating = $product->get_average_rating();
 	$rating = (($rating/5)*100);
-	
+
+
+
+
 	 /*
 
 	if( $rating > 0 ){
@@ -33,6 +36,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	 
 	 
  */
+
+   
+
 	if( $rating > 0 )
 		$html .= '<div class="wcps-items-rating">
 		
