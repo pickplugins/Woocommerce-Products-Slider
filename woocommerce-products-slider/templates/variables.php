@@ -292,6 +292,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	$wcps_cart_display_quantity = get_post_meta( $post_id, 'wcps_cart_display_quantity', true );
 
 	$wcps_sale_icon_url = get_post_meta( $post_id, 'wcps_sale_icon_url', true );
+$wcps_sale_count_text = get_post_meta( $post_id, 'wcps_sale_count_text', true );
+
 	$wcps_featured_icon_url = get_post_meta( $post_id, 'wcps_featured_icon_url', true );
 
 	$wcps_grid_items = get_post_meta( $post_id, 'wcps_grid_items', true );

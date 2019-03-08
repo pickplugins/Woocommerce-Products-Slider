@@ -48,7 +48,10 @@ class class_wcps_shortcodes{
 				if ( $wp_query->have_posts() ) :
 				
 				while ( $wp_query->have_posts() ) : $wp_query->the_post();
-				
+
+				    $loop_post_id = get_the_ID();
+
+
 					//global  $WC_Product;
 				
 					//$is_featured = $WC_Product->is_featured( get_the_ID());

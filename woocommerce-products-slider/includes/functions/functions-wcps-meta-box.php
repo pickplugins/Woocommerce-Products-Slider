@@ -1,4 +1,9 @@
 <?php
+/*
+* @Author 		pickplugins
+* Copyright: 	2015 pickplugins
+*/
+
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
@@ -148,6 +153,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 	$wcps_cart_text_align = get_post_meta( $post_id, 'wcps_cart_text_align', true );
 	$wcps_cart_display_quantity = get_post_meta( $post_id, 'wcps_cart_display_quantity', true );
 
+	$wcps_sale_count_text = get_post_meta( $post_id, 'wcps_sale_count_text', true );
 
 	$wcps_sale_icon_url = get_post_meta( $post_id, 'wcps_sale_icon_url', true );
 	$wcps_featured_icon_url = get_post_meta( $post_id, 'wcps_featured_icon_url', true );
@@ -457,27 +463,6 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 							<?php
 
 
@@ -485,15 +470,26 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 						elseif($item_key == 'sale'){
 
 							?>
-
-
                             <div class="option-box">
                                 <p class="option-title"><?php _e('Sale marker icon url', 'woocommerce-products-slider');?></p>
                                 <p class="option-info"></p>
 								<input type="text" name="wcps_sale_icon_url" placeholder="" id="wcps_sale_icon_url" value="<?php echo $wcps_sale_icon_url; ?>" />
                             </div>
 
+                            <?php
 
+
+							}
+
+
+						elseif($item_key == 'sale_count'){
+
+							?>
+                            <div class="option-box">
+                                <p class="option-title"><?php _e('sale count text', 'woocommerce-products-slider');?></p>
+                                <p class="option-info"></p>
+								<input type="text" name="wcps_sale_count_text" placeholder="" id="wcps_sale_count_text" value="<?php echo $wcps_sale_count_text; ?>" />
+                            </div>
 
                             <?php
 
@@ -1006,8 +1002,6 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
         $settings_tabs_field = new settings_tabs_field();
 
         $wcps_total_items = get_post_meta( $post_id, 'wcps_total_items', true );
-        if(empty($wcps_total_items)){ $wcps_total_items = '10'; }
-
         $wcps_meta_query = get_post_meta( $post_id, 'wcps_meta_query', true );
         if(empty($wcps_meta_query)){$wcps_meta_query = array(); }
 
@@ -1015,7 +1009,6 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
         $wcps_more_query = get_post_meta( $post_id, 'wcps_more_query', true );
         $wcps_query_order = get_post_meta( $post_id, 'wcps_query_order', true );
         $wcps_query_orderby = get_post_meta( $post_id, 'wcps_query_orderby', true );
-        $wcps_query_orderby = !empty($wcps_query_orderby) ? $wcps_query_orderby : array('none');
 
         $wcps_hide_out_of_stock = get_post_meta( $post_id, 'wcps_hide_out_of_stock', true );
         $wcps_product_featured = get_post_meta( $post_id, 'wcps_product_featured', true );
@@ -1146,7 +1139,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 'type'		=> 'select',
                 'multiple'		=> true,
                 'value'		=> $wcps_query_orderby,
-                'default'		=> array('none'),
+                'default'		=> array('date'),
                 'args'		=> array(
                     'none'=>__('None','woocommerce-products-slider'),
                     'ID'=>__('ID','woocommerce-products-slider'),
@@ -1566,7 +1559,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'details'	=> __('Custom value for auto play speed, 1000 = 1 second','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_auto_play_speed,
-                'default'		=> '500',
+                'default'		=> '1000',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1579,7 +1572,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'details'	=> __('Custom value for auto play timeout, 1000 = 1 second','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wcps_auto_play_timeout,
-                'default'		=> '600',
+                'default'		=> '1200',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1839,9 +1832,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'value'		=> $wcps_slider_rtl,
                 'default'		=> 'false',
                 'args'		=> array(
-                    'false'=>__('False','woocommerce-products-slider'),
                     'true'=>__('True','woocommerce-products-slider'),
-
+                    'false'=>__('False','woocommerce-products-slider'),
                 ),
             );
 
@@ -1886,8 +1878,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_animatein',
                 //'parent'		=> '',
-                'title'		=> __('Animate In','woocommerce-products-slider'),
-                'details'	=> __('Choose animation on in.','woocommerce-products-slider'),
+                'title'		=> __('Animate Out','woocommerce-products-slider'),
+                'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $wcps_slider_animatein,
                 'default'		=> 'false',

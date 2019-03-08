@@ -92,14 +92,14 @@ function meta_boxes_wcps_input( $post ) {
         'id' => 'options',
         'title' => __('<i class="fa fa-cogs"></i> Options','woocommerce-products-slider'),
         'priority' => 2,
-        'active' => true,
+        'active' => false,
     );
 
     $wcps_settings_tab[] = array(
         'id' => 'query_product',
         'title' => __('<i class="fas fa-qrcode"></i> Query Product','woocommerce-products-slider'),
         'priority' => 3,
-        'active' => false,
+        'active' => true,
     );
 
     $wcps_settings_tab[] = array(
@@ -692,6 +692,7 @@ function meta_boxes_wcps_save( $post_id ) {
     $wcps_query_order = sanitize_text_field( $_POST['wcps_query_order'] );
 
     $wcps_query_orderby = stripslashes_deep( $_POST['wcps_query_orderby'] );
+    $wcps_sale_count_text = stripslashes_deep( $_POST['wcps_sale_count_text'] );
 
 
     $wcps_hide_out_of_stock = sanitize_text_field( $_POST['wcps_hide_out_of_stock'] );
@@ -841,6 +842,7 @@ function meta_boxes_wcps_save( $post_id ) {
     update_post_meta( $post_id, 'wcps_items_thumb_link_to_meta_value', $wcps_items_thumb_link_to_meta_value );
     update_post_meta( $post_id, 'wcps_items_thumb_link_target', $wcps_items_thumb_link_target );
 
+    update_post_meta( $post_id, 'wcps_sale_count_text', $wcps_sale_count_text );
 
     update_post_meta( $post_id, 'wcps_items_thumb_size', $wcps_items_thumb_size );
     update_post_meta( $post_id, 'wcps_items_thumb_max_hieght', $wcps_items_thumb_max_hieght );
@@ -851,6 +853,7 @@ function meta_boxes_wcps_save( $post_id ) {
     update_post_meta( $post_id, 'wcps_query_orderby', $wcps_query_orderby );
 
     update_post_meta( $post_id, 'wcps_hide_out_of_stock', $wcps_hide_out_of_stock );
+
 
     update_post_meta( $post_id, 'wcps_ribbon_name', $wcps_ribbon_name );
     update_post_meta( $post_id, 'wcps_ribbon_custom', $wcps_ribbon_custom );
