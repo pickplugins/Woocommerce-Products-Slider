@@ -112,7 +112,8 @@ class WoocommerceProductsSlider{
 
 			wp_enqueue_style('wcps_style', wcps_plugin_url.'assets/front/css/style.css');
 			wp_enqueue_style('wcps_style.themes', wcps_plugin_url.'assets/global/css/style.themes.css');
-			wp_enqueue_style('font-awesome', wcps_plugin_url.'assets/global/css/font-awesome.css');
+			wp_enqueue_style('font-awesome-4', wcps_plugin_url.'assets/global/css/font-awesome.css');
+            wp_enqueue_style('fontawesome-5.min', wcps_plugin_url.'assets/global/css/fontawesome-5.min.css');
 
 			wp_enqueue_script('owl.carousel.min', plugins_url( '/assets/front/js/owl.carousel.min.js' , __FILE__ ) , array( 'jquery' ));
 			wp_enqueue_script('owl.rows.js', plugins_url( '/assets/front/js/owl.rows.js' , __FILE__ ) , array( 'jquery' ));
@@ -132,7 +133,8 @@ class WoocommerceProductsSlider{
 
 				wp_enqueue_style('wcps_style', wcps_plugin_url.'assets/front/css/style.css');
 				wp_enqueue_style('wcps_style.themes', wcps_plugin_url.'assets/global/css/style.themes.css');
-				wp_enqueue_style('font-awesome', wcps_plugin_url.'assets/global/css/font-awesome.css');
+				wp_enqueue_style('font-awesome-4', wcps_plugin_url.'assets/global/css/font-awesome.css');
+                wp_enqueue_style('fontawesome-5.min', wcps_plugin_url.'assets/global/css/fontawesome-5.min.css');
 
 				wp_enqueue_script('owl.carousel.min', plugins_url( '/assets/front/js/owl.carousel.min.js' , __FILE__ ) , array( 'jquery' ));
 				wp_enqueue_script('owl.rows.js', plugins_url( '/assets/front/js/owl.rows.js' , __FILE__ ) , array( 'jquery' ));
@@ -160,15 +162,11 @@ class WoocommerceProductsSlider{
 		wp_enqueue_script('wcps_admin_js', plugins_url( '/assets/admin/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
 		wp_localize_script('wcps_admin_js', 'wcps_ajax', array( 'wcps_ajaxurl' => admin_url( 'admin-ajax.php')));
 
-		wp_enqueue_style('font-awesome', wcps_plugin_url.'assets/global/css/font-awesome.css');
+		wp_enqueue_style('font-awesome-4', wcps_plugin_url.'assets/global/css/font-awesome.css');
         wp_enqueue_style('fontawesome-5.min', wcps_plugin_url.'assets/global/css/fontawesome-5.min.css');
 		wp_enqueue_style('wcps_style', wcps_plugin_url.'assets/admin/css/style.css');
 
 
-
-		//ParaAdmin
-		wp_enqueue_style('ParaAdmin', wcps_plugin_url.'assets/admin/ParaAdmin/css/ParaAdmin.css');
-		wp_enqueue_script('ParaAdmin', plugins_url( 'assets/admin/ParaAdmin/js/ParaAdmin.js' , __FILE__ ) , array( 'jquery' ));
 
         wp_enqueue_script('codemirror', plugins_url( 'assets/admin/js/codemirror.js' , __FILE__ ) , array( 'jquery' ));
         wp_enqueue_style('codemirror', wcps_plugin_url.'assets/admin/css/codemirror.css');

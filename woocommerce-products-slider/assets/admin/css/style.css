@@ -206,3 +206,12 @@ border: 1px dashed rgb(153, 153, 153);
 .wcps-settings{
     background: #fff;
 }
+
+#wcps_metabox_side .video-tutorials{}
+#wcps_metabox_side .video-tutorials a{
+    text-decoration: none;
+}
+
+
+
+

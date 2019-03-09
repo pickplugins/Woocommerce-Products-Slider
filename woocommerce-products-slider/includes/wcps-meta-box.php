@@ -227,6 +227,8 @@ function meta_boxes_wcps_side( $post ) {
             </li>
         </ul>
 
+        <h3>Documentation</h3>
+        <p>Please read here <a class="button" href="https://www.pickplugins.com/documentation/woocommerce-products-slider/">documentation</a> for this plugin</p>
 
         <h3>Looking for support?</h3>
 
@@ -288,7 +290,7 @@ function meta_boxes_wcps_side( $post ) {
                 foreach($video_tutorials as $item){
                     ?>
                     <li class="item">
-                        <a target="_blank" href="<?php echo $item['video_url']; ?>"><i class="fa fa-question"></i> <?php echo $item['title']; ?></a>
+                        <a target="_blank" href="<?php echo $item['video_url']; ?>"><i class="far fa-dot-circle"></i> <?php echo $item['title']; ?></a>
 
                     </li>
                     <?php
