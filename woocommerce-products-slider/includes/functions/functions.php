@@ -17,8 +17,15 @@ function wcps_meta_query_args($meta_query){
 	foreach($meta_query as $key=>$meta_info){
 		
 		?>
-		<div class="items">
-			<div class="header"><span class="remove"><i class="fa fa-times"></i></span><?php echo $key; ?></div>
+		<div class="item">
+			<div class="header">
+                <span class="remove"><i class="fa fa-times"></i></span>
+                <span class="move ui-sortable-handle"><i class="fa fa-bars"></i></span>
+                <span class="expand"><i class="fa fa-expand"></i><i class="fa fa-compress"></i></span>
+
+                <span class="name"><?php echo $key; ?></span>
+            </div>
+
 			<div class="options">
        
 			Key<br />
@@ -49,8 +56,15 @@ function wcps_meta_query_add(){
 		
 		$key = sanitize_text_field($_POST['key']);
 		?>
-		<div class="items">
-			<div class="header"><span class="remove"><i class="fa fa-times"></i></span><?php echo $key; ?></div>
+		<div class="item">
+			<div class="header">
+                <span class="remove"><i class="fa fa-times"></i></span>
+                <span class="move ui-sortable-handle"><i class="fa fa-bars"></i></span>
+                <span class="expand"><i class="fa fa-expand"></i><i class="fa fa-compress"></i></span>
+
+                <span class="name"><?php echo $key; ?></span>
+
+            </div>
 			<div class="options">
 			
 			Key<br />

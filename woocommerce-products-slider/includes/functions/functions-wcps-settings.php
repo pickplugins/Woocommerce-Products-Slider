@@ -91,15 +91,15 @@ if(!function_exists('wcps_settings_license')) {
 
         $class_wcps_license = new class_wcps_license();
 
-        $check_license_on_server = $class_wcps_license->check_license_on_server($license_key);
+        //$check_license_on_server = $class_wcps_license->check_license_on_server($license_key);
 
         $license_key = isset($wcps_license['license_key']) ? $wcps_license['license_key'] : '';
 
         //var_dump($check_license_on_server);
 
-        $date_expiry = isset($check_license_on_server['date_expiry']) ? $check_license_on_server['date_expiry'] : 'Not set yet';
-        $license_status = isset($check_license_on_server['license_status']) ? $check_license_on_server['license_status'] : 'Not set yet';
-        $mgs = isset($check_license_on_server['mgs']) ? $check_license_on_server['mgs'] : '';
+        //$date_expiry = isset($check_license_on_server['date_expiry']) ? $check_license_on_server['date_expiry'] : 'Not set yet';
+        //$license_status = isset($check_license_on_server['license_status']) ? $check_license_on_server['license_status'] : 'Not set yet';
+        //$mgs = isset($check_license_on_server['mgs']) ? $check_license_on_server['mgs'] : '';
 
         ?>
         <div class="section">
@@ -113,14 +113,8 @@ if(!function_exists('wcps_settings_license')) {
             ?>
             <input type="text" name="license_key" value="<?php echo $license_key; ?>">
             <ul>
-                <li>Status: <span><?php echo $license_status; ?></span></li>
-                <li>Expire Date: <span><?php echo $date_expiry; ?></span></li>
-
-                <?php if(!empty($mgs)): ?>
-                    <li>Message: <span><?php echo $mgs; ?></span></li>
-                <?php endif; ?>
-
-
+<!--                <li>Status: <span>--><?php //echo $license_status; ?><!--</span></li>-->
+<!--                <li>Expire Date: <span>--><?php //echo $date_expiry; ?><!--</span></li>-->
             </ul>
             <?php
             $html = ob_get_clean();

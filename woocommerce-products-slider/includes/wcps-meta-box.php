@@ -582,6 +582,9 @@ function meta_boxes_wcps_save( $post_id ) {
     }
 
 
+    $wcps_taxonomies = isset($_POST['wcps_taxonomies']) ? stripslashes_deep( $_POST['wcps_taxonomies'] ) : array();
+
+
 
     $wcps_product_featured = sanitize_text_field( $_POST['wcps_product_featured'] );
     $wcps_product_on_sale = sanitize_text_field( $_POST['wcps_product_on_sale'] );
@@ -769,6 +772,8 @@ function meta_boxes_wcps_save( $post_id ) {
     //update_post_meta( $post_id, 'wcps_content_month_year', $wcps_content_month_year );
 
     update_post_meta( $post_id, 'wcps_product_categories', $wcps_product_categories );
+    update_post_meta( $post_id, 'wcps_taxonomies', $wcps_taxonomies );
+
     update_post_meta( $post_id, 'wcps_product_featured', $wcps_product_featured );
     update_post_meta( $post_id, 'wcps_product_on_sale', $wcps_product_on_sale );
     update_post_meta( $post_id, 'wcps_product_only_discounted', $wcps_product_only_discounted );

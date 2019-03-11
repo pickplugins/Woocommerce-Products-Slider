@@ -215,7 +215,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
                                     }
 
                                 ?>
-                                <label><input <?php echo $checked; ?> type="checkbox" class="wcps_grid_items_hide" name="wcps_grid_items_hide[<?php echo $item_key; ?>]" value="1" />Hide on front-end</label>
+                                <label class="float-right"><input <?php echo $checked; ?> type="checkbox" class="wcps_grid_items_hide" name="wcps_grid_items_hide[<?php echo $item_key; ?>]" value="1" />Hide on front-end</label>
 
                             </div> <!-- .header -->
                        		<div class="options">
@@ -1005,6 +1005,9 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
         $wcps_meta_query = get_post_meta( $post_id, 'wcps_meta_query', true );
         if(empty($wcps_meta_query)){$wcps_meta_query = array(); }
 
+        $taxonomies = get_post_meta( $post_id, 'wcps_taxonomies', true );
+
+
         $wcps_meta_query_relation = get_post_meta( $post_id, 'wcps_meta_query_relation', true );
         $wcps_more_query = get_post_meta( $post_id, 'wcps_more_query', true );
         $wcps_query_order = get_post_meta( $post_id, 'wcps_query_order', true );
@@ -1060,14 +1063,102 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
 
 
 
+            ?>
+
+<!--        <div class="setting-field">-->
+<!--            <div class="field-lable">Taxonomies & terms</div>-->
+<!--            <div class="field-input">-->
+<!--                <div class="expandable">-->
+<!--                    --><?php
+//                    $post_taxonomies_arr = get_object_taxonomies(array('product'));
+//                    if(!empty($post_taxonomies_arr)):
+//                        foreach ($post_taxonomies_arr as $taxonomy){
+//                            $taxonomy_term_arr = array();
+//                            $the_taxonomy = get_taxonomy($taxonomy);
+//                            $terms_relation = isset($taxonomies[$taxonomy]['terms_relation']) ? $taxonomies[$taxonomy]['terms_relation'] : 'IN';
+//                            $terms = isset($taxonomies[$taxonomy]['terms']) ? $taxonomies[$taxonomy]['terms'] : array();
+//                            $checked = isset($taxonomies[$taxonomy]['checked']) ? $taxonomies[$taxonomy]['checked'] : '';
+//                            //var_dump($terms_relation);
+//                            $taxonomy_terms = get_terms( $taxonomy, array(
+//                                'hide_empty' => false,
+//                            ) );
+//
+//                            if(!empty($taxonomy_terms))
+//                            foreach ($taxonomy_terms as $taxonomy_term){
+//                                $taxonomy_term_arr[$taxonomy_term->term_id] =$taxonomy_term->name.'('.$taxonomy_term->count.')';
+//                            }
+//
+//                            $taxonomy_term_arr = !empty($taxonomy_term_arr) ? $taxonomy_term_arr : array();
+//                            ?>
+<!--                            <div class="item">-->
+<!--                                <div class="header">-->
+<!--                                    <span class="move ui-sortable-handle"><i class="fa fa-bars"></i></span>-->
+<!--                                    <span class="expand"><i class="fa fa-expand"></i><i class="fa fa-compress"></i></span>-->
+<!--                                    <label><input type="checkbox" --><?php //if(!empty($checked)) echo 'checked'; ?><!--  name="wcps_taxonomies[--><?php //echo $taxonomy; ?><!--][checked]" value="--><?php //echo $taxonomy; ?><!--" /> --><?php //echo $the_taxonomy->labels->name; ?><!--(--><?php //echo $taxonomy; ?><!--)</label>-->
+<!--                                </div>-->
+<!--                                <div class="options">-->
+<!--                                    --><?php
+//                                    $args = array(
+//                                        'id'		=> 'terms',
+//                                        'parent'		=> 'wcps_taxonomies['.$taxonomy.']',
+//                                        'title'		=> __('Categories or Terms','post-grid'),
+//                                        'details'	=> __('Select post terms or categories','post-grid'),
+//                                        'type'		=> 'select2',
+//                                        'multiple'		=> true,
+//                                        'value'		=> $terms,
+//                                        'default'		=> array(),
+//                                        'args'		=> $taxonomy_term_arr,
+//                                    );
+//                                    $settings_tabs_field->generate_field($args, $post_id);
+//
+//                                    $args = array(
+//                                        'id'		=> 'terms_relation',
+//                                        'parent'		=> 'wcps_taxonomies['.$taxonomy.']',
+//                                        'title'		=> __('Terms relation','post-grid'),
+//                                        'details'	=> __('Choose term relation.','post-grid'),
+//                                        'type'		=> 'radio',
+//                                        'for'		=> $taxonomy,
+//                                        'multiple'		=> true,
+//                                        'value'		=> $terms_relation,
+//                                        'default'		=> 'IN',
+//                                        'args'		=> array(
+//                                            'IN'=>__('IN','post-grid'),
+//                                            'NOT IN'=>__('NOT IN','post-grid'),
+//                                            'AND'=>__('AND','post-grid'),
+//                                            'EXISTS'=>__('EXISTS','post-grid'),
+//                                            'NOT EXISTS'=>__('NOT EXISTS','post-grid'),
+//                                        ),
+//                                    );
+//                                    $settings_tabs_field->generate_field($args, $post_id);
+//                                    ?>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            --><?php
+//                        }
+//                    else:
+//                        echo __('Please choose at least one post types. save/update post grid','post-grid');
+//                    endif;
+//
+//                    ?>
+<!--                </div>-->
+<!--                <p class="description">Select post categories & terms.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+
+            <?php
+
+
             ob_start();
             ?>
+            <div class="button add-meta-query"><?php _e('Add more', 'woocommerce-products-slider'); ?></div><br><br>
             <div class="meta-query-list expandable">
                 <?php
                 echo wcps_meta_query_args($wcps_meta_query);
                 ?>
             </div>
-            <div class="button add-meta-query"><?php _e('Add more', 'woocommerce-products-slider'); ?></div>
+
 
             <script>
                 jQuery(document).ready(function($)
@@ -1167,7 +1258,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 'id'		=> 'wcps_more_query',
                 //'parent'		=> 'post_grid_meta_options',
                 'title'		=> __('More query parameter','woocommerce-products-slider'),
-                'details'	=> __('Set custom query parameter.','woocommerce-products-slider'),
+                'details'	=> __('Set custom query parameter. ex: post__in=1,4,2','woocommerce-products-slider'),
                 'type'		=> 'textarea',
                 'value'		=> $wcps_more_query,
                 'default'		=> '',
