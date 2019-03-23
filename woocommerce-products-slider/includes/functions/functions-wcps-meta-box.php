@@ -879,6 +879,7 @@ if(!function_exists('wcps_meta_tab_content_style')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_ribbon_custom,
                 'default'		=> '',
+                'placeholder'		=> 'rebbon image url',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -894,6 +895,7 @@ if(!function_exists('wcps_meta_tab_content_style')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_items_padding,
                 'default'		=> '',
+                'placeholder'		=> '10px',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -926,6 +928,7 @@ if(!function_exists('wcps_meta_tab_content_style')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_container_padding,
                 'default'		=> '',
+                'placeholder'		=> '10px',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -952,6 +955,7 @@ if(!function_exists('wcps_meta_tab_content_style')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_bg_img,
                 'default'		=> '',
+                'placeholder'		=> 'image url',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1043,6 +1047,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_total_items,
                 'default'		=> '10',
+                'placeholder'		=> '10',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1235,13 +1240,21 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                     'none'=>__('None','woocommerce-products-slider'),
                     'ID'=>__('ID','woocommerce-products-slider'),
                     'date'=>__('date','woocommerce-products-slider'),
+                    'post_date'=>__('post_date','woocommerce-products-slider'),
+                    'name'=>__('name','woocommerce-products-slider'),
                     'rand'=>__('rand','woocommerce-products-slider'),
                     'comment_count'=>__('comment_count','woocommerce-products-slider'),
                     'author'=>__('author','woocommerce-products-slider'),
                     'title'=>__('title','woocommerce-products-slider'),
                     'type'=>__('type','woocommerce-products-slider'),
                     'menu_order'=>__('menu order','woocommerce-products-slider'),
+                    'meta_value'=>__('meta_value','woocommerce-products-slider'),
                     'meta_value_num'=>__('meta value number','woocommerce-products-slider'),
+                    'post__in'=>__('post__in','woocommerce-products-slider'),
+                    'post_name__in'=>__('post_name__in','woocommerce-products-slider'),
+
+
+
                 ),
             );
 
@@ -1258,10 +1271,11 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 'id'		=> 'wcps_more_query',
                 //'parent'		=> 'post_grid_meta_options',
                 'title'		=> __('More query parameter','woocommerce-products-slider'),
-                'details'	=> __('Set custom query parameter. ex: post__in=1,4,2','woocommerce-products-slider'),
+                'details'	=> __('Set custom query parameter. ex: <code>post__in=1,4,2&post__not_in=3,5,6</code>','woocommerce-products-slider'),
                 'type'		=> 'textarea',
                 'value'		=> $wcps_more_query,
                 'default'		=> '',
+                'placeholder'		=> 'post__in=1,4,2&',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1398,6 +1412,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_product_ids,
                 'default'		=> '',
+                'placeholder'		=> '1,4,2',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1411,6 +1426,7 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_product_sku,
                 'default'		=> '',
+                'placeholder'		=> 'product_sku1,product_sku2',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1583,8 +1599,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'value'		=> $wcps_rows_enable,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'no'=>__('No','woocommerce-products-slider'),
-                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
 
 
 
@@ -1651,6 +1667,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_auto_play_speed,
                 'default'		=> '1000',
+                'placeholder'		=> '1000',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1664,6 +1681,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_auto_play_timeout,
                 'default'		=> '1200',
+                'placeholder'		=> '1200',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1677,6 +1695,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_slide_speed,
                 'default'		=> '600',
+                'placeholder'		=> '600',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1690,6 +1709,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_pagination_slide_speed,
                 'default'		=> '600',
+                'placeholder'		=> '600',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1702,6 +1722,7 @@ if(!function_exists('wcps_meta_tab_content_options')) {
                 'type'		=> 'text',
                 'value'		=> $wcps_slideBy,
                 'default'		=> '1',
+                'placeholder'		=> '1',
             );
 
             $settings_tabs_field->generate_field($args);

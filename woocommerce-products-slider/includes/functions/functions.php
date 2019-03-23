@@ -1,11 +1,11 @@
 <?php
+if ( ! defined('ABSPATH')) exit;  // if direct access
 
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins
-*/
 
-if ( ! defined('ABSPATH')) exit;  // if direct access 
+
+
+
+
 
 
 

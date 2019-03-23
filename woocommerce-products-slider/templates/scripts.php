@@ -8,9 +8,11 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
+
 $html.= '<script>';
 
 if($wcps_rows_enable == 'true'){
+
 	$html.=  'jQuery(document).ready(function($){
 				$(".owl-carousel .wcps-items").each(function(index) {
 	                if (index % 2 == 0) { // wrap by 2 items

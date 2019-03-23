@@ -91,7 +91,7 @@ if(!function_exists('wcps_settings_license')) {
 
         $class_wcps_license = new class_wcps_license();
 
-        //$check_license_on_server = $class_wcps_license->check_license_on_server($license_key);
+        $check_license_on_server = $class_wcps_license->check_license_on_server($license_key);
 
         $license_key = isset($wcps_license['license_key']) ? $wcps_license['license_key'] : '';
 

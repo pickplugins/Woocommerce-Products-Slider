@@ -35,19 +35,26 @@ if( ! class_exists( 'WP_AutoUpdate' ) ) {
         private $license_key;
 
         /**
+         * Domain
+         * @var string
+         */
+        private $domain;
+
+
+        /**
          * Initialize a new instance of the WordPress Auto-Update class
          * @param string $current_version
          * @param string $update_path
          * @param string $plugin_slug
          */
-        public function __construct($current_version, $update_path, $plugin_slug, $license_key = ''){
+        public function __construct($current_version, $update_path, $plugin_slug, $license_key = '', $domain = ''){
             // Set the class public variables
             $this->current_version = $current_version;
             $this->update_path = $update_path;
 
             // Set the License
             $this->license_key = $license_key;
-
+            $this->domain = $domain;
             // Set the Plugin Slug
             $this->plugin_slug = $plugin_slug;
             list ($t1, $t2) = explode('/', $plugin_slug);
@@ -115,6 +122,7 @@ if( ! class_exists( 'WP_AutoUpdate' ) ) {
                 'body' => array(
                     '_action' => $action,
                     'license_key' => $this->license_key,
+                    'domain'  => $this->domain,
                 ),
             );
 

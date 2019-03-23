@@ -280,8 +280,11 @@ class settings_tabs_field{
 
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value = !empty($value) ? $value : $default;
+
         $args 	= isset( $option['args'] ) ? $option['args'] : "";
 
         $min = isset($args['min']) ? $args['min'] : '';
@@ -358,6 +361,7 @@ class settings_tabs_field{
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value = !empty($value) ? $value : $default;
 
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
@@ -384,8 +388,7 @@ class settings_tabs_field{
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
-
-        $default_value	= isset( $option['default_value'] ) ? $option['default_value'] : "";
+        $value = !empty($value) ? $value : $default;
 
 
         $title			= isset( $option['title'] ) ? $option['title'] : "";
@@ -398,7 +401,7 @@ class settings_tabs_field{
         <div class="setting-field">
             <div class="field-lable"><?php if(!empty($title)) echo $title;  ?></div>
             <div class="field-input">
-                <textarea name='<?php echo $field_name; ?>' id='<?php echo $id; ?>' cols='40' rows='5' placeholder='<?php echo $placeholder; ?>'><?php if(!empty($value)){ echo $value; } else {echo $default_value;} ?></textarea>
+                <textarea name='<?php echo $field_name; ?>' id='<?php echo $id; ?>' cols='40' rows='5' placeholder='<?php echo $placeholder; ?>'><?php echo $value; ?></textarea>
                 <p class="description"><?php if(!empty($details)) echo $details;  ?></p>
             </div>
         </div>
@@ -434,11 +437,12 @@ class settings_tabs_field{
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value = !empty($value) ? $value : $default;
 
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 		= isset( $option['details'] ) ? $option['details'] : "";
 
-        $value = !empty($value) ? $value : $default;
+
 
         $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
         ?>
@@ -532,8 +536,6 @@ class settings_tabs_field{
         $option_value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
 
-        $default_value	= isset( $option['default_value'] ) ? $option['default_value'] : "";
-
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
 
@@ -541,7 +543,8 @@ class settings_tabs_field{
 
         //var_dump($option_value);
 
-        $option_value = empty($option_value) ? $default_value : $option_value;
+        $option_value = empty($option_value) ? $default : $option_value;
+
 
         ?>
 
@@ -632,8 +635,10 @@ class settings_tabs_field{
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value = !empty($value) ? $value : $default;
 
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";

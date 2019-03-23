@@ -228,20 +228,16 @@ function meta_boxes_wcps_side( $post ) {
         </ul>
 
         <h3>Documentation</h3>
-        <p>Please read here <a class="button" href="https://www.pickplugins.com/documentation/woocommerce-products-slider/">documentation</a> for this plugin</p>
+        <a class="button" href="https://www.pickplugins.com/documentation/woocommerce-products-slider/?ref=dashboard" target="_blank">Documentation</a><p class="description">Before asking, submitting reviews please take a look on our documentation, may help your issue fast.</p>
 
         <h3>Looking for support?</h3>
+        <a class="button" href="https://www.pickplugins.com/forum/?ref=dashboard" target="_blank">Create Ticket</a><p class="description">Its free and you can ask any question about our plugins and get support fast.</p>
 
-        <p>
-            Feel free to contact with any issue for this plugin, Ask any question via <a class="button" target="_blank" href="<?php echo wcps_qa_url; ?>"><b>Forum</b></a>
-        </p>
 
         <h3>Provide your feedback</h3>
-        <p>We are working hard to build some awesome plugins for you and spend thousand hour for plugins. we wish your three(3) minute by submitting five star reviews at wordpress.org. if you have any issue please submit at forum.
-            <a style="color: #ffb916"  class="button" target="_blank" href="<?php echo wcps_wp_reviews_link; ?>">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </a>
-        </p>
+
+        <a class="button" href="https://wordpress.org/support/plugin/woocommerce-products-slider/reviews/?filter=5" target="_blank">Submit Reviews</a> <a class="button" href="https://wordpress.org/support/plugin/woocommerce-products-slider/#new-topic-0" target="_blank">Ask wordpress.org</a><p>We spent thousand+ hours to development on this plugin, please submit your reviews wisely.</p><p>If you have any issue with this plugin please submit our forums or contact our support first.</p><p class="description">Your feedback and reviews are most important things to keep our development on track. If you have time please submit us five star <a href="https://wordpress.org/support/plugin/woocommerce-products-slider/reviews/?filter=5"> <span style="color: orange"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></a> reviews.</p>
+
 
 
 

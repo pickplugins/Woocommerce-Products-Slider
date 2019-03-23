@@ -32,6 +32,12 @@ if( ! class_exists( 'class_wcps_license' ) ) {
             $wcps_license = get_option('wcps_license');
             $license_key = isset($wcps_license['license_key']) ? $wcps_license['license_key'] : '';
 
+            if(is_multisite()){
+                $domain = site_url();
+            }
+            else{
+                $domain = $_SERVER['SERVER_NAME'];
+            }
 
             require_once('class-wp-autoupdate.php');
 
@@ -40,7 +46,7 @@ if( ! class_exists( 'class_wcps_license' ) ) {
             $plugin_slug = wcps_plugin_basename;
 
 
-            new WP_AutoUpdate ($plugin_current_version, $plugin_remote_path, $plugin_slug, $license_key);
+            new WP_AutoUpdate ($plugin_current_version, $plugin_remote_path, $plugin_slug, $license_key, $domain);
 
         }
 
