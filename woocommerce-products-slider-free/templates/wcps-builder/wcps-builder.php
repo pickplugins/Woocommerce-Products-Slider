@@ -52,7 +52,7 @@ function wcps_builder_tools($post_id){
     ?>
     <div id="wcps-builder-tools">
 
-        <form id="wcps-builder-control">
+        <form id="wcps-builder-control" method="" action="" enctype="multipart/form-data">
 
             <input type="hidden" readonly name="wcps_plugin_url" value="<?php echo wcps_plugin_url; ?>">
 
@@ -174,7 +174,7 @@ function wcps_builder_tools($post_id){
                         //'parent'		=> 'post_grid_meta_options',
                         'title'		=> __('Pagination Slide Speed','woocommerce-products-slider'),
                         'details'	=> __('Custom value for pagination slide speed, 1000 = 1 second','woocommerce-products-slider'),
-                        'type'		=> 'text',
+                        'type'		=> 'number',
                         'value'		=> $wcps_pagination_slide_speed,
                         'default'		=> '600',
                         'placeholder'		=> '600',
@@ -187,7 +187,7 @@ function wcps_builder_tools($post_id){
                         //'parent'		=> 'post_grid_meta_options',
                         'title'		=> __('Slideby count','woocommerce-products-slider'),
                         'details'	=> __('Custom value for slideby','woocommerce-products-slider'),
-                        'type'		=> 'text',
+                        'type'		=> 'number',
                         'value'		=> $wcps_slideBy,
                         'default'		=> '1',
                         'placeholder'		=> '1',
@@ -430,6 +430,7 @@ function wcps_builder_tools($post_id){
                         'value'		=> $wcps_slider_animateout,
                         'default'		=> 'false',
                         'args'		=> array(
+                            'false'=>__('None','woocommerce-products-slider'),
                             'fadeOut'=>__('fadeOut','woocommerce-products-slider'),
                             'bounce'=>__('bounce','woocommerce-products-slider'),
                             'flash'=>__('flash','woocommerce-products-slider'),
@@ -464,6 +465,7 @@ function wcps_builder_tools($post_id){
                         'value'		=> $wcps_slider_animatein,
                         'default'		=> 'false',
                         'args'		=> array(
+                            'false'=>__('None','woocommerce-products-slider'),
                             'fadeOut'=>__('fadeOut','woocommerce-products-slider'),
                             'bounce'=>__('bounce','woocommerce-products-slider'),
                             'flash'=>__('flash','woocommerce-products-slider'),
@@ -549,7 +551,7 @@ function wcps_builder_tools($post_id){
                         //'parent'		=> 'post_grid_meta_options',
                         'title'		=> __('Max product count','woocommerce-products-slider'),
                         'details'	=> __('Set custom number you want to display maximum number of product','woocommerce-products-slider'),
-                        'type'		=> 'text',
+                        'type'		=> 'number',
                         'value'		=> $wcps_total_items,
                         'default'		=> '10',
                         'placeholder'		=> '10',
@@ -832,7 +834,7 @@ function wcps_builder_tools($post_id){
                         //'parent'		=> 'post_grid_meta_options',
                         'title'		=> __('Items padding','woocommerce-products-slider'),
                         'details'	=> __('Set custom padding for item.','woocommerce-products-slider'),
-                        'type'		=> 'text',
+                        'type'		=> 'padding',
                         'value'		=> $wcps_items_padding,
                         'default'		=> '',
                         'placeholder'		=> '10px',
@@ -863,7 +865,7 @@ function wcps_builder_tools($post_id){
                     $args = array(
                         'id'		=> 'wcps_container_padding',
                         //'parent'		=> 'post_grid_meta_options',
-                        'title'		=> __('Container Padding','woocommerce-products-slider'),
+                        'title'		=> __('Container padding','woocommerce-products-slider'),
                         'details'	=> __('Set custom padding for container.','woocommerce-products-slider'),
                         'type'		=> 'padding',
                         'value'		=> $wcps_container_padding,
@@ -970,31 +972,6 @@ function wcps_builder_tools($post_id){
             </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </form>
 
 
@@ -1019,6 +996,8 @@ function wcps_builder(){
     <div id="wcps-builder">
 
         <div class="wcps-container wcps-container-<?php echo $wcps_id; ?>">
+
+            <span class="loader"><i class="fas fa-spin fa-spinner"></i></span>
             <div class="wcps-ribbon wcps-ribbon-<?php echo $wcps_ribbon_name; ?>>" style="background:url(<?php echo $ribbon_url; ?>) no-repeat scroll 0 0 rgba(0, 0, 0, 0);"></div>
 
             <div id="owl-carousel" class="owl-carousel owl-theme">

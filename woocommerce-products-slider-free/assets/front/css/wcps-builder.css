@@ -121,7 +121,7 @@ margin-right: 10px;
 .control-description:after{
 position: absolute;
 left: 50%;
-content: attr(title);
+content: attr(data-title);
 background: #4c4c4cab;
 padding: 6px 8px;
 border-radius: 3px;
@@ -135,6 +135,26 @@ display: block;
 
 
 
+.control-padding{}
+.control-padding .item{}
+.control-padding .item input[type='number'], .control-padding .item select{
+    width: 43%;
+    display: inline-block;
+}
 
 
+.wcps-container .loader{
+    display: none;
+}
+
+.wcps-container .loader {
+
+    top: 50%;
+    z-index: 999999;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    height: 40px;
+    width: 40px;
+}
 

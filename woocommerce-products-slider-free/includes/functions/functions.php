@@ -29,10 +29,76 @@ function custom_class( $classes ) {
 
 
 
+function wcps_builder_ajax_update(){
+
+    $response = array();
+    $form_data = isset($_POST['form_data']) ? stripslashes_deep($_POST['form_data']): '';
+
+    $input_items = array();
+
+    foreach ($form_data as $index => $data){
+        $name = $data['name'];
+        $value = $data['value'];
+        $input_items[$name] = $value;
+    }
+
+    $wcps_themes = isset($input_items['wcps_column_number']) ? sanitize_text_field($input_items['wcps_column_number']) : '';
+
+    $query_args['post_type'] = 'product';
+    $query_args['post_status'] = 'publish';
+
+
+    $wp_query = new WP_Query($query_args);
+
+    ob_start();
+
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+
+            $loop_post_id = get_the_ID();
+
+            ?>
+            <div class="wcps-items skin <?php echo $wcps_themes; ?>">
+                <?php
+
+                do_action('wcps_loop_items', $loop_post_id);
+                ?>
+            </div>
+            <?php
+
+            endwhile;
+        endif;
+
+
+        $response['html'] = ob_get_clean();
 
 
 
 
+
+
+    echo json_encode( $response );
+    die();
+}
+
+add_action('wp_ajax_wcps_builder_ajax_update', 'wcps_builder_ajax_update');
+add_action('wp_ajax_nopriv_wcps_builder_ajax_update', 'wcps_builder_ajax_update');
+
+
+
+add_action('wcps_loop_items', 'wcps_loop_items');
+
+function wcps_loop_items($post_id){
+
+
+    $wcps_grid_items = get_post_meta( $post_id, 'wcps_grid_items', true );
+    $wcps_grid_items_hide = get_post_meta( $post_id, 'wcps_grid_items_hide', true );
+
+
+
+
+
+}
 
 
 

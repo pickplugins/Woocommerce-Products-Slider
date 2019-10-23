@@ -17,7 +17,7 @@ class wcps_builder_control{
         ?>
         <div class="control-wrap <?php echo $control_group_class; ?>">
             <div class="control-title">%s
-                <span title="%s" class="control-description"><i class="far fa-question-circle"></i></span>
+                <span data-title="%s" class="control-description"><i class="far fa-question-circle"></i></span>
             </div>
             <div class="control-input">%s</div>
         </div>
@@ -689,9 +689,68 @@ class wcps_builder_control{
 
         ob_start();
         ?>
-        <input type="number" class="" name="<?php echo $field_name; ?>[top]" id="<?php echo $css_id; ?>-top" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
-        <input type="number" class="" name="<?php echo $field_name; ?>[right]" id="<?php echo $css_id; ?>-top" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
-        <input type="number" class="" name="<?php echo $field_name; ?>[bottom]" id="<?php echo $css_id; ?>-top" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+        <div class="control-padding">
+            <div class="item">
+                <input type="number" class="" name="<?php echo $field_name; ?>[top][value]" id="<?php echo $css_id; ?>-top" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+                <select name="<?php echo $field_name; ?>[top][unit]">
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                    <option value="em">em</option>
+                    <option value="cm">cm</option>
+                    <option value="mm">mm</option>
+                    <option value="in">in</option>
+                    <option value="pt">pt</option>
+                    <option value="pc">pc</option>
+                    <option value="ex">ex</option>
+                </select>
+            </div>
+
+            <div class="item">
+                <input type="number" class="" name="<?php echo $field_name; ?>[right][value]" id="<?php echo $css_id; ?>-right" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+                <select name="<?php echo $field_name; ?>[right][unit]">
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                    <option value="em">em</option>
+                    <option value="cm">cm</option>
+                    <option value="mm">mm</option>
+                    <option value="in">in</option>
+                    <option value="pt">pt</option>
+                    <option value="pc">pc</option>
+                    <option value="ex">ex</option>
+                </select>
+            </div>
+            <div class="item">
+                <input type="number" class="" name="<?php echo $field_name; ?>[bottom][value]" id="<?php echo $css_id; ?>-bottom" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+                <select name="<?php echo $field_name; ?>[bottom][unit]">
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                    <option value="em">em</option>
+                    <option value="cm">cm</option>
+                    <option value="mm">mm</option>
+                    <option value="in">in</option>
+                    <option value="pt">pt</option>
+                    <option value="pc">pc</option>
+                    <option value="ex">ex</option>
+                </select>
+            </div>
+
+            <div class="item">
+                <input type="number" class="" name="<?php echo $field_name; ?>[left][value]" id="<?php echo $css_id; ?>-left" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+                <select name="<?php echo $field_name; ?>[left][unit]">
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                    <option value="em">em</option>
+                    <option value="cm">cm</option>
+                    <option value="mm">mm</option>
+                    <option value="in">in</option>
+                    <option value="pt">pt</option>
+                    <option value="pc">pc</option>
+                    <option value="ex">ex</option>
+                </select>
+            </div>
+
+        </div>
+
 
 
         <?php
