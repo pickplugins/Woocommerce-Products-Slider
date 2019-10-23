@@ -10,6 +10,7 @@ A premium quality carousel slider to slide your Woocommerce product. easy to use
 * [See the Live demo !&raquo;](http://www.pickplugins.com/demo/woocommerce-products-slider/?ref=wordpress.org)
 * [Support !&raquo;](https://www.pickplugins.com/support/)
 
+[youtube https://www.youtube.com/watch?v=mSaw0tl7x34]
 
 
 # Plugin Features
