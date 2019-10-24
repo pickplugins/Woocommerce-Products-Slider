@@ -180,7 +180,7 @@ jQuery(document).ready(function($) {
 
                     $('.wcps-container .loader').fadeOut();
                     $('.owl-carousel').html(html);
-                    //console.log(html);
+                    console.log(html);
 
 
                     $('#owl-carousel').owlCarousel('destroy');
@@ -200,7 +200,6 @@ jQuery(document).ready(function($) {
                         rewind: wcps_rewind,
                         center: wcps_center,
                         rtl: wcps_slider_rtl,
-
 
                         dots: wcps_slider_pagination,
                         dotsSpeed: wcps_pagination_slide_speed,

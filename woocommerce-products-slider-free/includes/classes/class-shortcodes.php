@@ -6,10 +6,34 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
 
 
         public function __construct(){
+            add_shortcode('wcps_new', array($this, 'wcps_new_display'));
 
             add_shortcode('wcps', array($this, 'wcps_display'));
             add_shortcode('wcps_builder', array($this, 'wcps_builder_display'));
 
+
+        }
+
+
+
+        public function wcps_new_display($atts, $content = null){
+            $atts = shortcode_atts(
+                array(
+                    'id' => "",
+
+                ), $atts);
+
+            $html = '';
+            $post_id = $atts['id'];
+
+            include( wcps_plugin_dir . 'templates/wcps-slider/wcps-slider-hook.php');
+
+            ob_start();
+
+
+            do_action('wcps_slider_main', $atts);
+
+            return ob_get_clean();
 
         }
 
@@ -57,6 +81,8 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
         }
 
 
+
+
         public function wcps_display($atts, $content = null){
             $atts = shortcode_atts(
                 array(
@@ -98,25 +124,15 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
                     //$is_featured = $WC_Product->is_featured( get_the_ID());
 
                     $product_visibility = wp_get_post_terms(get_the_ID(), 'product_visibility');
-                    //if(!empty($product_visibility->slug))
-                    //$is_featured = $product_visibility->slug;
                     $product_is_featured = 'no';
 
                     if (!empty($product_visibility)) {
-
                         foreach ($product_visibility as $visibility) {
-
                             $is_featured = $visibility->slug;
-
                             if ($is_featured == 'featured') {
-
                                 $product_is_featured = 'yes';
-                                //echo '<pre>'.var_export($_featured, true).'</pre>';
                             }
-
-
                         }
-
                     }
 
 

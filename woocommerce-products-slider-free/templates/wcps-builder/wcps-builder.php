@@ -55,6 +55,8 @@ function wcps_builder_tools($post_id){
         <form id="wcps-builder-control" method="" action="" enctype="multipart/form-data">
 
             <input type="hidden" readonly name="wcps_plugin_url" value="<?php echo wcps_plugin_url; ?>">
+            <input type="hidden" readonly name="wcps_id" value="<?php echo $wcps_id; ?>">
+
 
             <div class="control-group ">
                 <div class="control-group-header">Slider Options
