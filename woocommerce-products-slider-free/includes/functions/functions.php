@@ -35,15 +35,19 @@ function wcps_builder_ajax_update(){
     $form_data = isset($_POST['form_data']) ? stripslashes_deep($_POST['form_data']): '';
 
     $input_items = array();
-
+    ob_start();
     foreach ($form_data as $index => $data){
         $name = $data['name'];
         $value = $data['value'];
         $input_items[$name] = $value;
+
+        //echo '<pre>'.var_export($name, true).'</pre>';
+
     }
 
     $wcps_themes = isset($input_items['wcps_column_number']) ? sanitize_text_field($input_items['wcps_column_number']) : '';
     $wcps_id = isset($input_items['wcps_id']) ? sanitize_text_field($input_items['wcps_id']) : '';
+    $wcps_product_categories = isset($input_items['wcps_product_categories[]']) ? ($input_items['wcps_product_categories[]']) : '';
 
 
     $query_args['post_type'] = 'product';
@@ -52,11 +56,11 @@ function wcps_builder_ajax_update(){
 
     $wp_query = new WP_Query($query_args);
 
-    ob_start();
+
 
     $query_args = apply_filters('wcps_ajax_query_args', $query_args);
 
-    //echo '<pre>'.var_export($query_args, true).'</pre>';
+
 
     $atts = array('id'=>$wcps_id);
     $wp_query = new WP_Query($query_args);
@@ -67,7 +71,7 @@ function wcps_builder_ajax_update(){
 
             $loop_product_id = get_the_id();
 
-            do_action('wcps_ajax_product_loop_item', $loop_product_id, $atts);
+            do_action('wcps_ajax_product_loop_item', $loop_product_id, $input_items);
 
         endwhile;
 
@@ -105,9 +109,9 @@ add_action('wp_ajax_nopriv_wcps_builder_ajax_update', 'wcps_builder_ajax_update'
 
 add_action('wcps_ajax_product_loop_item', 'wcps_ajax_product_loop_item',10,2);
 
-function wcps_ajax_product_loop_item($loop_product_id, $atts){
+function wcps_ajax_product_loop_item($loop_product_id, $input_items){
 
-    $wcps_id = $atts['id'];
+    $wcps_id = $input_items['id'];
 
     $wcps_items_thumb_link_target = get_post_meta( $wcps_id, 'wcps_items_thumb_link_target', true );
     $permalink = get_permalink($loop_product_id);
@@ -203,8 +207,9 @@ function wcps_ajax_product_loop_item($loop_product_id, $atts){
         $wcps_thumb_url = $wcps_items_empty_thumb;
     }
 
-    $wcps_themes = get_post_meta( $wcps_id, 'wcps_themes', true );
-    if(empty($wcps_themes)){$wcps_themes = 'flat'; }
+    $wcps_themes = isset($input_items['wcps_themes']) ? $input_items['wcps_themes'] : 'flat';
+
+
 
     global $product;
     $currency = get_woocommerce_currency_symbol();
@@ -239,13 +244,7 @@ function wcps_ajax_product_loop_item($loop_product_id, $atts){
 
         <?php
 
-        $html = '';
 
-
-        include wcps_plugin_dir . '/templates/layer-media.php';
-        include wcps_plugin_dir . '/templates/layer-content.php';
-
-        echo $html;
         ?>
 
     </div>

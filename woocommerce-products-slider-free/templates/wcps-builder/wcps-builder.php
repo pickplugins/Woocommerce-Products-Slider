@@ -534,6 +534,7 @@ function wcps_builder_tools($post_id){
                     <?php
                     $wcps_total_items = get_post_meta( $post_id, 'wcps_total_items', true );
 
+                    $wcps_product_categories = get_post_meta( $post_id, 'wcps_product_categories', true );
 
                     $taxonomies = get_post_meta( $post_id, 'wcps_taxonomies', true );
 
@@ -729,6 +730,9 @@ function wcps_builder_tools($post_id){
             </div>
 
 
+
+
+
             <div class="control-group ">
                 <div class="control-group-header">Style
                     <div class="icon">
@@ -746,7 +750,6 @@ function wcps_builder_tools($post_id){
                     $skins = $class_wcps_functions->skins();
                     $ribbons = $class_wcps_functions->ribbons();
 
-                    $wcps_themes = get_post_meta($post_id, 'wcps_themes', true);
                     $wcps_ribbon_name = get_post_meta($post_id, 'wcps_ribbon_name', true);
                     $wcps_ribbon_custom = get_post_meta($post_id, 'wcps_ribbon_custom', true);
                     $wcps_container_padding = get_post_meta($post_id, 'wcps_container_padding', true);
@@ -756,28 +759,6 @@ function wcps_builder_tools($post_id){
                     $wcps_items_padding = get_post_meta($post_id, 'wcps_items_padding', true);
                     $wcps_items_bg_color = get_post_meta($post_id, 'wcps_items_bg_color', true);
 
-
-                    $skin_arr = array();
-
-                    if(!empty($skins))
-                        foreach($skins as $skin_key => $skin_data){
-
-                            $skin_arr[$skin_key] = $skin_data['name'];
-
-                        }
-
-                    $args = array(
-                        'id'		=> 'wcps_themes',
-                        //'parent'		=> '',
-                        'title'		=> __('Slider themes','woocommerce-products-slider'),
-                        'details'	=> __('Choose slider product themes.','woocommerce-products-slider'),
-                        'type'		=> 'select',
-                        'value'		=> $wcps_themes,
-                        'default'		=> 'OR',
-                        'args'		=> $skin_arr,
-                    );
-
-                    $wcps_builder_control->generate_field($args);
 
 
 
@@ -836,7 +817,7 @@ function wcps_builder_tools($post_id){
                         //'parent'		=> 'post_grid_meta_options',
                         'title'		=> __('Items padding','woocommerce-products-slider'),
                         'details'	=> __('Set custom padding for item.','woocommerce-products-slider'),
-                        'type'		=> 'padding',
+                        'type'		=> 'text',
                         'value'		=> $wcps_items_padding,
                         'default'		=> '',
                         'placeholder'		=> '10px',
@@ -864,30 +845,51 @@ function wcps_builder_tools($post_id){
 
 
 
+
+                    ?>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="control-group ">
+                <div class="control-group-header">Container Options
+                    <div class="icon">
+                        <span class="expand"><i class="far fa-plus-square"></i></span>
+                        <span class="collapse"><i class="far fa-minus-square"></i></span>
+                    </div>
+                </div>
+                <div class="control-group-body">
+
+                    <?php
+
+
                     $args = array(
                         'id'		=> 'wcps_container_padding',
                         //'parent'		=> 'post_grid_meta_options',
                         'title'		=> __('Container padding','woocommerce-products-slider'),
                         'details'	=> __('Set custom padding for container.','woocommerce-products-slider'),
-                        'type'		=> 'padding',
+                        'type'		=> 'text',
                         'value'		=> $wcps_container_padding,
                         'default'		=> '',
-                        'placeholder'		=> '10',
+                        'placeholder'		=> '10px',
                     );
 
                     $wcps_builder_control->generate_field($args);
 
-//                    $args = array(
-//                        'id'		=> 'wcps_container_bg_color',
-//                        //'parent'		=> 'post_grid_meta_options',
-//                        'title'		=> __('Container background color','woocommerce-products-slider'),
-//                        'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
-//                        'type'		=> 'colorpicker',
-//                        'value'		=> $wcps_container_bg_color,
-//                        'default'		=> '',
-//                    );
-//
-//                    $wcps_builder_control->generate_field($args);
+                    //                    $args = array(
+                    //                        'id'		=> 'wcps_container_bg_color',
+                    //                        //'parent'		=> 'post_grid_meta_options',
+                    //                        'title'		=> __('Container background color','woocommerce-products-slider'),
+                    //                        'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
+                    //                        'type'		=> 'colorpicker',
+                    //                        'value'		=> $wcps_container_bg_color,
+                    //                        'default'		=> '',
+                    //                    );
+                    //
+                    //                    $wcps_builder_control->generate_field($args);
 
 
 
@@ -907,6 +909,47 @@ function wcps_builder_tools($post_id){
 
 
                     ?>
+                </div>
+
+            </div>
+
+            <div class="control-group">
+                <div class="control-group-header">Item themes
+                    <div class="icon">
+                        <span class="expand"><i class="far fa-plus-square"></i></span>
+                        <span class="collapse"><i class="far fa-minus-square"></i></span>
+                    </div>
+                </div>
+                <div class="control-group-body">
+
+                    <?php
+
+
+                    $wcps_themes = get_post_meta($post_id, 'wcps_themes', true);
+
+                    $skin_arr = array();
+
+                    if(!empty($skins))
+                        foreach($skins as $skin_key => $skin_data){
+
+                            $skin_arr[$skin_key] = $skin_data['name'];
+
+                        }
+
+                    $args = array(
+                        'id'		=> 'wcps_themes',
+                        //'parent'		=> '',
+                        'title'		=> __('Item skin','woocommerce-products-slider'),
+                        'details'	=> __('Choose slider product themes.','woocommerce-products-slider'),
+                        'type'		=> 'select',
+                        'value'		=> $wcps_themes,
+                        'default'		=> 'OR',
+                        'args'		=> $skin_arr,
+                    );
+
+                    $wcps_builder_control->generate_field($args);
+
+                    ?>
 
 
                 </div>
@@ -914,7 +957,14 @@ function wcps_builder_tools($post_id){
 
             </div>
 
-            <div class="control-group">
+            <?php
+
+            $wcps_grid_items = $class_wcps_functions->wcps_grid_items();
+            $skins_layers = $class_wcps_functions->skins_layers();
+
+            ?>
+
+            <div class="control-group active">
                 <div class="control-group-header">Elements
                     <div class="icon">
                         <span class="expand"><i class="far fa-plus-square"></i></span>
@@ -923,18 +973,115 @@ function wcps_builder_tools($post_id){
                 </div>
                 <div class="control-group-body">
 
-                    <div class="control-wrap">
-                        <div class="control-title">Control title</div>
+                    <div class="control-wrap responsive">
+                        <div class="control-title">Add elements</div>
                         <div class="control-input">
+
+                            <div class="elements">
+                                <?php
+
+                                foreach ($wcps_grid_items as $item_key=>$name){
+
+                                    ?>
+                                    <span data-element="<?php echo $item_key; ?>"><?php echo $name; ?></span>
+                                    <?php
+
+                                }
+
+                                ?>
+                            </div>
+
+
+
+
 
                         </div>
                     </div>
+
+                    <div class="control-wrap responsive">
+                        <div class="control-title">Layers</div>
+                        <div class="control-input">
+                            <div class="skins_layers">
+                                <?php
+
+                                foreach ($skins_layers as $layer_key=>$layer){
+
+                                    $name = $layer['name'];
+                                    $layer_elements = $layer['elements'];
+
+
+                                    ?>
+                                    <div class="layer">
+                                        <div class="layer-title" data-layer="<?php echo $layer_key; ?>">
+                                            <?php echo $name; ?>
+                                            <span class="icon-checked"><i class="fas fa-check-circle"></i></span>
+                                        </div>
+                                        <div class="layer-elements">
+
+                                            <?php
+
+                                            if(!empty($layer_elements))
+                                                foreach ($layer_elements as $elementIndex => $element){
+
+                                                    ?>
+                                                    <div class="element ">
+                                                        <div class="element-title" data-element="<?php echo $element; ?>">
+                                                            <?php echo $element; ?>
+                                                            <span class="element-remove"><i class="fas fa-times"></i></span>
+                                                        </div>
+                                                        <div class="element-options" >
+
+                                                            <?php
+
+
+                                                            do_action("layer_element_options", $element);
+
+                                                            ?>
+                                                            <input name="layer_elements[<?php echo $layer_key; ?>][<?php echo $element; ?>]" value="">
+                                                        </div>
+                                                    </div>
+                                                    <?php
+
+                                                }
+
+                                            ?>
+
+                                        </div>
+
+                                    </div>
+                                    <?php
+
+                                }
+
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
 
                 </div>
 
 
             </div>
 
+            <script>
+                jQuery(document).ready(function($) {
+
+                    $(".skins_layers").sortable({handle: '.layer-title'});
+                    $(".layer-elements").sortable({handle: '.element-title'});
+
+
+                })
+            </script>
+
+            <style type="text/css">
+
+
+            </style>
 
 
             <div class="control-group">
@@ -979,6 +1126,72 @@ function wcps_builder_tools($post_id){
 
 
     </div>
+
+    <?php
+
+    $wcps = array();
+    $wcps['wcps_id'] = $wcps_id;
+
+
+    $wcps['sliderOptions']['wcps_column_number'] = $wcps_column_number;
+    $wcps['sliderOptions']['wcps_column_number_tablet'] = $wcps_column_number_tablet;
+    $wcps['sliderOptions']['wcps_column_number_mobile'] = $wcps_column_number_mobile;
+
+
+    $wcps['sliderOptions']['wcps_loop'] = $wcps_loop;
+    $wcps['sliderOptions']['wcps_center'] = $wcps_center;
+    $wcps['sliderOptions']['wcps_slider_mouse_drag'] = $wcps_slider_mouse_drag;
+    $wcps['sliderOptions']['wcps_slider_touch_drag'] = $wcps_slider_touch_drag;
+
+    $wcps['sliderOptions']['wcps_rewind'] = $wcps_rewind;
+    $wcps['sliderOptions']['navText'] = $wcps_loop;
+    $wcps['sliderOptions']['wcps_slideBy'] = $wcps_slideBy;
+    $wcps['sliderOptions']['wcps_slider_pagination'] = $wcps_slider_pagination;
+    $wcps['sliderOptions']['wcps_slider_pagination_bg'] = $wcps_slider_pagination_bg;
+    $wcps['sliderOptions']['wcps_slider_pagination_text_color'] = $wcps_slider_pagination_text_color;
+    $wcps['sliderOptions']['wcps_slider_pagination_count'] = $wcps_slider_pagination_count;
+
+
+    $wcps['sliderOptions']['wcps_pagination_slide_speed'] = $wcps_pagination_slide_speed;
+    $wcps['sliderOptions']['wcps_auto_play'] = $wcps_auto_play;
+    $wcps['sliderOptions']['wcps_auto_play_timeout'] = $wcps_auto_play_timeout;
+    $wcps['sliderOptions']['wcps_stop_on_hover'] = $wcps_stop_on_hover;
+    $wcps['sliderOptions']['wcps_auto_play_speed'] = $wcps_auto_play_speed;
+
+    $wcps['sliderOptions']['wcps_slider_navigation'] = $wcps_slider_navigation;
+    $wcps['sliderOptions']['wcps_slider_navigation_position'] = $wcps_slider_navigation_position;
+
+    $wcps['sliderOptions']['wcps_slide_speed'] = $wcps_slide_speed;
+    $wcps['sliderOptions']['wcps_slider_animateout'] = $wcps_slider_animateout;
+    $wcps['sliderOptions']['wcps_slider_animatein'] = $wcps_slider_animatein;
+    $wcps['sliderOptions']['wcps_slider_rtl'] = $wcps_slider_rtl;
+
+
+    $wcps['queryOptions']['wcps_total_items'] = $wcps_total_items;
+    $wcps['queryOptions']['wcps_product_categories'] = $wcps_product_categories;
+    $wcps['queryOptions']['wcps_query_order'] = $wcps_query_order;
+    $wcps['queryOptions']['wcps_query_orderby'] = $wcps_query_orderby;
+    $wcps['queryOptions']['wcps_hide_out_of_stock'] = $wcps_hide_out_of_stock;
+    $wcps['queryOptions']['wcps_product_featured'] = $wcps_product_featured;
+    $wcps['queryOptions']['wcps_product_on_sale'] = $wcps_product_on_sale;
+    $wcps['queryOptions']['wcps_product_ids'] = $wcps_product_ids;
+
+    $wcps['active_layer'] = 'content';
+
+
+    ?>
+
+    <script>
+
+        var wcps = <?php echo json_encode($wcps); ?>;
+
+
+
+        console.log(wcps);
+
+    </script>
+
+
     <?php
 
 }
@@ -989,57 +1202,18 @@ function wcps_builder(){
 
     $wcps_id = isset($_GET['wcps_id']) ? sanitize_text_field($_GET['wcps_id']) : 4;
 
-    $wcps_ribbon_name = get_post_meta( $wcps_id, 'wcps_ribbon_name', true );
-    $wcps_ribbon_name = !empty($wcps_ribbon_name) ? $wcps_ribbon_name : 'none';
-    $ribbon_url = wcps_plugin_url.'assets/front/images/ribbons/'.$wcps_ribbon_name.'.png';
-
-
     ?>
     <div id="wcps-builder">
 
-        <div class="wcps-container wcps-container-<?php echo $wcps_id; ?>">
-
-            <span class="loader"><i class="fas fa-spin fa-spinner"></i></span>
-            <div class="wcps-ribbon wcps-ribbon-<?php echo $wcps_ribbon_name; ?>>" style="background:url(<?php echo $ribbon_url; ?>) no-repeat scroll 0 0 rgba(0, 0, 0, 0);"></div>
-
-            <div id="owl-carousel" class="owl-carousel owl-theme">
-                <div class="wcps-items skin">
-                    <h2>hello 1</h2>
-                </div>
-                <div class="wcps-items skin">
-                    <h2>hello 2</h2>
-                </div>
-                <div class="wcps-items skin">
-                    <h2>hello 3</h2>
-                </div>
-
-                <div class="wcps-items skin">
-                    <h2>hello 4</h2>
-                </div>
-
-                <div class="wcps-items skin">
-                    <h2>hello 5</h2>
-                </div>
-
-            </div>
-        </div>
+        <?php
+        echo do_shortcode('[wcps_new id='.$wcps_id.']');
+        ?>
 
     </div>
 
 
 
-    <script>
-        jQuery(document).ready(function($) {
-        $('#owl-carousel').owlCarousel({
 
-            items : 1,
-            autoplay: true,
-
-
-            })
-        })
-
-    </script>
 
 
 

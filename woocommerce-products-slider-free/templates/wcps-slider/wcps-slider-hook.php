@@ -63,7 +63,7 @@ function wcps_container_product_loop($atts){
     <div  id="wcps-<?php echo $wcps_id; ?>" class="owl-carousel owl-theme">
         <?php
 
-        do_action('wcps_product_loop', $atts);
+        do_action('wcps_loop', $atts);
 
         ?>
     </div>
@@ -73,8 +73,8 @@ function wcps_container_product_loop($atts){
 }
 
 
-add_action('wcps_product_loop','wcps_product_loop');
-function wcps_product_loop($atts){
+add_action('wcps_loop','wcps_loop');
+function wcps_loop($atts){
 
     $wcps_id = $atts['id'];
 
@@ -216,7 +216,7 @@ function wcps_product_loop($atts){
 
             $loop_product_id = get_the_id();
 
-            do_action('wcps_product_loop_item', $loop_product_id, $atts);
+            do_action('wcps_loop_item', $loop_product_id, $atts);
 
         endwhile;
 
@@ -237,11 +237,16 @@ function wcps_product_loop($atts){
 }
 
 
-add_action('wcps_product_loop_item', 'wcps_product_loop_item',10,2);
+add_action('wcps_loop_item', 'wcps_loop_item',10,2);
 
-function wcps_product_loop_item($loop_product_id, $atts){
+function wcps_loop_item($loop_product_id, $atts){
 
     $wcps_id = $atts['id'];
+
+    $class_wcps_functions = new class_wcps_functions();
+    $skins_layers = $class_wcps_functions->skins_layers();
+
+
 
     $wcps_items_thumb_link_target = get_post_meta( $wcps_id, 'wcps_items_thumb_link_target', true );
     $permalink = get_permalink($loop_product_id);
@@ -370,6 +375,32 @@ function wcps_product_loop_item($loop_product_id, $atts){
 
     ?>
     <div class="wcps-items skin <?php echo $wcps_themes; ?>">
+
+        <?php
+
+        foreach ($skins_layers as $layer_key => $layer){
+
+            $layer_elements = isset($layer['elements']) ? $layer['elements'] : array();
+
+            ?>
+            <div class="layer-<?php echo $layer_key; ?>">
+                <?php
+
+                echo $layer_key;
+
+                if(!empty($layer_elements))
+                foreach ($layer_elements as $element_key => $element){
+                    //include wcps_plugin_dir.'templates/wcps-'.$element_key.'.php';
+
+                }
+
+                ?>
+            </div>
+            <?php
+
+        }
+
+        ?>
 
         <?php
 

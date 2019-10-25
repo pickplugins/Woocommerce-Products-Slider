@@ -48,6 +48,9 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
             $html = '';
             $post_id = $atts['id'];
 
+            wp_enqueue_script('jquery');
+            wp_enqueue_script('jquery-ui-sortable');
+
             wp_enqueue_style('wcps_style');
             wp_enqueue_style('wcps_style.themes');
 

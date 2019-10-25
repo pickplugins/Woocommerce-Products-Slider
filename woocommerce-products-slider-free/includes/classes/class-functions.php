@@ -161,6 +161,33 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
         }
 
+        public function skins_layers()
+        {
+
+            $layers['content'] = array(
+                'name' => 'Content',
+                'elements' => array(
+                    'title',
+                    'excerpt',
+                    'price'
+                ),
+            );
+
+            $layers['media'] = array(
+                'name' => 'Media',
+                'elements' => array(
+                    'thumb',
+                    'excerpt',
+                ),
+            );
+
+
+            $layers = apply_filters('wcps_skin_layers', $layers);
+
+            return $layers;
+
+        }
+
 
         public function skins()
         {
@@ -195,7 +222,7 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             );
 
-            $skins = apply_filters('post_grid_filter_skins', $skins);
+            $skins = apply_filters('wcps_skins', $skins);
 
             return $skins;
 

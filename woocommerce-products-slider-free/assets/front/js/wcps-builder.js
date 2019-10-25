@@ -14,6 +14,46 @@ jQuery(document).ready(function($) {
 
     })
 
+    $(document).on('click', '.element-title', function(){
+
+        parent = $(this).parent();
+
+        if(parent.hasClass('active')){
+            parent.removeClass('active');
+        }else{
+            parent.addClass('active');
+        }
+
+
+    })
+
+    $(document).on('click', '.element-title .element-remove', function(){
+
+        elementWrap = $(this).parent().parent();
+        elementWrap.remove();
+
+
+    })
+
+
+
+
+    $(document).on('click', '.skins_layers .layer-title', function(){
+
+        $('.skins_layers .layer').removeClass('active');
+
+        parent = $(this).parent();
+        layer = $(this).attr('data-layer');
+        parent.addClass('active');
+
+        wcps.active_layer = layer;
+
+        console.log(wcps.active_layer);
+
+
+    })
+
+
 
     $(document).on('change', '#wcps-builder-control', function(){
 
@@ -78,8 +118,12 @@ jQuery(document).ready(function($) {
         wcps_plugin_url = formData.get('wcps_plugin_url');
         wcps_ribbon_custom = formData.get('wcps_ribbon_custom');
         wcps_bg_img = formData.get('wcps_bg_img');
+        wcps_container_padding = formData.get('wcps_container_padding');
+
         wcps_items_padding = formData.get('wcps_items_padding');
         wcps_product_categories = formData.getAll('wcps_product_categories[]');
+
+
 
         if(wcps_ribbon_name == 'none'){
             $('.wcps-container .wcps-ribbon').fadeOut();
@@ -99,69 +143,24 @@ jQuery(document).ready(function($) {
 
 
 
-        console.log(wcps_query_orderby);
+        //console.log(wcps_product_categories);
 
         if(wcps_bg_img.length){
             $('.wcps-container').css('background', "url("+wcps_bg_img+") repeat scroll 0 0 rgba(0, 0, 0, 0)");
 
         }
 
-        wcps_container_padding_top_val = formData.get('wcps_container_padding[top][value]');
-        wcps_container_padding_top_unit = formData.get('wcps_container_padding[top][unit]');
-
-        wcps_container_padding_right_val = formData.get('wcps_container_padding[right][value]');
-        wcps_container_padding_right_unit = formData.get('wcps_container_padding[right][unit]');
-
-        wcps_container_padding_bottom_val = formData.get('wcps_container_padding[bottom][value]');
-        wcps_container_padding_bottom_unit = formData.get('wcps_container_padding[bottom][unit]');
-
-        wcps_container_padding_left_val = formData.get('wcps_container_padding[left][value]');
-        wcps_container_padding_left_unit = formData.get('wcps_container_padding[left][unit]');
 
 
-        //console.log(wcps_container_padding_top);
-
-        if(wcps_container_padding_top_val){
-            $('.wcps-container').css('padding-top', wcps_container_padding_top_val+wcps_container_padding_top_unit);
+        if(wcps_container_padding){
+            $('.wcps-container').css('padding', wcps_container_padding);
         }
 
-        if(wcps_container_padding_right_val){
-            $('.wcps-container').css('padding-right', wcps_container_padding_right_val+wcps_container_padding_right_unit);
-        }
-
-        if(wcps_container_padding_bottom_val){
-            $('.wcps-container').css('padding-bottom', wcps_container_padding_bottom_val+wcps_container_padding_bottom_unit);
-        }
-        if(wcps_container_padding_left_val){
-            $('.wcps-container').css('padding-left', wcps_container_padding_left_val+wcps_container_padding_left_unit);
+        if(wcps_items_padding){
+            $('.wcps-container .wcps-items').css('padding', wcps_items_padding);
         }
 
 
-        wcps_items_padding_top_val = formData.get('wcps_items_padding[top][value]');
-        wcps_items_padding_top_unit = formData.get('wcps_items_padding[top][unit]');
-
-        wcps_items_padding_right_val = formData.get('wcps_items_padding[right][value]');
-        wcps_items_padding_right_unit = formData.get('wcps_items_padding[right][unit]');
-
-        wcps_items_padding_bottom_val = formData.get('wcps_items_padding[bottom][value]');
-        wcps_items_padding_bottom_unit = formData.get('wcps_items_padding[bottom][unit]');
-
-        wcps_items_padding_left_val = formData.get('wcps_items_padding[left][value]');
-        wcps_items_padding_left_unit = formData.get('wcps_items_padding[left][unit]');
-        if(wcps_items_padding_top_val){
-            $('.wcps-container .wcps-items').css('padding-top', wcps_items_padding_top_val+wcps_items_padding_top_unit);
-        }
-
-        if(wcps_items_padding_right_val){
-            $('.wcps-container .wcps-items').css('padding-right', wcps_items_padding_right_val+wcps_items_padding_right_unit);
-        }
-
-        if(wcps_items_padding_bottom_val){
-            $('.wcps-container .wcps-items').css('padding-bottom', wcps_items_padding_bottom_val+wcps_items_padding_bottom_unit);
-        }
-        if(wcps_items_padding_left_val){
-            $('.wcps-container .wcps-items').css('padding-left', wcps_items_padding_left_val+wcps_items_padding_left_unit);
-        }
 
 
 
@@ -180,12 +179,12 @@ jQuery(document).ready(function($) {
 
                     $('.wcps-container .loader').fadeOut();
                     $('.owl-carousel').html(html);
-                    console.log(html);
+                    //console.log(html);
 
 
-                    $('#owl-carousel').owlCarousel('destroy');
+                    $('.owl-carousel').owlCarousel('destroy');
 
-                    $('#owl-carousel').owlCarousel({
+                    $('.owl-carousel').owlCarousel({
                         items : wcps_column_number,
                         lazyLoad : wcps_lazyLoad,
                         responsiveClass : true,

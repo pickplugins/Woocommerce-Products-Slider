@@ -158,3 +158,109 @@ display: block;
     width: 40px;
 }
 
+
+.skins_layers {}
+.skins_layers .layer{}
+
+.skins_layers .layer.active{}
+.skins_layers .layer.active .layer-title{}
+.skins_layers .layer .layer-title .icon-checked{
+    float: right;
+    display: none;
+}
+.skins_layers .layer.active .layer-title .icon-checked{
+    display: inline-block;
+}
+.elements span{
+    background: #4a5e7b;
+    padding: 5px 9px;
+    display: inline-block;
+    margin: 4px 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #fff;
+}
+
+.elements span:hover{
+    background: #6a81a2;
+
+}
+.skins_layers{
+
+}
+
+.skins_layers .layer{
+    background: #ddd;
+    margin: 5px 0;
+}
+
+.skins_layers .layer-title{
+    padding: 10px 10px;
+    background: #4a5e7b;
+    /* margin: 5px 0; */
+    font-size: 14px;
+    color: #fff;
+    cursor: move;
+}
+
+.skins_layers .layer-elements{
+    padding: 10px 0 0 0;
+    background: #eee;
+    display: none;
+}
+
+.skins_layers .layer.active .layer-elements{
+    display: block;
+}
+
+.layer-elements{
+    padding: 10px;
+    background: #eee;
+}
+.layer-elements .element{
+    display: block;
+    background: #ddd;
+    margin: 5px 0;
+    position: relative;
+}
+
+
+
+.layer-elements .element-title{
+    padding: 6px 5px;
+    font-size: 13px;
+    cursor: move;
+}
+
+.layer-elements .element-title .element-remove{
+    background: #ff5f5f;
+    padding: 3px 5px;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+
+.layer-elements .element-options{
+    display: none;
+}
+.layer-elements .element.active .element-options{
+    display: block;
+    padding: 10px;
+    background: #eee;
+    border: 1px solid #ddd;
+
+}
+
+
+
+
+
+
+
+
+
+
+
