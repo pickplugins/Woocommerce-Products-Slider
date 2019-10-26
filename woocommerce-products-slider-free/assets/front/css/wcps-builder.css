@@ -98,6 +98,10 @@ float: none;
 margin-bottom: 10px;
 }
 
+
+
+
+
 .control-wrap.responsive .control-input{
 margin-left: 0px;
 }
@@ -112,6 +116,13 @@ width: 100%;
 background: #f1f1f1;
 padding: 0.3em;
 }
+
+.control-group-body .control-wrap .control-input input[type="text"], .control-group-body .control-wrap .control-input input[type="number"], .control-group-body .control-wrap .control-input textarea, .control-group-body .control-wrap .control-input select, .control-group-body .control-wrap .control-input input[type="range"] {
+    width: 95%;
+    background: #f1f1f1;
+    padding: 0.3em;
+}
+
 
 .control-description{
 float: right;

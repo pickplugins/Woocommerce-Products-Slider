@@ -169,7 +169,17 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
                 'elements' => array(
                     'title',
                     'excerpt',
-                    'price'
+                    'price',
+                    'category',
+                    'tag',
+                    'rating',
+                    'cart',
+                    'sale',
+                    'featured',
+                    'sale_count',
+
+
+
                 ),
             );
 

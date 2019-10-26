@@ -1026,7 +1026,7 @@ function wcps_builder_tools($post_id){
                                                     ?>
                                                     <div class="element ">
                                                         <div class="element-title" data-element="<?php echo $element; ?>">
-                                                            <?php echo $element; ?>
+                                                            <?php echo $wcps_grid_items[$element]; ?>
                                                             <span class="element-remove"><i class="fas fa-times"></i></span>
                                                         </div>
                                                         <div class="element-options" >
@@ -1034,10 +1034,11 @@ function wcps_builder_tools($post_id){
                                                             <?php
 
 
-                                                            do_action("layer_element_options", $element);
+
+                                                            do_action("layer_element_options_$element", $wcps_id);
 
                                                             ?>
-                                                            <input name="layer_elements[<?php echo $layer_key; ?>][<?php echo $element; ?>]" value="">
+                                                            <input name="layer_elements[<?php echo $layer_key; ?>][<?php echo $element; ?>]" value="<?php echo $element; ?>">
                                                         </div>
                                                     </div>
                                                     <?php
