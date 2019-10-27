@@ -50,6 +50,8 @@ class wcps_builder_control{
         elseif( isset($option['type']) && $option['type'] === 'scripts_js')	    $this->field_scripts_js( $option );
         elseif( isset($option['type']) && $option['type'] === 'scripts_css')	$this->field_scripts_css( $option );
         elseif( isset($option['type']) && $option['type'] === 'number' ) 	    $this->field_number( $option );
+        elseif( isset($option['type']) && $option['type'] === 'hidden' ) 		    $this->field_hidden( $option );
+
         elseif( isset($option['type']) && $option['type'] === 'text' ) 		    $this->field_text( $option );
         elseif( isset($option['type']) && $option['type'] === 'text_icon' )     $this->field_text_icon( $option );
         elseif( isset($option['type']) && $option['type'] === 'text_multi' ) 	$this->field_text_multi( $option );
@@ -753,6 +755,44 @@ class wcps_builder_control{
 
 
 
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $details, $input_html);
+
+    }
+
+
+
+    public function field_hidden( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+        $value 	= isset( $option['value'] ) ? $option['value'] : '';
+        $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+        $value = !empty($value) ? $value : $default;
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
+        }
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+
+        ob_start();
+        ?>
+        <input type="hidden" class="" name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
         <?php
 
         $input_html = ob_get_clean();

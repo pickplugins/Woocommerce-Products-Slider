@@ -1033,12 +1033,18 @@ function wcps_builder_tools($post_id){
 
                                                             <?php
 
+                                                            $option_name = 'layer_data['.$layer_key.']['.$elementIndex.']';
 
+                                                            $args = array(
+                                                                'wcps_id'=>$wcps_id,
+                                                                'option_name'=> $option_name,
+                                                                'index'=> $elementIndex,
 
-                                                            do_action("layer_element_options_$element", $wcps_id);
+                                                            );
+
+                                                            do_action("layer_element_options_$element", $args);
 
                                                             ?>
-                                                            <input name="layer_elements[<?php echo $layer_key; ?>][<?php echo $element; ?>]" value="<?php echo $element; ?>">
                                                         </div>
                                                     </div>
                                                     <?php
@@ -1188,7 +1194,7 @@ function wcps_builder_tools($post_id){
 
 
 
-        console.log(wcps);
+        //console.log(wcps);
 
     </script>
 

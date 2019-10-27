@@ -83,6 +83,11 @@ margin: 10px 0;
 border-bottom: 1px solid #ddd6;
 padding: 10px 0;
 }
+
+.control-wrap.hidden{
+    display: none;
+}
+
 .control-title{
 width: 170px;
 float: left;
