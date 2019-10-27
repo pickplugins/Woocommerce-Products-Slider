@@ -47,7 +47,7 @@ function wcps_builder_ajax_update(){
 
     $wcps_themes = isset($input_items['wcps_column_number']) ? sanitize_text_field($input_items['wcps_column_number']) : '';
     $wcps_id = isset($input_items['wcps_id']) ? sanitize_text_field($input_items['wcps_id']) : '';
-    $wcps_product_categories = isset($input_items['wcps_product_categories[]']) ? ($input_items['wcps_product_categories[]']) : '';
+    //$wcps_product_categories = isset($input_items['wcps_product_categories[]']) ? ($input_items['wcps_product_categories[]']) : '';
 
 
     $query_args['post_type'] = 'product';
@@ -62,7 +62,6 @@ function wcps_builder_ajax_update(){
 
 
 
-    $atts = array('id'=>$wcps_id);
     $wp_query = new WP_Query($query_args);
 
 
@@ -269,21 +268,6 @@ function wcps_ajax_product_loop_item($loop_product_id, $input_items){
 
 
 
-add_action('wcps_loop_items', 'wcps_loop_items');
-
-function wcps_loop_items($post_id){
-
-
-    $wcps_grid_items = get_post_meta( $post_id, 'wcps_grid_items', true );
-    $wcps_grid_items_hide = get_post_meta( $post_id, 'wcps_grid_items_hide', true );
-
-
-
-
-
-}
-
-
 
 
 
@@ -342,7 +326,7 @@ function wcps_get_categories($post_id){
 
 	if(!empty($taxonomies)){
 		
-		echo '<select  class="categories" name="wcps_product_categories[]" multiple="multiple" size="10">';
+		echo '<select  class="categories" name="wcps_product_categories[query_options][]" multiple="multiple" size="10">';
 		
 		foreach ($taxonomies as $taxonomy ) {
 

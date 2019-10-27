@@ -386,8 +386,6 @@ function wcps_loop_item($loop_product_id, $atts){
             <div class="layer-<?php echo $layer_key; ?>">
                 <?php
 
-                echo $layer_key;
-
                 if(!empty($layer_elements))
                 foreach ($layer_elements as $element_key => $element){
                     //include wcps_plugin_dir.'templates/wcps-'.$element_key.'.php';

@@ -89,13 +89,13 @@ function wcps_builder_tools($post_id){
 
                     ?>
                     <div style="font-size: 13px;margin: 5px 0"><?php _e('In Desktop:', 'woocommerce-products-slider');?></div>
-                    <input type="number" placeholder="4"   name="wcps_column_number" value="<?php echo $wcps_column_number;  ?>" />
+                    <input type="number" placeholder="4"   name="slider_options[wcps_column_number]" value="<?php echo $wcps_column_number;  ?>" />
 
                     <div style="font-size: 13px;margin: 5px 0"><?php _e('In Tablet:', 'woocommerce-products-slider');?></div>
-                    <input type="number" placeholder="2"  name="wcps_column_number_tablet" value="<?php echo $wcps_column_number_tablet;  ?>" />
+                    <input type="number" placeholder="2"  name="slider_options[wcps_column_number_tablet]" value="<?php echo $wcps_column_number_tablet;  ?>" />
 
                     <div style="font-size: 13px;margin: 5px 0"><?php _e('In Mobile:', 'woocommerce-products-slider');?></div>
-                    <input type="number" placeholder="1"  name="wcps_column_number_mobile" value="<?php echo $wcps_column_number_mobile;  ?>" />
+                    <input type="number" placeholder="1"  name="slider_options[wcps_column_number_mobile]" value="<?php echo $wcps_column_number_mobile;  ?>" />
                     <?php
 
 
@@ -113,7 +113,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_auto_play',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Auto play','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider autoplay.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -131,7 +131,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_auto_play_speed',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Auto play speed','woocommerce-products-slider'),
                         'details'	=> __('Custom value for auto play speed, 1000 = 1 second','woocommerce-products-slider'),
                         'type'		=> 'number',
@@ -145,7 +145,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_auto_play_timeout',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Auto play timeout','woocommerce-products-slider'),
                         'details'	=> __('Custom value for auto play timeout, 1000 = 1 second','woocommerce-products-slider'),
                         'type'		=> 'number',
@@ -159,7 +159,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slide_speed',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Slide speed','woocommerce-products-slider'),
                         'details'	=> __('Custom value for slide speed, 1000 = 1 second','woocommerce-products-slider'),
                         'type'		=> 'number',
@@ -173,7 +173,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_pagination_slide_speed',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Pagination Slide Speed','woocommerce-products-slider'),
                         'details'	=> __('Custom value for pagination slide speed, 1000 = 1 second','woocommerce-products-slider'),
                         'type'		=> 'number',
@@ -186,7 +186,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slideBy',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Slideby count','woocommerce-products-slider'),
                         'details'	=> __('Custom value for slideby','woocommerce-products-slider'),
                         'type'		=> 'number',
@@ -200,7 +200,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_rewind',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Rewind','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider rewind.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -216,7 +216,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_loop',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Loop','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider loop.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -233,7 +233,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_center',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Center','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider center. please set odd number of slider column to work slider center.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -250,7 +250,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_stop_on_hover',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Stop on hover','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider stop on hover.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -268,7 +268,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_navigation',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Navigation','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider navigation at Top.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -285,7 +285,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_navigation_position',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Navigation position','woocommerce-products-slider'),
                         'details'	=> __('Choose slider navigation position.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -305,7 +305,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_pagination',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Pagination at bottom','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider Pagination at bottom.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -372,7 +372,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_touch_drag',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Touch drag enable','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider touch drag.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -390,7 +390,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_mouse_drag',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Mouse drag enable','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider mouse drag.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -407,7 +407,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_rtl',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('RTL enable','woocommerce-products-slider'),
                         'details'	=> __('Enable or disable slider RTL.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -425,7 +425,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_animateout',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Animate Out','woocommerce-products-slider'),
                         'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -460,7 +460,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_slider_animatein',
-                        //'parent'		=> '',
+                        'parent'		=> 'slider_options',
                         'title'		=> __('Animate In','woocommerce-products-slider'),
                         'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -551,7 +551,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_total_items',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'query_options',
                         'title'		=> __('Max product count','woocommerce-products-slider'),
                         'details'	=> __('Set custom number you want to display maximum number of product','woocommerce-products-slider'),
                         'type'		=> 'number',
@@ -569,6 +569,7 @@ function wcps_builder_tools($post_id){
                     $html = ob_get_clean();
                     $args = array(
                         'id' => 'wcps_categories',
+
                         'control_group_class'		=> 'responsive',
                         'title' => __('Product categories', 'woocommerce-products-slider'),
                         'details' => '',
@@ -581,7 +582,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_query_order',
-                        //'parent'		=> '',
+                        'parent'		=> 'query_options',
                         'title'		=> __('Query order','woocommerce-products-slider'),
                         'details'	=> __('Set query order.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -602,7 +603,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_query_orderby',
-                        //'parent'		=> '',
+                        'parent'		=> 'query_options',
                         'title'		=> __('Query orderby','woocommerce-products-slider'),
                         'details'	=> __('Set query orderby.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -640,7 +641,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_hide_out_of_stock',
-                        //'parent'		=> '',
+                        'parent'		=> 'query_options',
                         'title'		=> __('Hide out of stock','woocommerce-products-slider'),
                         'details'	=> __('You can hide out of stock items from query.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -661,7 +662,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_product_featured',
-                        //'parent'		=> '',
+                        'parent'		=> 'query_options',
                         'title'		=> __('Featured product','woocommerce-products-slider'),
                         'details'	=> __('You include/exclude featured product on query.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -682,7 +683,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_product_on_sale',
-                        //'parent'		=> '',
+                        'parent'		=> 'query_options',
                         'title'		=> __('On Sale','woocommerce-products-slider'),
                         'details'	=> __('You include/exclude on sale product on query.','woocommerce-products-slider'),
                         'type'		=> 'select',
@@ -709,7 +710,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_product_ids',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'query_options',
                         'title'		=> __('Product IDs','woocommerce-products-slider'),
                         'details'	=> __('You can display custom product by ids.','woocommerce-products-slider'),
                         'type'		=> 'text',
@@ -779,7 +780,7 @@ function wcps_builder_tools($post_id){
                     $args = array(
                         'id'		=> 'wcps_ribbon_name',
                         'control_group_class'		=> 'responsive',
-                        //'parent'		=> '',
+                        'parent'		=> 'style_options',
                         'title'		=> __('Slider ribbon','woocommerce-products-slider'),
                         'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
                         'type'		=> 'radio_image',
@@ -798,7 +799,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_ribbon_custom',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'style_options',
                         'title'		=> __('Custom ribbon','woocommerce-products-slider'),
                         'details'	=> __('Choose custom ribbon, image source url.','woocommerce-products-slider'),
                         'type'		=> 'text',
@@ -814,7 +815,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_items_padding',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'style_options',
                         'title'		=> __('Items padding','woocommerce-products-slider'),
                         'details'	=> __('Set custom padding for item.','woocommerce-products-slider'),
                         'type'		=> 'text',
@@ -828,7 +829,7 @@ function wcps_builder_tools($post_id){
 
 //                    $args = array(
 //                        'id'		=> 'wcps_items_bg_color',
-//                        //'parent'		=> 'post_grid_meta_options',
+//                        'parent'		=> 'style_options',
 //                        'title'		=> __('Item background color','woocommerce-products-slider'),
 //                        'details'	=> __('Set custom background color for item.','woocommerce-products-slider'),
 //                        'type'		=> 'colorpicker',
@@ -868,7 +869,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_container_padding',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'container_options',
                         'title'		=> __('Container padding','woocommerce-products-slider'),
                         'details'	=> __('Set custom padding for container.','woocommerce-products-slider'),
                         'type'		=> 'text',
@@ -895,7 +896,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_bg_img',
-                        //'parent'		=> 'post_grid_meta_options',
+                        'parent'		=> 'container_options',
                         'title'		=> __('Container background image','woocommerce-products-slider'),
                         'details'	=> __('Set custom background image for container.','woocommerce-products-slider'),
                         'type'		=> 'text',
@@ -938,7 +939,7 @@ function wcps_builder_tools($post_id){
 
                     $args = array(
                         'id'		=> 'wcps_themes',
-                        //'parent'		=> '',
+                        'parent'		=> 'style_options',
                         'title'		=> __('Item skin','woocommerce-products-slider'),
                         'details'	=> __('Choose slider product themes.','woocommerce-products-slider'),
                         'type'		=> 'select',

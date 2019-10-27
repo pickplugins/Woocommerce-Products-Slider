@@ -96,72 +96,71 @@ jQuery(document).ready(function($) {
         formHandle = document.getElementById('wcps-builder-control');
 
 
-        let formData = new FormData(formHandle);
         let formDataSerialize = $(this).serializeArray();
+        formDataObj = $('#wcps-builder-control').getForm2obj()
 
 
 
-        //console.log(formData.getAll('wcps_product_categories[]'));
-        //console.log(formData.get('wcps_total_items'));
-        console.log($('form').getForm2obj());
 
 
         $('.wcps-container .loader').fadeIn();
 
 
-        wcps_column_number = formData.get('wcps_column_number');
+        wcps_plugin_url = formDataObj.wcps_plugin_url;
+        wcps_column_number = formDataObj.slider_options.wcps_column_number;
 
 
-        wcps_auto_play = formData.get('wcps_auto_play');
-        wcps_stop_on_hover = formData.get('wcps_stop_on_hover');
-        wcps_auto_play_speed = formData.get('wcps_auto_play_speed');
-        wcps_auto_play_timeout = formData.get('wcps_auto_play_timeout');
+        wcps_auto_play = formDataObj.slider_options.wcps_auto_play;
+        wcps_stop_on_hover = formDataObj.slider_options.wcps_stop_on_hover;
+        wcps_auto_play_speed = formDataObj.slider_options.wcps_auto_play_speed;
+        wcps_auto_play_timeout = formDataObj.slider_options.wcps_auto_play_timeout;
 
-        wcps_lazyLoad = formData.get('wcps_lazyLoad');
+        wcps_lazyLoad = formDataObj.slider_options.wcps_lazyLoad;
         wcps_lazyLoad = (wcps_lazyLoad == 'true') ? true : false;
 
-        wcps_slider_pagination = formData.get('wcps_slider_pagination');
+        wcps_slider_pagination = formDataObj.slider_options.wcps_slider_pagination;
         wcps_slider_pagination = (wcps_slider_pagination == 'true') ? true : false;
 
-        wcps_slider_pagination_count = formData.get('wcps_slider_pagination_count');
+        wcps_slider_pagination_count = formDataObj.slider_options.wcps_slider_pagination_count;
         wcps_slider_pagination_count = (wcps_slider_pagination_count == 'true') ? true : false;
 
-        wcps_pagination_slide_speed = formData.get('wcps_pagination_slide_speed');
-        wcps_slideBy = formData.get('wcps_slideBy');
+        wcps_pagination_slide_speed = formDataObj.slider_options.wcps_pagination_slide_speed;
+        wcps_slideBy = formDataObj.slider_options.wcps_slideBy;
 
-        wcps_loop = formData.get('wcps_loop');
+        wcps_loop = formDataObj.slider_options.wcps_loop;
         wcps_loop = (wcps_loop == 'true') ? true : false;
 
-        wcps_rewind = formData.get('wcps_rewind');
+        wcps_rewind = formDataObj.slider_options.wcps_rewind;
         wcps_rewind = (wcps_rewind == 'true') ? true : false;
 
-        wcps_center = formData.get('wcps_center');
+        wcps_center = formDataObj.slider_options.wcps_center;
         wcps_center = (wcps_center == 'true') ? true : false;
 
-        wcps_slider_rtl = formData.get('wcps_slider_rtl');
+        wcps_slider_rtl = formDataObj.slider_options.wcps_slider_rtl;
         wcps_slider_rtl = (wcps_slider_rtl == 'true') ? true : false;
 
-        wcps_slider_navigation = formData.get('wcps_slider_navigation');
+        wcps_slider_navigation = formDataObj.slider_options.wcps_slider_navigation;
         wcps_slider_navigation = (wcps_slider_navigation == 'true') ? true : false;
 
-        wcps_slide_speed = formData.get('wcps_slide_speed');
+        wcps_slide_speed = formDataObj.slider_options.wcps_slide_speed;
 
-        wcps_slider_touch_drag = formData.get('wcps_slider_touch_drag');
+        wcps_slider_touch_drag = formDataObj.slider_options.wcps_slider_touch_drag;
         wcps_slider_touch_drag = (wcps_slider_touch_drag == 'true') ? true : false;
 
-        wcps_slider_mouse_drag = formData.get('wcps_slider_mouse_drag');
+        wcps_slider_mouse_drag = formDataObj.slider_options.wcps_slider_mouse_drag;
         wcps_slider_mouse_drag = (wcps_slider_mouse_drag == 'true') ? true : false;
 
-        wcps_slider_animateout = formData.get('wcps_slider_animateout');
-        wcps_slider_animatein = formData.get('wcps_slider_animatein');
-        wcps_ribbon_name = formData.get('wcps_ribbon_name');
-        wcps_plugin_url = formData.get('wcps_plugin_url');
-        wcps_ribbon_custom = formData.get('wcps_ribbon_custom');
-        wcps_bg_img = formData.get('wcps_bg_img');
-        wcps_container_padding = formData.get('wcps_container_padding');
+        wcps_slider_animateout = formDataObj.slider_options.wcps_slider_animateout;
+        wcps_slider_animatein = formDataObj.slider_options.wcps_slider_animatein;
 
-        wcps_items_padding = formData.get('wcps_items_padding');
-        wcps_product_categories = formData.getAll('wcps_product_categories[]');
+        wcps_ribbon_name = formDataObj.style_options.wcps_ribbon_name;
+        wcps_ribbon_custom = formDataObj.style_options.wcps_ribbon_custom;
+        wcps_items_padding = formDataObj.style_options.wcps_items_padding;
+
+        wcps_bg_img = formDataObj.container_options.wcps_bg_img;
+        wcps_container_padding = formDataObj.container_options.wcps_container_padding;
+
+        wcps_product_categories = formDataObj.query_options.wcps_product_categories;
 
 
 
@@ -179,9 +178,9 @@ jQuery(document).ready(function($) {
 
         }
 
-        wcps_query_orderby = formData.getAll('wcps_query_orderby[]');
+        wcps_query_orderby = formDataObj.query_options.wcps_query_orderby;
 
-
+        console.log(wcps_ribbon_name);
 
         //console.log(wcps_product_categories);
 
@@ -218,7 +217,7 @@ jQuery(document).ready(function($) {
                     var html = data['html'];
 
                     $('.wcps-container .loader').fadeOut();
-                    $('.owl-carousel').html(html);
+                    //$('.owl-carousel').html(html);
                     //console.log(html);
 
 
