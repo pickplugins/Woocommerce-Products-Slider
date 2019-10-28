@@ -10,6 +10,7 @@ class wcps_builder_control{
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
         $control_group_class 			= isset( $option['control_group_class'] ) ? $option['control_group_class'] : "";
+        $control_desc_class 			= isset( $option['control_desc_class'] ) ? $option['control_desc_class'] : "top-middle";
 
 
         ob_start();
@@ -17,7 +18,7 @@ class wcps_builder_control{
         ?>
         <div class="control-wrap <?php echo $control_group_class; ?>">
             <div class="control-title">%s
-                <span data-title="%s" class="control-description"><i class="far fa-question-circle"></i></span>
+                <span  data-title="%s" class="control-description <?php echo $control_desc_class; ?>"><i class="far fa-question-circle"></i></span>
             </div>
             <div class="control-input">%s</div>
         </div>

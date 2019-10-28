@@ -54,11 +54,17 @@ jQuery(document).ready(function($) {
 
         hndle = $('#wcps-builder');
 
-        hndle.removeClass('busy').slow(2000);
+        hndle.removeClass('busy');
 
     }
 
+    function wcps_get_form_data_obj(){
 
+        formDataObj = $('#wcps-builder-control').getForm2obj();
+
+        return formDataObj;
+
+    }
 
 
     $(document).on('click', '.control-group-header', function(){
@@ -182,7 +188,7 @@ jQuery(document).ready(function($) {
 
                     $('.skins_layers .layer-'+active_layer+' .layer-elements').append(html);
 
-                    formDataObj = $('#wcps-builder-control').getForm2obj();
+                    formDataObj = wcps_get_form_data_obj();
 
                     wcps['formData'] = formDataObj;
 
@@ -225,10 +231,28 @@ jQuery(document).ready(function($) {
 
     $(document).on('click', '.element-title .element-remove', function(){
 
+        if(!wcps_is_busy()){
+            wcps_make_busy();
+        }
+
         elementWrap = $(this).parent().parent();
         elementWrap.remove();
 
 
+        formDataObj = $('#wcps-builder-control').getForm2obj();
+
+        wcps['formData'] = formDataObj;
+
+        layer_data = wcps.formData['layer_data'];
+        layerHtml = generateLayerHtml(layer_data);
+        $('.owl-carousel').html(layerHtml);
+        reinitiateOwl(formDataObj.slider_options);
+
+
+
+
+
+        wcps_remove_busy();
     })
 
 
@@ -259,7 +283,7 @@ jQuery(document).ready(function($) {
 
 
         let formDataSerialize = $(this).serializeArray();
-        formDataObj = $('#wcps-builder-control').getForm2obj();
+        formDataObj = wcps_get_form_data_obj();
 
 
 

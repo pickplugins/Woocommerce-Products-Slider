@@ -307,7 +307,7 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             $elements['sale'] = array(
                 'name'=>__('Sale', 'woocommerce-products-slider'),
-                'dummy_html'=> '<div title="Sale Product" class="wcps-items-sale"></div>',
+                'dummy_html'=> 'On Sale',
             );
             $elements['featured'] = array(
                 'name'=>__('Featured', 'woocommerce-products-slider'),
