@@ -48,6 +48,27 @@ jQuery(document).ready(function($) {
 
     })
 
+
+    $(document).on('click', '.elements span', function(){
+
+        active_layer = wcps.active_layer;
+
+        element = $(this).attr('data-element');
+
+        console.log(element);
+        console.log(active_layer);
+        console.log(elements_settings_html);
+
+
+        elementOptionsHtml = elements_settings_html[element];
+
+        $('.skins_layers .layer-'+active_layer+' .layer-elements').append(elementOptionsHtml);
+
+
+    })
+
+
+
     $(document).on('click', '.element-title', function(){
 
         parent = $(this).parent();
@@ -57,8 +78,6 @@ jQuery(document).ready(function($) {
         }else{
             parent.addClass('active');
         }
-
-
     })
 
     $(document).on('click', '.element-title .element-remove', function(){
@@ -82,7 +101,7 @@ jQuery(document).ready(function($) {
 
         wcps.active_layer = layer;
 
-        console.log(wcps.active_layer);
+
 
 
     })

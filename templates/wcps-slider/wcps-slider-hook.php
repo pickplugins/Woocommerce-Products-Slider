@@ -243,8 +243,10 @@ function wcps_loop_item($loop_product_id, $atts){
 
     $wcps_id = $atts['id'];
 
+    //$class_wcps_elements = new class_wcps_elements();
+
     $class_wcps_functions = new class_wcps_functions();
-    $skins_layers = $class_wcps_functions->skins_layers();
+    $wcps_layers = $class_wcps_functions->wcps_layers();
 
 
 
@@ -374,11 +376,12 @@ function wcps_loop_item($loop_product_id, $atts){
     }
 
     ?>
-    <div class="wcps-items skin <?php echo $wcps_themes; ?>">
+    <div class="wcps-items  skin <?php echo $wcps_themes; ?>">
 
         <?php
 
-        foreach ($skins_layers as $layer_key => $layer){
+        if(!empty($wcps_layers))
+        foreach ($wcps_layers as $layer_key => $layer){
 
             $layer_elements = isset($layer['elements']) ? $layer['elements'] : array();
 
@@ -388,7 +391,8 @@ function wcps_loop_item($loop_product_id, $atts){
 
                 if(!empty($layer_elements))
                 foreach ($layer_elements as $element_key => $element){
-                    //include wcps_plugin_dir.'templates/wcps-'.$element_key.'.php';
+
+                    do_action("wcps_layer_element_$element_key");
 
                 }
 

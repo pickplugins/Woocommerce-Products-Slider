@@ -961,7 +961,7 @@ function wcps_builder_tools($post_id){
             <?php
 
             $wcps_grid_items = $class_wcps_functions->wcps_grid_items();
-            $skins_layers = $class_wcps_functions->skins_layers();
+            $skins_layers = $class_wcps_functions->wcps_layers();
 
             ?>
 
@@ -1012,7 +1012,7 @@ function wcps_builder_tools($post_id){
 
 
                                     ?>
-                                    <div class="layer">
+                                    <div class="layer layer-<?php echo $layer_key; ?>">
                                         <div class="layer-title" data-layer="<?php echo $layer_key; ?>">
                                             <?php echo $name; ?>
                                             <span class="icon-checked"><i class="fas fa-check-circle"></i></span>
@@ -1187,11 +1187,15 @@ function wcps_builder_tools($post_id){
     $wcps['active_layer'] = 'content';
 
 
+    $wcps_elements_settings_html = $class_wcps_functions->wcps_elements_settings_html();
+
+
     ?>
 
     <script>
 
         var wcps = <?php echo json_encode($wcps); ?>;
+        var elements_settings_html = <?php echo json_encode($wcps_elements_settings_html); ?>;
 
 
 
