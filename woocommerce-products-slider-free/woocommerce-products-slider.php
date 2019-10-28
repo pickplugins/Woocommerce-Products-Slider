@@ -34,6 +34,7 @@ class WoocommerceProductsSlider{
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-meta-box.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-settings.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-builder.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-ajax-wcps-builder.php');
 
 
 

@@ -70,13 +70,12 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
             ob_start();
 
             ?>
-            <div id="wcps-builder" class="">
                 <?php
 
                 do_action('wcps_builder', $atts);
 
                 ?>
-            </div>
+
             <?php
 
             return ob_get_clean();

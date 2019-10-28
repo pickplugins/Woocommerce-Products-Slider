@@ -963,6 +963,10 @@ function wcps_builder_tools($post_id){
             $wcps_grid_items = $class_wcps_functions->wcps_grid_items();
             $skins_layers = $class_wcps_functions->wcps_layers();
 
+            $wcps_elements = $class_wcps_functions->wcps_elements();
+
+            $active_layer = 'content';
+
             ?>
 
             <div class="control-group active">
@@ -981,10 +985,13 @@ function wcps_builder_tools($post_id){
                             <div class="elements">
                                 <?php
 
-                                foreach ($wcps_grid_items as $item_key=>$name){
+                                if(!empty($wcps_elements))
+                                foreach ($wcps_elements as $element_key=>$element){
+
+                                    $element_name = isset($element['name']) ? $element['name'] : '';
 
                                     ?>
-                                    <span data-element="<?php echo $item_key; ?>"><?php echo $name; ?></span>
+                                    <span data-element="<?php echo $element_key; ?>"><?php echo $element_name; ?></span>
                                     <?php
 
                                 }
@@ -1012,7 +1019,7 @@ function wcps_builder_tools($post_id){
 
 
                                     ?>
-                                    <div class="layer layer-<?php echo $layer_key; ?>">
+                                    <div class="layer layer-<?php echo $layer_key; ?> <?php echo ($active_layer == $layer_key) ? 'active': ''; ?>">
                                         <div class="layer-title" data-layer="<?php echo $layer_key; ?>">
                                             <?php echo $name; ?>
                                             <span class="icon-checked"><i class="fas fa-check-circle"></i></span>
@@ -1187,7 +1194,6 @@ function wcps_builder_tools($post_id){
     $wcps['active_layer'] = 'content';
 
 
-    $wcps_elements_settings_html = $class_wcps_functions->wcps_elements_settings_html();
 
 
     ?>
@@ -1195,7 +1201,8 @@ function wcps_builder_tools($post_id){
     <script>
 
         var wcps = <?php echo json_encode($wcps); ?>;
-        var elements_settings_html = <?php echo json_encode($wcps_elements_settings_html); ?>;
+        var wcps_elements = <?php echo json_encode($wcps_elements); ?>;
+        var wcpsFormData = '';
 
 
 
@@ -1216,6 +1223,8 @@ function wcps_builder(){
 
     ?>
     <div id="wcps-builder">
+
+        <div class="loader"><i class="fas fa-spin fa-crosshairs"></i></div>
 
         <?php
         echo do_shortcode('[wcps_new id='.$wcps_id.']');

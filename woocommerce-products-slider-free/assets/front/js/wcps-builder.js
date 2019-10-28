@@ -30,7 +30,33 @@ jQuery(document).ready(function($) {
 
 
 
+    function wcps_is_busy(){
 
+        hndle = $('#wcps-builder');
+
+        if(hndle.hasClass('busy')){
+            return true;
+        }else{
+            return  false;
+        }
+
+    }
+
+    function wcps_make_busy(){
+
+        hndle = $('#wcps-builder');
+
+        hndle.addClass('busy');
+
+    }
+
+    function wcps_remove_busy(){
+
+        hndle = $('#wcps-builder');
+
+        hndle.removeClass('busy').slow(2000);
+
+    }
 
 
 
@@ -48,6 +74,88 @@ jQuery(document).ready(function($) {
 
     })
 
+    function generateLayerHtml(layer_data){
+
+
+        html = '';
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+
+
+        return html;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    function reinitiateOwl(slider_options){
+
+
+        $('.owl-carousel').owlCarousel('destroy');
+
+        $('.owl-carousel').owlCarousel({
+            items : slider_options.wcps_column_number,
+            lazyLoad : (slider_options.wcps_lazyLoad == 'true') ? true : false,
+            responsiveClass : true,
+
+            autoplay: slider_options.wcps_auto_play,
+            autoplayHoverPause: slider_options.wcps_stop_on_hover,
+            autoplaySpeed: slider_options.wcps_auto_play_speed,
+            autoplayTimeout: slider_options.wcps_auto_play_timeout,
+
+            slideBy: slider_options.wcps_slideBy,
+            loop: (slider_options.wcps_loop == 'true') ? true : false,
+            rewind: (slider_options.wcps_rewind == 'true') ? true : false,
+            center: (slider_options.wcps_center == 'true') ? true : false,
+            rtl: (slider_options.wcps_slider_rtl == 'true') ? true : false,
+
+            dots: (slider_options.wcps_slider_pagination == 'true') ? true : false,
+            dotsSpeed: slider_options.wcps_pagination_slide_speed,
+
+            nav: (slider_options.wcps_slider_navigation == 'true') ? true : false,
+            navText: ["",""],
+            navSpeed: slider_options.wcps_slide_speed,
+
+            touchDrag: ( slider_options.wcps_slider_touch_drag == 'true') ? true : false,
+            mouseDrag: (slider_options.wcps_slider_mouse_drag == 'true') ? true : false,
+
+            // animateOut: slider_options.wcps_slider_animateout,
+            // animateIn: slider_options.wcps_slider_animatein,
+        })
+
+
+    }
+
+
 
     $(document).on('click', '.elements span', function(){
 
@@ -55,14 +163,49 @@ jQuery(document).ready(function($) {
 
         element = $(this).attr('data-element');
 
-        console.log(element);
-        console.log(active_layer);
-        console.log(elements_settings_html);
+        if(!wcps_is_busy()){
+            wcps_make_busy();
+        }
+
+        $.ajax(
+            {
+                type: 'POST',
+                context: this,
+                url:wcps_builder_ajax.wcps_builder_ajaxurl,
+                data: {
+                    "action" 	: "wcps_ajax_elements_settings_html",
+                    "element" : element,
+                },
+                success: function( response ) {
+                    var data = JSON.parse( response );
+                    var html = data['html'];
+
+                    $('.skins_layers .layer-'+active_layer+' .layer-elements').append(html);
+
+                    formDataObj = $('#wcps-builder-control').getForm2obj();
+
+                    wcps['formData'] = formDataObj;
+
+                    layer_data = wcps.formData['layer_data'];
+                    layerHtml = generateLayerHtml(layer_data);
+                    $('.owl-carousel').html(layerHtml);
+                    reinitiateOwl(formDataObj.slider_options);
+
+                    wcps_remove_busy();
+
+                } });
 
 
-        elementOptionsHtml = elements_settings_html[element];
 
-        $('.skins_layers .layer-'+active_layer+' .layer-elements').append(elementOptionsHtml);
+
+
+
+
+
+
+
+
+
 
 
     })
@@ -116,7 +259,7 @@ jQuery(document).ready(function($) {
 
 
         let formDataSerialize = $(this).serializeArray();
-        formDataObj = $('#wcps-builder-control').getForm2obj()
+        formDataObj = $('#wcps-builder-control').getForm2obj();
 
 
 
@@ -126,51 +269,6 @@ jQuery(document).ready(function($) {
 
 
         wcps_plugin_url = formDataObj.wcps_plugin_url;
-        wcps_column_number = formDataObj.slider_options.wcps_column_number;
-
-
-        wcps_auto_play = formDataObj.slider_options.wcps_auto_play;
-        wcps_stop_on_hover = formDataObj.slider_options.wcps_stop_on_hover;
-        wcps_auto_play_speed = formDataObj.slider_options.wcps_auto_play_speed;
-        wcps_auto_play_timeout = formDataObj.slider_options.wcps_auto_play_timeout;
-
-        wcps_lazyLoad = formDataObj.slider_options.wcps_lazyLoad;
-        wcps_lazyLoad = (wcps_lazyLoad == 'true') ? true : false;
-
-        wcps_slider_pagination = formDataObj.slider_options.wcps_slider_pagination;
-        wcps_slider_pagination = (wcps_slider_pagination == 'true') ? true : false;
-
-        wcps_slider_pagination_count = formDataObj.slider_options.wcps_slider_pagination_count;
-        wcps_slider_pagination_count = (wcps_slider_pagination_count == 'true') ? true : false;
-
-        wcps_pagination_slide_speed = formDataObj.slider_options.wcps_pagination_slide_speed;
-        wcps_slideBy = formDataObj.slider_options.wcps_slideBy;
-
-        wcps_loop = formDataObj.slider_options.wcps_loop;
-        wcps_loop = (wcps_loop == 'true') ? true : false;
-
-        wcps_rewind = formDataObj.slider_options.wcps_rewind;
-        wcps_rewind = (wcps_rewind == 'true') ? true : false;
-
-        wcps_center = formDataObj.slider_options.wcps_center;
-        wcps_center = (wcps_center == 'true') ? true : false;
-
-        wcps_slider_rtl = formDataObj.slider_options.wcps_slider_rtl;
-        wcps_slider_rtl = (wcps_slider_rtl == 'true') ? true : false;
-
-        wcps_slider_navigation = formDataObj.slider_options.wcps_slider_navigation;
-        wcps_slider_navigation = (wcps_slider_navigation == 'true') ? true : false;
-
-        wcps_slide_speed = formDataObj.slider_options.wcps_slide_speed;
-
-        wcps_slider_touch_drag = formDataObj.slider_options.wcps_slider_touch_drag;
-        wcps_slider_touch_drag = (wcps_slider_touch_drag == 'true') ? true : false;
-
-        wcps_slider_mouse_drag = formDataObj.slider_options.wcps_slider_mouse_drag;
-        wcps_slider_mouse_drag = (wcps_slider_mouse_drag == 'true') ? true : false;
-
-        wcps_slider_animateout = formDataObj.slider_options.wcps_slider_animateout;
-        wcps_slider_animatein = formDataObj.slider_options.wcps_slider_animatein;
 
         wcps_ribbon_name = formDataObj.style_options.wcps_ribbon_name;
         wcps_ribbon_custom = formDataObj.style_options.wcps_ribbon_custom;
@@ -218,9 +316,9 @@ jQuery(document).ready(function($) {
             $('.wcps-container .wcps-items').css('padding', wcps_items_padding);
         }
 
-
-
-
+        if(!wcps_is_busy()){
+            wcps_make_busy();
+        }
 
         $.ajax(
             {
@@ -239,40 +337,10 @@ jQuery(document).ready(function($) {
                     //$('.owl-carousel').html(html);
                     //console.log(html);
 
-
-                    $('.owl-carousel').owlCarousel('destroy');
-
-                    $('.owl-carousel').owlCarousel({
-                        items : wcps_column_number,
-                        lazyLoad : wcps_lazyLoad,
-                        responsiveClass : true,
-
-                        autoplay: wcps_auto_play,
-                        autoplayHoverPause: wcps_stop_on_hover,
-                        autoplaySpeed: wcps_auto_play_speed,
-                        autoplayTimeout: wcps_auto_play_timeout,
-
-                        slideBy: wcps_slideBy,
-                        loop: wcps_loop,
-                        rewind: wcps_rewind,
-                        center: wcps_center,
-                        rtl: wcps_slider_rtl,
-
-                        dots: wcps_slider_pagination,
-                        dotsSpeed: wcps_pagination_slide_speed,
-
-                        nav: wcps_slider_navigation,
-                        navText: ["",""],
-                        navSpeed: wcps_slide_speed,
-
-                        touchDrag: wcps_slider_touch_drag,
-                        mouseDrag: wcps_slider_mouse_drag,
-
-                        animateOut: "bounce",
-                        animateIn: "fadeIn",
-                    })
+                    reinitiateOwl(formDataObj.slider_options);
 
 
+                    wcps_remove_busy();
 
                 } });
 
