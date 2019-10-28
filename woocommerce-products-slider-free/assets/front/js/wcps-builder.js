@@ -114,10 +114,25 @@ jQuery(document).ready(function($) {
     }
 
 
+    function generateLayerCss(layer_data){
+
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                console.log(element_id);
+            }
+
+        }
 
 
 
 
+    }
 
 
 
@@ -289,6 +304,8 @@ jQuery(document).ready(function($) {
 
 
 
+
+
         $('.wcps-container .loader').fadeIn();
 
 
@@ -361,7 +378,14 @@ jQuery(document).ready(function($) {
                     //$('.owl-carousel').html(html);
                     //console.log(html);
 
+                    layer_data = formDataObj['layer_data'];
+                    layerHtml = generateLayerHtml(layer_data);
+                    $('.owl-carousel').html(layerHtml);
+
+                    generateLayerCss(layer_data);
+
                     reinitiateOwl(formDataObj.slider_options);
+
 
 
                     wcps_remove_busy();
