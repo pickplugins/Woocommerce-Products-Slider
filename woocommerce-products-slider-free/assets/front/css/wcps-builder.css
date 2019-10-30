@@ -80,6 +80,84 @@ display: block;
 }
 
 
+.control-group-tabs{}
+
+.control-group-tabs[data-width="3"] .tab-nav{
+    width: 25%;
+    text-align: center;
+}
+.control-group-tabs[data-width="2"] .tab-nav{
+    width: 48%;
+    text-align: center;
+}
+.control-group-tabs[data-width="4"] .tab-nav{
+    width: 17%;
+    text-align: center;
+}
+
+
+
+.control-group-tabs .tab-navs{}
+.control-group-tabs .tab-nav{
+    padding: 0px;
+    background: #eee;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all ease 0.4s;
+    font-size: 13px;
+    display: inline-block;
+    margin: 0;
+    float: left;
+    border-right: 0;
+
+}
+
+.control-group-tabs .tab-nav-title{
+    padding: 10px;
+    display: block;
+
+
+}
+
+.control-group-tabs .tab-nav.active{
+    background: #ddd;
+}
+
+.control-group-tabs .tab-nav:last-child{
+    border-right: 1px solid #ddd;
+}
+
+
+.control-group-tabs .tab-panels{
+    clear: both;
+}
+.control-group-tabs .tab-panel{
+    padding: 10px;
+    display: none;
+}
+
+.control-group-tabs .tab-panel.active{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .control-wrap{
 margin: 10px 0;
 border-bottom: 1px solid #ddd6;

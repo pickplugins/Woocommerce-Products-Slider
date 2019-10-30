@@ -20,6 +20,7 @@ function layer_element_options_title($args){
 
     $wcps_builder_control = new wcps_builder_control();
 
+
     $args = array(
         'id'		=> 'element_id',
         'parent'		=> $option_name,
@@ -31,55 +32,146 @@ function layer_element_options_title($args){
 
     );
 
-    $wcps_builder_control->generate_field($args);
+    ?>
 
-    $args = array(
-        'id'		=> 'wcps_items_title_font_size',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items title font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_title_font_size,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Title style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
 
-    $wcps_builder_control->generate_field($args);
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
 
+                </div>
 
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
 
-
-    $args = array(
-        'id'		=> 'wcps_items_title_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items title text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_items_title_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
-
-        ),
-    );
-
-    $wcps_builder_control->generate_field($args);
+                        <?php
 
 
-    $args = array(
-        'id'		=> 'wcps_items_title_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items title font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_title_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
 
-    $wcps_builder_control->generate_field($args);
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items title font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_title_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items title text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_title_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items title font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_title_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items title font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_title_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items title text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_title_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items title font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_title_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+
+
+
 
 
     ?>
@@ -121,7 +213,7 @@ function layer_element_options_excerpt($args){
 
 
     $args = array(
-        'id'		=> 'wcps_items_excerpt_count',
+        'id'		=> 'wordCount',
         'parent'		=> $option_name,
         'title'		=> __('Word count','woocommerce-products-slider'),
         'details'	=> __('Excerpt word count','woocommerce-products-slider'),
@@ -137,7 +229,7 @@ function layer_element_options_excerpt($args){
 
 
     $args = array(
-        'id'		=> 'wcps_items_excerpt_read_more',
+        'id'		=> 'readMoreText',
         'parent'		=> $option_name,
         'title'		=> __('Read more text','woocommerce-products-slider'),
         'details'	=> __('Excerpt read more text','woocommerce-products-slider'),
@@ -151,36 +243,114 @@ function layer_element_options_excerpt($args){
     $wcps_builder_control->generate_field($args);
 
 
-    $args = array(
-        'id'		=> 'wcps_items_excerpt_font_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Text color','woocommerce-products-slider'),
-        'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_excerpt_font_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
 
-    $wcps_builder_control->generate_field($args);
+    ?>
 
-    $args = array(
-        'id'		=> 'wcps_items_excerpt_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items title text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_items_excerpt_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Excerpt style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
 
-        ),
-    );
 
-    $wcps_builder_control->generate_field($args);
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
+                            'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_excerpt_font_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items title text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_excerpt_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
+                            'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_excerpt_font_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items title text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_excerpt_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <?php
+
+
+
+
+
+
 
     ?>
 
@@ -235,58 +405,142 @@ function layer_element_options_price($args){
 
     $wcps_builder_control->generate_field($args);
 
-    $args = array(
-        'id'		=> 'wcps_items_price_font_size',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items title font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_price_font_size,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-
-
-    $args = array(
-        'id'		=> 'wcps_items_price_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items title text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_items_price_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
-
-        ),
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-
-    $args = array(
-        'id'		=> 'wcps_items_price_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items price text color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_price_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
 
     ?>
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Price style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
 
+
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items title font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_price_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items title text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_price_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items price text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_price_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items title font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_price_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items title text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_price_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items price text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_price_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <?php
 }
 
@@ -320,18 +574,7 @@ function layer_element_options_category($args){
 
     $wcps_builder_control->generate_field($args);
 
-    $args = array(
-        'id'		=> 'wcps_items_cat_font_size',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items category font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_cat_font_size,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
 
-    $wcps_builder_control->generate_field($args);
 
     $args = array(
         'id'		=> 'wcps_items_cat_separator',
@@ -347,42 +590,136 @@ function layer_element_options_category($args){
     $wcps_builder_control->generate_field($args);
 
 
-    $args = array(
-        'id'		=> 'wcps_items_cat_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items category text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_items_cat_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
-
-        ),
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-
-    $args = array(
-        'id'		=> 'wcps_items_cat_font_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items category text color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_cat_font_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
 
     ?>
 
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Category style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
+
+
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items category font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_cat_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items category text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_cat_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items category text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_cat_font_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items category font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_cat_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items category text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_cat_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items category text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_cat_font_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <?php
 }
 
@@ -418,18 +755,6 @@ function layer_element_options_tag($args){
 
     $wcps_builder_control->generate_field($args);
 
-    $args = array(
-        'id'		=> 'wcps_items_tag_font_size',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items tag font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_tag_font_size,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
 
     $args = array(
         'id'		=> 'wcps_items_tag_separator',
@@ -445,42 +770,137 @@ function layer_element_options_tag($args){
     $wcps_builder_control->generate_field($args);
 
 
-    $args = array(
-        'id'		=> 'wcps_items_tag_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items tag text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_items_tag_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
-
-        ),
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-
-    $args = array(
-        'id'		=> 'wcps_items_tag_font_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items tag text color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_tag_font_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
 
     ?>
 
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Tag style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
+
+
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_tag_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items tag text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_tag_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_tag_font_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_tag_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items tag text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_items_tag_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_tag_font_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <?php
 }
 
@@ -512,56 +932,137 @@ function layer_element_options_rating($args){
 
     $wcps_builder_control->generate_field($args);
 
-    $args = array(
-        'id'		=> 'wcps_items_ratings_font_size',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items tag font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_ratings_font_size,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-    $args = array(
-        'id'		=> 'wcps_ratings_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items tag text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_ratings_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
-
-        ),
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-
-    $args = array(
-        'id'		=> 'wcps_items_ratings_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Color','woocommerce-products-slider'),
-        'details'	=> __('Items text color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_ratings_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
 
     ?>
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Excerpt style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
 
+
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_ratings_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items tag text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_ratings_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Color','woocommerce-products-slider'),
+                            'details'	=> __('Items text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_ratings_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_ratings_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items tag text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_ratings_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Color','woocommerce-products-slider'),
+                            'details'	=> __('Items text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_ratings_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <?php
 }
 
@@ -629,69 +1130,164 @@ function layer_element_options_cart($args){
 
     $wcps_builder_control->generate_field($args);
 
-    $args = array(
-        'id'		=> 'wcps_items_cart_font_size',
-        'parent'		=> $option_name,
-        'title'		=> __('Font size','woocommerce-products-slider'),
-        'details'	=> __('Items tag font size','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_cart_font_size,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-    $args = array(
-        'id'		=> 'wcps_cart_text_align',
-        'parent'		=> $option_name,
-        'title'		=> __('Text align','woocommerce-products-slider'),
-        'details'	=> __('Items cart text align','woocommerce-products-slider'),
-        'type'		=> 'select',
-        'value'		=> $wcps_cart_text_align,
-        'default'		=> 'no',
-        'args'		=> array(
-            'left'=>__('Left','woocommerce-products-slider'),
-            'right'=>__('Right','woocommerce-products-slider'),
-            'center'=>__('Center','woocommerce-products-slider'),
-
-        ),
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-
-
-    $args = array(
-        'id'		=> 'wcps_cart_bg',
-        'parent'		=> $option_name,
-        'title'		=> __('Background color','woocommerce-products-slider'),
-        'details'	=> __('cart Background color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_cart_bg,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
-    $args = array(
-        'id'		=> 'wcps_cart_text_color',
-        'parent'		=> $option_name,
-        'title'		=> __('Cart text color','woocommerce-products-slider'),
-        'details'	=> __('Items cart text color','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_cart_text_color,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
-
-    $wcps_builder_control->generate_field($args);
-
 
     ?>
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Excerpt style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
 
+
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_cart_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items cart text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_cart_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'backgroundColor',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Background color','woocommerce-products-slider'),
+                            'details'	=> __('cart Background color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_cart_bg,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Cart text color','woocommerce-products-slider'),
+                            'details'	=> __('Items cart text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_cart_text_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+
+                        $args = array(
+                            'id'		=> 'fontSize',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'details'	=> __('Items tag font size','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_cart_font_size,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+                        $args = array(
+                            'id'		=> 'textAlign',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Text align','woocommerce-products-slider'),
+                            'details'	=> __('Items cart text align','woocommerce-products-slider'),
+                            'type'		=> 'select',
+                            'value'		=> $wcps_cart_text_align,
+                            'default'		=> 'no',
+                            'args'		=> array(
+                                'left'=>__('Left','woocommerce-products-slider'),
+                                'right'=>__('Right','woocommerce-products-slider'),
+                                'center'=>__('Center','woocommerce-products-slider'),
+
+                            ),
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
+
+                        $args = array(
+                            'id'		=> 'backgroundColor',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Background color','woocommerce-products-slider'),
+                            'details'	=> __('cart Background color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_cart_bg,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'color',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Cart text color','woocommerce-products-slider'),
+                            'details'	=> __('Items cart text color','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_cart_text_color,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <?php
 }
 
@@ -828,7 +1424,6 @@ function layer_element_options_sale_count($args){
 
 
     ?>
-
     <?php
 }
 
@@ -862,18 +1457,7 @@ function layer_element_options_thumb($args){
 
     $wcps_builder_control->generate_field($args);
 
-    $args = array(
-        'id'		=> 'wcps_items_thumb_max_hieght',
-        'parent'		=> $option_name,
-        'title'		=> __('Max hieght(px)','woocommerce-products-slider'),
-        'details'	=> __('Items thumbnail max height','woocommerce-products-slider'),
-        'type'		=> 'text',
-        'value'		=> $wcps_items_thumb_max_hieght,
-        'default'		=> '',
-        'placeholder'		=> '',
-    );
 
-    $wcps_builder_control->generate_field($args);
 
     $get_intermediate_image_sizes =  get_intermediate_image_sizes();
 
@@ -916,7 +1500,63 @@ function layer_element_options_thumb($args){
 
 
     ?>
+    <div class="control-wrap">
+        <div class="control-title">Style
+            <span data-title="Thumb style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+        </div>
+        <div class="control-input">
 
+
+            <div class="control-group-tabs" data-width="2">
+                <div class="tab-navs">
+                    <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
+                    <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
+
+                </div>
+
+                <div class="tab-panels">
+                    <div class="tab-panel panel-1 active">
+
+                        <?php
+
+                        $args = array(
+                            'id'		=> 'wcps_items_thumb_max_hieght',
+                            'parent'		=> $option_name.'[style][idle]',
+                            'title'		=> __('Max height(px)','woocommerce-products-slider'),
+                            'details'	=> __('Items thumbnail max height','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_thumb_max_hieght,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+                        ?>
+
+                    </div>
+                    <div class="tab-panel panel-2">
+                        <?php
+
+                        $args = array(
+                            'id'		=> 'wcps_items_thumb_max_hieght',
+                            'parent'		=> $option_name.'[style][hover]',
+                            'title'		=> __('Max height(px)','woocommerce-products-slider'),
+                            'details'	=> __('Items thumbnail max height','woocommerce-products-slider'),
+                            'type'		=> 'text',
+                            'value'		=> $wcps_items_thumb_max_hieght,
+                            'default'		=> '',
+                            'placeholder'		=> '',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <?php
 }
 

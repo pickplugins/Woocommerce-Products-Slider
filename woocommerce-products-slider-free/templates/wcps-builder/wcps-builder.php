@@ -58,6 +58,30 @@ function wcps_builder_tools($post_id){
             <input type="hidden" readonly name="wcps_id" value="<?php echo $wcps_id; ?>">
 
 
+
+<!--            <div class="control-group-tabs" data-width="3">-->
+<!--                <div class="tab-navs">-->
+<!--                    <div class="tab-nav active" data-panel="1">Nav 1</div>-->
+<!--                    <div class="tab-nav" data-panel="2">Nav 2</div>-->
+<!--                    <div class="tab-nav" data-panel="3">Nav 3</div>-->
+<!---->
+<!--                </div>-->
+<!--                <div class="tab-panels">-->
+<!--                    <div class="tab-panel panel-1 active">Panel 1</div>-->
+<!--                    <div class="tab-panel panel-2">Panel 2</div>-->
+<!--                    <div class="tab-panel panel-3">Panel 3</div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+
+
+
+
+
+
+
+
             <div class="control-group ">
                 <div class="control-group-header">Slider Options
                     <div class="icon">

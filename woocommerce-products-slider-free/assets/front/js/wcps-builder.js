@@ -80,6 +80,36 @@ jQuery(document).ready(function($) {
 
     })
 
+
+
+
+    $(document).on('click', '.control-group-tabs .tab-nav', function(){
+
+        container = $(this).parent().parent();
+        data_panel = $(this).attr('data-panel');
+        container.children('.tab-navs').children('.tab-nav').removeClass('active');
+        $(this).addClass('active');
+
+
+        container.children('.tab-panels').children('.tab-panel').removeClass('active');
+
+        container.children('.tab-panels').children('.panel-'+data_panel).addClass('active');
+
+        //$(container+' .tab-panel').removeClass('active');
+       // $(container+' .panel-'+data_panel).addClass('active');
+
+
+
+    })
+
+
+
+
+
+
+
+
+
     function generateLayerHtml(layer_data){
 
 
@@ -124,7 +154,7 @@ jQuery(document).ready(function($) {
 
                 element_id = elements[elementIndex]['element_id'];
 
-                console.log(element_id);
+                //console.log(element_id);
             }
 
         }
@@ -338,7 +368,7 @@ jQuery(document).ready(function($) {
 
         wcps_query_orderby = formDataObj.query_options.wcps_query_orderby;
 
-        console.log(wcps_ribbon_name);
+        //console.log(wcps_ribbon_name);
 
         //console.log(wcps_product_categories);
 
@@ -381,6 +411,8 @@ jQuery(document).ready(function($) {
                     layer_data = formDataObj['layer_data'];
                     layerHtml = generateLayerHtml(layer_data);
                     $('.owl-carousel').html(layerHtml);
+
+                    console.log(layer_data);
 
                     generateLayerCss(layer_data);
 
