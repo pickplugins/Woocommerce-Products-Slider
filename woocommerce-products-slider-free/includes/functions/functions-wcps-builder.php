@@ -3,6 +3,84 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
+
+
+
+add_action('wcps_layer_options_content','wcps_layer_options_content');
+
+function wcps_layer_options_content($layer){
+
+    //$wcps_id = $args['wcps_id'];
+
+    ?>
+    <div class="control-group">
+        <div class="control-group-header">Layer settings
+
+            <div class="icon">
+                <span class="expand"><i class="far fa-plus-square"></i></span>
+                <span class="collapse"><i class="far fa-minus-square"></i></span>
+            </div>
+        </div>
+        <div class="control-group-body">
+
+ggg
+            <?php
+
+            ?>
+
+        </div>
+
+
+    </div>
+    <?php
+
+}
+
+
+add_action('wcps_layer_options_media','wcps_layer_options_media');
+
+function wcps_layer_options_media($layer){
+
+    //$wcps_id = $args['wcps_id'];
+
+    ?>
+    <div class="control-group">
+        <div class="control-group-header">Layer settings
+
+            <div class="icon">
+                <span class="expand"><i class="far fa-plus-square"></i></span>
+                <span class="collapse"><i class="far fa-minus-square"></i></span>
+            </div>
+        </div>
+        <div class="control-group-body">
+
+            ggg
+            <?php
+
+            ?>
+
+        </div>
+
+
+    </div>
+    <?php
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 add_action('layer_element_options_title','layer_element_options_title');
 
 function layer_element_options_title($args){
@@ -17,6 +95,7 @@ function layer_element_options_title($args){
     $wcps_items_title_text_align = get_post_meta($wcps_id, 'wcps_items_title_text_align', true);
     $wcps_items_title_color = get_post_meta($wcps_id, 'wcps_items_title_color', true);
 
+    $wcps_items_title_font_size = (!is_array($wcps_items_title_font_size)) ? array('size'=>$wcps_items_title_font_size, 'unit'=>'px') : array('size'=>12, 'unit'=>'px');
 
     $wcps_builder_control = new wcps_builder_control();
 
@@ -36,7 +115,7 @@ function layer_element_options_title($args){
 
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Title style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Title style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -59,13 +138,15 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'fontSize',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'font_size',
+                            'responsive'=> true,
                             'value'		=> $wcps_items_title_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -75,6 +156,7 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'textAlign',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items title text align','woocommerce-products-slider'),
@@ -94,8 +176,9 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_title_color,
@@ -115,13 +198,15 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'fontSize',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
                             'value'		=> $wcps_items_title_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -131,6 +216,7 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'textAlign',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items title text align','woocommerce-products-slider'),
@@ -150,8 +236,9 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_title_color,
@@ -214,6 +301,7 @@ function layer_element_options_excerpt($args){
 
     $args = array(
         'id'		=> 'wordCount',
+        'control_desc_class'		=> 'left-middle',
         'parent'		=> $option_name,
         'title'		=> __('Word count','woocommerce-products-slider'),
         'details'	=> __('Excerpt word count','woocommerce-products-slider'),
@@ -230,6 +318,7 @@ function layer_element_options_excerpt($args){
 
     $args = array(
         'id'		=> 'readMoreText',
+        'control_desc_class'		=> 'left-middle',
         'parent'		=> $option_name,
         'title'		=> __('Read more text','woocommerce-products-slider'),
         'details'	=> __('Excerpt read more text','woocommerce-products-slider'),
@@ -248,7 +337,7 @@ function layer_element_options_excerpt($args){
 
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Excerpt style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Excerpt style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -269,6 +358,7 @@ function layer_element_options_excerpt($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
@@ -282,6 +372,7 @@ function layer_element_options_excerpt($args){
 
                         $args = array(
                             'id'		=> 'textAlign',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items title text align','woocommerce-products-slider'),
@@ -308,6 +399,7 @@ function layer_element_options_excerpt($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
@@ -321,6 +413,7 @@ function layer_element_options_excerpt($args){
 
                         $args = array(
                             'id'		=> 'textAlign',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items title text align','woocommerce-products-slider'),
@@ -390,6 +483,7 @@ function layer_element_options_price($args){
     $args = array(
         'id'		=> 'wcps_total_items_price_format',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Price format','woocommerce-products-slider'),
         'details'	=> __('Price format on slider','woocommerce-products-slider'),
         'type'		=> 'select',
@@ -409,7 +503,7 @@ function layer_element_options_price($args){
     ?>
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Price style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Price style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -430,6 +524,7 @@ function layer_element_options_price($args){
 
                         $args = array(
                             'id'		=> 'fontSize',
+                            'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
@@ -447,6 +542,7 @@ function layer_element_options_price($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][idle]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items title text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -467,7 +563,8 @@ function layer_element_options_price($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items price text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_price_color,
@@ -488,6 +585,7 @@ function layer_element_options_price($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -504,6 +602,7 @@ function layer_element_options_price($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items title text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -524,7 +623,8 @@ function layer_element_options_price($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items price text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_price_color,
@@ -579,6 +679,7 @@ function layer_element_options_category($args){
     $args = array(
         'id'		=> 'wcps_items_cat_separator',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Category separator','woocommerce-products-slider'),
         'details'	=> __('Items category separator custom text','woocommerce-products-slider'),
         'type'		=> 'text',
@@ -595,7 +696,7 @@ function layer_element_options_category($args){
 
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Category style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Category style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -617,6 +718,7 @@ function layer_element_options_category($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][idle]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items category font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -650,7 +752,8 @@ function layer_element_options_category($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][idle]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items category text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_cat_font_color,
@@ -670,6 +773,7 @@ function layer_element_options_category($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items category font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -683,6 +787,7 @@ function layer_element_options_category($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items category text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -703,7 +808,8 @@ function layer_element_options_category($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items category text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_cat_font_color,
@@ -759,6 +865,7 @@ function layer_element_options_tag($args){
     $args = array(
         'id'		=> 'wcps_items_tag_separator',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Tag separator','woocommerce-products-slider'),
         'details'	=> __('Items tag separator custom text','woocommerce-products-slider'),
         'type'		=> 'text',
@@ -775,7 +882,7 @@ function layer_element_options_tag($args){
 
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Tag style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Tag style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -797,6 +904,7 @@ function layer_element_options_tag($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][idle]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -810,6 +918,7 @@ function layer_element_options_tag($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][idle]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items tag text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -830,7 +939,8 @@ function layer_element_options_tag($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][idle]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items tag text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_tag_font_color,
@@ -851,6 +961,7 @@ function layer_element_options_tag($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -864,6 +975,7 @@ function layer_element_options_tag($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items tag text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -884,7 +996,8 @@ function layer_element_options_tag($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Font size','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items tag text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_tag_font_color,
@@ -936,7 +1049,7 @@ function layer_element_options_rating($args){
     ?>
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Excerpt style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Excerpt style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -957,6 +1070,7 @@ function layer_element_options_rating($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -971,6 +1085,7 @@ function layer_element_options_rating($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items tag text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -991,7 +1106,8 @@ function layer_element_options_rating($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Color','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_ratings_color,
@@ -1012,6 +1128,7 @@ function layer_element_options_rating($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -1026,6 +1143,7 @@ function layer_element_options_rating($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items tag text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -1046,7 +1164,8 @@ function layer_element_options_rating($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Color','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_ratings_color,
@@ -1101,6 +1220,7 @@ function layer_element_options_cart($args){
     $args = array(
         'id'		=> 'wcps_cart_style',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Cart button style','woocommerce-products-slider'),
         'details'	=> __('Items cart button style','woocommerce-products-slider'),
         'type'		=> 'select',
@@ -1116,6 +1236,7 @@ function layer_element_options_cart($args){
     $args = array(
         'id'		=> 'wcps_cart_display_quantity',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Cart button style','woocommerce-products-slider'),
         'details'	=> __('Items cart button style','woocommerce-products-slider'),
         'type'		=> 'select',
@@ -1134,7 +1255,7 @@ function layer_element_options_cart($args){
     ?>
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Excerpt style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Excerpt style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -1156,6 +1277,7 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -1170,6 +1292,7 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items cart text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -1190,6 +1313,7 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'backgroundColor',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Background color','woocommerce-products-slider'),
                             'details'	=> __('cart Background color','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -1203,7 +1327,8 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Cart text color','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_cart_text_color,
@@ -1224,6 +1349,7 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'fontSize',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -1238,6 +1364,7 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items cart text align','woocommerce-products-slider'),
                             'type'		=> 'select',
@@ -1258,6 +1385,7 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'backgroundColor',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Background color','woocommerce-products-slider'),
                             'details'	=> __('cart Background color','woocommerce-products-slider'),
                             'type'		=> 'text',
@@ -1271,7 +1399,8 @@ function layer_element_options_cart($args){
                         $args = array(
                             'id'		=> 'color',
                             'parent'		=> $option_name.'[style][hover]',
-                            'title'		=> __('Cart text color','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_cart_text_color,
@@ -1320,6 +1449,7 @@ function layer_element_options_sale($args){
     $args = array(
         'id'		=> 'wcps_sale_icon_url',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Sale marker icon url','woocommerce-products-slider'),
         'details'	=> __('Items sale marker icon url','woocommerce-products-slider'),
         'type'		=> 'text',
@@ -1352,6 +1482,7 @@ function layer_element_options_featured($args){
     $args = array(
         'id'		=> 'element_id',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Element id','woocommerce-products-slider'),
         'details'	=> '',
         'type'		=> 'hidden',
@@ -1412,6 +1543,7 @@ function layer_element_options_sale_count($args){
     $args = array(
         'id'		=> 'wcps_sale_count_text',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Sale count text','woocommerce-products-slider'),
         'details'	=> __('Items sale count text','woocommerce-products-slider'),
         'type'		=> 'text',
@@ -1467,6 +1599,7 @@ function layer_element_options_thumb($args){
     $args = array(
         'id'		=> 'wcps_items_thumb_size',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Thumbnail size','woocommerce-products-slider'),
         'details'	=> __('Choose thumbnail size','woocommerce-products-slider'),
         'type'		=> 'select',
@@ -1481,6 +1614,7 @@ function layer_element_options_thumb($args){
     $args = array(
         'id'		=> 'wcps_items_thumb_link_target',
         'parent'		=> $option_name,
+        'control_desc_class'		=> 'left-middle',
         'title'		=> __('Link target','woocommerce-products-slider'),
         'details'	=> __('Items link target','woocommerce-products-slider'),
         'type'		=> 'select',
@@ -1502,7 +1636,7 @@ function layer_element_options_thumb($args){
     ?>
     <div class="control-wrap">
         <div class="control-title">Style
-            <span data-title="Thumb style" class="control-description top-left"><i class="far fa-question-circle"></i></span>
+            <span data-title="Thumb style" class="control-description left-middle"><i class="far fa-question-circle"></i></span>
         </div>
         <div class="control-input">
 
@@ -1522,7 +1656,8 @@ function layer_element_options_thumb($args){
                         $args = array(
                             'id'		=> 'wcps_items_thumb_max_hieght',
                             'parent'		=> $option_name.'[style][idle]',
-                            'title'		=> __('Max height(px)','woocommerce-products-slider'),
+                            'control_desc_class'		=> 'left-middle',
+                            'title'		=> __('Max height','woocommerce-products-slider'),
                             'details'	=> __('Items thumbnail max height','woocommerce-products-slider'),
                             'type'		=> 'text',
                             'value'		=> $wcps_items_thumb_max_hieght,
@@ -1541,6 +1676,7 @@ function layer_element_options_thumb($args){
                         $args = array(
                             'id'		=> 'wcps_items_thumb_max_hieght',
                             'parent'		=> $option_name.'[style][hover]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Max height(px)','woocommerce-products-slider'),
                             'details'	=> __('Items thumbnail max height','woocommerce-products-slider'),
                             'type'		=> 'text',

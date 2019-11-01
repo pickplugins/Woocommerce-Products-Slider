@@ -42,7 +42,7 @@ cursor: pointer;
 transition: all ease 0.4s;
 font-size: 13px;
 }
-.control-group.active .control-group-header{
+.control-group .control-group-header[data-active="active"]{
 background: #ddd;
 }
 .control-group-header:hover{
@@ -61,10 +61,10 @@ float: right;
 display: none;
 }
 
-.control-group.active .control-group-header .icon .expand{
+.control-group .control-group-header[data-active="active"] .icon .expand{
 display: none;
 }
-.control-group.active .control-group-header .icon .collapse{
+.control-group .control-group-header[data-active="active"] .icon .collapse{
 display: inline-block;
 }
 
@@ -75,7 +75,7 @@ padding: 10px;
 display: none;
 }
 
-.control-group.active .control-group-body{
+.control-group .control-group-body[data-active="active"]{
 display: block;
 }
 
@@ -208,10 +208,18 @@ padding: 0.3em;
     padding: 0.3em;
 }
 
+.control-input-wrap{}
+.control-input-wrap .col-50{
+    display: inline-block;
+    width: 49%;
+    padding: 0;
+    margin: 0;
+}
 
 .control-description{
-float: right;
-margin-right: 10px;
+    float: right;
+    margin-right: 10px;
+    position: relative;
 }
 
 .control-description:after{
@@ -231,9 +239,9 @@ display: block;
 }
 
 .control-description.top-middle:after{
-    top: 0;
+    bottom: 20px;
     left: 50%;
-    transform: translate(0%, 20%);
+    transform: translate(-50%, 0);
 }
 
 .control-description.top-right:after{
@@ -265,6 +273,17 @@ display: block;
     bottom: 0;
     left: 50%;
     transform: translate(50%, -20%);
+}
+
+.control-description.left-middle:after{
+    bottom: 50%;
+    right: 30px;
+    transform: translate(6%, 50%);
+}
+.control-description.right-middle:after{
+    bottom: 50%;
+    right: 30px;
+    transform: translate(6%, 50%);
 }
 
 
@@ -354,13 +373,13 @@ display: block;
     cursor: move;
 }
 
-.skins_layers .layer-elements{
+.skins_layers .layer-options{
     padding: 10px 0 0 0;
     background: #eee;
     display: none;
 }
 
-.skins_layers .layer.active .layer-elements{
+.skins_layers .layer.active .layer-options{
     display: block;
 }
 
@@ -406,11 +425,37 @@ display: block;
 
 
 
+.control-font-size{}
+.control-font-size .media-query{}
+.control-font-size .media{
+    display: inline-block;
+    margin: 0 0;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    background: #ddd;
+}
+.control-font-size .media i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.control-font-size .media-input{
+    display: none;
+}
+
+.control-font-size .media-input.active{
+    display: block;
+}
 
 
-
-
-
-
-
-
+.control-font-size .media.active{
+    background: #4a5e7b;
+    color: #fff;
+}

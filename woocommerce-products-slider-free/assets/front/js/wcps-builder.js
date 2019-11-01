@@ -62,19 +62,29 @@ jQuery(document).ready(function($) {
 
         formDataObj = $('#wcps-builder-control').getForm2obj();
 
+        console.log(formDataObj);
+
+
         return formDataObj;
 
     }
+
+
 
 
     $(document).on('click', '.control-group-header', function(){
 
         parent = $(this).parent();
 
-        if(parent.hasClass('active')){
-            parent.removeClass('active');
+        isActive = $(this).next().attr('data-active');
+
+        if(typeof isActive == 'undefined' && isActive != ''){
+            $(this).next().attr('data-active','active');
+            $(this).attr('data-active','active');
+
         }else{
-            parent.addClass('active');
+            $(this).next().removeAttr('data-active');
+            $(this).removeAttr('data-active');
         }
 
 
@@ -114,7 +124,30 @@ jQuery(document).ready(function($) {
 
 
         html = '';
-        html += '<div class="wcps-items  skin flat">';
+        html += '<div class="wcps-items  skin flat">1';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">2';
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
@@ -138,31 +171,83 @@ jQuery(document).ready(function($) {
         html += '</div>';
 
 
+        html += '<div class="wcps-items  skin flat">3';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+
+        html += '<div class="wcps-items  skin flat">4';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">5';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
 
         return html;
 
     }
 
 
-    function generateLayerCss(layer_data){
 
-
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
-
-                //console.log(element_id);
-            }
-
-        }
-
-
-
-
-    }
 
 
 
@@ -170,12 +255,13 @@ jQuery(document).ready(function($) {
 
     function reinitiateOwl(slider_options){
 
+        console.log(slider_options.wcps_slider_navigation);
 
         $('.owl-carousel').owlCarousel('destroy');
 
         $('.owl-carousel').owlCarousel({
             items : slider_options.wcps_column_number,
-            lazyLoad : (slider_options.wcps_lazyLoad == 'true') ? true : false,
+            //lazyLoad : (slider_options.wcps_lazyLoad == 'true') ? true : false,
             responsiveClass : true,
 
             autoplay: slider_options.wcps_auto_play,
@@ -202,6 +288,9 @@ jQuery(document).ready(function($) {
             // animateOut: slider_options.wcps_slider_animateout,
             // animateIn: slider_options.wcps_slider_animatein,
         })
+
+        $('.wcps-container .owl-nav').attr('data-position', slider_options.wcps_slider_navigation_position);
+
 
 
     }
@@ -331,25 +420,20 @@ jQuery(document).ready(function($) {
         formDataObj = wcps_get_form_data_obj();
 
 
-
-
-
-
-
         $('.wcps-container .loader').fadeIn();
 
 
         wcps_plugin_url = formDataObj.wcps_plugin_url;
-
         wcps_ribbon_name = formDataObj.style_options.wcps_ribbon_name;
         wcps_ribbon_custom = formDataObj.style_options.wcps_ribbon_custom;
-        wcps_items_padding = formDataObj.style_options.wcps_items_padding;
+        wcps_ribbon_position = formDataObj.style_options.wcps_ribbon_position;
 
+
+        wcps_items_padding = formDataObj.style_options.wcps_items_padding;
         wcps_bg_img = formDataObj.container_options.wcps_bg_img;
         wcps_container_padding = formDataObj.container_options.wcps_container_padding;
 
         wcps_product_categories = formDataObj.query_options.wcps_product_categories;
-
 
 
         if(wcps_ribbon_name == 'none'){
@@ -366,9 +450,14 @@ jQuery(document).ready(function($) {
 
         }
 
+        $('.wcps-container .wcps-ribbon').attr('data-position', wcps_ribbon_position);
+
+
+
+
         wcps_query_orderby = formDataObj.query_options.wcps_query_orderby;
 
-        //console.log(wcps_ribbon_name);
+        console.log(wcps_ribbon_position);
 
         //console.log(wcps_product_categories);
 
@@ -387,8 +476,16 @@ jQuery(document).ready(function($) {
             $('.wcps-container .wcps-items').css('padding', wcps_items_padding);
         }
 
+        layer_data = formDataObj['layer_data'];
+
+        layerCss = generateLayerCss(layer_data);
+
+        $('.wcps-container').append(layerCss);
+        //console.log(layerCss);
+
+
         if(!wcps_is_busy()){
-            wcps_make_busy();
+            //wcps_make_busy();
         }
 
         $.ajax(
@@ -408,19 +505,17 @@ jQuery(document).ready(function($) {
                     //$('.owl-carousel').html(html);
                     //console.log(html);
 
-                    layer_data = formDataObj['layer_data'];
                     layerHtml = generateLayerHtml(layer_data);
                     $('.owl-carousel').html(layerHtml);
 
-                    console.log(layer_data);
+                    //console.log(layer_data);
 
-                    generateLayerCss(layer_data);
 
                     reinitiateOwl(formDataObj.slider_options);
 
 
 
-                    wcps_remove_busy();
+                    //wcps_remove_busy();
 
                 } });
 
@@ -431,6 +526,107 @@ jQuery(document).ready(function($) {
 
 
     })
+
+
+
+    function generateLayerCss(layer_data){
+
+        html = '<style type="text/css">';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+                element_style = elements[elementIndex]['style'];
+                element_style_idle = elements[elementIndex]['style']['idle'];
+                element_style_hover = elements[elementIndex]['style']['hover'];
+                html += '.layer-'+layerId+' .element-'+elementIndex+'{';
+
+                for(styleIndex in element_style_idle){
+
+                    styleIndexVal = element_style_idle[styleIndex];
+
+                    //console.log(styleIndex);
+                    //console.log(styleIndexVal);
+
+                    if(styleIndex == 'color'){
+                        html += 'color:'+styleIndexVal+';';
+                    }
+
+                    if(styleIndex == 'fontSize'){
+                        html += 'font-size:'+styleIndexVal.size+styleIndexVal.unit+';';
+                    }
+                    if(styleIndex == 'textAlign'){
+                        html += 'text-align:'+styleIndexVal+';';
+                    }
+
+                }
+                html += '}';
+
+                html += '.layer-'+layerId+' .element-'+elementIndex+':hover{';
+                for(styleIndex in element_style_hover){
+
+                    styleIndexVal = element_style_hover[styleIndex];
+
+                    //console.log(styleIndex);
+                    //console.log(styleIndexVal);
+
+                    if(styleIndex == 'color'){
+                        html += 'color:'+styleIndexVal+';';
+                    }
+
+                    if(styleIndex == 'fontSize'){
+                        html += 'font-size:'+styleIndexVal.size+styleIndexVal.unit+';';
+                    }
+                    if(styleIndex == 'textAlign'){
+                        html += 'text-align:'+styleIndexVal+';';
+                    }
+
+                }
+
+
+
+
+
+
+
+                html += '}';
+
+                //console.log(element_id);
+            }
+
+        }
+
+        html += '</style>';
+
+        return html;
+
+
+
+    }
+
+
+
+    $(document).on('click', '.control-font-size .media', function(){
+
+        wrap = $(this).parent().parent();
+
+        media = $(this).attr('data-media');
+
+        $(wrap.children('.media-query').children('.media')).removeClass('active');
+        $(this).addClass('active');
+
+        $(wrap.children('.media-input')).fadeOut(200);
+        $(wrap.children('.media-input-'+media)).fadeIn(200);
+
+
+        console.log(media);
+
+    })
+
+
 })
 
 

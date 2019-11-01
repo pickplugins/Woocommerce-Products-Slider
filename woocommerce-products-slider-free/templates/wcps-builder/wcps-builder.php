@@ -37,6 +37,9 @@ function wcps_builder_tools($post_id){
     $wcps_stop_on_hover = get_post_meta( $post_id, 'wcps_stop_on_hover', true );
     $wcps_slider_navigation = get_post_meta( $post_id, 'wcps_slider_navigation', true );
     $wcps_slider_navigation_position = get_post_meta( $post_id, 'wcps_slider_navigation_position', true );
+    $wcps_slider_nav_icon = get_post_meta( $post_id, 'wcps_slider_nav_icon', true );
+
+
     $wcps_slider_pagination = get_post_meta( $post_id, 'wcps_slider_pagination', true );
     $wcps_slider_pagination_bg = get_post_meta( $post_id, 'wcps_slider_pagination_bg', true );
     $wcps_slider_pagination_text_color = get_post_meta( $post_id, 'wcps_slider_pagination_text_color', true );
@@ -290,107 +293,6 @@ function wcps_builder_tools($post_id){
 
 
 
-                    $args = array(
-                        'id'		=> 'wcps_slider_navigation',
-                        'parent'		=> 'slider_options',
-                        'title'		=> __('Navigation','woocommerce-products-slider'),
-                        'details'	=> __('Enable or disable slider navigation at Top.','woocommerce-products-slider'),
-                        'type'		=> 'select',
-                        'value'		=> $wcps_slider_navigation,
-                        'default'		=> 'true',
-                        'args'		=> array(
-                            'true'=>__('True','woocommerce-products-slider'),
-                            'false'=>__('False','woocommerce-products-slider'),
-                        ),
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-
-                    $args = array(
-                        'id'		=> 'wcps_slider_navigation_position',
-                        'parent'		=> 'slider_options',
-                        'title'		=> __('Navigation position','woocommerce-products-slider'),
-                        'details'	=> __('Choose slider navigation position.','woocommerce-products-slider'),
-                        'type'		=> 'select',
-                        'value'		=> $wcps_slider_navigation_position,
-                        'default'		=> 'true',
-                        'args'		=> array(
-                            'topright'=>__('Top Right','woocommerce-products-slider'),
-                            'middle'=>__('Middle','woocommerce-products-slider'),
-                            'middle-fixed'=>__('Middle fixed','woocommerce-products-slider'),
-
-                        ),
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-
-
-                    $args = array(
-                        'id'		=> 'wcps_slider_pagination',
-                        'parent'		=> 'slider_options',
-                        'title'		=> __('Pagination at bottom','woocommerce-products-slider'),
-                        'details'	=> __('Enable or disable slider Pagination at bottom.','woocommerce-products-slider'),
-                        'type'		=> 'select',
-                        'value'		=> $wcps_slider_navigation,
-                        'default'		=> 'true',
-                        'args'		=> array(
-                            'true'=>__('True','woocommerce-products-slider'),
-                            'false'=>__('False','woocommerce-products-slider'),
-                        ),
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-
-
-
-
-//                    $args = array(
-//                        'id'		=> 'wcps_slider_pagination_bg',
-//                        //'parent'		=> 'post_grid_meta_options',
-//                        'title'		=> __('Pagination background color','woocommerce-products-slider'),
-//                        'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
-//                        'type'		=> 'colorpicker',
-//                        'value'		=> $wcps_slider_pagination_bg,
-//                        'default'		=> '#ddd',
-//                    );
-//
-//                    $wcps_builder_control->generate_field($args);
-//
-//
-//                    $args = array(
-//                        'id'		=> 'wcps_slider_pagination_text_color',
-//                        //'parent'		=> 'post_grid_meta_options',
-//                        'title'		=> __('Pagination text color','woocommerce-products-slider'),
-//                        'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
-//                        'type'		=> 'colorpicker',
-//                        'value'		=> $wcps_slider_pagination_text_color,
-//                        'default'		=> '#999',
-//                    );
-//
-//                    $wcps_builder_control->generate_field($args);
-
-
-
-
-//                    $args = array(
-//                        'id'		=> 'wcps_slider_pagination_count',
-//                        //'parent'		=> '',
-//                        'title'		=> __('Pagination number counting','woocommerce-products-slider'),
-//                        'details'	=> __('Enable or disable slider pagination number counting.','woocommerce-products-slider'),
-//                        'type'		=> 'select',
-//                        'value'		=> $wcps_slider_pagination_count,
-//                        'default'		=> 'true',
-//                        'args'		=> array(
-//                            'true'=>__('True','woocommerce-products-slider'),
-//                            'false'=>__('False','woocommerce-products-slider'),
-//                        ),
-//                    );
-//
-//                    $wcps_builder_control->generate_field($args);
-
 
 
 
@@ -529,10 +431,144 @@ function wcps_builder_tools($post_id){
 
 
 
+                    <div class="control-group ">
+                        <div class="control-group-header">Navigation
+                            <div class="icon">
+                                <span class="expand"><i class="far fa-plus-square"></i></span>
+                                <span class="collapse"><i class="far fa-minus-square"></i></span>
+                            </div>
+                        </div>
+                        <div class="control-group-body">
+
+                            <?php
+
+
+                            $args = array(
+                                'id'		=> 'wcps_slider_navigation',
+                                'parent'		=> 'slider_options',
+                                'title'		=> __('Navigation','woocommerce-products-slider'),
+                                'details'	=> __('Enable or disable slider navigation at Top.','woocommerce-products-slider'),
+                                'type'		=> 'select',
+                                'value'		=> $wcps_slider_navigation,
+                                'default'		=> 'true',
+                                'args'		=> array(
+                                    'true'=>__('True','woocommerce-products-slider'),
+                                    'false'=>__('False','woocommerce-products-slider'),
+                                ),
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+                            $args = array(
+                                'id'		=> 'wcps_slider_navigation_position',
+                                'parent'		=> 'slider_options',
+                                'title'		=> __('Navigation position','woocommerce-products-slider'),
+                                'details'	=> __('Choose slider navigation position.','woocommerce-products-slider'),
+                                'type'		=> 'select',
+                                'value'		=> $wcps_slider_navigation_position,
+                                'default'		=> 'true',
+                                'args'		=> array(
+                                    'topleft'=>__('Top Left','woocommerce-products-slider'),
+                                    'topright'=>__('Top Right','woocommerce-products-slider'),
+                                    'bottomright'=>__('Bottom Right','woocommerce-products-slider'),
+                                    'bottomleft'=>__('Bottom Left','woocommerce-products-slider'),
+                                    'middle'=>__('Middle','woocommerce-products-slider'),
+
+                                ),
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+                            $args = array(
+                                'id'		=> 'wcps_slider_nav_icon',
+                                'parent'		=> 'slider_options',
+                                'control_group_class'		=> 'responsive',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Navigation icons','woocommerce-products-slider'),
+                                'details'	=> __('Choose icons for navs.','woocommerce-products-slider'),
+                                'type'		=> 'text_multi_predefine',
+                                'value'		=> $wcps_slider_nav_icon,
+                                'default'		=> array(
+                                    'next'=>'',
+                                    'prev'=>'',
+                                ),
+                                'args'		=> array(
+                                    'next'=>array('name'=>'Next'),
+                                    'prev'=>array('name'=>'Previous'),
+                                ),
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+                            $args = array(
+                                'id'		=> 'wcps_slider_pagination',
+                                'parent'		=> 'slider_options',
+                                'title'		=> __('Pagination at bottom','woocommerce-products-slider'),
+                                'details'	=> __('Enable or disable slider Pagination at bottom.','woocommerce-products-slider'),
+                                'type'		=> 'select',
+                                'value'		=> $wcps_slider_navigation,
+                                'default'		=> 'true',
+                                'args'		=> array(
+                                    'true'=>__('True','woocommerce-products-slider'),
+                                    'false'=>__('False','woocommerce-products-slider'),
+                                ),
+                            );
+
+                            $wcps_builder_control->generate_field($args);
 
 
 
 
+
+                            //                    $args = array(
+                            //                        'id'		=> 'wcps_slider_pagination_bg',
+                            //                        //'parent'		=> 'post_grid_meta_options',
+                            //                        'title'		=> __('Pagination background color','woocommerce-products-slider'),
+                            //                        'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
+                            //                        'type'		=> 'colorpicker',
+                            //                        'value'		=> $wcps_slider_pagination_bg,
+                            //                        'default'		=> '#ddd',
+                            //                    );
+                            //
+                            //                    $wcps_builder_control->generate_field($args);
+                            //
+                            //
+                            //                    $args = array(
+                            //                        'id'		=> 'wcps_slider_pagination_text_color',
+                            //                        //'parent'		=> 'post_grid_meta_options',
+                            //                        'title'		=> __('Pagination text color','woocommerce-products-slider'),
+                            //                        'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
+                            //                        'type'		=> 'colorpicker',
+                            //                        'value'		=> $wcps_slider_pagination_text_color,
+                            //                        'default'		=> '#999',
+                            //                    );
+                            //
+                            //                    $wcps_builder_control->generate_field($args);
+
+
+
+
+                            //                    $args = array(
+                            //                        'id'		=> 'wcps_slider_pagination_count',
+                            //                        //'parent'		=> '',
+                            //                        'title'		=> __('Pagination number counting','woocommerce-products-slider'),
+                            //                        'details'	=> __('Enable or disable slider pagination number counting.','woocommerce-products-slider'),
+                            //                        'type'		=> 'select',
+                            //                        'value'		=> $wcps_slider_pagination_count,
+                            //                        'default'		=> 'true',
+                            //                        'args'		=> array(
+                            //                            'true'=>__('True','woocommerce-products-slider'),
+                            //                            'false'=>__('False','woocommerce-products-slider'),
+                            //                        ),
+                            //                    );
+                            //
+                            //                    $wcps_builder_control->generate_field($args);
+
+
+                            ?>
+                        </div>
+                    </div>
 
 
 
@@ -593,10 +629,10 @@ function wcps_builder_tools($post_id){
                     $html = ob_get_clean();
                     $args = array(
                         'id' => 'wcps_categories',
-
                         'control_group_class'		=> 'responsive',
+                        'control_desc_class'		=> 'left-middle',
                         'title' => __('Product categories', 'woocommerce-products-slider'),
-                        'details' => '',
+                        'details' => 'Choose product categories.',
                         'type' => 'custom_html',
                         'html' => $html,
                     );
@@ -777,6 +813,9 @@ function wcps_builder_tools($post_id){
 
                     $wcps_ribbon_name = get_post_meta($post_id, 'wcps_ribbon_name', true);
                     $wcps_ribbon_custom = get_post_meta($post_id, 'wcps_ribbon_custom', true);
+                    $wcps_ribbon_position = get_post_meta($post_id, 'wcps_ribbon_position', true);
+
+
                     $wcps_container_padding = get_post_meta($post_id, 'wcps_container_padding', true);
                     $wcps_container_bg_color = get_post_meta($post_id, 'wcps_container_bg_color', true);
                     $wcps_bg_img = get_post_meta($post_id, 'wcps_bg_img', true);
@@ -804,6 +843,8 @@ function wcps_builder_tools($post_id){
                     $args = array(
                         'id'		=> 'wcps_ribbon_name',
                         'control_group_class'		=> 'responsive',
+                        'control_desc_class'		=> 'left-middle',
+
                         'parent'		=> 'style_options',
                         'title'		=> __('Slider ribbon','woocommerce-products-slider'),
                         'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
@@ -834,7 +875,23 @@ function wcps_builder_tools($post_id){
 
                     $wcps_builder_control->generate_field($args);
 
+                    $args = array(
+                        'id'		=> 'wcps_ribbon_position',
+                        'parent'		=> 'style_options',
+                        'title'		=> __('Ribbon position','woocommerce-products-slider'),
+                        'details'	=> __('Set ribbon position.','woocommerce-products-slider'),
+                        'type'		=> 'select',
+                        'value'		=> $wcps_ribbon_position,
+                        'default'		=> 'topleft',
+                        'args'		=> array(
+                            'topleft'=>__('Top Left','woocommerce-products-slider'),
+                            'topright'=>__('Top Right','woocommerce-products-slider'),
+                            'bottomleft'=>__('Bottom Left','woocommerce-products-slider'),
+                            'bottomright'=>__('Bottom Right','woocommerce-products-slider'),
+                        ),
+                    );
 
+                    $wcps_builder_control->generate_field($args);
 
 
                     $args = array(
@@ -994,7 +1051,7 @@ function wcps_builder_tools($post_id){
             ?>
 
             <div class="control-group active">
-                <div class="control-group-header">Elements
+                <div class="control-group-header">Item Layout
                     <div class="icon">
                         <span class="expand"><i class="far fa-plus-square"></i></span>
                         <span class="collapse"><i class="far fa-minus-square"></i></span>
@@ -1048,44 +1105,60 @@ function wcps_builder_tools($post_id){
                                             <?php echo $name; ?>
                                             <span class="icon-checked"><i class="fas fa-check-circle"></i></span>
                                         </div>
-                                        <div class="layer-elements">
+                                        <div class="layer-options">
+                                            <div class="layer-elements">
+
+                                                <?php
+
+                                                if(!empty($layer_elements))
+                                                    foreach ($layer_elements as $elementIndex => $element){
+
+                                                        ?>
+                                                        <div class="element ">
+                                                            <div class="element-title" data-element="<?php echo $element; ?>">
+                                                                <?php echo $wcps_grid_items[$element]; ?>
+                                                                <span class="element-remove"><i class="fas fa-times"></i></span>
+                                                            </div>
+                                                            <div class="element-options" >
+
+                                                                <?php
+
+                                                                $option_name = 'layer_data['.$layer_key.']['.$elementIndex.']';
+
+                                                                $args = array(
+                                                                    'wcps_id'=>$wcps_id,
+                                                                    'option_name'=> $option_name,
+                                                                    'index'=> $elementIndex,
+
+                                                                );
+
+                                                                do_action("layer_element_options_$element", $args);
+
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+
+                                                    }
+
+                                                ?>
+
+                                            </div>
 
                                             <?php
 
-                                            if(!empty($layer_elements))
-                                                foreach ($layer_elements as $elementIndex => $element){
-
-                                                    ?>
-                                                    <div class="element ">
-                                                        <div class="element-title" data-element="<?php echo $element; ?>">
-                                                            <?php echo $wcps_grid_items[$element]; ?>
-                                                            <span class="element-remove"><i class="fas fa-times"></i></span>
-                                                        </div>
-                                                        <div class="element-options" >
-
-                                                            <?php
-
-                                                            $option_name = 'layer_data['.$layer_key.']['.$elementIndex.']';
-
-                                                            $args = array(
-                                                                'wcps_id'=>$wcps_id,
-                                                                'option_name'=> $option_name,
-                                                                'index'=> $elementIndex,
-
-                                                            );
-
-                                                            do_action("layer_element_options_$element", $args);
-
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                    <?php
-
-                                                }
+                                            do_action("wcps_layer_options_$layer_key", $layer);
 
                                             ?>
 
                                         </div>
+
+
+
+
+
+
+
 
                                     </div>
                                     <?php

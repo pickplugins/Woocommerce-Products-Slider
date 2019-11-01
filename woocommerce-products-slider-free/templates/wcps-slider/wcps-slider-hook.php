@@ -47,7 +47,7 @@ function wcps_container_ribbon($atts){
 
 
     ?>
-    <div class="wcps-ribbon wcps-ribbon-<?php echo $wcps_ribbon_name; ?>" style="background:url(<?php echo $ribbon_url; ?>) no-repeat scroll 0 0 rgba(0, 0, 0, 0)"></div>
+    <div class="wcps-ribbon wcps-ribbon-<?php echo $wcps_ribbon_name; ?>" data-position="topleft" style="background:url(<?php echo $ribbon_url; ?>) no-repeat scroll 0 0 rgba(0, 0, 0, 0)"></div>
     <?php
 
 
@@ -621,8 +621,9 @@ function wcps_slider_main_scripts($atts){
             })
 
 
-            $("#wcps-<?php echo $wcps_id; ?> .owl-nav").addClass("<?php echo $wcps_slider_navigation_position; ?>");
             $('#wcps-<?php echo $wcps_id; ?> .wcps-items-cart p').prepend('<input value=1 class=quantity type=number> ');
+
+            $('.wcps-container .owl-nav').attr('data-position', '<?php echo $wcps_slider_navigation_position; ?>');
 
         })
 

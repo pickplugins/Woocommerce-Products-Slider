@@ -12,6 +12,7 @@ class wcps_builder_control{
         $control_group_class 			= isset( $option['control_group_class'] ) ? $option['control_group_class'] : "";
         $control_desc_class 			= isset( $option['control_desc_class'] ) ? $option['control_desc_class'] : "top-middle";
 
+        //var_dump($option);
 
         ob_start();
 
@@ -36,7 +37,7 @@ class wcps_builder_control{
         $details 	= isset( $option['details'] ) ? $option['details'] : "";
 
 
-
+        //var_dump($option);
 
 
 
@@ -56,11 +57,14 @@ class wcps_builder_control{
         elseif( isset($option['type']) && $option['type'] === 'text' ) 		    $this->field_text( $option );
         elseif( isset($option['type']) && $option['type'] === 'text_icon' )     $this->field_text_icon( $option );
         elseif( isset($option['type']) && $option['type'] === 'text_multi' ) 	$this->field_text_multi( $option );
+        elseif( isset($option['type']) && $option['type'] === 'text_multi_predefine' ) 	$this->field_text_multi_predefine( $option );
+
         elseif( isset($option['type']) && $option['type'] === 'range' ) 		$this->field_range( $option );
         elseif( isset($option['type']) && $option['type'] === 'colorpicker')    $this->field_colorpicker( $option );
         elseif( isset($option['type']) && $option['type'] === 'colorpicker_multi')    $this->field_colorpicker_multi( $option );
 
         elseif( isset($option['type']) && $option['type'] === 'padding' ) 	    $this->field_padding( $option );
+        elseif( isset($option['type']) && $option['type'] === 'font_size' ) 	    $this->field_font_size( $option );
 
 
         elseif( isset($option['type']) && $option['type'] === 'datepicker')	    $this->field_datepicker( $option );
@@ -664,6 +668,71 @@ class wcps_builder_control{
     }
 
 
+    public function field_text_multi_predefine( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+
+        $default 	= isset( $option['default'] ) ? $option['default'] : array();
+        $values 	= isset( $option['value'] ) ? $option['value'] : $default;
+        $args 	= isset( $option['args'] ) ? $option['args'] : $default;
+
+
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
+        }
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+
+        ob_start();
+        ?>
+        <div  id="input-wrapper-<?php echo $id; ?>" class="input-wrapper input-text-multi-wrapper
+            input-text-multi-wrapper-<?php echo $css_id; ?>">
+            <div class="field-list " id="<?php echo $css_id; ?>">
+                <?php
+                if(!empty($args)):
+                    foreach ($args as $args_index => $arg):
+
+                        $name =$arg['name'];
+                        ?>
+                        <div class="item">
+                            <label><?php echo $name; ?></label>
+                            <input type="text" name="<?php echo esc_attr($field_name); ?>[<?php echo esc_attr($args_index); ?>]"  placeholder="<?php
+                            echo esc_attr($placeholder); ?>" value="<?php //echo esc_attr($value); ?>" />
+
+                        </div>
+                    <?php
+                    endforeach;
+
+                endif;
+                ?>
+            </div>
+            <div class="error-mgs"></div>
+
+
+        </div>
+
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $details, $input_html);
+
+    }
+
 
     public function field_padding( $option ){
 
@@ -879,6 +948,182 @@ class wcps_builder_control{
     }
 
 
+
+    public function field_font_size( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $is_responsive 	= (isset( $option['responsive'] ) && ( $option['responsive'] )) ? true : false;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+
+        $default 	= isset( $option['default'] ) ? $option['default'] : array('size'=>14, 'unit'=>'px');
+        $value 	= isset( $option['value'] ) ? $option['value'] : $default;
+
+        //var_dump($is_responsive);
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
+        }
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+        $font_size = $value['size'];
+        $unit = $value['unit'];
+
+        $unit_args = array(
+            'px'=>'px',
+            '%'=>'%',
+            'em'=>'em',
+            'cm'=>'cm',
+            'mm'=>'mm',
+            'in'=>'in',
+            'pt'=>'pt',
+            'pc'=>'pc',
+            'ex'=>'ex',
+        );
+
+        $media_args = array(
+            'desktop'=>array('name'=>'Desktop', 'active'=> true,  'icon'=> '<i class="fas fa-desktop"></i>'),
+            'tablet'=>array('name'=>'Tablet',  'active'=> false,  'icon'=> '<i class="fas fa-tablet-alt"></i>'),
+            'mobile'=>array('name'=>'Mobile',  'active'=> false,  'icon'=> '<i class="fas fa-mobile-alt"></i>'),
+        );
+
+
+
+        ob_start();
+        ?>
+        <div class="control-input-wrap control-font-size">
+            <input type="hidden" class="" name="<?php echo $field_name.'[responsive]'; ?>" id="<?php echo $css_id; ?>-responsive" value="<?php echo ($is_responsive) ?  true : false; ?>" />
+
+            <?php
+
+            if($is_responsive):
+
+
+
+            ?>
+
+            <div class="media-query">
+                <?php
+                foreach ($media_args as $media_index => $media_data){
+                    $media_name = $media_data['name'];
+                    $media_icon = $media_data['icon'];
+                    $media_active = $media_data['active'];
+
+
+                    ?>
+                    <span title="<?php echo $media_name; ?>" class="media <?php echo ($media_active) ? 'active': '';?>" data-media="<?php echo $media_index; ?>"><?php echo $media_icon; ?></span>
+
+                    <?php
+
+                }
+                ?>
+
+
+            </div>
+
+
+            <?php
+
+            ?>
+
+            <div class="media-input media-input-desktop" style="display: block">
+                <div class="col-50">
+                    <input type="number" class="" name="<?php echo $field_name.'[desktop][size]'; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($font_size); ?>" />
+                </div>
+                <div class="col-50">
+                    <select name="<?php echo $field_name.'[desktop][unit]'; ?>">
+                        <?php
+                        foreach ($unit_args as $unit_index => $unit_name){
+                            ?>
+                            <option <?php if($unit == $unit_index) echo 'selected'; ?> value="<?php echo $unit_index; ?>"><?php echo $unit_name; ?></option>
+                            <?php
+
+                        }
+                        ?>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="media-input media-input-tablet">
+                <div class="col-50">
+                    <input type="number" class="" name="<?php echo $field_name.'[tablet][size]'; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($font_size); ?>" />
+                </div>
+                <div class="col-50">
+                    <select name="<?php echo $field_name.'[tablet][unit]'; ?>">
+                        <?php
+                        foreach ($unit_args as $unit_index => $unit_name){
+                            ?>
+                            <option <?php if($unit == $unit_index) echo 'selected'; ?> value="<?php echo $unit_index; ?>"><?php echo $unit_name; ?></option>
+                            <?php
+
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="media-input media-input-mobile">
+                <div class="col-50">
+                    <input type="number" class="" name="<?php echo $field_name.'[mobile][size]'; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($font_size); ?>" />
+                </div>
+                <div class="col-50">
+                    <select name="<?php echo $field_name.'[mobile][unit]'; ?>">
+                        <?php
+                        foreach ($unit_args as $unit_index => $unit_name){
+                            ?>
+                            <option <?php if($unit == $unit_index) echo 'selected'; ?> value="<?php echo $unit_index; ?>"><?php echo $unit_name; ?></option>
+                            <?php
+
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+
+            <?php
+            else:
+
+                ?>
+                <div class="col-50">
+                    <input type="number" class="" name="<?php echo $field_name.'[size]'; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($font_size); ?>" />
+                </div>
+                <div class="col-50">
+                    <select name="<?php echo $field_name.'[unit]'; ?>">
+                        <?php
+                        foreach ($unit_args as $unit_index => $unit_name){
+                            ?>
+                            <option <?php if($unit == $unit_index) echo 'selected'; ?> value="<?php echo $unit_index; ?>"><?php echo $unit_name; ?></option>
+                            <?php
+
+                        }
+                        ?>
+                    </select>
+                </div>
+                <?php
+            endif;
+            ?>
+
+        </div>
+
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $details, $input_html);
+
+    }
 
 
 
@@ -1308,7 +1553,7 @@ class wcps_builder_control{
 
         $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
 
-        //var_dump($option_value);
+        //var_dump($option);
 
         $option_value = empty($option_value) ? $default : $option_value;
 

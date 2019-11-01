@@ -12,84 +12,93 @@
 }
 
 .wcps-container div.wcps-ribbon {
-  box-shadow: 0 2px 4px -1px rgb(51, 51, 51);
-  height: 24px;
-  left: -27px;
-  position: absolute;
-  top: 14px;
-  transform: rotate(-50deg);
-  width: 90px;
-  z-index: 10;
+    box-shadow: 0 2px 4px -1px rgb(51, 51, 51);
+    height: 24px;
+    position: absolute;
+    width: 90px;
+    z-index: 10;
+    transition: all ease 1s;
 }
 
 
 
-
-.wcps-container div.wcps-ribbon.wcps-ribbon-none{
-background:url("ribbons/none.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-display:none !important;
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-free{
-background:url("ribbons/free.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-save{
-background:url("ribbons/save.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-hot{
-background:url("ribbons/hot.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-pro{
-background:url("ribbons/pro.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-best{
-background:url("ribbons/best.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-gift{
-background:url("ribbons/gift.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-sale{
-background:url("ribbons/sale.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-new{
-background:url("ribbons/new.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-top{
-background:url("ribbons/top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-fresh{
-background:url("ribbons/fresh.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-10{
-background:url("ribbons/dis-10.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-20{
-background:url("ribbons/dis-20.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-30{
-background:url("ribbons/dis-30.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-40{
-background:url("ribbons/dis-40.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-50{
-background:url("ribbons/dis-50.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-60{
-background:url("ribbons/dis-60.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-70{
-background:url("ribbons/dis-70.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-80{
-background:url("ribbons/dis-80.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-90{
-background:url("ribbons/dis-90.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.wcps-container div.wcps-ribbon.wcps-ribbon-dis-100{
-background:url("ribbons/dis-100.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.owl-nav .owl-next, .owl-nav .owl-prev{
+    border: 1px solid rgba(221, 221, 221, 0.0);
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    height: 30px;
+    padding: 0;
+    opacity: 1;
+    width: 50px;
+    display: inline-block;
+    background-position: 10px 5px;
+    margin: 0 5px;
+    background: #909090;
 }
 
+
+
+.wcps-ribbon[data-position="topleft"]{
+    top: 10px;
+    transform: rotate(-50deg);
+    left: -25px;
+}
+.wcps-ribbon[data-position="topright"]{
+    top: 10px;
+    transform: rotate(45deg);
+    right: -25px;
+}
+.wcps-ribbon[data-position="bottomleft"]{
+    bottom: 10px;
+    transform: rotate(45deg);
+    left: -25px;
+}
+.wcps-ribbon[data-position="bottomright"]{
+    bottom: 10px;
+    transform: rotate(-45deg);
+    right: -25px;
+}
+
+.owl-nav[data-position="topleft"]{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.owl-nav[data-position="topright"]{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.owl-nav[data-position="bottomright"]{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.owl-nav[data-position="bottomleft"]{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.owl-nav[data-position="middle"]{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 100%;
+}
+
+.owl-nav[data-position="middle"] .owl-prev{
+
+}
+
+.owl-nav[data-position="middle"] .owl-next{
+    float: right;
+}
+
+.owl-nav[data-position="middle-fixed"]{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 
 
 
