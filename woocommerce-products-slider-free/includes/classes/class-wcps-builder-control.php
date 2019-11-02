@@ -676,7 +676,7 @@ class wcps_builder_control{
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
 
         $default 	= isset( $option['default'] ) ? $option['default'] : array();
-        $values 	= isset( $option['value'] ) ? $option['value'] : $default;
+        $values 	= ( !empty( $option['value'] )) ? $option['value'] : $default;
         $args 	= isset( $option['args'] ) ? $option['args'] : $default;
 
 
@@ -711,7 +711,7 @@ class wcps_builder_control{
                         <div class="item">
                             <label><?php echo $name; ?></label>
                             <input type="text" name="<?php echo esc_attr($field_name); ?>[<?php echo esc_attr($args_index); ?>]"  placeholder="<?php
-                            echo esc_attr($placeholder); ?>" value="<?php //echo esc_attr($value); ?>" />
+                            echo esc_attr($placeholder); ?>" value="<?php echo esc_attr($values[$args_index]); ?>" />
 
                         </div>
                     <?php
@@ -1698,6 +1698,28 @@ class wcps_builder_control{
         $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
 
 
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script(
+            'iris',
+            admin_url( 'js/iris.min.js' ),
+            array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
+            false,
+            1
+        );
+        wp_enqueue_script(
+            'wp-color-picker',
+            admin_url( 'js/color-picker.min.js' ),
+            array( 'iris' ),
+            false,
+            1
+        );
+        $colorpicker_l10n = array(
+            'clear' => __( 'Clear' ),
+            'defaultString' => __( 'Default' ),
+            'pick' => __( 'Select Color' ),
+            'current' => __( 'Current Color' ),
+        );
+        wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
 
 
         ob_start();

@@ -480,6 +480,8 @@ function wcps_builder_tools($post_id){
 
                             $wcps_builder_control->generate_field($args);
 
+
+
                             $args = array(
                                 'id'		=> 'wcps_slider_nav_icon',
                                 'parent'		=> 'slider_options',
@@ -490,8 +492,8 @@ function wcps_builder_tools($post_id){
                                 'type'		=> 'text_multi_predefine',
                                 'value'		=> $wcps_slider_nav_icon,
                                 'default'		=> array(
-                                    'next'=>'',
-                                    'prev'=>'',
+                                    'next'=>'<i class="fas fa-chevron-left"></i>',
+                                    'prev'=>'<i class="fas fa-chevron-right"></i>',
                                 ),
                                 'args'		=> array(
                                     'next'=>array('name'=>'Next'),
@@ -521,49 +523,51 @@ function wcps_builder_tools($post_id){
 
 
 
-                            //                    $args = array(
-                            //                        'id'		=> 'wcps_slider_pagination_bg',
-                            //                        //'parent'		=> 'post_grid_meta_options',
-                            //                        'title'		=> __('Pagination background color','woocommerce-products-slider'),
-                            //                        'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
-                            //                        'type'		=> 'colorpicker',
-                            //                        'value'		=> $wcps_slider_pagination_bg,
-                            //                        'default'		=> '#ddd',
-                            //                    );
-                            //
-                            //                    $wcps_builder_control->generate_field($args);
-                            //
-                            //
-                            //                    $args = array(
-                            //                        'id'		=> 'wcps_slider_pagination_text_color',
-                            //                        //'parent'		=> 'post_grid_meta_options',
-                            //                        'title'		=> __('Pagination text color','woocommerce-products-slider'),
-                            //                        'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
-                            //                        'type'		=> 'colorpicker',
-                            //                        'value'		=> $wcps_slider_pagination_text_color,
-                            //                        'default'		=> '#999',
-                            //                    );
-                            //
-                            //                    $wcps_builder_control->generate_field($args);
+                            $args = array(
+                                'id'		=> 'wcps_slider_pagination_bg',
+                                'parent'		=> 'slider_options',
+                                'control_group_class'		=> 'responsive',
+                                'title'		=> __('Pagination background color','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
+                                'type'		=> 'colorpicker',
+                                'value'		=> $wcps_slider_pagination_bg,
+                                'default'		=> '#ddd',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+                            $args = array(
+                                'id'		=> 'wcps_slider_pagination_text_color',
+                                //'parent'		=> 'post_grid_meta_options',
+                                'control_group_class'		=> 'responsive',
+                                'title'		=> __('Pagination text color','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
+                                'type'		=> 'colorpicker',
+                                'value'		=> $wcps_slider_pagination_text_color,
+                                'default'		=> '#999',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
 
 
 
-
-                            //                    $args = array(
-                            //                        'id'		=> 'wcps_slider_pagination_count',
-                            //                        //'parent'		=> '',
-                            //                        'title'		=> __('Pagination number counting','woocommerce-products-slider'),
-                            //                        'details'	=> __('Enable or disable slider pagination number counting.','woocommerce-products-slider'),
-                            //                        'type'		=> 'select',
-                            //                        'value'		=> $wcps_slider_pagination_count,
-                            //                        'default'		=> 'true',
-                            //                        'args'		=> array(
-                            //                            'true'=>__('True','woocommerce-products-slider'),
-                            //                            'false'=>__('False','woocommerce-products-slider'),
-                            //                        ),
-                            //                    );
-                            //
-                            //                    $wcps_builder_control->generate_field($args);
+//
+//                            $args = array(
+//                                'id'		=> 'wcps_slider_pagination_count',
+//                                //'parent'		=> '',
+//                                'title'		=> __('Pagination number counting','woocommerce-products-slider'),
+//                                'details'	=> __('Enable or disable slider pagination number counting.','woocommerce-products-slider'),
+//                                'type'		=> 'select',
+//                                'value'		=> $wcps_slider_pagination_count,
+//                                'default'		=> 'true',
+//                                'args'		=> array(
+//                                    'true'=>__('True','woocommerce-products-slider'),
+//                                    'false'=>__('False','woocommerce-products-slider'),
+//                                ),
+//                            );
+//
+//                            $wcps_builder_control->generate_field($args);
 
 
                             ?>
@@ -908,17 +912,18 @@ function wcps_builder_tools($post_id){
                     $wcps_builder_control->generate_field($args);
 
 
-//                    $args = array(
-//                        'id'		=> 'wcps_items_bg_color',
-//                        'parent'		=> 'style_options',
-//                        'title'		=> __('Item background color','woocommerce-products-slider'),
-//                        'details'	=> __('Set custom background color for item.','woocommerce-products-slider'),
-//                        'type'		=> 'colorpicker',
-//                        'value'		=> $wcps_items_bg_color,
-//                        'default'		=> '',
-//                    );
-//
-//                    $wcps_builder_control->generate_field($args);
+                    $args = array(
+                        'id'		=> 'wcps_items_bg_color',
+                        'parent'		=> 'style_options',
+                        'control_group_class'		=> 'responsive',
+                        'title'		=> __('Item background color','woocommerce-products-slider'),
+                        'details'	=> __('Set custom background color for item.','woocommerce-products-slider'),
+                        'type'		=> 'colorpicker',
+                        'value'		=> $wcps_items_bg_color,
+                        'default'		=> '',
+                    );
+
+                    $wcps_builder_control->generate_field($args);
 
 
 
@@ -961,17 +966,18 @@ function wcps_builder_tools($post_id){
 
                     $wcps_builder_control->generate_field($args);
 
-                    //                    $args = array(
-                    //                        'id'		=> 'wcps_container_bg_color',
-                    //                        //'parent'		=> 'post_grid_meta_options',
-                    //                        'title'		=> __('Container background color','woocommerce-products-slider'),
-                    //                        'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
-                    //                        'type'		=> 'colorpicker',
-                    //                        'value'		=> $wcps_container_bg_color,
-                    //                        'default'		=> '',
-                    //                    );
-                    //
-                    //                    $wcps_builder_control->generate_field($args);
+                    $args = array(
+                        'id'		=> 'wcps_container_bg_color',
+                        //'parent'		=> 'post_grid_meta_options',
+                        'control_group_class'		=> 'responsive',
+                        'title'		=> __('Container background color','woocommerce-products-slider'),
+                        'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
+                        'type'		=> 'colorpicker',
+                        'value'		=> $wcps_container_bg_color,
+                        'default'		=> '',
+                    );
+
+                    $wcps_builder_control->generate_field($args);
 
 
 

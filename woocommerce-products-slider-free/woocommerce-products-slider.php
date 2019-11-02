@@ -99,13 +99,23 @@ class WoocommerceProductsSlider{
 
 		$wcps_load_script_pages = get_option('wcps_load_script_pages');
 
-
+        wp_enqueue_script('jquery');
         wp_register_style('wcps-builder', wcps_plugin_url.'assets/front/css/wcps-builder.css');
         wp_register_script('wcps-builder', plugins_url( '/assets/front/js/wcps-builder.js' , __FILE__ ) , array( 'jquery' ));
         wp_localize_script('wcps-builder', 'wcps_builder_ajax', array( 'wcps_builder_ajaxurl' => admin_url( 'admin-ajax.php')));
 
 
 
+
+
+
+
+
+
+
+
+
+        wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'wcps_color_picker', plugins_url('assets/admin/js/color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
         wp_register_style('animate', wcps_plugin_url.'assets/front/css/animate.css');

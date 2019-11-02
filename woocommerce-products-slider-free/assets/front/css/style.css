@@ -34,9 +34,15 @@
     background-position: 10px 5px;
     margin: 0 5px;
     background: #909090;
+    position: relative;
 }
 
-
+.owl-nav .owl-next i, .owl-nav .owl-prev i{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
 
 .wcps-ribbon[data-position="topleft"]{
     top: 10px;

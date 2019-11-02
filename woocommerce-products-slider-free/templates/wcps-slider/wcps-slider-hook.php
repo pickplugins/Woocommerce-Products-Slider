@@ -610,7 +610,7 @@ function wcps_slider_main_scripts($atts){
                 autoplayHoverPause: <?php echo $wcps_stop_on_hover; ?>,
                 autoplaySpeed: <?php echo $wcps_auto_play_speed; ?>,
                 autoplayTimeout: <?php echo $wcps_auto_play_timeout; ?>,
-                navText : ["",""],
+                navText : ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
                 nav: true,
                 dots: true,
                 navSpeed: <?php echo $wcps_slide_speed; ?>,

@@ -255,7 +255,11 @@ jQuery(document).ready(function($) {
 
     function reinitiateOwl(slider_options){
 
-        console.log(slider_options.wcps_slider_navigation);
+        console.log(slider_options.wcps_slider_nav_icon);
+
+        navIconNext = slider_options.wcps_slider_nav_icon.next;
+        navIconPrev = slider_options.wcps_slider_nav_icon.prev;
+
 
         $('.owl-carousel').owlCarousel('destroy');
 
@@ -279,7 +283,7 @@ jQuery(document).ready(function($) {
             dotsSpeed: slider_options.wcps_pagination_slide_speed,
 
             nav: (slider_options.wcps_slider_navigation == 'true') ? true : false,
-            navText: ["",""],
+            navText: [navIconNext,navIconPrev],
             navSpeed: slider_options.wcps_slide_speed,
 
             touchDrag: ( slider_options.wcps_slider_touch_drag == 'true') ? true : false,
@@ -290,6 +294,9 @@ jQuery(document).ready(function($) {
         })
 
         $('.wcps-container .owl-nav').attr('data-position', slider_options.wcps_slider_navigation_position);
+
+        //$('.wcps-container .owl-nav .owl-next').html(navIconNext);
+        //$('.wcps-container .owl-nav .owl-prev').html(navIconPrev);
 
 
 
