@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
 
         formDataObj = $('#wcps-builder-control').getForm2obj();
 
-        console.log(formDataObj);
+        //console.log(formDataObj);
 
 
         return formDataObj;
@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
 
 
         html = '';
-        html += '<div class="wcps-items  skin flat">1';
+        html += '<div class="wcps-items  skin flat">';
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
@@ -147,7 +147,30 @@ jQuery(document).ready(function($) {
 
         html += '</div>';
 
-        html += '<div class="wcps-items  skin flat">2';
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">';
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
@@ -171,7 +194,7 @@ jQuery(document).ready(function($) {
         html += '</div>';
 
 
-        html += '<div class="wcps-items  skin flat">3';
+        html += '<div class="wcps-items  skin flat">';
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
@@ -195,7 +218,7 @@ jQuery(document).ready(function($) {
         html += '</div>';
 
 
-        html += '<div class="wcps-items  skin flat">4';
+        html += '<div class="wcps-items  skin flat">';
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
@@ -218,7 +241,31 @@ jQuery(document).ready(function($) {
 
         html += '</div>';
 
-        html += '<div class="wcps-items  skin flat">5';
+
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_data){
+            elements = layer_data[layerId];
+            //console.log(elements);
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in elements){
+
+                element_id = elements[elementIndex]['element_id'];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">';
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
@@ -255,10 +302,17 @@ jQuery(document).ready(function($) {
 
     function reinitiateOwl(slider_options){
 
-        console.log(slider_options.wcps_slider_nav_icon);
+        //console.log(slider_options.wcps_slider_nav_icon);
 
         navIconNext = slider_options.wcps_slider_nav_icon.next;
         navIconPrev = slider_options.wcps_slider_nav_icon.prev;
+        nav_bg_color = slider_options.nav_bg_color;
+        nav_text_color = slider_options.nav_text_color;
+
+        dot_bg_color = slider_options.dot_bg_color;
+        dot_active_bg_color = slider_options.dot_active_bg_color;
+
+        console.log(slider_options.wcps_auto_play);
 
 
         $('.owl-carousel').owlCarousel('destroy');
@@ -268,8 +322,8 @@ jQuery(document).ready(function($) {
             //lazyLoad : (slider_options.wcps_lazyLoad == 'true') ? true : false,
             responsiveClass : true,
 
-            autoplay: slider_options.wcps_auto_play,
-            autoplayHoverPause: slider_options.wcps_stop_on_hover,
+            autoplay: (slider_options.wcps_auto_play == 'true') ? true : false,
+            autoplayHoverPause: (slider_options.wcps_stop_on_hover == 'true') ? true : false,
             autoplaySpeed: slider_options.wcps_auto_play_speed,
             autoplayTimeout: slider_options.wcps_auto_play_timeout,
 
@@ -294,9 +348,12 @@ jQuery(document).ready(function($) {
         })
 
         $('.wcps-container .owl-nav').attr('data-position', slider_options.wcps_slider_navigation_position);
+        $('.owl-prev, .owl-next').css('background', nav_bg_color);
+        $('.owl-prev, .owl-next').css('color', nav_text_color);
 
-        //$('.wcps-container .owl-nav .owl-next').html(navIconNext);
-        //$('.wcps-container .owl-nav .owl-prev').html(navIconPrev);
+        $('.owl-dot').css('background', dot_bg_color);
+        $('.owl-dot.active').css('background', dot_active_bg_color);
+
 
 
 
@@ -415,7 +472,14 @@ jQuery(document).ready(function($) {
     })
 
 
+    function wcps_update_edits(data){
 
+        id = $.now();
+
+        wcps_edits[id] = data;
+        console.log(wcps_edits);
+
+    }
 
 
     $(document).on('change', '#wcps-builder-control', function(){
@@ -426,6 +490,7 @@ jQuery(document).ready(function($) {
         let formDataSerialize = $(this).serializeArray();
         formDataObj = wcps_get_form_data_obj();
 
+       // wcps_update_edits(formDataObj);
 
         $('.wcps-container .loader').fadeIn();
 
@@ -436,9 +501,10 @@ jQuery(document).ready(function($) {
         wcps_ribbon_position = formDataObj.style_options.wcps_ribbon_position;
 
 
+
+
         wcps_items_padding = formDataObj.style_options.wcps_items_padding;
-        wcps_bg_img = formDataObj.container_options.wcps_bg_img;
-        wcps_container_padding = formDataObj.container_options.wcps_container_padding;
+        container_padding = formDataObj.container.padding;
 
         wcps_product_categories = formDataObj.query_options.wcps_product_categories;
 
@@ -448,35 +514,35 @@ jQuery(document).ready(function($) {
         }else if(wcps_ribbon_name == 'custom'){
             $('.wcps-container .wcps-ribbon').fadeIn();
 
-            $('.wcps-container .wcps-ribbon').css('background', "url("+wcps_ribbon_custom+") no-repeat scroll 0 0 rgba(0, 0, 0, 0)");
+            $('.wcps-container .wcps-ribbon').css('background', "url("+wcps_ribbon_custom+") no-repeat scroll 0 0 "+ribbon_bg_color+"");
         }else{
             $('.wcps-container .wcps-ribbon').fadeIn();
             wcps_ribbon_url = wcps_plugin_url+'assets/front/images/ribbons/'+wcps_ribbon_name+'.png';
 
             $('.wcps-container .wcps-ribbon').css('background', "url("+wcps_ribbon_url+") no-repeat scroll 0 0 rgba(0, 0, 0, 0)");
-
         }
 
         $('.wcps-container .wcps-ribbon').attr('data-position', wcps_ribbon_position);
+        //$('.wcps-container .wcps-ribbon').css('background', ribbon_bg_color);
 
 
 
 
         wcps_query_orderby = formDataObj.query_options.wcps_query_orderby;
 
-        console.log(wcps_ribbon_position);
+        container_bg_img = formDataObj.container.bg_img;
 
         //console.log(wcps_product_categories);
 
-        if(wcps_bg_img.length){
-            $('.wcps-container').css('background', "url("+wcps_bg_img+") repeat scroll 0 0 rgba(0, 0, 0, 0)");
+        if(container_bg_img.length){
+            $('.wcps-container').css('background', "url("+container_bg_img+") repeat scroll 0 0 rgba(0, 0, 0, 0)");
 
         }
 
 
 
-        if(wcps_container_padding){
-            $('.wcps-container').css('padding', wcps_container_padding);
+        if(container_padding){
+            $('.wcps-container').css('padding', container_padding);
         }
 
         if(wcps_items_padding){
@@ -629,7 +695,7 @@ jQuery(document).ready(function($) {
         $(wrap.children('.media-input-'+media)).fadeIn(200);
 
 
-        console.log(media);
+        //console.log(media);
 
     })
 

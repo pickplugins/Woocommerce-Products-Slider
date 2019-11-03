@@ -409,8 +409,8 @@ function wcps_loop_item($loop_product_id, $atts){
         $html = '';
 
 
-        include wcps_plugin_dir . '/templates/layer-media.php';
-        include wcps_plugin_dir . '/templates/layer-content.php';
+        //include wcps_plugin_dir . '/templates/layer-media.php';
+        //include wcps_plugin_dir . '/templates/layer-content.php';
 
         echo $html;
         ?>

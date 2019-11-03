@@ -39,6 +39,7 @@ function wcps_builder_tools($post_id){
     $wcps_slider_navigation_position = get_post_meta( $post_id, 'wcps_slider_navigation_position', true );
     $wcps_slider_nav_icon = get_post_meta( $post_id, 'wcps_slider_nav_icon', true );
 
+    $nav_bg_color = get_post_meta( $post_id, 'nav_bg_color', true );
 
     $wcps_slider_pagination = get_post_meta( $post_id, 'wcps_slider_pagination', true );
     $wcps_slider_pagination_bg = get_post_meta( $post_id, 'wcps_slider_pagination_bg', true );
@@ -50,6 +51,8 @@ function wcps_builder_tools($post_id){
     $wcps_slider_rtl = get_post_meta( $post_id, 'wcps_slider_rtl', true );
     $wcps_slider_animateout = get_post_meta( $post_id, 'wcps_slider_animateout', true );
     $wcps_slider_animatein = get_post_meta( $post_id, 'wcps_slider_animatein', true );
+    $dot_active_bg_color = get_post_meta( $post_id, 'dot_active_bg_color', true );
+    $nav_text_color = get_post_meta( $post_id, 'nav_text_color', true );
 
 
     ?>
@@ -520,16 +523,46 @@ function wcps_builder_tools($post_id){
                             $wcps_builder_control->generate_field($args);
 
 
+                            $args = array(
+                                'id'		=> 'nav_bg_color',
+                                'parent'		=> 'slider_options',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Navs background color','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom background color for navigation.','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $nav_bg_color,
+                                'default'		=> '#fff',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+                            $args = array(
+                                'id'		=> 'nav_text_color',
+                                'parent'		=> 'slider_options',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Navs text color','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom text color for navigation.','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $nav_bg_color,
+                                'default'		=> '#fff',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
 
 
 
                             $args = array(
-                                'id'		=> 'wcps_slider_pagination_bg',
+                                'id'		=> 'dot_bg_color',
                                 'parent'		=> 'slider_options',
-                                'control_group_class'		=> 'responsive',
-                                'title'		=> __('Pagination background color','woocommerce-products-slider'),
-                                'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
-                                'type'		=> 'colorpicker',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Dots background color','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom background color for dots','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
                                 'value'		=> $wcps_slider_pagination_bg,
                                 'default'		=> '#ddd',
                             );
@@ -538,14 +571,15 @@ function wcps_builder_tools($post_id){
 
 
                             $args = array(
-                                'id'		=> 'wcps_slider_pagination_text_color',
-                                //'parent'		=> 'post_grid_meta_options',
-                                'control_group_class'		=> 'responsive',
-                                'title'		=> __('Pagination text color','woocommerce-products-slider'),
-                                'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
-                                'type'		=> 'colorpicker',
-                                'value'		=> $wcps_slider_pagination_text_color,
-                                'default'		=> '#999',
+                                'id'		=> 'dot_active_bg_color',
+                                'parent'		=> 'slider_options',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Active dot background color','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom background color for dots','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $dot_active_bg_color,
+                                'default'		=> '#ddd',
                             );
 
                             $wcps_builder_control->generate_field($args);
@@ -818,6 +852,7 @@ function wcps_builder_tools($post_id){
                     $wcps_ribbon_name = get_post_meta($post_id, 'wcps_ribbon_name', true);
                     $wcps_ribbon_custom = get_post_meta($post_id, 'wcps_ribbon_custom', true);
                     $wcps_ribbon_position = get_post_meta($post_id, 'wcps_ribbon_position', true);
+                    $ribbon_bg_color = get_post_meta($post_id, 'ribbon_bg_color', true);
 
 
                     $wcps_container_padding = get_post_meta($post_id, 'wcps_container_padding', true);
@@ -844,198 +879,219 @@ function wcps_builder_tools($post_id){
                     //echo '<pre>'.var_export($ribbons_arr, true).'</pre>';
 
 
-                    $args = array(
-                        'id'		=> 'wcps_ribbon_name',
-                        'control_group_class'		=> 'responsive',
-                        'control_desc_class'		=> 'left-middle',
-
-                        'parent'		=> 'style_options',
-                        'title'		=> __('Slider ribbon','woocommerce-products-slider'),
-                        'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
-                        'type'		=> 'radio_image',
-                        'value'		=> $wcps_ribbon_name,
-                        'default'		=> 'none',
-                        'width'		=> '75px',
-
-                        'args'		=> $ribbons_arr,
-                    );
-
-                    echo $wcps_builder_control->generate_field($args);
-
-
-
-
-
-                    $args = array(
-                        'id'		=> 'wcps_ribbon_custom',
-                        'parent'		=> 'style_options',
-                        'title'		=> __('Custom ribbon','woocommerce-products-slider'),
-                        'details'	=> __('Choose custom ribbon, image source url.','woocommerce-products-slider'),
-                        'type'		=> 'text',
-                        'value'		=> $wcps_ribbon_custom,
-                        'default'		=> '',
-                        'placeholder'		=> 'Ribbon image url',
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-                    $args = array(
-                        'id'		=> 'wcps_ribbon_position',
-                        'parent'		=> 'style_options',
-                        'title'		=> __('Ribbon position','woocommerce-products-slider'),
-                        'details'	=> __('Set ribbon position.','woocommerce-products-slider'),
-                        'type'		=> 'select',
-                        'value'		=> $wcps_ribbon_position,
-                        'default'		=> 'topleft',
-                        'args'		=> array(
-                            'topleft'=>__('Top Left','woocommerce-products-slider'),
-                            'topright'=>__('Top Right','woocommerce-products-slider'),
-                            'bottomleft'=>__('Bottom Left','woocommerce-products-slider'),
-                            'bottomright'=>__('Bottom Right','woocommerce-products-slider'),
-                        ),
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-
-                    $args = array(
-                        'id'		=> 'wcps_items_padding',
-                        'parent'		=> 'style_options',
-                        'title'		=> __('Items padding','woocommerce-products-slider'),
-                        'details'	=> __('Set custom padding for item.','woocommerce-products-slider'),
-                        'type'		=> 'text',
-                        'value'		=> $wcps_items_padding,
-                        'default'		=> '',
-                        'placeholder'		=> '10px',
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-
-                    $args = array(
-                        'id'		=> 'wcps_items_bg_color',
-                        'parent'		=> 'style_options',
-                        'control_group_class'		=> 'responsive',
-                        'title'		=> __('Item background color','woocommerce-products-slider'),
-                        'details'	=> __('Set custom background color for item.','woocommerce-products-slider'),
-                        'type'		=> 'colorpicker',
-                        'value'		=> $wcps_items_bg_color,
-                        'default'		=> '',
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-
-
-
-
-
-
-
-
                     ?>
+                    <div class="control-group ">
+                        <div class="control-group-header">Ribbon
+                            <div class="icon">
+                                <span class="expand"><i class="far fa-plus-square"></i></span>
+                                <span class="collapse"><i class="far fa-minus-square"></i></span>
+                            </div>
+                        </div>
+                        <div class="control-group-body">
+
+                            <?php
 
 
-                </div>
+                            $args = array(
+                                'id'		=> 'wcps_ribbon_name',
+                                'control_group_class'		=> 'responsive',
+                                'control_desc_class'		=> 'left-middle',
+
+                                'parent'		=> 'style_options',
+                                'title'		=> __('Slider ribbon','woocommerce-products-slider'),
+                                'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
+                                'type'		=> 'radio_image',
+                                'value'		=> $wcps_ribbon_name,
+                                'default'		=> 'none',
+                                'width'		=> '70px',
+
+                                'args'		=> $ribbons_arr,
+                            );
+
+                            echo $wcps_builder_control->generate_field($args);
 
 
-            </div>
 
-            <div class="control-group ">
-                <div class="control-group-header">Container Options
-                    <div class="icon">
-                        <span class="expand"><i class="far fa-plus-square"></i></span>
-                        <span class="collapse"><i class="far fa-minus-square"></i></span>
+
+
+                            $args = array(
+                                'id'		=> 'wcps_ribbon_custom',
+                                'parent'		=> 'style_options',
+                                'title'		=> __('Custom ribbon','woocommerce-products-slider'),
+                                'details'	=> __('Choose custom ribbon, image source url.','woocommerce-products-slider'),
+                                'type'		=> 'text',
+                                'value'		=> $wcps_ribbon_custom,
+                                'default'		=> '',
+                                'placeholder'		=> 'Ribbon image url',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+                            $args = array(
+                                'id'		=> 'ribbon_bg_color',
+                                'parent'		=> 'style_options',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Ribbon background color','woocommerce-products-slider'),
+                                'details'	=> __('Set custom background color for ribbon.','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $ribbon_bg_color,
+                                'default'		=> '',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+                            $args = array(
+                                'id'		=> 'wcps_ribbon_position',
+                                'parent'		=> 'style_options',
+                                'title'		=> __('Ribbon position','woocommerce-products-slider'),
+                                'details'	=> __('Set ribbon position.','woocommerce-products-slider'),
+                                'type'		=> 'select',
+                                'value'		=> $wcps_ribbon_position,
+                                'default'		=> 'topleft',
+                                'args'		=> array(
+                                    'topleft'=>__('Top Left','woocommerce-products-slider'),
+                                    'topright'=>__('Top Right','woocommerce-products-slider'),
+                                    'bottomleft'=>__('Bottom Left','woocommerce-products-slider'),
+                                    'bottomright'=>__('Bottom Right','woocommerce-products-slider'),
+                                ),
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+                            ?>
+
+                        </div>
                     </div>
-                </div>
-                <div class="control-group-body">
+
+                    <div class="control-group ">
+                        <div class="control-group-header">Item style
+                            <div class="icon">
+                                <span class="expand"><i class="far fa-plus-square"></i></span>
+                                <span class="collapse"><i class="far fa-minus-square"></i></span>
+                            </div>
+                        </div>
+                        <div class="control-group-body">
+
+                            <?php
+
+                            $args = array(
+                                'id'		=> 'wcps_items_padding',
+                                'parent'		=> 'style_options',
+                                'title'		=> __('Items padding','woocommerce-products-slider'),
+                                'details'	=> __('Set custom padding for item.','woocommerce-products-slider'),
+                                'type'		=> 'text',
+                                'value'		=> $wcps_items_padding,
+                                'default'		=> '',
+                                'placeholder'		=> '10px',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+                            $args = array(
+                                'id'		=> 'wcps_items_bg_color',
+                                'parent'		=> 'style_options',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Item background color','woocommerce-products-slider'),
+                                'details'	=> __('Set custom background color for item.','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $wcps_items_bg_color,
+                                'default'		=> '',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+                            ?>
+
+                        </div>
+                    </div>
+
+
+                    <div class="control-group ">
+                        <div class="control-group-header">Container style
+                            <div class="icon">
+                                <span class="expand"><i class="far fa-plus-square"></i></span>
+                                <span class="collapse"><i class="far fa-minus-square"></i></span>
+                            </div>
+                        </div>
+                        <div class="control-group-body">
+
+                            <?php
+
+
+                            $args = array(
+                                'id'		=> 'padding',
+                                'parent'		=> 'container',
+                                'title'		=> __('Container padding','woocommerce-products-slider'),
+                                'details'	=> __('Set custom padding for container.','woocommerce-products-slider'),
+                                'type'		=> 'text',
+                                'value'		=> $wcps_container_padding,
+                                'default'		=> '',
+                                'placeholder'		=> '10px',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+                            $args = array(
+                                'id'		=> 'bg_color',
+                                'parent'		=> 'container',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Background color','woocommerce-products-slider'),
+                                'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $wcps_container_bg_color,
+                                'default'		=> '',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+
+                            $args = array(
+                                'id'		=> 'bg_img',
+                                'parent'		=> 'container',
+                                'title'		=> __('Background image','woocommerce-products-slider'),
+                                'details'	=> __('Set custom background image for container.','woocommerce-products-slider'),
+                                'type'		=> 'text',
+                                'value'		=> $wcps_bg_img,
+                                'default'		=> '',
+                                'placeholder'		=> 'image url',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+
+
+                            ?>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
 
                     <?php
 
 
-                    $args = array(
-                        'id'		=> 'wcps_container_padding',
-                        'parent'		=> 'container_options',
-                        'title'		=> __('Container padding','woocommerce-products-slider'),
-                        'details'	=> __('Set custom padding for container.','woocommerce-products-slider'),
-                        'type'		=> 'text',
-                        'value'		=> $wcps_container_padding,
-                        'default'		=> '',
-                        'placeholder'		=> '10px',
-                    );
-
-                    $wcps_builder_control->generate_field($args);
-
-                    $args = array(
-                        'id'		=> 'wcps_container_bg_color',
-                        //'parent'		=> 'post_grid_meta_options',
-                        'control_group_class'		=> 'responsive',
-                        'title'		=> __('Container background color','woocommerce-products-slider'),
-                        'details'	=> __('Set custom background color for container.','woocommerce-products-slider'),
-                        'type'		=> 'colorpicker',
-                        'value'		=> $wcps_container_bg_color,
-                        'default'		=> '',
-                    );
-
-                    $wcps_builder_control->generate_field($args);
 
 
 
-                    $args = array(
-                        'id'		=> 'wcps_bg_img',
-                        'parent'		=> 'container_options',
-                        'title'		=> __('Container background image','woocommerce-products-slider'),
-                        'details'	=> __('Set custom background image for container.','woocommerce-products-slider'),
-                        'type'		=> 'text',
-                        'value'		=> $wcps_bg_img,
-                        'default'		=> '',
-                        'placeholder'		=> 'image url',
-                    );
-
-                    $wcps_builder_control->generate_field($args);
 
 
 
-                    ?>
-                </div>
-
-            </div>
-
-            <div class="control-group">
-                <div class="control-group-header">Item themes
-                    <div class="icon">
-                        <span class="expand"><i class="far fa-plus-square"></i></span>
-                        <span class="collapse"><i class="far fa-minus-square"></i></span>
-                    </div>
-                </div>
-                <div class="control-group-body">
-
-                    <?php
 
 
-                    $wcps_themes = get_post_meta($post_id, 'wcps_themes', true);
 
-                    $skin_arr = array();
 
-                    if(!empty($skins))
-                        foreach($skins as $skin_key => $skin_data){
 
-                            $skin_arr[$skin_key] = $skin_data['name'];
-
-                        }
-
-                    $args = array(
-                        'id'		=> 'wcps_themes',
-                        'parent'		=> 'style_options',
-                        'title'		=> __('Item skin','woocommerce-products-slider'),
-                        'details'	=> __('Choose slider product themes.','woocommerce-products-slider'),
-                        'type'		=> 'select',
-                        'value'		=> $wcps_themes,
-                        'default'		=> 'OR',
-                        'args'		=> $skin_arr,
-                    );
-
-                    $wcps_builder_control->generate_field($args);
 
                     ?>
 
@@ -1044,6 +1100,7 @@ function wcps_builder_tools($post_id){
 
 
             </div>
+
 
             <?php
 
@@ -1101,14 +1158,14 @@ function wcps_builder_tools($post_id){
 
                                 foreach ($skins_layers as $layer_key=>$layer){
 
-                                    $name = $layer['name'];
+                                    $layer_name = $layer['name'];
                                     $layer_elements = $layer['elements'];
 
 
                                     ?>
                                     <div class="layer layer-<?php echo $layer_key; ?> <?php echo ($active_layer == $layer_key) ? 'active': ''; ?>">
                                         <div class="layer-title" data-layer="<?php echo $layer_key; ?>">
-                                            <?php echo $name; ?>
+                                            <i class="fas fa-layer-group"></i> <?php echo $layer_name; ?>
                                             <span class="icon-checked"><i class="fas fa-check-circle"></i></span>
                                         </div>
                                         <div class="layer-options">
@@ -1119,10 +1176,12 @@ function wcps_builder_tools($post_id){
                                                 if(!empty($layer_elements))
                                                     foreach ($layer_elements as $elementIndex => $element){
 
+                                                        $element_name = isset($wcps_elements[$element]['name']) ?$wcps_elements[$element]['name'] : 'Name missing';
+
                                                         ?>
                                                         <div class="element ">
                                                             <div class="element-title" data-element="<?php echo $element; ?>">
-                                                                <?php echo $wcps_grid_items[$element]; ?>
+                                                                <?php echo $element_name; ?>
                                                                 <span class="element-remove"><i class="fas fa-times"></i></span>
                                                             </div>
                                                             <div class="element-options" >
@@ -1222,6 +1281,7 @@ function wcps_builder_tools($post_id){
                         'id'		=> 'wcps_items_custom_css',
                         'control_group_class'		=> 'responsive',
                         //'parent'		=> 'post_grid_meta_options',
+                        'control_desc_class'		=> 'left-middle',
                         'title'		=> __('Custom CSS','woocommerce-products-slider'),
                         'details'	=> __('Add your own CSS..','woocommerce-products-slider'),
                         'type'		=> 'scripts_css',
@@ -1302,6 +1362,7 @@ function wcps_builder_tools($post_id){
     ?>
 
     <script>
+        var wcps_edits = {};
 
         var wcps = <?php echo json_encode($wcps); ?>;
         var wcps_elements = <?php echo json_encode($wcps_elements); ?>;
@@ -1309,7 +1370,7 @@ function wcps_builder_tools($post_id){
 
 
 
-        //console.log(wcps);
+        console.log(wcps_elements);
 
     </script>
 

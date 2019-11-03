@@ -534,6 +534,37 @@ $time = time();
 
 
 
+    ob_start();
+    ?>
+    <div class="element ">
+        <div class="element-title ui-sortable-handle" data-element="sale_count">
+            SKU                                                            <span class="element-remove"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="element-options">
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element id
+                    <span  data-title="" class="control-description"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="sku">
+                </div>
+            </div>
+            <div class="control-wrap ">
+                <div class="control-title">sku text
+                    <span  data-title="Items sale count text" class="control-description"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="text" class="" name="layer_data[content]['<?php echo $time; ?>'][wcps_sale_count_text]" id="wcps_sale_count_text" placeholder="" value="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <?php
+    $html['sku'] = ob_get_clean();
+
+
+
+
 
     $html = apply_filters('wcps_elements_settings_html', $html);
 

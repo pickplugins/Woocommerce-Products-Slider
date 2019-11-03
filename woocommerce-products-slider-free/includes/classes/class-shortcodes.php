@@ -54,6 +54,8 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
             wp_enqueue_style('wcps_style');
             wp_enqueue_style('wcps_style.themes');
 
+            wp_enqueue_style('frontend-builder');
+
             wp_enqueue_script('wcps-builder');
             wp_enqueue_style('wcps-builder');
             wp_enqueue_style( 'wp-color-picker' );

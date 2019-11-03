@@ -63,6 +63,9 @@ class wcps_builder_control{
         elseif( isset($option['type']) && $option['type'] === 'colorpicker')    $this->field_colorpicker( $option );
         elseif( isset($option['type']) && $option['type'] === 'colorpicker_multi')    $this->field_colorpicker_multi( $option );
 
+        elseif( isset($option['type']) && $option['type'] === 'spectrum')    $this->field_spectrum( $option );
+
+
         elseif( isset($option['type']) && $option['type'] === 'padding' ) 	    $this->field_padding( $option );
         elseif( isset($option['type']) && $option['type'] === 'font_size' ) 	    $this->field_font_size( $option );
 
@@ -1674,6 +1677,46 @@ class wcps_builder_control{
     }
 
 
+
+    public function field_spectrum( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+        $value 	= isset( $option['value'] ) ? $option['value'] : '';
+        $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value = !empty($value) ? $value : $default;
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+
+        wp_enqueue_style( 'spectrum' );
+        wp_enqueue_script('spectrum' );
+
+
+        ob_start();
+        ?>
+        <input name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
+        <script>jQuery(document).ready(function($) { $("#<?php echo $css_id; ?>").spectrum({
+                showAlpha: true,
+                preferredFormat: "rgb",
+                showInput: true,
+            });});</script>
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $details, $input_html);
+    }
 
 
 

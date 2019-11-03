@@ -165,10 +165,13 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             $layers['content'] = array(
                 'name' => 'Content',
+                'icon' => '',
+
                 'elements' => array(
                     'title',
                     'excerpt',
                     'price',
+                    'sku',
 //                    'category',
 //                    'tag',
 //                    'rating',
@@ -184,6 +187,7 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             $layers['media'] = array(
                 'name' => 'Media',
+                'icon' => '',
                 'elements' => array(
                     'thumb',
                     'excerpt',
@@ -318,7 +322,22 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
                 'dummy_html'=> 'Total sold: 4',
             );
 
+            $elements['sku'] = array(
+                'name'=>__('SKU', 'woocommerce-products-slider'),
+                'dummy_html'=> 'SKU: 123xyz',
+            );
 
+
+
+//            $elements['div_start'] = array(
+//                'name'=>__('div start', 'woocommerce-products-slider'),
+//                'dummy_html'=> '<div>Start - ',
+//            );
+//
+//            $elements['div_end'] = array(
+//                'name'=>__('div end', 'woocommerce-products-slider'),
+//                'dummy_html'=> ' - End</div>',
+//            );
 
 
             return apply_filters('wcps_elements', $elements);

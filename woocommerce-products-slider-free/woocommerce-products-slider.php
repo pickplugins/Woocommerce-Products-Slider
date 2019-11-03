@@ -35,6 +35,7 @@ class WoocommerceProductsSlider{
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-settings.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-builder.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-ajax-wcps-builder.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-elements-options.php');
 
 
 
@@ -103,10 +104,13 @@ class WoocommerceProductsSlider{
         wp_register_style('wcps-builder', wcps_plugin_url.'assets/front/css/wcps-builder.css');
         wp_register_script('wcps-builder', plugins_url( '/assets/front/js/wcps-builder.js' , __FILE__ ) , array( 'jquery' ));
         wp_localize_script('wcps-builder', 'wcps_builder_ajax', array( 'wcps_builder_ajaxurl' => admin_url( 'admin-ajax.php')));
+        wp_register_style('frontend-builder', wcps_plugin_url.'assets/front/css/frontend-builder.css');
 
 
 
 
+        wp_enqueue_script('spectrum', plugins_url( 'assets/front/js/spectrum.js' , __FILE__ ) , array( 'jquery' ));
+        wp_register_style('spectrum', wcps_plugin_url.'assets/front/css/spectrum.css');
 
 
 
