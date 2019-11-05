@@ -10,6 +10,8 @@ $time = time();
 
 
     $element = isset($_POST['element']) ? $_POST['element'] : '';
+    $active_layer = isset($_POST['active_layer']) ? $_POST['active_layer'] : '';
+
 
     $response = array();
 
@@ -30,6 +32,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="title">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="title">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Font size
                     <span  data-title="Items title font size" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -77,6 +88,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[media]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="thumb">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="thumb">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Max hieght(px)
                     <span  data-title="Items thumbnail max height" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -138,6 +158,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="excerpt">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="excerpt">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Word count
                     <span  data-title="Excerpt word count" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -191,6 +220,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="category">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="category">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Font size
                     <span  data-title="Items category font size" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -244,6 +282,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="tag">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="tag">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Font size
                     <span  data-title="Items tag font size" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -297,6 +344,16 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="price">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="price">
+                </div>
+            </div>
+
+
             <div class="control-wrap ">
                 <div class="control-title">Price format
                     <span  data-title="Price format on slider" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -354,6 +411,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="rating">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="rating">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Font size
                     <span  data-title="Items tag font size" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -400,6 +466,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="cart">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="cart">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Cart button style
                     <span  data-title="Items cart button style" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -463,6 +538,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="sale">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="sale">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Sale marker icon url
                     <span  data-title="Items sale marker icon url" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -491,6 +575,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="featured">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="featured">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Featured marker icon url
                     <span  data-title="Items featured marker icon url" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -519,6 +612,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="sale_count">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="sale_count">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">Sale count text
                     <span  data-title="Items sale count text" class="control-description"><i class="far fa-question-circle"></i></span>
@@ -549,6 +651,15 @@ $time = time();
                 <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="sku">
                 </div>
             </div>
+
+            <div class="control-wrap hidden">
+                <div class="control-title">Element
+                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
+                </div>
+                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="sku">
+                </div>
+            </div>
+
             <div class="control-wrap ">
                 <div class="control-title">sku text
                     <span  data-title="Items sale count text" class="control-description"><i class="far fa-question-circle"></i></span>

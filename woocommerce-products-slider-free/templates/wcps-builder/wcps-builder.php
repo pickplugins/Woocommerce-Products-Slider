@@ -1193,6 +1193,7 @@ function wcps_builder_tools($post_id){
                                                                 $args = array(
                                                                     'wcps_id'=>$wcps_id,
                                                                     'option_name'=> $option_name,
+                                                                    'layer_key'=> $layer_key,
                                                                     'index'=> $elementIndex,
 
                                                                 );
@@ -1248,8 +1249,9 @@ function wcps_builder_tools($post_id){
             <script>
                 jQuery(document).ready(function($) {
 
-                    $(".skins_layers").sortable({handle: '.layer-title'});
-                    $(".layer-elements").sortable({handle: '.element-title'});
+
+
+
 
 
                 })
@@ -1370,7 +1372,7 @@ function wcps_builder_tools($post_id){
 
 
 
-        console.log(wcps_elements);
+        //console.log(wcps_elements);
 
     </script>
 

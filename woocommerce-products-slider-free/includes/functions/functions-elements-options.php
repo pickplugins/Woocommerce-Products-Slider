@@ -10,6 +10,7 @@ add_action('layer_element_options_title','layer_element_options_title');
 function layer_element_options_title($args){
 
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
 
     $option_name = $args['option_name'];
 
@@ -24,16 +25,7 @@ function layer_element_options_title($args){
     $wcps_builder_control = new wcps_builder_control();
 
 
-    $args = array(
-        'id'		=> 'element_id',
-        'parent'		=> $option_name,
-        'title'		=> __('Element id','woocommerce-products-slider'),
-        'details'	=> '',
-        'type'		=> 'hidden',
-        'control_group_class'		=> 'hidden',
-        'value'		=> 'title',
 
-    );
 
     ?>
 
@@ -55,10 +47,31 @@ function layer_element_options_title($args){
 
                         <?php
 
-
-
+                        $args = array(
+                            'id'		=> 'element_id',
+                            'parent'		=> $option_name,
+                            'title'		=> __('Element id','woocommerce-products-slider'),
+                            'details'	=> '',
+                            'type'		=> 'hidden',
+                            'control_group_class'		=> 'hidden',
+                            'value'		=> 'title',
+                        );
 
                         $wcps_builder_control->generate_field($args);
+
+                        $args = array(
+                            'id'		=> 'layer_element_ids['.$layer_key.'][]',
+                            //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+                            'title'		=> __('Element id','woocommerce-products-slider'),
+                            'details'	=> '',
+                            'type'		=> 'hidden',
+                            'control_group_class'		=> 'hidden',
+                            'value'		=> 'title',
+                        );
+
+                        $wcps_builder_control->generate_field($args);
+
+
 
                         $args = array(
                             'id'		=> 'fontSize',
@@ -199,6 +212,8 @@ add_action('layer_element_options_excerpt','layer_element_options_excerpt');
 function layer_element_options_excerpt($args){
 
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_items_excerpt_count = get_post_meta($wcps_id, 'wcps_items_excerpt_count', true);
@@ -218,6 +233,19 @@ function layer_element_options_excerpt($args){
         'control_group_class' => 'hidden',
         'value'		=> 'excerpt',
 
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'excerpt',
     );
 
     $wcps_builder_control->generate_field($args);
@@ -381,6 +409,8 @@ add_action('layer_element_options_price','layer_element_options_price');
 
 function layer_element_options_price($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
     $wcps_total_items_price_format = get_post_meta($wcps_id, 'wcps_total_items_price_format', true);
 
@@ -403,6 +433,27 @@ function layer_element_options_price($args){
     );
 
     $wcps_builder_control->generate_field($args);
+
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'price',
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+
+
+
+
+
+
+
 
     $args = array(
         'id'		=> 'wcps_total_items_price_format',
@@ -574,6 +625,8 @@ add_action('layer_element_options_category','layer_element_options_category');
 
 function layer_element_options_category($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_items_cat_separator = get_post_meta($wcps_id, 'wcps_items_cat_separator', true);
@@ -598,6 +651,17 @@ function layer_element_options_category($args){
 
     $wcps_builder_control->generate_field($args);
 
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'category',
+    );
+
+    $wcps_builder_control->generate_field($args);
 
 
     $args = array(
@@ -761,6 +825,8 @@ add_action('layer_element_options_tag','layer_element_options_tag');
 
 function layer_element_options_tag($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_items_tag_separator = get_post_meta($wcps_id, 'wcps_items_tag_separator', true);
@@ -781,6 +847,18 @@ function layer_element_options_tag($args){
         'control_group_class' => 'hidden',
         'value'		=> 'tag',
 
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'tag',
     );
 
     $wcps_builder_control->generate_field($args);
@@ -947,6 +1025,8 @@ add_action('layer_element_options_rating','layer_element_options_rating');
 
 function layer_element_options_rating($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_items_ratings_font_size = get_post_meta($wcps_id, 'wcps_items_ratings_font_size', true);
@@ -969,6 +1049,18 @@ function layer_element_options_rating($args){
 
     $wcps_builder_control->generate_field($args);
 
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'rating',
+    );
+
+    $wcps_builder_control->generate_field($args);
 
     ?>
     <div class="control-wrap">
@@ -1115,6 +1207,8 @@ add_action('layer_element_options_cart','layer_element_options_cart');
 
 function layer_element_options_cart($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_cart_style = get_post_meta($wcps_id, 'wcps_cart_style', true);
@@ -1140,6 +1234,22 @@ function layer_element_options_cart($args){
     );
 
     $wcps_builder_control->generate_field($args);
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'cart',
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+
+
+
 
     $args = array(
         'id'		=> 'wcps_cart_style',
@@ -1352,6 +1462,8 @@ add_action('layer_element_options_sale','layer_element_options_sale');
 
 function layer_element_options_sale($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_sale_icon_url = get_post_meta($wcps_id, 'wcps_sale_icon_url', true);
@@ -1370,6 +1482,24 @@ function layer_element_options_sale($args){
     );
 
     $wcps_builder_control->generate_field($args);
+
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'sale',
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+
+
+
+
     $args = array(
         'id'		=> 'wcps_sale_icon_url',
         'parent'		=> $option_name,
@@ -1397,6 +1527,8 @@ add_action('layer_element_options_featured','layer_element_options_featured');
 
 function layer_element_options_featured($args){
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_featured_icon_url = get_post_meta($wcps_id, 'wcps_featured_icon_url', true);
@@ -1416,6 +1548,22 @@ function layer_element_options_featured($args){
     );
 
     $wcps_builder_control->generate_field($args);
+
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'featured',
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+
+
 
     $args = array(
         'id'		=> 'wcps_featured_icon_url',
@@ -1445,6 +1593,8 @@ add_action('layer_element_options_sale_count','layer_element_options_sale_count'
 function layer_element_options_sale_count($args){
 
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_sale_count_text = get_post_meta($wcps_id, 'wcps_sale_count_text', true);
@@ -1463,6 +1613,20 @@ function layer_element_options_sale_count($args){
     );
 
     $wcps_builder_control->generate_field($args);
+
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'sale_count',
+    );
+
+    $wcps_builder_control->generate_field($args);
+
 
     $args = array(
         'id'		=> 'wcps_sale_count_text',
@@ -1490,6 +1654,8 @@ add_action('layer_element_options_thumb','layer_element_options_thumb');
 function layer_element_options_thumb($args){
 
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
+
     $option_name = $args['option_name'];
 
     $wcps_items_thumb_max_hieght = get_post_meta($wcps_id, 'wcps_items_thumb_max_hieght', true);
@@ -1513,7 +1679,17 @@ function layer_element_options_thumb($args){
 
     $wcps_builder_control->generate_field($args);
 
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'thumb',
+    );
 
+    $wcps_builder_control->generate_field($args);
 
     $get_intermediate_image_sizes =  get_intermediate_image_sizes();
 
@@ -1630,6 +1806,7 @@ add_action('layer_element_options_sku','layer_element_options_sku');
 function layer_element_options_sku($args){
 
     $wcps_id = $args['wcps_id'];
+    $layer_key = $args['layer_key'];
 
     $option_name = $args['option_name'];
 
@@ -1651,9 +1828,25 @@ function layer_element_options_sku($args){
         'details'	=> '',
         'type'		=> 'hidden',
         'control_group_class'		=> 'hidden',
-        'value'		=> 'title',
+        'value'		=> 'sku',
 
     );
+
+
+    $args = array(
+        'id'		=> 'layer_element_ids['.$layer_key.'][]',
+        //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+        'title'		=> __('Element id','woocommerce-products-slider'),
+        'details'	=> '',
+        'type'		=> 'hidden',
+        'control_group_class'		=> 'hidden',
+        'value'		=> 'sku',
+    );
+
+    $wcps_builder_control->generate_field($args);
+
+
+
 
     ?>
 

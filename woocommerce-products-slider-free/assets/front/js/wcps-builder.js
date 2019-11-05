@@ -62,8 +62,6 @@ jQuery(document).ready(function($) {
 
         formDataObj = $('#wcps-builder-control').getForm2obj();
 
-        //console.log(formDataObj);
-
 
         return formDataObj;
 
@@ -120,25 +118,25 @@ jQuery(document).ready(function($) {
 
 
 
-    function generateLayerHtml(layer_data){
+    function generateLayerHtml(layer_data, layer_element_ids){
+
 
 
         html = '';
         html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
 
             html += '<div class="layer-'+layerId+'">';
 
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
 
                 html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
                 html += '</div>';
             }
 
@@ -149,19 +147,18 @@ jQuery(document).ready(function($) {
 
         html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
 
             html += '<div class="layer-'+layerId+'">';
 
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
 
                 html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
                 html += '</div>';
             }
 
@@ -172,43 +169,18 @@ jQuery(document).ready(function($) {
 
         html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
 
             html += '<div class="layer-'+layerId+'">';
 
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
-
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
-                html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
-                html += '</div>';
-            }
-
-            html += '</div>';
-        }
-
-        html += '</div>';
-
-
-        html += '<div class="wcps-items  skin flat">';
-
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
-
-            html += '<div class="layer-'+layerId+'">';
-
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
 
                 html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
                 html += '</div>';
             }
 
@@ -220,19 +192,18 @@ jQuery(document).ready(function($) {
 
         html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
 
             html += '<div class="layer-'+layerId+'">';
 
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
 
                 html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
                 html += '</div>';
             }
 
@@ -244,19 +215,41 @@ jQuery(document).ready(function($) {
 
         html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
 
             html += '<div class="layer-'+layerId+'">';
 
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
 
                 html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
+
+                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
 
@@ -267,19 +260,18 @@ jQuery(document).ready(function($) {
 
         html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_data){
-            elements = layer_data[layerId];
-            //console.log(elements);
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
 
             html += '<div class="layer-'+layerId+'">';
 
-            for(elementIndex in elements){
-
-                element_id = elements[elementIndex]['element_id'];
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
 
                 html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
-                //console.log(element_id);
                 html += '</div>';
             }
 
@@ -302,7 +294,6 @@ jQuery(document).ready(function($) {
 
     function reinitiateOwl(slider_options){
 
-        //console.log(slider_options.wcps_slider_nav_icon);
 
         navIconNext = slider_options.wcps_slider_nav_icon.next;
         navIconPrev = slider_options.wcps_slider_nav_icon.prev;
@@ -312,7 +303,6 @@ jQuery(document).ready(function($) {
         dot_bg_color = slider_options.dot_bg_color;
         dot_active_bg_color = slider_options.dot_active_bg_color;
 
-        console.log(slider_options.wcps_auto_play);
 
 
         $('.owl-carousel').owlCarousel('destroy');
@@ -379,6 +369,8 @@ jQuery(document).ready(function($) {
                 data: {
                     "action" 	: "wcps_ajax_elements_settings_html",
                     "element" : element,
+                    "active_layer" : active_layer,
+
                 },
                 success: function( response ) {
                     var data = JSON.parse( response );
@@ -388,10 +380,14 @@ jQuery(document).ready(function($) {
 
                     formDataObj = wcps_get_form_data_obj();
 
-                    wcps['formData'] = formDataObj;
+                    console.log(formDataObj);
 
-                    layer_data = wcps.formData['layer_data'];
-                    layerHtml = generateLayerHtml(layer_data);
+                    layer_data = formDataObj['layer_data'];
+                    layer_element_ids = formDataObj['layer_element_ids'];
+
+                    console.log(layer_element_ids);
+
+                    layerHtml = generateLayerHtml(layer_data, layer_element_ids);
                     $('.owl-carousel').html(layerHtml);
                     reinitiateOwl(formDataObj.slider_options);
 
@@ -442,7 +438,9 @@ jQuery(document).ready(function($) {
         wcps['formData'] = formDataObj;
 
         layer_data = wcps.formData['layer_data'];
-        layerHtml = generateLayerHtml(layer_data);
+        layer_element_ids = wcps.formData['layer_element_ids'];
+
+        layerHtml = generateLayerHtml(layer_data, layer_element_ids);
         $('.owl-carousel').html(layerHtml);
         reinitiateOwl(formDataObj.slider_options);
 
@@ -477,7 +475,6 @@ jQuery(document).ready(function($) {
         id = $.now();
 
         wcps_edits[id] = data;
-        console.log(wcps_edits);
 
     }
 
@@ -490,7 +487,9 @@ jQuery(document).ready(function($) {
         let formDataSerialize = $(this).serializeArray();
         formDataObj = wcps_get_form_data_obj();
 
-       // wcps_update_edits(formDataObj);
+        console.log(formDataObj);
+
+       // wcps_update_edits(formDataSerialize);
 
         $('.wcps-container .loader').fadeIn();
 
@@ -532,7 +531,6 @@ jQuery(document).ready(function($) {
 
         container_bg_img = formDataObj.container.bg_img;
 
-        //console.log(wcps_product_categories);
 
         if(container_bg_img.length){
             $('.wcps-container').css('background', "url("+container_bg_img+") repeat scroll 0 0 rgba(0, 0, 0, 0)");
@@ -550,15 +548,15 @@ jQuery(document).ready(function($) {
         }
 
         layer_data = formDataObj['layer_data'];
+        layer_element_ids = formDataObj['layer_element_ids'];
 
         layerCss = generateLayerCss(layer_data);
 
         $('.wcps-container').append(layerCss);
-        //console.log(layerCss);
 
 
         if(!wcps_is_busy()){
-            //wcps_make_busy();
+            wcps_make_busy();
         }
 
         $.ajax(
@@ -576,30 +574,99 @@ jQuery(document).ready(function($) {
 
                     $('.wcps-container .loader').fadeOut();
                     //$('.owl-carousel').html(html);
-                    //console.log(html);
+                    //console.log(layer_data);
 
-                    layerHtml = generateLayerHtml(layer_data);
+                    layerHtml = generateLayerHtml(layer_data, layer_element_ids);
                     $('.owl-carousel').html(layerHtml);
 
-                    //console.log(layer_data);
 
 
                     reinitiateOwl(formDataObj.slider_options);
 
 
 
-                    //wcps_remove_busy();
+                    wcps_remove_busy();
 
                 } });
 
 
-        //console.log(wcps_lazyLoad);
 
 
 
 
     })
 
+    $(".skins_layers").sortable({
+        handle: '.layer-title',
+        stop: function( event, ui ) {
+
+            if(!wcps_is_busy()){
+                wcps_make_busy();
+            }
+
+            formDataObj = wcps_get_form_data_obj();
+
+            //console.log(formDataObj);
+
+            //reinitiateOwl(formDataObj.slider_options);
+
+            layer_data = formDataObj['layer_data'];
+            layer_element_ids = formDataObj['layer_element_ids'];
+
+            console.log(layer_element_ids);
+
+
+            layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+            $('.owl-carousel').html(layerHtml);
+
+
+
+            reinitiateOwl(formDataObj.slider_options);
+            wcps_remove_busy();
+        }
+    });
+    $(".layer-elements").sortable({
+        handle: '.element-title',
+        start: function(e, ui) {
+            // puts the old positions into array before sorting
+            var old_position = ui.item.index();
+
+            //console.log(old_position);
+        },
+        update: function(event, ui) {
+            // grabs the new positions now that we've finished sorting
+            var new_position = ui.item.index();
+
+            //console.log(new_position);
+
+        },
+        stop: function( event, ui ) {
+
+            if(!wcps_is_busy()){
+                wcps_make_busy();
+            }
+
+            formDataObj = wcps_get_form_data_obj();
+
+            //console.log(formDataObj);
+
+            //reinitiateOwl(formDataObj.slider_options);
+
+            layer_data = formDataObj['layer_data'];
+            layer_element_ids = formDataObj['layer_element_ids'];
+
+            console.log(layer_element_ids);
+
+
+            layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+            $('.owl-carousel').html(layerHtml);
+
+
+
+            reinitiateOwl(formDataObj.slider_options);
+            wcps_remove_busy();
+        }
+    });
 
 
     function generateLayerCss(layer_data){
@@ -643,8 +710,6 @@ jQuery(document).ready(function($) {
 
                     styleIndexVal = element_style_hover[styleIndex];
 
-                    //console.log(styleIndex);
-                    //console.log(styleIndexVal);
 
                     if(styleIndex == 'color'){
                         html += 'color:'+styleIndexVal+';';
@@ -667,7 +732,6 @@ jQuery(document).ready(function($) {
 
                 html += '}';
 
-                //console.log(element_id);
             }
 
         }
@@ -695,7 +759,6 @@ jQuery(document).ready(function($) {
         $(wrap.children('.media-input-'+media)).fadeIn(200);
 
 
-        //console.log(media);
 
     })
 

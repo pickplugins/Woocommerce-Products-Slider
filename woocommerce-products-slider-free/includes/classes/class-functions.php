@@ -170,8 +170,8 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
                 'elements' => array(
                     'title',
                     'excerpt',
-                    'price',
-                    'sku',
+//                    'price',
+//                    'sku',
 //                    'category',
 //                    'tag',
 //                    'rating',
