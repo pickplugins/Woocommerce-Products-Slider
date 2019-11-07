@@ -18,6 +18,7 @@
     width: 90px;
     z-index: 10;
     transition: all ease 1s;
+    text-align: center;
 }
 
 
@@ -105,6 +106,98 @@
     bottom: 0;
     left: 0;
 }
+
+
+
+/* Featured marker CSS middle */
+
+.element-featured[data-position="topleft"]{
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+.element-featured[data-position="topright"]{
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+.element-featured[data-position="bottomleft"]{
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+.element-featured[data-position="bottomright"]{
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+
+.wcps-container .element-featured {
+    background: #fff url("images/featured.png") no-repeat scroll 4px 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 0 #999;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    height: 40px;
+    /*left: 10px;*/
+    padding: 0;
+    /*position: absolute;*/
+    /*top: 10px;*/
+    width: 40px;
+}
+
+
+
+
+
+
+/* Sale marker CSS */
+
+
+.wcps-container .element-sale {
+    background: #fff url("images/sale.png") no-repeat scroll 8px 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px -2px #000;
+    height: 50px;
+    width: 50px;
+}
+
+
+
+.element-sale[data-position="topleft"]{
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+.element-sale[data-position="topright"]{
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+.element-sale[data-position="bottomleft"]{
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+.element-sale[data-position="bottomright"]{
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+
+
+
+
+
+
 
 
 
@@ -362,19 +455,7 @@ right: -40px;
   width: 50px;
 }
 
-.wcps-container div.wcps-featured {
-  background: #fff url("images/featured.png") no-repeat scroll 4px 4px;
-  border-radius: 50%;
-  box-shadow: 0 0 2px 0 #999;
-  color: rgb(255, 255, 255);
-  font-size: 12px;
-  height: 40px;
-  left: 10px;
-  padding: 0;
-  position: absolute;
-  top: 10px;
-  width: 40px;
-}
+
 
 .wcps-container div.wcps-sale {
   background: url("images/sale.png") no-repeat scroll 0 center rgb(241, 241, 241);

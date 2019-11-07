@@ -4,7 +4,7 @@
 
 
 .control-group{
-    margin: 10px 0;
+    margin: 10px 0 0 0;
 }
 
 
@@ -52,6 +52,7 @@
 
 .control-group .control-group-body[data-active="active"]{
     display: block;
+    background: #3e58801c;
 }
 
 
@@ -157,13 +158,13 @@
 
 .control-input input[type="text"], .control-input input[type="number"], .control-input textarea, .control-input select, .control-input input[type="range"] {
     width: 100%;
-    background: #f1f1f1;
+    background: #ffffff;
     padding: 0.3em;
 }
 
 .control-group-body .control-wrap .control-input input[type="text"], .control-group-body .control-wrap .control-input input[type="number"], .control-group-body .control-wrap .control-input textarea, .control-group-body .control-wrap .control-input select, .control-group-body .control-wrap .control-input input[type="range"] {
     width: 95%;
-    background: #f1f1f1;
+    background: #ffffff;
     padding: 0.3em;
 }
 

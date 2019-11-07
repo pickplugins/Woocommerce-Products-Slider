@@ -170,15 +170,15 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
                 'elements' => array(
                     'title',
                     'excerpt',
-//                    'price',
-//                    'sku',
-//                    'category',
-//                    'tag',
-//                    'rating',
-//                    'cart',
-//                    'sale',
-//                    'featured',
-//                    'sale_count',
+                    'price',
+                    'sku',
+                    'category',
+                    'tag',
+                    'rating',
+                    'cart',
+                    'sale',
+                    'featured',
+                    'sale_count',
 
 
 
@@ -190,7 +190,6 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
                 'icon' => '',
                 'elements' => array(
                     'thumb',
-                    'excerpt',
                 ),
             );
 
@@ -311,11 +310,11 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             $elements['sale'] = array(
                 'name'=>__('Sale', 'woocommerce-products-slider'),
-                'dummy_html'=> 'On Sale',
+                'dummy_html'=> '',
             );
             $elements['featured'] = array(
                 'name'=>__('Featured', 'woocommerce-products-slider'),
-                'dummy_html'=> '<div title="Featured Product" class="wcps-featured"></div>',
+                'dummy_html'=> '',
             );
             $elements['sale_count'] = array(
                 'name'=>__('Sale Count', 'woocommerce-products-slider'),

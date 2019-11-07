@@ -853,6 +853,7 @@ function wcps_builder_tools($post_id){
                     $wcps_ribbon_custom = get_post_meta($post_id, 'wcps_ribbon_custom', true);
                     $wcps_ribbon_position = get_post_meta($post_id, 'wcps_ribbon_position', true);
                     $ribbon_bg_color = get_post_meta($post_id, 'ribbon_bg_color', true);
+                    $ribbon_text_color = get_post_meta($post_id, 'ribbon_text_color', true);
 
 
                     $wcps_container_padding = get_post_meta($post_id, 'wcps_container_padding', true);
@@ -936,6 +937,20 @@ function wcps_builder_tools($post_id){
                                 'details'	=> __('Set custom background color for ribbon.','woocommerce-products-slider'),
                                 'type'		=> 'spectrum',
                                 'value'		=> $ribbon_bg_color,
+                                'default'		=> '',
+                            );
+
+                            $wcps_builder_control->generate_field($args);
+
+                            $args = array(
+                                'id'		=> 'ribbon_text_color',
+                                'parent'		=> 'style_options',
+                                'control_group_class'		=> '',
+                                'control_desc_class'		=> 'left-middle',
+                                'title'		=> __('Ribbon background color','woocommerce-products-slider'),
+                                'details'	=> __('Set custom background color for ribbon.','woocommerce-products-slider'),
+                                'type'		=> 'spectrum',
+                                'value'		=> $ribbon_text_color,
                                 'default'		=> '',
                             );
 

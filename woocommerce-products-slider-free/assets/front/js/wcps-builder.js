@@ -134,52 +134,19 @@ jQuery(document).ready(function($) {
 
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
+                elementData = elementsData[elementIndex];
 
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
-                html += wcps_elements[element_id]['dummy_html'];
-                html += '</div>';
-            }
+                elementAttr = '';
 
-            html += '</div>';
-        }
+                if(element_id =='featured' || element_id =='sale'){
+                    console.log(elementData);
+                    position = elementData['position'];
 
-        html += '</div>';
+                    elementAttr = 'data-position="'+position+'"';
+                }
 
-        html += '<div class="wcps-items  skin flat">';
 
-        for(layerId in layer_element_ids){
-
-            layerElements = layer_element_ids[layerId];
-            elementsData = layer_data[layerId];
-
-            html += '<div class="layer-'+layerId+'">';
-
-            for(elementIndex in layerElements){
-                element_id = layerElements[elementIndex];
-
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
-                html += wcps_elements[element_id]['dummy_html'];
-                html += '</div>';
-            }
-
-            html += '</div>';
-        }
-
-        html += '</div>';
-
-        html += '<div class="wcps-items  skin flat">';
-
-        for(layerId in layer_element_ids){
-
-            layerElements = layer_element_ids[layerId];
-            elementsData = layer_data[layerId];
-
-            html += '<div class="layer-'+layerId+'">';
-
-            for(elementIndex in layerElements){
-                element_id = layerElements[elementIndex];
-
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -201,54 +168,19 @@ jQuery(document).ready(function($) {
 
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
+                elementData = elementsData[elementIndex];
 
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
-                html += wcps_elements[element_id]['dummy_html'];
-                html += '</div>';
-            }
+                elementAttr = '';
 
-            html += '</div>';
-        }
+                if(element_id =='featured' || element_id =='sale'){
+                    console.log(elementData);
+                    position = elementData['position'];
 
-        html += '</div>';
-
-
-        html += '<div class="wcps-items  skin flat">';
-
-        for(layerId in layer_element_ids){
-
-            layerElements = layer_element_ids[layerId];
-            elementsData = layer_data[layerId];
-
-            html += '<div class="layer-'+layerId+'">';
-
-            for(elementIndex in layerElements){
-                element_id = layerElements[elementIndex];
-
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
-                html += wcps_elements[element_id]['dummy_html'];
-                html += '</div>';
-            }
-
-            html += '</div>';
-        }
-
-        html += '</div>';
+                    elementAttr = 'data-position="'+position+'"';
+                }
 
 
-        html += '<div class="wcps-items  skin flat">';
-
-        for(layerId in layer_element_ids){
-
-            layerElements = layer_element_ids[layerId];
-            elementsData = layer_data[layerId];
-
-            html += '<div class="layer-'+layerId+'">';
-
-            for(elementIndex in layerElements){
-                element_id = layerElements[elementIndex];
-
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -269,8 +201,118 @@ jQuery(document).ready(function($) {
 
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
+                elementData = elementsData[elementIndex];
 
-                html += '<div class="element-'+elementIndex+' element-'+element_id+'">';
+                elementAttr = '';
+
+                if(element_id =='featured' || element_id =='sale'){
+                    console.log(elementData);
+                    position = elementData['position'];
+
+                    elementAttr = 'data-position="'+position+'"';
+                }
+
+
+                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
+                elementData = elementsData[elementIndex];
+
+                elementAttr = '';
+
+                if(element_id =='featured' || element_id =='sale'){
+                    console.log(elementData);
+                    position = elementData['position'];
+
+                    elementAttr = 'data-position="'+position+'"';
+                }
+
+
+                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
+                elementData = elementsData[elementIndex];
+
+                elementAttr = '';
+
+                if(element_id =='featured' || element_id =='sale'){
+                    console.log(elementData);
+                    position = elementData['position'];
+
+                    elementAttr = 'data-position="'+position+'"';
+                }
+
+
+                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += wcps_elements[element_id]['dummy_html'];
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        html += '<div class="wcps-items  skin flat">';
+
+        for(layerId in layer_element_ids){
+
+            layerElements = layer_element_ids[layerId];
+            elementsData = layer_data[layerId];
+
+            html += '<div class="layer-'+layerId+'">';
+
+            for(elementIndex in layerElements){
+                element_id = layerElements[elementIndex];
+                elementData = elementsData[elementIndex];
+
+                elementAttr = '';
+
+                if(element_id =='featured' || element_id =='sale'){
+                    console.log(elementData);
+                    position = elementData['position'];
+
+                    elementAttr = 'data-position="'+position+'"';
+                }
+
+
+                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -498,6 +540,8 @@ jQuery(document).ready(function($) {
         wcps_ribbon_name = formDataObj.style_options.wcps_ribbon_name;
         wcps_ribbon_custom = formDataObj.style_options.wcps_ribbon_custom;
         wcps_ribbon_position = formDataObj.style_options.wcps_ribbon_position;
+        ribbon_bg_color = formDataObj.style_options.ribbon_bg_color;
+        ribbon_text_color = formDataObj.style_options.ribbon_text_color;
 
 
 
@@ -513,8 +557,21 @@ jQuery(document).ready(function($) {
         }else if(wcps_ribbon_name == 'custom'){
             $('.wcps-container .wcps-ribbon').fadeIn();
 
-            $('.wcps-container .wcps-ribbon').css('background', "url("+wcps_ribbon_custom+") no-repeat scroll 0 0 "+ribbon_bg_color+"");
+            isUrl = wcps_ribbon_custom.indexOf('http');
+
+            if(isUrl >= 0){
+                $('.wcps-container .wcps-ribbon').css('background', "url("+wcps_ribbon_custom+") no-repeat scroll 0 0 ");
+            }else{
+                $('.wcps-container .wcps-ribbon').css('background', ribbon_bg_color);
+                $('.wcps-container .wcps-ribbon').css('color', ribbon_text_color);
+
+                $('.wcps-container .wcps-ribbon').html(wcps_ribbon_custom);
+            }
+
+            //
         }else{
+            $('.wcps-container .wcps-ribbon').html('');
+
             $('.wcps-container .wcps-ribbon').fadeIn();
             wcps_ribbon_url = wcps_plugin_url+'assets/front/images/ribbons/'+wcps_ribbon_name+'.png';
 
@@ -556,7 +613,7 @@ jQuery(document).ready(function($) {
 
 
         if(!wcps_is_busy()){
-            wcps_make_busy();
+            //wcps_make_busy();
         }
 
         $.ajax(
