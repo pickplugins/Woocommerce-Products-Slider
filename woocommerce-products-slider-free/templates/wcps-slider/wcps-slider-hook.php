@@ -390,9 +390,15 @@ function wcps_loop_item($loop_product_id, $atts){
                 <?php
 
                 if(!empty($layer_elements))
-                foreach ($layer_elements as $element_key => $element){
+                foreach ($layer_elements as $element_index => $element){
 
-                    do_action("wcps_layer_element_$element_key");
+                    $element_args = array('product_id'=> $loop_product_id, 'index'=>$element_index);
+
+                    do_action("wcps_layer_element_$element", $element_args);
+
+
+
+                    //echo $element;
 
                 }
 
@@ -404,16 +410,6 @@ function wcps_loop_item($loop_product_id, $atts){
 
         ?>
 
-        <?php
-
-        $html = '';
-
-
-        //include wcps_plugin_dir . '/templates/layer-media.php';
-        //include wcps_plugin_dir . '/templates/layer-content.php';
-
-        echo $html;
-        ?>
 
     </div>
     <?php

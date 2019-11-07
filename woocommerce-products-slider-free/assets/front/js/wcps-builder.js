@@ -1,6 +1,13 @@
 jQuery(document).ready(function($) {
 
 
+    $(".spectrum").spectrum({
+        showAlpha: true,
+        preferredFormat: "rgb",
+        showInput: true,
+    });
+
+
     (function($){
         $.fn.getForm2obj = function(){
             var _ = {},_t=this;
@@ -139,8 +146,9 @@ jQuery(document).ready(function($) {
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
+
                     console.log(elementData);
-                    position = elementData['position'];
+                    position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
                 }

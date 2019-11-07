@@ -113,11 +113,12 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][idle]',
                             'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_title_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -173,11 +174,12 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'_style_hover',
                             'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_title_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -310,11 +312,12 @@ function layer_element_options_excerpt($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][idle]',
                             'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_excerpt_font_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -351,11 +354,12 @@ function layer_element_options_excerpt($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'parent'		=> $option_name.'[style][hover]',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items excerpt text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_excerpt_font_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -503,10 +507,11 @@ function layer_element_options_price($args){
                             'parent'		=> $option_name.'[style][idle]',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_price_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -537,11 +542,12 @@ function layer_element_options_price($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items price text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_price_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -563,10 +569,11 @@ function layer_element_options_price($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_price_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -597,11 +604,12 @@ function layer_element_options_price($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items price text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_price_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -709,10 +717,11 @@ function layer_element_options_category($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items category font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_cat_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -739,11 +748,12 @@ function layer_element_options_category($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][idle]',
                             'parent'		=> $option_name.'[style][idle]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items category text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_cat_font_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -764,10 +774,11 @@ function layer_element_options_category($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items category font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_cat_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -795,11 +806,12 @@ function layer_element_options_category($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items category text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_cat_font_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -909,10 +921,11 @@ function layer_element_options_tag($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_tag_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -940,11 +953,12 @@ function layer_element_options_tag($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][idle]',
                             'parent'		=> $option_name.'[style][idle]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items tag text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_tag_font_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -966,10 +980,11 @@ function layer_element_options_tag($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_tag_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -997,11 +1012,12 @@ function layer_element_options_tag($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items tag text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_tag_font_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1089,10 +1105,11 @@ function layer_element_options_rating($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_ratings_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1121,11 +1138,12 @@ function layer_element_options_rating($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_ratings_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1147,10 +1165,11 @@ function layer_element_options_rating($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_ratings_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1179,11 +1198,12 @@ function layer_element_options_rating($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_items_ratings_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1314,10 +1334,11 @@ function layer_element_options_cart($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_cart_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1360,11 +1381,12 @@ function layer_element_options_cart($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_cart_text_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1386,10 +1408,11 @@ function layer_element_options_cart($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> $wcps_items_cart_font_size,
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1432,11 +1455,12 @@ function layer_element_options_cart($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> $wcps_cart_text_color,
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1561,10 +1585,11 @@ function layer_element_options_sale($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1607,11 +1632,12 @@ function layer_element_options_sale($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1633,10 +1659,11 @@ function layer_element_options_sale($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1679,11 +1706,12 @@ function layer_element_options_sale($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1810,10 +1838,11 @@ function layer_element_options_featured($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1856,11 +1885,12 @@ function layer_element_options_featured($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -1882,10 +1912,11 @@ function layer_element_options_featured($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -1928,11 +1959,12 @@ function layer_element_options_featured($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -2038,10 +2070,11 @@ function layer_element_options_sale_count($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -2084,11 +2117,12 @@ function layer_element_options_sale_count($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -2110,10 +2144,11 @@ function layer_element_options_sale_count($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -2156,11 +2191,12 @@ function layer_element_options_sale_count($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -2356,10 +2392,11 @@ function layer_element_options_thumb($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -2402,11 +2439,12 @@ function layer_element_options_thumb($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -2428,10 +2466,11 @@ function layer_element_options_thumb($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -2474,11 +2513,12 @@ function layer_element_options_thumb($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -2583,10 +2623,11 @@ function layer_element_options_sku($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -2629,11 +2670,12 @@ function layer_element_options_sku($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',
@@ -2655,10 +2697,11 @@ function layer_element_options_sku($args){
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items tag font size','woocommerce-products-slider'),
-                            'type'		=> 'text',
-                            'value'		=> '',
-                            'default'		=> '',
-                            'placeholder'		=> '',
+                            'type'		=> 'font_size',
+                            'responsive'=> false,
+                            'value'		=> array('size'=>12, 'unit'=>'px'),
+                            'default'		=> array('size'=>12, 'unit'=>'px'),
+                            'placeholder'		=> '12',
                         );
 
                         $wcps_builder_control->generate_field($args);
@@ -2701,11 +2744,12 @@ function layer_element_options_sku($args){
 
                         $args = array(
                             'id'		=> 'color',
+                            'css_id'		=> $option_name.'[style][hover]',
                             'parent'		=> $option_name.'[style][hover]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items cart text color','woocommerce-products-slider'),
-                            'type'		=> 'text',
+                            'type'		=> 'spectrum',
                             'value'		=> '',
                             'default'		=> '',
                             'placeholder'		=> '',

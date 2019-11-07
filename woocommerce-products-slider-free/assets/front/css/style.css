@@ -196,10 +196,16 @@
 
 
 
+.element-rating .star-rating{
+    float: none !important;
+}
 
-
-
-
+.element-cart{}
+.element-cart p{
+    border: medium none !important;
+    margin: 0 !important;
+    padding: 0 !important
+}
 
 
 /* Navigation CSS middle */

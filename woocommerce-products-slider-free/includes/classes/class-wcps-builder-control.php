@@ -1705,12 +1705,7 @@ class wcps_builder_control{
 
         ob_start();
         ?>
-        <input name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
-        <script>jQuery(document).ready(function($) { $("#<?php echo $css_id; ?>").spectrum({
-                showAlpha: true,
-                preferredFormat: "rgb",
-                showInput: true,
-            });});</script>
+        <input class="spectrum" name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
         <?php
 
         $input_html = ob_get_clean();
