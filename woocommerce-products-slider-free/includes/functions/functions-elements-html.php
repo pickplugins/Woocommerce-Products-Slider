@@ -244,7 +244,7 @@ function wcps_layer_element_sale($element_args){
     $index = $element_args['index'];
 
     ?>
-    <div class="element-<?php echo $index; ?> element-sale">
+    <div data-position="topright" class="element-<?php echo $index; ?> element-sale">
 
     </div>
 
@@ -264,7 +264,7 @@ function wcps_layer_element_featured($element_args){
 
 
     ?>
-    <div class="element-<?php echo $index; ?> element-featured">
+    <div  data-position="topleft" class="element-<?php echo $index; ?> element-featured">
 
     </div>
 

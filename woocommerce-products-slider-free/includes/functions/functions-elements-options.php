@@ -39,7 +39,6 @@ function layer_element_options_title($args){
                 <div class="tab-navs">
                     <div class="tab-nav active" data-panel="1"><span class="tab-nav-title">Idle</span></div>
                     <div class="tab-nav" data-panel="2"><span class="tab-nav-title">Hover</span></div>
-
                 </div>
 
                 <div class="tab-panels">
@@ -61,7 +60,7 @@ function layer_element_options_title($args){
 
                         $args = array(
                             'id'		=> 'layer_element_ids['.$layer_key.'][]',
-                            //'parent'		=> 'layer_elements_id'.$layer_key.'[]',
+                            //'parent'		=> '',
                             'title'		=> __('Element id','woocommerce-products-slider'),
                             'details'	=> '',
                             'type'		=> 'hidden',
@@ -80,7 +79,7 @@ function layer_element_options_title($args){
                             'title'		=> __('Font size','woocommerce-products-slider'),
                             'details'	=> __('Items title font size','woocommerce-products-slider'),
                             'type'		=> 'font_size',
-                            'responsive'=> true,
+                            //'responsive'=> true,
                             'value'		=> $wcps_items_title_font_size,
                             'default'		=> array('size'=>12, 'unit'=>'px'),
                             'placeholder'		=> '12',

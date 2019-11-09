@@ -403,6 +403,8 @@ jQuery(document).ready(function($) {
 
     $(document).on('click', '.elements span', function(){
 
+        wcps_id = wcps.wcps_id;
+
         active_layer = wcps.active_layer;
 
         element = $(this).attr('data-element');
@@ -420,6 +422,8 @@ jQuery(document).ready(function($) {
                     "action" 	: "wcps_ajax_elements_settings_html",
                     "element" : element,
                     "active_layer" : active_layer,
+                    "wcps_id" : wcps_id,
+
 
                 },
                 success: function( response ) {
@@ -440,6 +444,12 @@ jQuery(document).ready(function($) {
                     layerHtml = generateLayerHtml(layer_data, layer_element_ids);
                     $('.owl-carousel').html(layerHtml);
                     reinitiateOwl(formDataObj.slider_options);
+
+                    $(".spectrum").spectrum({
+                        showAlpha: true,
+                        preferredFormat: "rgb",
+                        showInput: true,
+                    });
 
                     wcps_remove_busy();
 
@@ -696,16 +706,16 @@ jQuery(document).ready(function($) {
             // puts the old positions into array before sorting
             var old_position = ui.item.index();
 
-            //console.log(old_position);
+            console.log(old_position);
         },
         update: function(event, ui) {
             // grabs the new positions now that we've finished sorting
             var new_position = ui.item.index();
 
-            //console.log(new_position);
+            console.log(new_position);
 
         },
-        stop: function( event, ui ) {
+        stop: function( event, ui ){
 
             if(!wcps_is_busy()){
                 wcps_make_busy();

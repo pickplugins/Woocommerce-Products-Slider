@@ -6,11 +6,19 @@ add_action('wp_ajax_wcps_ajax_elements_settings_html', 'wcps_ajax_elements_setti
 
 function wcps_ajax_elements_settings_html(){
 
-$time = time();
+    $class_wcps_functions = new class_wcps_functions();
+    $wcps_elements = $class_wcps_functions->wcps_elements();
 
+
+
+    $time = time();
+    $args = array();
 
     $element = isset($_POST['element']) ? $_POST['element'] : '';
     $active_layer = isset($_POST['active_layer']) ? $_POST['active_layer'] : '';
+    $wcps_id = isset($_POST['wcps_id']) ? $_POST['wcps_id'] : '';
+
+    $element_name = isset($wcps_elements[$element]['name']) ?$wcps_elements[$element]['name'] : 'Name missing';
 
 
     $response = array();
@@ -18,58 +26,36 @@ $time = time();
     $html = array();
 
     ob_start();
+
+
     ?>
     <div class="element ">
-        <div class="element-title ui-sortable-handle" data-element="title">
-            Title                                                            <span class="element-remove"><i class="fas fa-times"></i></span>
+        <div class="element-title" data-element="<?php echo $element; ?>">
+            <?php echo $element_name; ?>
+            <span class="element-remove"><i class="fas fa-times"></i></span>
         </div>
-        <div class="element-options">
+        <div class="element-options" >
 
-            <div class="control-wrap hidden">
-                <div class="control-title">Element id
-                    <span  data-title="" class="control-description"><i class="far fa-question-circle"></i></span>
-                </div>
-                <div class="control-input">        <input type="hidden" class="" name="layer_data[content]['<?php echo $time; ?>'][element_id]" id="element_id" placeholder="" value="title">
-                </div>
-            </div>
+            <?php
 
-            <div class="control-wrap hidden">
-                <div class="control-title">Element
-                    <span data-title="" class="control-description top-middle"><i class="far fa-question-circle"></i></span>
-                </div>
-                <div class="control-input">        <input type="hidden" class="" name="layer_element_ids[<?php echo $active_layer; ?>][]" id="layer_element_ids[<?php echo $active_layer; ?>][]" placeholder="" value="title">
-                </div>
-            </div>
+            $option_name = 'layer_data['.$active_layer.']['.$time.']';
 
-            <div class="control-wrap ">
-                <div class="control-title">Font size
-                    <span  data-title="Items title font size" class="control-description"><i class="far fa-question-circle"></i></span>
-                </div>
-                <div class="control-input">        <input type="text" class="" name="layer_data[content]['<?php echo $time; ?>'][wcps_items_title_font_size]" id="wcps_items_title_font_size" placeholder="" value="">
-                </div>
-            </div>
-            <div class="control-wrap ">
-                <div class="control-title">Text align
-                    <span  data-title="Items title text align" class="control-description"><i class="far fa-question-circle"></i></span>
-                </div>
-                <div class="control-input">        <select name="layer_data[content]['<?php echo $time; ?>'][wcps_items_title_text_align]" id="wcps_items_title_text_align">
-                        <option selected="" value="left">Left</option>
-                        <option value="right">Right</option>
-                        <option value="center">Center</option>
-                    </select>
-                </div>
-            </div>
-            <div class="control-wrap ">
-                <div class="control-title">Font size
-                    <span  data-title="Items title font size" class="control-description"><i class="far fa-question-circle"></i></span>
-                </div>
-                <div class="control-input">        <input type="text" class="" name="layer_data[content]['<?php echo $time; ?>'][wcps_items_title_color]" id="wcps_items_title_color" placeholder="" value="#626262">
-                </div>
-            </div>
+            $args = array(
+                'wcps_id'=>$wcps_id,
+                'option_name'=> $option_name,
+                'layer_key'=> $active_layer,
+                'index'=> $time,
 
+            );
+
+            do_action("layer_element_options_$element", $args);
+
+            ?>
         </div>
     </div>
     <?php
+
+
 
     $html['title'] = ob_get_clean();
 

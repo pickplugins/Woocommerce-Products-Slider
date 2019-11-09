@@ -163,6 +163,14 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
         public function wcps_layers(){
 
+            $layers['media'] = array(
+                'name' => 'Media',
+                'icon' => '',
+                'elements' => array(
+                    'thumb',
+                ),
+            );
+
             $layers['content'] = array(
                 'name' => 'Content',
                 'icon' => '',
@@ -171,27 +179,21 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
                     'title',
                     'excerpt',
                     'price',
-                    'sku',
-                    'category',
-                    'tag',
-                    'rating',
-                    'cart',
-                    'sale',
-                    'featured',
-                    'sale_count',
+//                    'sku',
+//                    'category',
+//                    'tag',
+//                    'rating',
+//                    'cart',
+//                    'sale',
+//                    'featured',
+//                    'sale_count',
 
 
 
                 ),
             );
 
-            $layers['media'] = array(
-                'name' => 'Media',
-                'icon' => '',
-                'elements' => array(
-                    'thumb',
-                ),
-            );
+
 
 
             $layers = apply_filters('wcps_skin_layers', $layers);
