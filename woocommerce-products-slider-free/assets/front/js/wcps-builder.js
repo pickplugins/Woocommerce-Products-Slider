@@ -125,8 +125,9 @@ jQuery(document).ready(function($) {
 
 
 
-    function generateLayerHtml(layer_data, layer_element_ids){
+    function generateLayerHtml(layer_data, layer_element_ids, layer_element_index){
 
+        //console.log(layer_element_index);
 
 
         html = '';
@@ -142,6 +143,9 @@ jQuery(document).ready(function($) {
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
+                index = layer_element_index[layerId][elementIndex]
+                console.log(index);
+
 
                 elementAttr = '';
 
@@ -154,7 +158,7 @@ jQuery(document).ready(function($) {
                 }
 
 
-                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+index+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -177,18 +181,22 @@ jQuery(document).ready(function($) {
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
+                index = layer_element_index[layerId][elementIndex]
+                console.log(index);
+
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
+
                     console.log(elementData);
-                    position = elementData['position'];
+                    position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
                 }
 
 
-                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+index+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -210,18 +218,22 @@ jQuery(document).ready(function($) {
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
+                index = layer_element_index[layerId][elementIndex]
+                console.log(index);
+
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
+
                     console.log(elementData);
-                    position = elementData['position'];
+                    position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
                 }
 
 
-                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+index+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -243,18 +255,22 @@ jQuery(document).ready(function($) {
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
+                index = layer_element_index[layerId][elementIndex]
+                console.log(index);
+
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
+
                     console.log(elementData);
-                    position = elementData['position'];
+                    position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
                 }
 
 
-                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+index+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -276,51 +292,22 @@ jQuery(document).ready(function($) {
             for(elementIndex in layerElements){
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
+                index = layer_element_index[layerId][elementIndex]
+                console.log(index);
+
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
+
                     console.log(elementData);
-                    position = elementData['position'];
+                    position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
                 }
 
 
-                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
-                html += wcps_elements[element_id]['dummy_html'];
-                html += '</div>';
-            }
-
-            html += '</div>';
-        }
-
-        html += '</div>';
-
-        html += '<div class="wcps-items  skin flat">';
-
-        for(layerId in layer_element_ids){
-
-            layerElements = layer_element_ids[layerId];
-            elementsData = layer_data[layerId];
-
-            html += '<div class="layer-'+layerId+'">';
-
-            for(elementIndex in layerElements){
-                element_id = layerElements[elementIndex];
-                elementData = elementsData[elementIndex];
-
-                elementAttr = '';
-
-                if(element_id =='featured' || element_id =='sale'){
-                    console.log(elementData);
-                    position = elementData['position'];
-
-                    elementAttr = 'data-position="'+position+'"';
-                }
-
-
-                html += '<div '+elementAttr+' class="element-'+elementIndex+' element-'+element_id+'">';
+                html += '<div '+elementAttr+' class="element-'+index+' element-'+element_id+'">';
                 html += wcps_elements[element_id]['dummy_html'];
                 html += '</div>';
             }
@@ -438,10 +425,11 @@ jQuery(document).ready(function($) {
 
                     layer_data = formDataObj['layer_data'];
                     layer_element_ids = formDataObj['layer_element_ids'];
+                    layer_element_index = formDataObj['layer_element_index'];
 
                     console.log(layer_element_ids);
 
-                    layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+                    layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
                     $('.owl-carousel').html(layerHtml);
                     reinitiateOwl(formDataObj.slider_options);
 
@@ -499,8 +487,9 @@ jQuery(document).ready(function($) {
 
         layer_data = wcps.formData['layer_data'];
         layer_element_ids = wcps.formData['layer_element_ids'];
+        layer_element_index = wcps.formData['layer_element_index'];
 
-        layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+        layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
         $('.owl-carousel').html(layerHtml);
         reinitiateOwl(formDataObj.slider_options);
 
@@ -624,8 +613,9 @@ jQuery(document).ready(function($) {
 
         layer_data = formDataObj['layer_data'];
         layer_element_ids = formDataObj['layer_element_ids'];
+        layer_element_index = formDataObj['layer_element_index'];
 
-        layerCss = generateLayerCss(layer_data);
+        layerCss = generateLayerCss(layer_data, layer_element_index);
 
         $('.wcps-container').append(layerCss);
 
@@ -651,7 +641,7 @@ jQuery(document).ready(function($) {
                     //$('.owl-carousel').html(html);
                     //console.log(layer_data);
 
-                    layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+                    layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
                     $('.owl-carousel').html(layerHtml);
 
 
@@ -687,11 +677,12 @@ jQuery(document).ready(function($) {
 
             layer_data = formDataObj['layer_data'];
             layer_element_ids = formDataObj['layer_element_ids'];
+            layer_element_index = formDataObj['layer_element_index'];
 
             console.log(layer_element_ids);
 
 
-            layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+            layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
             $('.owl-carousel').html(layerHtml);
 
 
@@ -700,19 +691,23 @@ jQuery(document).ready(function($) {
             wcps_remove_busy();
         }
     });
+
+
+
+
     $(".layer-elements").sortable({
         handle: '.element-title',
         start: function(e, ui) {
             // puts the old positions into array before sorting
             var old_position = ui.item.index();
 
-            console.log(old_position);
+            //console.log(old_position);
         },
         update: function(event, ui) {
             // grabs the new positions now that we've finished sorting
             var new_position = ui.item.index();
 
-            console.log(new_position);
+            //console.log(new_position);
 
         },
         stop: function( event, ui ){
@@ -729,11 +724,12 @@ jQuery(document).ready(function($) {
 
             layer_data = formDataObj['layer_data'];
             layer_element_ids = formDataObj['layer_element_ids'];
+            layer_element_index = formDataObj['layer_element_index'];
 
-            console.log(layer_element_ids);
+            console.log(layer_element_index);
 
 
-            layerHtml = generateLayerHtml(layer_data, layer_element_ids);
+            layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
             $('.owl-carousel').html(layerHtml);
 
 
@@ -744,7 +740,7 @@ jQuery(document).ready(function($) {
     });
 
 
-    function generateLayerCss(layer_data){
+    function generateLayerCss(layer_data, layer_element_index){
 
         html = '<style type="text/css">';
 
@@ -752,12 +748,17 @@ jQuery(document).ready(function($) {
             elements = layer_data[layerId];
 
             for(elementIndex in elements){
+                console.log(elements);
+                index = layer_element_index[layerId][elementIndex];
 
-                element_id = elements[elementIndex]['element_id'];
-                element_style = elements[elementIndex]['style'];
-                element_style_idle = elements[elementIndex]['style']['idle'];
-                element_style_hover = elements[elementIndex]['style']['hover'];
-                html += '.layer-'+layerId+' .element-'+elementIndex+'{';
+                element_id = elements[index]['element_id'];
+                element_style = elements[index]['style'];
+                element_style_idle = elements[index]['style']['idle'];
+                element_style_hover = elements[index]['style']['hover'];
+
+
+
+                html += '.layer-'+layerId+' .element-'+index+'{';
 
                 for(styleIndex in element_style_idle){
 

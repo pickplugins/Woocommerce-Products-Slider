@@ -61,6 +61,8 @@ class settings_tabs_field{
         elseif( isset($option['type']) && $option['type'] === 'media')	        $this->field_media( $option );
         elseif( isset($option['type']) && $option['type'] === 'media_url')	    $this->field_media_url( $option );
 
+        elseif( isset($option['type']) && $option['type'] === 'hidden' ) 		    $this->field_hidden( $option );
+
 
 
         elseif( isset($option['type']) && $option['type'] === $type ) 	do_action( "settings_tabs_field_$type", $option );
@@ -690,6 +692,56 @@ class settings_tabs_field{
         echo sprintf($field_template, $title, $input_html, $details);
 
     }
+
+
+    public function field_hidden( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+        $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value 	= isset( $option['value'] ) ? $option['value'] : $default;
+
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+       // $value = !empty($value) ? $value : $default;
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
+        }
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+
+        ob_start();
+        ?>
+        <input type="hidden" class="" name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $input_html, $details);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

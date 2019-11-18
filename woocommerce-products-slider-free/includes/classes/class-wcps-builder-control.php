@@ -844,14 +844,15 @@ class wcps_builder_control{
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
-        $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
+
+        $value 	= isset( $option['value'] ) ? $option['value'] : $default;
         $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
 
-        $value = !empty($value) ? $value : $default;
+        //$value = !empty($value) ? $value : $default;
 
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
