@@ -144,14 +144,14 @@ jQuery(document).ready(function($) {
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
                 index = layer_element_index[layerId][elementIndex]
-                console.log(index);
+                //console.log(index);
 
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
 
-                    console.log(elementData);
+                    //console.log(elementData);
                     position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
@@ -182,14 +182,14 @@ jQuery(document).ready(function($) {
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
                 index = layer_element_index[layerId][elementIndex]
-                console.log(index);
+                //console.log(index);
 
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
 
-                    console.log(elementData);
+                    //console.log(elementData);
                     position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
@@ -219,14 +219,14 @@ jQuery(document).ready(function($) {
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
                 index = layer_element_index[layerId][elementIndex]
-                console.log(index);
+                //console.log(index);
 
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
 
-                    console.log(elementData);
+                    //console.log(elementData);
                     position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
@@ -256,14 +256,14 @@ jQuery(document).ready(function($) {
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
                 index = layer_element_index[layerId][elementIndex]
-                console.log(index);
+                //console.log(index);
 
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
 
-                    console.log(elementData);
+                    //console.log(elementData);
                     position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
@@ -293,14 +293,14 @@ jQuery(document).ready(function($) {
                 element_id = layerElements[elementIndex];
                 elementData = elementsData[elementIndex];
                 index = layer_element_index[layerId][elementIndex]
-                console.log(index);
+                //console.log(index);
 
 
                 elementAttr = '';
 
                 if(element_id =='featured' || element_id =='sale'){
 
-                    console.log(elementData);
+                    //console.log(elementData);
                     position = (elementData['position']) ? elementData['position'] : '';
 
                     elementAttr = 'data-position="'+position+'"';
@@ -421,13 +421,13 @@ jQuery(document).ready(function($) {
 
                     formDataObj = wcps_get_form_data_obj();
 
-                    console.log(formDataObj);
+                    //console.log(formDataObj);
 
                     layer_data = formDataObj['layer_data'];
                     layer_element_ids = formDataObj['layer_element_ids'];
                     layer_element_index = formDataObj['layer_element_index'];
 
-                    console.log(layer_element_ids);
+                    //console.log(layer_element_ids);
 
                     layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
                     $('.owl-carousel').html(layerHtml);
@@ -536,7 +536,7 @@ jQuery(document).ready(function($) {
         let formDataSerialize = $(this).serializeArray();
         formDataObj = wcps_get_form_data_obj();
 
-        console.log(formDataObj);
+        //console.log(formDataObj);
 
        // wcps_update_edits(formDataSerialize);
 
@@ -679,7 +679,7 @@ jQuery(document).ready(function($) {
             layer_element_ids = formDataObj['layer_element_ids'];
             layer_element_index = formDataObj['layer_element_index'];
 
-            console.log(layer_element_ids);
+            //console.log(layer_element_ids);
 
 
             layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
@@ -726,7 +726,7 @@ jQuery(document).ready(function($) {
             layer_element_ids = formDataObj['layer_element_ids'];
             layer_element_index = formDataObj['layer_element_index'];
 
-            console.log(layer_element_index);
+            //console.log(layer_element_index);
 
 
             layerHtml = generateLayerHtml(layer_data, layer_element_ids, layer_element_index);
@@ -744,14 +744,16 @@ jQuery(document).ready(function($) {
 
         html = '<style type="text/css">';
 
+        console.log(layer_data);
+
         for(layerId in layer_data){
             elements = layer_data[layerId];
 
             for(elementIndex in elements){
-                console.log(elements);
+                //console.log(elements);
                 index = layer_element_index[layerId][elementIndex];
 
-                element_id = elements[index]['element_id'];
+                //element_id = elements[index]['element_id'];
                 element_style = elements[index]['style'];
                 element_style_idle = elements[index]['style']['idle'];
                 element_style_hover = elements[index]['style']['hover'];
@@ -781,7 +783,7 @@ jQuery(document).ready(function($) {
                 }
                 html += '}';
 
-                html += '.layer-'+layerId+' .element-'+elementIndex+':hover{';
+                html += '.layer-'+layerId+' .element-'+index+':hover{';
                 for(styleIndex in element_style_hover){
 
                     styleIndexVal = element_style_hover[styleIndex];

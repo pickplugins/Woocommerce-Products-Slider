@@ -110,7 +110,7 @@ add_action('wcps_ajax_product_loop_item', 'wcps_ajax_product_loop_item',10,2);
 
 function wcps_ajax_product_loop_item($loop_product_id, $input_items){
 
-    $wcps_id = $input_items['id'];
+    $wcps_id = $input_items['wcps_id'];
 
     $wcps_items_thumb_link_target = get_post_meta( $wcps_id, 'wcps_items_thumb_link_target', true );
     $permalink = get_permalink($loop_product_id);

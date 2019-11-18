@@ -2715,6 +2715,7 @@ function layer_element_options_sku($args){
         'value'		=> 'sku',
 
     );
+    $wcps_builder_control->generate_field($args);
 
 
     $args = array(
