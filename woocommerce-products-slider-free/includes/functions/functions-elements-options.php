@@ -579,8 +579,8 @@ function layer_element_options_price($args){
 
                         $args = array(
                             'id'		=> 'color',
-                            'css_id'		=> $option_name.'[style][hover]',
-                            'parent'		=> $option_name.'[style][hover]',
+                            'css_id'		=> $option_name.'[style][idle]',
+                            'parent'		=> $option_name.'[style][idle]',
                             'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text color','woocommerce-products-slider'),
                             'details'	=> __('Items price text color','woocommerce-products-slider'),
@@ -779,6 +779,7 @@ function layer_element_options_category($args){
                         $args = array(
                             'id'		=> 'textAlign',
                             'parent'		=> $option_name.'[style][idle]',
+                            'control_desc_class'		=> 'left-middle',
                             'title'		=> __('Text align','woocommerce-products-slider'),
                             'details'	=> __('Items category text align','woocommerce-products-slider'),
                             'type'		=> 'select',

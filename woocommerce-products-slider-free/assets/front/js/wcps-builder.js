@@ -744,17 +744,20 @@ jQuery(document).ready(function($) {
 
         html = '<style type="text/css">';
 
-        console.log(layer_data);
+        console.log(layer_element_index);
 
         for(layerId in layer_data){
             elements = layer_data[layerId];
 
             for(elementIndex in elements){
-                //console.log(elements);
+
                 index = layer_element_index[layerId][elementIndex];
+                console.log(layerId);
+                console.log(index);
+
 
                 //element_id = elements[index]['element_id'];
-                element_style = elements[index]['style'];
+                //element_style = elements[index]['style'];
                 element_style_idle = elements[index]['style']['idle'];
                 element_style_hover = elements[index]['style']['hover'];
 

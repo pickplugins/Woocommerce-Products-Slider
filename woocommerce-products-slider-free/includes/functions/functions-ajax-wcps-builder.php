@@ -13,7 +13,7 @@ function wcps_ajax_elements_settings_html(){
 
 
 
-    $time = 5;
+    $time = '3';
     $args = array();
 
     $element = isset($_POST['element']) ? $_POST['element'] : '';
