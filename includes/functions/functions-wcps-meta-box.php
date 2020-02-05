@@ -91,6 +91,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
     $wcps_items_thumb_link_target = get_post_meta( $post_id, 'wcps_items_thumb_link_target', true );
+    $wcps_items_thumb_lazy_src = get_post_meta( $post_id, 'wcps_items_thumb_lazy_src', true );
 
 
 	$wcps_items_thumb_max_hieght = get_post_meta( $post_id, 'wcps_items_thumb_max_hieght', true );
@@ -320,74 +321,79 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
                                 </select>
                             </div>
 
+                            <div class="option-box">
+                                <p class="option-title"><?php _e('Lazy load image', 'woocommerce-products-slider');?></p>
+                                <p class="option-info"></p>
+                                <input type="text" name="wcps_items_thumb_lazy_src" placeholder="" id="wcps_items_thumb_lazy_src" value="<?php echo $wcps_items_thumb_lazy_src; ?>" />
+                            </div>
 
-				<div class="option-box">
-                    <p class="option-title"><?php _e('Empty Thumbnail', 'woocommerce-products-slider');?></p>
-                    <p class="option-info"><?php _e('Custom thumbnail image url', 'woocommerce-products-slider');?></p>
-					<input type="text" name="wcps_items_empty_thumb" id="wcps_items_empty_thumb" value="<?php echo $wcps_items_empty_thumb; ?>" /><br /><br />
-                    <input id="wcps_items_empty_thumb_upload" class="wcps_items_empty_thumb_upload button" type="button" value="Upload Image" />
-                       <br /><br />
-
-
-                        <?php
-                        	if(empty($wcps_items_empty_thumb))
-								{
-								?>
-                                <img class="wcps_items_empty_thumb_display" width="300px" src="<?php echo wcps_plugin_url.'assets/front/images/no-thumb.png'; ?>" />
-                                <?php
-								}
-							else
-								{
-								?>
-                                <img class="wcps_items_empty_thumb_display" width="300px" src="<?php echo $wcps_items_empty_thumb; ?>" />
-                                <?php
-								}
-						?>
+                            <div class="option-box">
+                                <p class="option-title"><?php _e('Empty Thumbnail', 'woocommerce-products-slider');?></p>
+                                <p class="option-info"><?php _e('Custom thumbnail image url', 'woocommerce-products-slider');?></p>
+                                <input type="text" name="wcps_items_empty_thumb" id="wcps_items_empty_thumb" value="<?php echo $wcps_items_empty_thumb; ?>" /><br /><br />
+                                <input id="wcps_items_empty_thumb_upload" class="wcps_items_empty_thumb_upload button" type="button" value="Upload Image" />
+                                   <br /><br />
 
 
+                                    <?php
+                                        if(empty($wcps_items_empty_thumb))
+                                            {
+                                            ?>
+                                            <img class="wcps_items_empty_thumb_display" width="300px" src="<?php echo wcps_plugin_url.'assets/front/images/no-thumb.png'; ?>" />
+                                            <?php
+                                            }
+                                        else
+                                            {
+                                            ?>
+                                            <img class="wcps_items_empty_thumb_display" width="300px" src="<?php echo $wcps_items_empty_thumb; ?>" />
+                                            <?php
+                                            }
+                                    ?>
 
 
 
-					<script>
-                        jQuery(document).ready(function($){
-
-                            var custom_uploader;
-
-                            jQuery('#wcps_items_empty_thumb_upload').click(function(e) {
-
-                                e.preventDefault();
-
-                                //If the uploader object has already been created, reopen the dialog
-                                if (custom_uploader) {
-                                    custom_uploader.open();
-                                    return;
-                                }
-
-                                //Extend the wp.media object
-                                custom_uploader = wp.media.frames.file_frame = wp.media({
-                                    title: 'Choose Image',
-                                    button: {
-                                        text: 'Choose Image'
-                                    },
-                                    multiple: false
-                                });
-
-                                //When a file is selected, grab the URL and set it as the text field's value
-                                custom_uploader.on('select', function() {
-                                    attachment = custom_uploader.state().get('selection').first().toJSON();
-                                    jQuery('#wcps_items_empty_thumb').val(attachment.url);
-                                    jQuery('.wcps_items_empty_thumb_display').attr('src',attachment.url);
-                                });
-
-                                //Open the uploader dialog
-                                custom_uploader.open();
-
-                            });
 
 
-                        })
-                    </script>
-                </div>
+                                <script>
+                                    jQuery(document).ready(function($){
+
+                                        var custom_uploader;
+
+                                        jQuery('#wcps_items_empty_thumb_upload').click(function(e) {
+
+                                            e.preventDefault();
+
+                                            //If the uploader object has already been created, reopen the dialog
+                                            if (custom_uploader) {
+                                                custom_uploader.open();
+                                                return;
+                                            }
+
+                                            //Extend the wp.media object
+                                            custom_uploader = wp.media.frames.file_frame = wp.media({
+                                                title: 'Choose Image',
+                                                button: {
+                                                    text: 'Choose Image'
+                                                },
+                                                multiple: false
+                                            });
+
+                                            //When a file is selected, grab the URL and set it as the text field's value
+                                            custom_uploader.on('select', function() {
+                                                attachment = custom_uploader.state().get('selection').first().toJSON();
+                                                jQuery('#wcps_items_empty_thumb').val(attachment.url);
+                                                jQuery('.wcps_items_empty_thumb_display').attr('src',attachment.url);
+                                            });
+
+                                            //Open the uploader dialog
+                                            custom_uploader.open();
+
+                                        });
+
+
+                                    })
+                                </script>
+                            </div>
 
 
 
@@ -744,14 +750,11 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 
 
 
-						?>
-
-                            </div>
-
-                        </div>
-						<?php
+						echo '</div>'; // .options
 
 
+
+						echo '</div>'; // .items
 
 						}
 					?>
@@ -771,7 +774,7 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
                     </script>
 
 
-
+        </div>
 
             <?php
 
@@ -786,9 +789,6 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
             $settings_tabs_field->generate_field($args);
 
 
-            ?>
-        </div>
-            <?php
 
 
 
@@ -872,8 +872,6 @@ if(!function_exists('wcps_meta_tab_content_style')) {
 
             $args = array(
                 'id'		=> 'wcps_ribbon_name',
-
-
                 //'parent'		=> '',
                 'title'		=> __('Slider ribbon','woocommerce-products-slider'),
                 'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
@@ -1319,6 +1317,8 @@ if(!function_exists('wcps_meta_tab_content_options')) {
         $wcps_slider_pagination_text_color = get_post_meta( $post_id, 'wcps_slider_pagination_text_color', true );
         $wcps_slider_pagination_count = get_post_meta( $post_id, 'wcps_slider_pagination_count', true );
 
+        $wcps_slider_lazy_load = get_post_meta( $post_id, 'wcps_slider_lazy_load', true );
+
         $wcps_slider_touch_drag = get_post_meta( $post_id, 'wcps_slider_touch_drag', true );
         $wcps_slider_mouse_drag = get_post_meta( $post_id, 'wcps_slider_mouse_drag', true );
         $wcps_slider_rtl = get_post_meta( $post_id, 'wcps_slider_rtl', true );
@@ -1558,10 +1558,10 @@ if(!function_exists('wcps_meta_tab_content_options')) {
             $args = array(
                 'id'		=> 'wcps_slider_pagination',
                 //'parent'		=> '',
-                'title'		=> __('Slider Pagination at bottom','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider Pagination at bottom.','woocommerce-products-slider'),
+                'title'		=> __('Slider pagination at bottom','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable slider pagination at bottom.','woocommerce-products-slider'),
                 'type'		=> 'select',
-                'value'		=> $wcps_slider_navigation,
+                'value'		=> $wcps_slider_pagination,
                 'default'		=> 'true',
                 'args'		=> array(
                     'true'=>__('True','woocommerce-products-slider'),
@@ -1619,8 +1619,21 @@ if(!function_exists('wcps_meta_tab_content_options')) {
 
             $settings_tabs_field->generate_field($args);
 
+            $args = array(
+                'id'		=> 'wcps_slider_lazy_load',
+                //'parent'		=> '',
+                'title'		=> __('Lazy load enable','woocommerce-products-slider'),
+                'details'	=> __('Enable or disable lazy load for thumbnails.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $wcps_slider_lazy_load,
+                'default'		=> 'true',
+                'args'		=> array(
+                    'true'=>__('True','woocommerce-products-slider'),
+                    'false'=>__('False','woocommerce-products-slider'),
+                ),
+            );
 
-
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'		=> 'wcps_slider_touch_drag',

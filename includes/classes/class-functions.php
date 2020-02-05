@@ -161,47 +161,6 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
         }
 
-        public function wcps_layers(){
-
-            $layers['media'] = array(
-                'name' => 'Media',
-                'icon' => '',
-                'elements' => array(
-                    'thumb',
-                ),
-            );
-
-            $layers['content'] = array(
-                'name' => 'Content',
-                'icon' => '',
-
-                'elements' => array(
-                    'title',
-                    'excerpt',
-                    'price',
-//                    'sku',
-//                    'category',
-//                    'tag',
-//                    'rating',
-//                    'cart',
-//                    'sale',
-//                    'featured',
-//                    'sale_count',
-
-
-
-                ),
-            );
-
-
-
-
-            $layers = apply_filters('wcps_skin_layers', $layers);
-
-            return $layers;
-
-        }
-
 
         public function skins()
         {
@@ -236,14 +195,15 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             );
 
-            $skins = apply_filters('wcps_skins', $skins);
+            $skins = apply_filters('post_grid_filter_skins', $skins);
 
             return $skins;
 
         }
 
 
-        public function wcps_grid_items($grid_items = array()){
+        public function wcps_grid_items($grid_items = array())
+        {
 
             $grid_items = array(
                 'thumb' => __('Thumbnail', 'woocommerce-products-slider'),
@@ -266,86 +226,6 @@ if( ! class_exists( 'class_wcps_functions' ) ) {
 
             return apply_filters('wcps_grid_items', $grid_items);
         }
-
-
-        public function wcps_elements(){
-
-
-            $elements = array();
-
-            $elements['thumb'] = array(
-                'name'=>__('Thumbnail', 'woocommerce-products-slider'),
-                'dummy_html'=> '<img alt="Logo Collection" src="http://localhost/wp-multi/woocommerce-products-slider/wp-content/uploads/sites/7/2019/07/logo-1.jpg">',
-
-            );
-
-            $elements['title'] = array(
-                'name'=>__('Title', 'woocommerce-products-slider'),
-                'dummy_html'=> 'Product Title',
-            );
-            $elements['excerpt'] = array(
-                'name'=>__('Excerpt', 'woocommerce-products-slider'),
-                'dummy_html'=> 'Product excerpt content goes here.',
-            );
-
-            $elements['category'] = array(
-                'name'=>__('Category', 'woocommerce-products-slider'),
-                'dummy_html'=> '<a href="">Hoodies</a>, <a href="">Cap</a>',
-            );
-            $elements['tag'] = array(
-                'name'=>__('Tags', 'woocommerce-products-slider'),
-                'dummy_html'=> '<a href="">Tag 1</a>, <a href="">Tag 2</a>',
-            );
-            $elements['price'] = array(
-                'name'=>__('Price', 'woocommerce-products-slider'),
-                'dummy_html'=> '$15',
-            );
-
-            $elements['rating'] = array(
-                'name'=>__('Rating', 'woocommerce-products-slider'),
-                'dummy_html'=> '5 Star',
-            );
-            $elements['cart'] = array(
-                'name'=>__('Cart', 'woocommerce-products-slider'),
-                'dummy_html'=> 'Add to cart',
-            );
-
-            $elements['sale'] = array(
-                'name'=>__('Sale', 'woocommerce-products-slider'),
-                'dummy_html'=> '',
-            );
-            $elements['featured'] = array(
-                'name'=>__('Featured', 'woocommerce-products-slider'),
-                'dummy_html'=> '',
-            );
-            $elements['sale_count'] = array(
-                'name'=>__('Sale Count', 'woocommerce-products-slider'),
-                'dummy_html'=> 'Total sold: 4',
-            );
-
-            $elements['sku'] = array(
-                'name'=>__('SKU', 'woocommerce-products-slider'),
-                'dummy_html'=> 'SKU: 123xyz',
-            );
-
-
-
-//            $elements['div_start'] = array(
-//                'name'=>__('div start', 'woocommerce-products-slider'),
-//                'dummy_html'=> '<div>Start - ',
-//            );
-//
-//            $elements['div_end'] = array(
-//                'name'=>__('div end', 'woocommerce-products-slider'),
-//                'dummy_html'=> ' - End</div>',
-//            );
-
-
-            return apply_filters('wcps_elements', $elements);
-        }
-
-
-
 
 
     }

@@ -99,7 +99,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	$wcps_slider_pagination_bg = get_post_meta( $post_id, 'wcps_slider_pagination_bg', true );
 	$wcps_slider_pagination_text_color = get_post_meta( $post_id, 'wcps_slider_pagination_text_color', true );
 
-	$wcps_slider_touch_drag = get_post_meta( $post_id, 'wcps_slider_touch_drag', true );
+    $wcps_slider_lazy_load = get_post_meta( $post_id, 'wcps_slider_lazy_load', true );
+
+    $wcps_slider_touch_drag = get_post_meta( $post_id, 'wcps_slider_touch_drag', true );
 	$wcps_slider_mouse_drag = get_post_meta( $post_id, 'wcps_slider_mouse_drag', true );
 
 	$wcps_slider_rtl = get_post_meta( $post_id, 'wcps_slider_rtl', true );
@@ -184,6 +186,7 @@ $wcps_query_order = get_post_meta( $post_id, 'wcps_query_order', true );
 	$wcps_items_thumb_size = get_post_meta( $post_id, 'wcps_items_thumb_size', true );
 
     $wcps_items_thumb_link_target = get_post_meta( $post_id, 'wcps_items_thumb_link_target', true );
+    $wcps_items_thumb_lazy_src = get_post_meta( $post_id, 'wcps_items_thumb_lazy_src', true );
 
 
 	$wcps_items_thumb_max_hieght = get_post_meta( $post_id, 'wcps_items_thumb_max_hieght', true );

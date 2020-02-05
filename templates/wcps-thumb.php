@@ -51,10 +51,16 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	$html.= '<div class="wcps-items-thumb">';
 	
 	$html_thumb = '';
-	
 
-    $html_thumb = '<a target="'.$wcps_items_thumb_link_target.'" href="'.$permalink.'"><img alt="'.get_the_title().'" src="'.$wcps_thumb_url.'" /></a>';
-	
+	if($wcps_slider_lazy_load == 'true'){
+        $html_thumb = '<a target="'.$wcps_items_thumb_link_target.'" href="'.$permalink.'"><img class="owl-lazy"  alt="'.get_the_title().'" data-src="'.$wcps_thumb_url.'" src="'.$wcps_items_thumb_lazy_src.'" /></a>';
+
+    }else{
+        $html_thumb = '<a target="'.$wcps_items_thumb_link_target.'" href="'.$permalink.'"><img   alt="'.get_the_title().'" src="'.$wcps_thumb_url.'" /></a>';
+
+    }
+
+
 	$html.= apply_filters( 'wcps_filter_thumb', $html_thumb );
 
     $html_zoom = apply_filters('wcps_filter_zoom', '<i class="fa fa-search-plus"></i>');

@@ -3,8 +3,8 @@
 	Donate link: https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=wordpress.org
 	Tags: carousel, product, slider, woocommerce, carousel slider, product slider, woocommerce slider, Woocommerce Product slider
 	Requires at least: 3.8
-	Tested up to: 5.2
-	Stable tag: 1.12.22
+	Tested up to: 5.3
+	Stable tag: 1.12.24
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,12 @@ then paste this shortcode anywhere in your page to display slider<br />
 
 == Changelog ==
 
+	= 1.12.24 =
+    * 2020-02-05 fix - Slider pagination at bottom option issue fixed
+
+
+	= 1.12.23 =
+    * 18/12/2019 add - added lazy load
 
 	= 1.12.22 =
     * 21/10/2019 update - update slider settings.
@@ -100,10 +106,6 @@ then paste this shortcode anywhere in your page to display slider<br />
     * 21/10/2019 add - Product display by Product IDs
     * 21/10/2019 add - Product Thumbnail link target added
     * 21/10/2019 add - Items Category separator
-
-
-
-
 
 
 	= 1.12.21 =

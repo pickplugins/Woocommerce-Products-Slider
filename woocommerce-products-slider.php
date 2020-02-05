@@ -3,7 +3,7 @@
 Plugin Name: PickPlugins Product Slider for WooCommerce
 Plugin URI: http://pickplugins.com/items/woocommerce-product-slider-for-wordpress/
 Description: Fully responsive and mobile ready Carousel Slider for your WooCommerce product. unlimited slider anywhere via short-codes and easy admin setting.
-Version: 1.12.22
+Version: 1.12.24
 WC requires at least: 3.0.0
 WC tested up to: 3.7
 Author: PickPlugins
@@ -24,7 +24,7 @@ class WoocommerceProductsSlider{
 		define('wcps_plugin_dir', plugin_dir_path( __FILE__ ) );
 		define('wcps_wp_url', 'https://wordpress.org/plugins/woocommerce-products-slider/' );
 		define('wcps_plugin_name', 'PickPlugins Product Slider' );
-        define('wcps_version', '1.12.22' );
+        define('wcps_version', '1.12.24' );
         define('wcps_server_url', 'https://www.pickplugins.com' );
         define('wcps_plugin_basename', plugin_basename( __FILE__ ) );
 
@@ -33,12 +33,6 @@ class WoocommerceProductsSlider{
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-meta-box.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-settings.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-builder.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-ajax-wcps-builder.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-elements-options.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-elements-html.php');
-
-
 
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-functions.php');
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-shortcodes.php');
@@ -46,9 +40,6 @@ class WoocommerceProductsSlider{
 
         require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-wcps-support.php');
         require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-settings-tabs.php');
-
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-wcps-builder-control.php');
-
 
 
 		// to work upload button
@@ -101,35 +92,10 @@ class WoocommerceProductsSlider{
 
 		$wcps_load_script_pages = get_option('wcps_load_script_pages');
 
-        wp_enqueue_script('jquery');
         wp_register_style('wcps-builder', wcps_plugin_url.'assets/front/css/wcps-builder.css');
         wp_register_script('wcps-builder', plugins_url( '/assets/front/js/wcps-builder.js' , __FILE__ ) , array( 'jquery' ));
-        wp_localize_script('wcps-builder', 'wcps_builder_ajax', array( 'wcps_builder_ajaxurl' => admin_url( 'admin-ajax.php')));
-        wp_register_style('frontend-builder', wcps_plugin_url.'assets/front/css/frontend-builder.css');
 
 
-
-
-        wp_enqueue_script('spectrum', plugins_url( 'assets/front/js/spectrum.js' , __FILE__ ) , array( 'jquery' ));
-        wp_register_style('spectrum', wcps_plugin_url.'assets/front/css/spectrum.css');
-
-
-
-
-
-
-
-
-        wp_enqueue_script( 'wp-color-picker' );
-        wp_enqueue_style( 'wp-color-picker' );
-        wp_enqueue_script( 'wcps_color_picker', plugins_url('assets/admin/js/color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
-        wp_register_style('animate', wcps_plugin_url.'assets/front/css/animate.css');
-
-        wp_enqueue_script('codemirror', plugins_url( 'assets/admin/js/codemirror.js' , __FILE__ ) , array( 'jquery' ));
-        wp_register_style('codemirror', wcps_plugin_url.'assets/admin/css/codemirror.css');
-
-        wp_register_style('wcps_style', wcps_plugin_url.'assets/front/css/style.css');
-        wp_register_style('wcps_style.themes', wcps_plugin_url.'assets/global/css/style.themes.css');
 
         if(empty($wcps_load_script_pages)):
 
@@ -143,7 +109,7 @@ class WoocommerceProductsSlider{
             wp_enqueue_style('fontawesome-5.min', wcps_plugin_url.'assets/global/css/fontawesome-5.min.css');
 
 			wp_enqueue_script('owl.carousel.min', plugins_url( '/assets/front/js/owl.carousel.min.js' , __FILE__ ) , array( 'jquery' ));
-			//wp_enqueue_script('owl.rows.js', plugins_url( '/assets/front/js/owl.rows.js' , __FILE__ ) , array( 'jquery' ));
+			wp_enqueue_script('owl.rows.js', plugins_url( '/assets/front/js/owl.rows.js' , __FILE__ ) , array( 'jquery' ));
 
 			wp_enqueue_style('owl.carousel', wcps_plugin_url.'assets/front/css/owl.carousel.css');
 			wp_enqueue_style('animate', wcps_plugin_url.'assets/front/css/animate.css');

@@ -480,6 +480,8 @@ function meta_boxes_wcps_save( $post_id ) {
     $wcps_slider_pagination_bg = sanitize_text_field( $_POST['wcps_slider_pagination_bg'] );
     $wcps_slider_pagination_text_color = sanitize_text_field( $_POST['wcps_slider_pagination_text_color'] );
 
+    $wcps_slider_lazy_load = sanitize_text_field( $_POST['wcps_slider_lazy_load'] );
+
 
     if(empty($_POST['wcps_slider_touch_drag']))
     {
@@ -647,6 +649,7 @@ function meta_boxes_wcps_save( $post_id ) {
 
     $wcps_hide_out_of_stock = sanitize_text_field( $_POST['wcps_hide_out_of_stock'] );
     $wcps_items_thumb_link_target = sanitize_text_field( $_POST['wcps_items_thumb_link_target'] );
+    $wcps_items_thumb_lazy_src = sanitize_text_field( $_POST['wcps_items_thumb_lazy_src'] );
 
 
 
@@ -697,6 +700,7 @@ function meta_boxes_wcps_save( $post_id ) {
 
     update_post_meta( $post_id, 'wcps_slider_pagination_bg', $wcps_slider_pagination_bg );
     update_post_meta( $post_id, 'wcps_slider_pagination_text_color', $wcps_slider_pagination_text_color );
+    update_post_meta( $post_id, 'wcps_slider_lazy_load', $wcps_slider_lazy_load );
 
     update_post_meta( $post_id, 'wcps_slider_touch_drag', $wcps_slider_touch_drag );
     update_post_meta( $post_id, 'wcps_slider_mouse_drag', $wcps_slider_mouse_drag );
@@ -779,6 +783,7 @@ function meta_boxes_wcps_save( $post_id ) {
 
 
     update_post_meta( $post_id, 'wcps_items_thumb_link_target', $wcps_items_thumb_link_target );
+    update_post_meta( $post_id, 'wcps_items_thumb_lazy_src', $wcps_items_thumb_lazy_src );
 
     update_post_meta( $post_id, 'wcps_sale_count_text', $wcps_sale_count_text );
 
