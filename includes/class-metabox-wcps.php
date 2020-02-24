@@ -85,7 +85,7 @@ class class_wcps_metabox{
             'id' => 'custom_scripts',
             'title' => sprintf(__('%s Custom scripts','team'),'<i class="far fa-file-code"></i>'),
             'priority' => 6,
-            'active' => ($current_tab == 'style') ? true : false,
+            'active' => ($current_tab == 'custom_scripts') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(

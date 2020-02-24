@@ -440,7 +440,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $product_ids = isset($query['product_ids']) ? $query['product_ids'] : '';
 
 
-        echo '<pre>'.var_export($query, true).'</pre>';
+        //echo '<pre>'.var_export($query, true).'</pre>';
 
         ?>
         <div class="section">
@@ -464,6 +464,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $settings_tabs_field->generate_field($args);
 
 
+            $wcps_allowed_taxonomies = apply_filters('wcps_allowed_taxonomies', array('product_cat', 'product_tag'));
 
             ob_start();
 
@@ -483,7 +484,9 @@ if(!function_exists('wcps_metabox_content_query_product')) {
 
                     foreach ($taxonomies as $taxonomy ) {
 
-                        //if($taxonomy != 'product_cat') continue;
+                        if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
+                        //if($taxonomy != 'product_cat' && $taxonomy != 'product_tag') continue;
+
                         $the_taxonomy = get_taxonomy($taxonomy);
                         $args=array('orderby' => 'name', 'order' => 'ASC', 'taxonomy' => $taxonomy, 'hide_empty' => false);
                         $categories_all = get_categories($args);
@@ -516,8 +519,8 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                                 $args = array(
                                     'id'		=> 'categories',
                                     'parent' => 'wcps_options[query]',
-                                    'title'		=> __('Wrapper id','team'),
-                                    'details'	=> __('Write wrapper id, ex: div, p, span.','team'),
+                                    'title'		=> __('Select terms','team'),
+                                    'details'	=> __('Choose some terms.','team'),
                                     'type'		=> 'select',
                                     'multiple'		=> true,
                                     'value'		=> $categories,
