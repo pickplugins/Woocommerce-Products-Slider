@@ -4,21 +4,42 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 if( ! class_exists( 'settings_tabs_field' ) ) {
 class settings_tabs_field{
 
+    public function __construct(){
+        //add_action( 'wp_enqueue_scripts', array( $this, '_front_scripts' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, '_admin_scripts' ) );
+    }
 
-    function field_template(){
+
+
+    function field_template($option){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $is_error 			= isset( $option['is_error'] ) ? $option['is_error'] : false;
+        $error_details 			= isset( $option['error_details'] ) ? $option['error_details'] : '';
 
         ob_start();
 
         ?>
-        <div class="setting-field">
+        <div class="setting-field <?php if($is_error) echo 'field-error';  ?>">
             <div class="field-lable">%s</div>
             <div class="field-input">%s
                 <p class="description">%s</p>
+                <?php if($is_error && !empty($error_details)): ?>
+                    <p class="error-details"><i class="fas fa-exclamation-circle"></i> <?php echo $error_details; ?></p>
+                <?php endif; ?>
+
             </div>
         </div>
         <?php
 
         return ob_get_clean();
+
+    }
+
+
+
+    function _admin_scripts(){
+
 
     }
 
@@ -36,30 +57,34 @@ class settings_tabs_field{
 
         if( empty( $id ) ) return;
 
-        if( isset($option['type']) && $option['type'] === 'select' ) 		    $this->field_select( $option );
-        elseif( isset($option['type']) && $option['type'] === 'select2')	    $this->field_select2( $option );
-        elseif( isset($option['type']) && $option['type'] === 'checkbox')	    $this->field_checkbox( $option );
-        elseif( isset($option['type']) && $option['type'] === 'radio')		    $this->field_radio( $option );
-        elseif( isset($option['type']) && $option['type'] === 'radio_image')	$this->field_radio_image( $option );
-        elseif( isset($option['type']) && $option['type'] === 'textarea')	    $this->field_textarea( $option );
-        elseif( isset($option['type']) && $option['type'] === 'scripts_js')	    $this->field_scripts_js( $option );
-        elseif( isset($option['type']) && $option['type'] === 'scripts_css')	$this->field_scripts_css( $option );
-        elseif( isset($option['type']) && $option['type'] === 'number' ) 	    $this->field_number( $option );
-        elseif( isset($option['type']) && $option['type'] === 'text' ) 		    $this->field_text( $option );
-        elseif( isset($option['type']) && $option['type'] === 'text_icon' )     $this->field_text_icon( $option );
-        elseif( isset($option['type']) && $option['type'] === 'text_multi' ) 	$this->field_text_multi( $option );
-        elseif( isset($option['type']) && $option['type'] === 'range' ) 		$this->field_range( $option );
-        elseif( isset($option['type']) && $option['type'] === 'colorpicker')    $this->field_colorpicker( $option );
-        elseif( isset($option['type']) && $option['type'] === 'colorpicker_multi')    $this->field_colorpicker_multi( $option );
+        if( isset($option['type']) && $option['type'] === 'select' ) 		        $this->field_select( $option );
+        elseif( isset($option['type']) && $option['type'] === 'select2')	        $this->field_select2( $option );
+        elseif( isset($option['type']) && $option['type'] === 'checkbox')	        $this->field_checkbox( $option );
+        elseif( isset($option['type']) && $option['type'] === 'radio')		        $this->field_radio( $option );
+        elseif( isset($option['type']) && $option['type'] === 'radio_image')	    $this->field_radio_image( $option );
+        elseif( isset($option['type']) && $option['type'] === 'textarea')	        $this->field_textarea( $option );
+        elseif( isset($option['type']) && $option['type'] === 'scripts_js')	        $this->field_scripts_js( $option );
+        elseif( isset($option['type']) && $option['type'] === 'scripts_css')	    $this->field_scripts_css( $option );
+        elseif( isset($option['type']) && $option['type'] === 'number' ) 	        $this->field_number( $option );
+        elseif( isset($option['type']) && $option['type'] === 'text' ) 		        $this->field_text( $option );
+        elseif( isset($option['type']) && $option['type'] === 'text_icon' )         $this->field_text_icon( $option );
+        elseif( isset($option['type']) && $option['type'] === 'text_multi' ) 	    $this->field_text_multi( $option );
+        elseif( isset($option['type']) && $option['type'] === 'hidden' ) 		    $this->field_hidden( $option );
 
-        elseif( isset($option['type']) && $option['type'] === 'datepicker')	    $this->field_datepicker( $option );
-        //elseif( isset($option['type']) && $option['type'] === 'repeater')	    $this->field_repeater( $option );
-        elseif( isset($option['type']) && $option['type'] === 'faq')	        $this->field_faq( $option );
-        elseif( isset($option['type']) && $option['type'] === 'addons_grid')	$this->field_addons_grid( $option );
-        elseif( isset($option['type']) && $option['type'] === 'custom_html')	$this->field_custom_html( $option );
-        elseif( isset($option['type']) && $option['type'] === 'repeatable')	    $this->field_repeatable( $option );
-        elseif( isset($option['type']) && $option['type'] === 'media')	        $this->field_media( $option );
-        elseif( isset($option['type']) && $option['type'] === 'media_url')	    $this->field_media_url( $option );
+        elseif( isset($option['type']) && $option['type'] === 'range' ) 		    $this->field_range( $option );
+        elseif( isset($option['type']) && $option['type'] === 'colorpicker')        $this->field_colorpicker( $option );
+        elseif( isset($option['type']) && $option['type'] === 'colorpicker_multi')  $this->field_colorpicker_multi( $option );
+
+        elseif( isset($option['type']) && $option['type'] === 'datepicker')	        $this->field_datepicker( $option );
+        elseif( isset($option['type']) && $option['type'] === 'faq')	            $this->field_faq( $option );
+        elseif( isset($option['type']) && $option['type'] === 'addons_grid')	    $this->field_addons_grid( $option );
+        elseif( isset($option['type']) && $option['type'] === 'custom_html')	    $this->field_custom_html( $option );
+        elseif( isset($option['type']) && $option['type'] === 'repeatable')	        $this->field_repeatable( $option );
+        elseif( isset($option['type']) && $option['type'] === 'media')	            $this->field_media( $option );
+        elseif( isset($option['type']) && $option['type'] === 'media_url')	        $this->field_media_url( $option );
+
+        elseif( isset($option['type']) && $option['type'] === 'option_group')	    $this->field_option_group( $option );
+        elseif( isset($option['type']) && $option['type'] === 'option_group_accordion')	    $this->field_option_group_accordion( $option );
 
 
 
@@ -75,6 +100,196 @@ class settings_tabs_field{
     }
 
 
+    public function field_option_group_accordion( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $sortable 			= isset( $option['sortable'] ) ? $option['sortable'] : false;
+
+        $args_index 	= isset( $option['args_index'] ) ? $option['args_index'] : array();
+        $args_index_default 	= isset( $option['args_index_default'] ) ? $option['args_index_default'] : array();
+        $args_index_hide 	= isset( $option['args_index_hide'] ) ? $option['args_index_hide'] : array();
+
+        $args_index = !empty($args_index) ? $args_index : $args_index_default;
+
+        $args 	= isset( $option['args'] ) ? $option['args'] : array();
+
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $group_details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $group_details = '<span class="pro-feature">'.$pro_text.'</span> '.$group_details;
+        }
+
+
+        ob_start();
+        ?>
+        <div class="option-group-accordion-wrap" id="<?php echo $css_id; ?>">
+            <div sortable="<?php echo ($sortable) ? 'true':  'false'; ?>" class='option-group-accordion accordion'>
+                <?php
+
+                if(!empty($args_index))
+                foreach( $args_index as $index ):
+
+                    //foreach( $args as $key => $value ):
+
+                    $group_title = isset($args[$index]['title']) ? $args[$index]['title'] : '';
+                    $is_hide = isset($args_index_hide[$index]) ? $args_index_hide[$index] : false;
+
+
+                        //$link = $value['link'];
+                        $options = isset($args[$index]['options']) ? $args[$index]['options'] : array();
+
+                        ?>
+                        <div class="group">
+                            <h3 class="accordion-title">
+
+
+                                <?php if($sortable): ?>
+                                    <span class="sort"><i class="fas fa-sort"></i></span>
+                                <?php endif; ?>
+
+                                <span class="title-text"><?php echo $group_title; ?></span>
+                            </h3>
+                            <div class="accordion-content">
+
+                                <?php
+
+                                if(!empty($options)):
+                                    foreach ($options as $option):
+
+                                        $id 		= isset( $option['id'] ) ? $option['id'] : "";
+                                        $type 		= isset( $option['type'] ) ? $option['type'] : "";
+                                        $details 	= isset( $option['details'] ) ? $option['details'] : "";
+
+                                        if( isset($option['type']) && $option['type'] === 'select' ) 		        $this->field_select( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'select2')	        $this->field_select2( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'checkbox')	        $this->field_checkbox( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'radio')		        $this->field_radio( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'radio_image')	    $this->field_radio_image( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'textarea')	        $this->field_textarea( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'scripts_js')	        $this->field_scripts_js( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'scripts_css')	    $this->field_scripts_css( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'number' ) 	        $this->field_number( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'text' ) 		        $this->field_text( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'text_icon' )         $this->field_text_icon( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'text_multi' ) 	    $this->field_text_multi( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'hidden' ) 		        $this->field_hidden( $option );
+
+                                        elseif( isset($option['type']) && $option['type'] === 'range' ) 		    $this->field_range( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'colorpicker')        $this->field_colorpicker( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'colorpicker_multi')  $this->field_colorpicker_multi( $option );
+
+                                        elseif( isset($option['type']) && $option['type'] === 'datepicker')	        $this->field_datepicker( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'faq')	            $this->field_faq( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'addons_grid')	    $this->field_addons_grid( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'custom_html')	    $this->field_custom_html( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'repeatable')	        $this->field_repeatable( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'media')	            $this->field_media( $option );
+                                        elseif( isset($option['type']) && $option['type'] === 'media_url')	        $this->field_media_url( $option );
+
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div> <!-- ..accordion-content -->
+                        </div><!-- .group -->
+
+
+                    <?php
+                    //endforeach;
+
+                endforeach;
+
+
+                ?>
+            </div> <!-- .option-group-accordion -->
+        </div><!-- .option-group-accordion-wrap -->
+
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $input_html, $group_details);
+
+
+    }
+
+
+    public function field_option_group( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $options 	= isset( $option['options'] ) ? $option['options'] : array();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $group_details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $group_details = '<span class="pro-feature">'.$pro_text.'</span> '.$group_details;
+        }
+
+
+        ob_start();
+        ?>
+        <div id="<?php echo $css_id; ?>">
+            <?php
+
+            if(!empty($options)):
+                foreach ($options as $option):
+
+                    $id 		= isset( $option['id'] ) ? $option['id'] : "";
+                    $type 		= isset( $option['type'] ) ? $option['type'] : "";
+                    $details 	= isset( $option['details'] ) ? $option['details'] : "";
+
+                    if( isset($option['type']) && $option['type'] === 'select' ) 		        $this->field_select( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'select2')	        $this->field_select2( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'checkbox')	        $this->field_checkbox( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'radio')		        $this->field_radio( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'radio_image')	    $this->field_radio_image( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'textarea')	        $this->field_textarea( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'scripts_js')	        $this->field_scripts_js( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'scripts_css')	    $this->field_scripts_css( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'number' ) 	        $this->field_number( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'text' ) 		        $this->field_text( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'text_icon' )         $this->field_text_icon( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'text_multi' ) 	    $this->field_text_multi( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'hidden' ) 		    $this->field_hidden( $option );
+
+                    elseif( isset($option['type']) && $option['type'] === 'range' ) 		    $this->field_range( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'colorpicker')        $this->field_colorpicker( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'colorpicker_multi')  $this->field_colorpicker_multi( $option );
+
+                    elseif( isset($option['type']) && $option['type'] === 'datepicker')	        $this->field_datepicker( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'faq')	            $this->field_faq( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'addons_grid')	    $this->field_addons_grid( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'custom_html')	    $this->field_custom_html( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'repeatable')	        $this->field_repeatable( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'media')	            $this->field_media( $option );
+                    elseif( isset($option['type']) && $option['type'] === 'media_url')	        $this->field_media_url( $option );
+
+                endforeach;
+            endif;
+            ?>
+        </div>
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $input_html, $group_details);
+
+
+    }
 
 
     public function field_media( $option ){
@@ -86,8 +301,7 @@ class settings_tabs_field{
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $field_name 	= isset( $option['field_name'] ) ? $option['field_name'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $placeholder	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
 
@@ -100,51 +314,64 @@ class settings_tabs_field{
 
         $media_url	= wp_get_attachment_url( $value );
         $media_type	= get_post_mime_type( $value );
-        $media_title= get_the_title( $value );
+        $media_title = !empty($value) ? get_the_title( $value ) : __('Placeholder.jpg','settings-tabs');
+
+
+        $media_url = !empty($media_url) ? $media_url : $default;
+
+        $placeholder = 'https://i.imgur.com/qOPTTdQ.jpg';
         $media_url = !empty($media_url) ? $media_url : $placeholder;
+        $media_basename = wp_basename($media_type);
 
         $field_name     = !empty( $field_name ) ? $field_name : $id;
         $field_name = !empty($parent) ? $parent.'['.$field_name.']' : $field_name;
 
 
-        wp_enqueue_media();
+
 
         ob_start();
-
+        //wp_enqueue_media();
 
         ?>
         <div id="input-wrapper-<?php echo $css_id; ?>" class="input-wrapper field-media-wrapper
             field-media-wrapper-<?php echo $css_id; ?>">
-            <div class="media-preview-wrap" style="width: 150px;margin-bottom: 10px;background: #eee;padding: 5px;    text-align: center;">
+            <div class="media-preview-wrap" style="width: 150px;margin-bottom: 10px;background: #eee;padding: 5px;    text-align: center;word-break: break-all;">
                 <?php
+
+                //var_dump($media_type);
 
                 if( "audio/mpeg" == $media_type ){
                     ?>
                     <div class="media-preview" class="dashicons dashicons-format-audio" style="font-size: 70px;display: inline;"></div>
-                    <div><?php echo $media_title; ?></div>
+                    <div class="media-title"><?php echo $media_title; ?></div>
                     <?php
-                }
-                elseif( "images/png" == $media_type || "images/jpg" == $media_type || "images/jpeg" == $media_type ||
+                }elseif( "images/png" == $media_type ||
+                    "image/png" == $media_type ||
                     "images/gif" == $media_type  ||
-                    "images/ico" == $media_type){
+                    "image/gif" == $media_type  ||
+                    "images/jpeg" == $media_type ||
+                    "image/jpeg" == $media_type ||
+                    "images/jpg" == $media_type ||
+                    "image/jpg" == $media_type ||
+                    "images/ico" == $media_type||
+                    "image/ico" == $media_type
+                ){
                     ?>
                     <img class="media-preview" src="<?php echo $media_url; ?>" style="width:100%"/>
-                    <div><?php echo $media_title; ?></div>
+                    <div class="media-title"><?php echo $media_title; ?></div>
                     <?php
-                }
-
-                else {
+                }else {
                     ?>
                     <img class="media-preview" src="<?php echo $media_url; ?>" style="width:100%"/>
-                    <span><?php echo wp_basename($media_type); ?></span>
+                    <div class="media-title"><?php echo $media_title; ?></div>
 
                     <?php
                 }
                 ?>
             </div>
-            <input type="hidden" name="<?php echo $field_name; ?>" id="media_input_<?php echo $css_id; ?>" value="<?php echo $value; ?>" />
-            <div class="media-upload button" id="media_upload_<?php echo $css_id; ?>"><?php echo __('Upload','job-board-manager');?></div>
-            <div class="clear button" id="media_clear_<?php echo $css_id; ?>"><?php echo __('Clear','job-board-manager');?></div>
+            <input class="media-input-value" type="hidden" name="<?php echo $field_name; ?>" id="media_input_<?php echo $css_id; ?>" value="<?php echo $value; ?>" />
+            <div class="media-upload button" id="media_upload_<?php echo $css_id; ?>"><?php echo __('Upload','team');?></div>
+            <div placeholder="<?php echo $placeholder; ?>" class="clear button" id="media_clear_<?php echo $css_id; ?>"><?php echo __('Clear','team');?></div>
             <div class="error-mgs"></div>
         </div>
 
@@ -159,6 +386,7 @@ class settings_tabs_field{
 
 
 
+
     public function field_media_url( $option ){
 
 
@@ -169,7 +397,7 @@ class settings_tabs_field{
         $field_name 	= isset( $option['field_name'] ) ? $option['field_name'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
         $placeholder	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
 
@@ -223,8 +451,8 @@ class settings_tabs_field{
                 ?>
             </div>
             <input type="text" placeholder="<?php echo $placeholder; ?>" name="<?php echo $field_name; ?>" id="media_input_<?php echo $css_id; ?>" value="<?php echo $value; ?>" />
-            <div class="media-upload button" id="media_upload_<?php echo $css_id; ?>"><?php echo __('Upload','job-board-manager');?></div>
-            <div class="clear button" id="media_clear_<?php echo $css_id; ?>"><?php echo __('Clear','job-board-manager');?></div>
+            <div class="media-upload button" id="media_upload_<?php echo $css_id; ?>"><?php echo __('Upload','team');?></div>
+            <div class="clear button" id="media_clear_<?php echo $css_id; ?>"><?php echo __('Clear','team');?></div>
             <div class="error-mgs"></div>
         </div>
 
@@ -236,8 +464,6 @@ class settings_tabs_field{
         echo sprintf($field_template, $title, $input_html, $details);
 
     }
-
-
 
 
 
@@ -262,7 +488,7 @@ class settings_tabs_field{
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
 
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
 
@@ -281,10 +507,10 @@ class settings_tabs_field{
 
                     now = jQuery.now();
                     fields_arr = <?php echo json_encode($fields); ?>;
-                    html = '<div class="item-wrap collapsible"><div class="header"><span class="button remove" ' +
+                    html = '<div class="item-wrap collapsible"><div class="header"><span class="remove" ' +
                         'onclick="jQuery(this).parent().parent().remove()"><?php echo $remove_text; ?></span> ';
                     <?php if($sortable):?>
-                    html += '<span class="button sort" ><i class="fas fa-arrows-alt"></i></span>';
+                    html += '<span class="sort" ><i class="fas fa-arrows-alt"></i></span>';
                     <?php endif; ?>
                     html += ' <span  class="title-text">#'+now+'</span></div>';
 
@@ -336,7 +562,7 @@ class settings_tabs_field{
         </script>
         <div id="input-wrapper-<?php echo $css_id; ?>" class=" input-wrapper field-repeatable-wrapper
             field-repeatable-wrapper-<?php echo $css_id; ?>">
-            <div class="add-repeat-field button"><?php _e('Add','job-board-manager'); ?></div>
+            <div class="add-repeat-field"><i class="far fa-plus-square"></i> <?php _e('Add','team'); ?></div>
             <div class="repeatable-field-list sortable" id="<?php echo $css_id; ?>">
                 <?php
                 if(!empty($values)):
@@ -348,12 +574,10 @@ class settings_tabs_field{
                             <?php if($collapsible):?>
                             <div class="header">
                                 <?php endif; ?>
-                                <span class="button remove" onclick="jQuery(this).parent().parent().remove()"><?php echo $remove_text; ?></span>
-                                <!--                                    <span index_id="--><?php //echo $index; ?><!--" class="button clone"><i class="far fa-clone"></i></span>-->
+                                <span class="remove" onclick="jQuery(this).parent().parent().remove()"><?php echo $remove_text; ?></span>
                                 <?php if($sortable):?>
-                                    <span class="button sort"><i class="fas fa-arrows-alt"></i></span>
+                                    <span class="sort"><i class="fas fa-arrows-alt"></i></span>
                                 <?php endif; ?>
-                                <span class="button clone"><i class="far fa-copy"></i></span>
 
                                 <span class="title-text"><?php echo $title_field_val; ?></span>
                                 <?php if($collapsible):?>
@@ -425,7 +649,7 @@ class settings_tabs_field{
         $args 	= isset( $option['args'] ) ? $option['args'] : array();
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $multiple 	= isset( $option['multiple'] ) ? $option['multiple'] : false;
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
@@ -490,13 +714,13 @@ class settings_tabs_field{
         $args 	            = isset( $option['args'] ) ? $option['args'] : array();
         $multiple 	        = isset( $option['multiple'] ) ? $option['multiple'] : "";
         $attributes 	    = isset( $option['attributes'] ) ? $option['attributes'] : array();
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $is_pro 	        = isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	        = isset( $option['pro_text'] ) ? $option['pro_text'] : '';
 
 
-        //var_dump($css_id);
+        var_dump($css_id);
 
         if($multiple){
             $value 	= isset( $option['value'] ) ? $option['value'] : array();
@@ -567,7 +791,7 @@ class settings_tabs_field{
         $default 	= isset( $option['default'] ) ? $option['default'] : array();
         $values 	= isset( $option['value'] ) ? $option['value'] : $default;
 
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $remove_text 	= isset( $option['remove_text'] ) ? $option['remove_text'] : '<i class="fas fa-times"></i>';
         $sortable 	    = isset( $option['sortable'] ) ? $option['sortable'] : true;
@@ -592,7 +816,7 @@ class settings_tabs_field{
         ?>
         <div  id="input-wrapper-<?php echo $id; ?>" class="input-wrapper input-text-multi-wrapper
             input-text-multi-wrapper-<?php echo $css_id; ?>">
-            <span data-placeholder="<?php echo esc_attr($placeholder); ?>" data-sort="<?php echo $sortable; ?>" data-clone="<?php echo $allow_clone; ?>" data-name="<?php echo $field_name; ?>[]" class="button add-item"><?php echo __('Add','job-board-manager'); ?></span>
+            <span data-placeholder="<?php echo esc_attr($placeholder); ?>" data-sort="<?php echo $sortable; ?>" data-clone="<?php echo $allow_clone; ?>" data-name="<?php echo $field_name; ?>[]" class="button add-item"><?php echo __('Add','team'); ?></span>
             <div class="field-list <?php if($sortable){ echo 'sortable'; }?>" id="<?php echo $css_id; ?>">
                 <?php
                 if(!empty($values)):
@@ -652,7 +876,41 @@ class settings_tabs_field{
 
     }
 
+    public function field_hidden( $option ){
 
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+        $value 	= isset( $option['value'] ) ? $option['value'] : '';
+        $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+        $value = !empty($value) ? $value : $default;
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        if($is_pro == true){
+            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
+        }
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+
+        ob_start();
+        ?>
+        <input type="hidden" class="" name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $input_html, $details);
+
+    }
 
 
     public function field_text( $option ){
@@ -663,7 +921,7 @@ class settings_tabs_field{
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
@@ -694,93 +952,8 @@ class settings_tabs_field{
 
 
 
-    public function field_number( $option ){
-
-        $id 			= isset( $option['id'] ) ? $option['id'] : "";
-        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
-        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
-        $value 	= isset( $option['value'] ) ? $option['value'] : '';
-        $default 	= isset( $option['default'] ) ? $option['default'] : '';
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
-
-        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
-        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
-
-        $value = !empty($value) ? $value : $default;
-
-        $title			= isset( $option['title'] ) ? $option['title'] : "";
-        $details 			= isset( $option['details'] ) ? $option['details'] : "";
-
-        if($is_pro == true){
-            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
-        }
-
-        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
 
 
-        ob_start();
-        ?>
-        <input type="number" class="" name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo esc_attr($value); ?>" />
-        <?php
-
-        $input_html = ob_get_clean();
-
-        echo sprintf($field_template, $title, $input_html, $details);
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function field_datepicker( $option ){
-
-        $id 			= isset( $option['id'] ) ? $option['id'] : "";
-        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
-        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
-        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
-        $format 	= isset( $option['format'] ) ? $option['format'] : "";
-
-
-        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
-        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
-
-        $value 	= isset( $option['value'] ) ? $option['value'] : '';
-        $default 	= isset( $option['default'] ) ? $option['default'] : '';
-        $value = !empty($value) ? $value : $default;
-
-        $title			= isset( $option['title'] ) ? $option['title'] : "";
-        $details 			= isset( $option['details'] ) ? $option['details'] : "";
-
-        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
-
-
-        wp_enqueue_script('jquery-ui-datepicker');
-        wp_enqueue_style( 'jquery-ui');
-
-        ob_start();
-        ?>
-        <input type="text" autocomplete="off" name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
-        <script>jQuery(document).ready(function($) { $("#<?php echo $css_id; ?>").datepicker({ dateFormat: "<?php echo $format; ?>" });});</script>
-        <?php
-
-        $input_html = ob_get_clean();
-
-        echo sprintf($field_template, $title, $input_html, $details);
-    }
 
     public function field_text_icon( $option ){
 
@@ -790,7 +963,7 @@ class settings_tabs_field{
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
@@ -849,7 +1022,7 @@ class settings_tabs_field{
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
@@ -910,7 +1083,7 @@ class settings_tabs_field{
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
@@ -923,6 +1096,10 @@ class settings_tabs_field{
         $details 			= isset( $option['details'] ) ? $option['details'] : "";
 
         $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
+
+        if($is_pro == true){
+            $details = '<span class="pro-feature">'.$pro_text.'</span> '.$details;
+        }
 
 
         ob_start();
@@ -948,7 +1125,7 @@ class settings_tabs_field{
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
@@ -968,10 +1145,12 @@ class settings_tabs_field{
         <textarea name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" cols="40" rows="5" placeholder="<?php echo $placeholder; ?>"><?php echo $value; ?></textarea>
 
         <script>
-            var editor = CodeMirror.fromTextArea(document.getElementById("<?php echo $css_id; ?>"), {
-                lineNumbers: true,
-            });
+            jQuery(document).ready(function($){
 
+                wp.codeEditor.initialize($('#<?php echo $css_id; ?>'), cm_settings);
+
+
+            })
         </script>
         <?php
 
@@ -991,7 +1170,7 @@ class settings_tabs_field{
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
 
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
         $value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
@@ -1015,25 +1194,18 @@ class settings_tabs_field{
         <textarea name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" cols="40" rows="5" placeholder="<?php echo $placeholder; ?>"><?php echo $value; ?></textarea>
         <script>
 
-            var editor = CodeMirror.fromTextArea(document.getElementById("<?php echo $css_id; ?>"), {
-                lineNumbers: true,
-                value: "",
-                viewportMargin: Infinity,
 
-                //scrollbarStyle: "simple"
-            });
+            jQuery(document).ready(function($){
+
+                wp.codeEditor.initialize($('#<?php echo $css_id; ?>'), cm_settings);
+
+
+            })
+
 
 
 
         </script>
-
-        <style type="text/css">
-            .CodeMirror {
-                min-height:80px;
-            }
-
-        </style>
-
         <?php
 
         $input_html = ob_get_clean();
@@ -1055,6 +1227,10 @@ class settings_tabs_field{
         $for 		= isset( $option['for'] ) ? $option['for'] : "";
         $args			= isset( $option['args'] ) ? $option['args'] : array();
 
+        $style			= isset( $option['style'] ) ? $option['style'] : array();
+        $style_inline			= isset( $style['inline'] ) ? $style['inline'] : true;
+
+
         $option_value 	= isset( $option['value'] ) ? $option['value'] : '';
         $default 	= isset( $option['default'] ) ? $option['default'] : '';
         $option_value = !empty($option_value) ? $option_value : $default;
@@ -1074,6 +1250,7 @@ class settings_tabs_field{
                 if(!empty($args))
                     foreach( $args as $key => $value ):
 
+
                         //$checked = ( $key == $option_value ) ? "checked" : "";
                         $checked = in_array($key, $option_value) ? "checked" : "";
 
@@ -1082,8 +1259,14 @@ class settings_tabs_field{
 
                         ?>
                         <label for='<?php echo $for;?>'><input name='<?php echo $field_name; ?>[]' type='checkbox' id='<?php echo $for; ?>' value='<?php echo $key;?>'  <?php echo $checked;?>><span><?php echo $value;?></span></label>
-                    <?php
 
+                        <?php
+
+                        if(!$style_inline){
+                            ?>
+                            <br>
+                            <?php
+                        }
 
                     endforeach;
 
@@ -1103,7 +1286,7 @@ class settings_tabs_field{
         $id				= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $title			= isset( $option['title'] ) ? $option['title'] : "";
         $details 		= isset( $option['details'] ) ? $option['details'] : "";
         $for 		= isset( $option['for'] ) ? $option['for'] : "";
@@ -1145,7 +1328,7 @@ class settings_tabs_field{
         $id				= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $args			= isset( $option['args'] ) ? $option['args'] : array();
         //$args			= is_array( $args ) ? $args : $this->generate_args_from_string( $args );
         $option_value 	= isset( $option['value'] ) ? $option['value'] : '';
@@ -1186,8 +1369,18 @@ class settings_tabs_field{
                 ?>
                 <label title="<?php echo $name; ?>" class="<?php if($checked =='checked') echo 'active';?> <?php if($disabled == true) echo 'disabled';?>">
                     <input <?php if($disabled) echo 'disabled'; ?>  name="<?php echo $field_name; ?>" type="radio" id="<?php echo $css_id; ?>-<?php echo $key; ?>" value="<?php echo $key; ?>"  <?php echo $checked; ?>>
-                    <?php // echo $name; ?>
-                    <img style="width: <?php echo $width; ?>;" alt="<?php echo $name; ?>" src="<?php echo $thumb; ?>">
+
+                    <?php
+                    if(!empty($thumb)):
+                        ?>
+                            <img style="width: <?php echo $width; ?>;" alt="<?php echo $name; ?>" src="<?php echo $thumb; ?>">
+
+                        <?php
+                    else:
+                         echo $name;
+                    endif;
+                    ?>
+
                     <?php if($disabled == true):?>
                     <span class="pro-msg"><?php echo $pro_msg; ?></span>
                     <?php endif; ?>
@@ -1281,17 +1474,14 @@ class settings_tabs_field{
 
     }
 
-
-
-
-
-    public function field_colorpicker( $option ){
+    public function field_datepicker( $option ){
 
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+        $format 	= isset( $option['format'] ) ? $option['format'] : "";
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
         $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
@@ -1306,7 +1496,41 @@ class settings_tabs_field{
         $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
 
 
+        wp_enqueue_script('jquery-ui-datepicker');
+        wp_enqueue_style( 'jquery-ui');
 
+        ob_start();
+        ?>
+        <input type="text" autocomplete="off"  name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
+        <script>jQuery(document).ready(function($) { $("#<?php echo $css_id; ?>").datepicker({ dateFormat: "<?php echo $format; ?>" });});</script>
+        <?php
+
+        $input_html = ob_get_clean();
+
+        echo sprintf($field_template, $title, $input_html, $details);
+    }
+
+
+
+    public function field_colorpicker( $option ){
+
+        $id 			= isset( $option['id'] ) ? $option['id'] : "";
+        $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
+        $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
+        $placeholder 	= isset( $option['placeholder'] ) ? $option['placeholder'] : "";
+
+        $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;
+        $pro_text 	= isset( $option['pro_text'] ) ? $option['pro_text'] : '';
+
+        $value 	= isset( $option['value'] ) ? $option['value'] : '';
+        $default 	= isset( $option['default'] ) ? $option['default'] : '';
+        $value = !empty($value) ? $value : $default;
+
+        $title			= isset( $option['title'] ) ? $option['title'] : "";
+        $details 			= isset( $option['details'] ) ? $option['details'] : "";
+
+        $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
 
         ob_start();
         ?>
@@ -1320,13 +1544,12 @@ class settings_tabs_field{
     }
 
 
-
     public function field_colorpicker_multi( $option ){
 
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $args 	= isset( $option['args'] ) ? $option['args'] : "";
 
 
@@ -1354,12 +1577,13 @@ class settings_tabs_field{
 
                 $item_value = isset($value[$arg_key]) ? $value[$arg_key] : $arg;
 
+
                 ?>
-            <div class="">
-                <span><?php echo $arg_key; ?></span>
-                <input name="<?php echo $field_name; ?>[<?php echo $arg_key; ?>]" id="<?php echo $arg_key.'-'.$css_id; ?>"  value="<?php echo $item_value; ?>" />
-                <script>jQuery(document).ready(function($) { $("#<?php echo $arg_key.'-'.$css_id; ?>").wpColorPicker();});</script>
-            </div>
+                <div class="">
+                    <span><?php echo $arg_key; ?></span>
+                    <input name="<?php echo $field_name; ?>[<?php echo $arg_key; ?>]" id="<?php echo $arg_key.'-'.$css_id; ?>"  value="<?php echo $item_value; ?>" />
+                    <script>jQuery(document).ready(function($) { $("#<?php echo $arg_key.'-'.$css_id; ?>").wpColorPicker();});</script>
+                </div>
 
             <?php
             endforeach;
@@ -1374,22 +1598,12 @@ class settings_tabs_field{
 
 
 
-
-
-
-
-
-
-
-
-
-
     public function field_custom_html( $option ){
 
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
         $css_id 			= isset( $option['css_id'] ) ? $option['css_id'] : $id;
         $parent 			= isset( $option['parent'] ) ? $option['parent'] : "";
-        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template();
+        $field_template 	= isset( $option['field_template'] ) ? $option['field_template'] : $this->field_template($option);
         $html 	= isset( $option['html'] ) ? $option['html'] : "";
 
         $is_pro 	= isset( $option['is_pro'] ) ? $option['is_pro'] : false;

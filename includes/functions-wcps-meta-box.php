@@ -8,14 +8,14 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_action('wcps_meta_tab_content_custom_scripts', 'wcps_meta_tab_content_custom_scripts',10, 2);
+add_action('wcps_metabox_content_custom_scripts', 'wcps_metabox_content_custom_scripts',10, 2);
 
-if(!function_exists('wcps_meta_tab_content_custom_scripts')) {
-    function wcps_meta_tab_content_custom_scripts($tab, $post_id){
+if(!function_exists('wcps_metabox_content_custom_scripts')) {
+    function wcps_metabox_content_custom_scripts($tab, $post_id){
+
 
 
         $settings_tabs_field = new settings_tabs_field();
-
 
 
 	    $wcps_items_custom_css = get_post_meta( $post_id, 'wcps_items_custom_css', true );
@@ -73,10 +73,10 @@ if(!function_exists('wcps_meta_tab_content_custom_scripts')) {
 
 
 
-add_action('wcps_meta_tab_content_elements', 'wcps_meta_tab_content_elements',10, 2);
+add_action('wcps_metabox_content_elements', 'wcps_metabox_content_elements',10, 2);
 
-if(!function_exists('wcps_meta_tab_content_elements')) {
-    function wcps_meta_tab_content_elements($tab, $post_id){
+if(!function_exists('wcps_metabox_content_elements')) {
+    function wcps_metabox_content_elements($tab, $post_id){
 
 
         $settings_tabs_field = new settings_tabs_field();
@@ -798,10 +798,10 @@ if(!function_exists('wcps_meta_tab_content_elements')) {
 }
 
 
-add_action('wcps_meta_tab_content_style', 'wcps_meta_tab_content_style',10, 2);
+add_action('wcps_metabox_content_style', 'wcps_metabox_content_style',10, 2);
 
-if(!function_exists('wcps_meta_tab_content_style')) {
-    function wcps_meta_tab_content_style($tab, $post_id){
+if(!function_exists('wcps_metabox_content_style')) {
+    function wcps_metabox_content_style($tab, $post_id){
 
 
 
@@ -1016,10 +1016,10 @@ if(!function_exists('wcps_meta_tab_content_style')) {
 
 
 
-add_action('wcps_meta_tab_content_query_product', 'wcps_meta_tab_content_query_product',10, 2);
+add_action('wcps_metabox_content_query_product', 'wcps_metabox_content_query_product',10, 2);
 
-if(!function_exists('wcps_meta_tab_content_query_product')) {
-    function wcps_meta_tab_content_query_product($tab, $post_id){
+if(!function_exists('wcps_metabox_content_query_product')) {
+    function wcps_metabox_content_query_product($tab, $post_id){
 
         $settings_tabs_field = new settings_tabs_field();
 
@@ -1280,293 +1280,96 @@ if(!function_exists('wcps_meta_tab_content_query_product')) {
 
 
 
-add_action('wcps_meta_tab_content_options', 'wcps_meta_tab_content_options',10, 2);
+add_action('wcps_metabox_content_slider_options', 'wcps_metabox_content_slider_options',10, 2);
 
-if(!function_exists('wcps_meta_tab_content_options')) {
-    function wcps_meta_tab_content_options($tab, $post_id){
+if(!function_exists('wcps_metabox_content_slider_options')) {
+    function wcps_metabox_content_slider_options($tab, $post_id){
+
 
         $settings_tabs_field = new settings_tabs_field();
 
-        $wcps_column_number = get_post_meta( $post_id, 'wcps_column_number', true );
-        if(empty($wcps_column_number)){$wcps_column_number = 3; }
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $slider_option = isset($wcps_options['slider']) ? $wcps_options['slider'] : array();
 
-        $wcps_column_number_tablet = get_post_meta( $post_id, 'wcps_column_number_tablet', true );
-        if(empty($wcps_column_number_tablet)){$wcps_column_number_tablet = 2;}
-
-        $wcps_column_number_mobile = get_post_meta( $post_id, 'wcps_column_number_mobile', true );
-        if(empty($wcps_column_number_mobile)){$wcps_column_number_mobile = 1;}
+        $slider_column_large = isset($slider_option['column_large']) ? $slider_option['column_large'] : 3;
+        $slider_column_medium = isset($slider_option['column_medium']) ? $slider_option['column_medium'] : 2;
+        $slider_column_small = isset($slider_option['column_small']) ? $slider_option['column_small'] : 1;
 
 
+        $slider_slide_speed = isset($slider_option['slide_speed']) ? $slider_option['slide_speed'] : 1000;
+        $slider_pagination_speed = isset($slider_option['pagination_speed']) ? $slider_option['pagination_speed'] : 1200;
 
 
-        $wcps_auto_play = get_post_meta( $post_id, 'wcps_auto_play', true );
-        $wcps_auto_play_speed = get_post_meta( $post_id, 'wcps_auto_play_speed', true );
-        $wcps_auto_play_timeout = get_post_meta( $post_id, 'wcps_auto_play_timeout', true );
-        $wcps_slide_speed = get_post_meta( $post_id, 'wcps_slide_speed', true );
-        $wcps_pagination_slide_speed = get_post_meta( $post_id, 'wcps_pagination_slide_speed', true );
+        $slider_auto_play = isset($slider_option['auto_play']) ? $slider_option['auto_play'] : 'true';
+        $auto_play_speed = isset($slider_option['auto_play_speed']) ? $slider_option['auto_play_speed'] : 1500;
+        $auto_play_timeout = isset($slider_option['auto_play_timeout']) ? $slider_option['auto_play_timeout'] : 2000;
 
-        $wcps_slideBy = get_post_meta( $post_id, 'wcps_slideBy', true );
-        $wcps_rewind = get_post_meta( $post_id, 'wcps_rewind', true );
-        $wcps_loop = get_post_meta( $post_id, 'wcps_loop', true );
-        $wcps_center = get_post_meta( $post_id, 'wcps_center', true );
-        $wcps_stop_on_hover = get_post_meta( $post_id, 'wcps_stop_on_hover', true );
-        $wcps_slider_navigation = get_post_meta( $post_id, 'wcps_slider_navigation', true );
-        $wcps_slider_navigation_position = get_post_meta( $post_id, 'wcps_slider_navigation_position', true );
-        $wcps_slider_pagination = get_post_meta( $post_id, 'wcps_slider_pagination', true );
-        $wcps_slider_pagination_bg = get_post_meta( $post_id, 'wcps_slider_pagination_bg', true );
-        $wcps_slider_pagination_text_color = get_post_meta( $post_id, 'wcps_slider_pagination_text_color', true );
-        $wcps_slider_pagination_count = get_post_meta( $post_id, 'wcps_slider_pagination_count', true );
+        $slider_rewind = isset($slider_option['rewind']) ? $slider_option['rewind'] : 'true';
+        $slider_loop = isset($slider_option['loop']) ? $slider_option['loop'] : 'true';
+        $slider_center = isset($slider_option['center']) ? $slider_option['center'] : 'true';
+        $slider_stop_on_hover = isset($slider_option['stop_on_hover']) ? $slider_option['stop_on_hover'] : 'true';
+        $slider_navigation = isset($slider_option['navigation']) ? $slider_option['navigation'] : 'true';
+        $navigation_position = isset($slider_option['navigation_position']) ? $slider_option['navigation_position'] : '';
+        $navigation_background_color = isset($slider_option['navigation_background_color']) ? $slider_option['navigation_background_color'] : '';
+        $navigation_color = isset($slider_option['navigation_color']) ? $slider_option['navigation_color'] : '';
+        $navigation_style = isset($slider_option['navigation_style']) ? $slider_option['navigation_style'] : 'flat';
 
-        $wcps_slider_lazy_load = get_post_meta( $post_id, 'wcps_slider_lazy_load', true );
+        $dots_background_color = isset($slider_option['dots_background_color']) ? $slider_option['dots_background_color'] : '';
+        $dots_active_background_color = isset($slider_option['dots_active_background_color']) ? $slider_option['dots_active_background_color'] : '';
 
-        $wcps_slider_touch_drag = get_post_meta( $post_id, 'wcps_slider_touch_drag', true );
-        $wcps_slider_mouse_drag = get_post_meta( $post_id, 'wcps_slider_mouse_drag', true );
-        $wcps_slider_rtl = get_post_meta( $post_id, 'wcps_slider_rtl', true );
-        $wcps_slider_animateout = get_post_meta( $post_id, 'wcps_slider_animateout', true );
-        $wcps_slider_animatein = get_post_meta( $post_id, 'wcps_slider_animatein', true );
 
+        $slider_pagination = isset($slider_option['pagination']) ? $slider_option['pagination'] : 'true';
+        $slider_pagination_count = isset($slider_option['pagination_count']) ? $slider_option['pagination_count'] : 'false';
+        $slider_rtl = isset($slider_option['rtl']) ? $slider_option['rtl'] : 'false';
+        $slider_lazy_load = isset($slider_option['lazy_load']) ? $slider_option['lazy_load'] : 'false';
+        $slider_mouse_drag = isset($slider_option['mouse_drag']) ? $slider_option['mouse_drag'] : 'true';
+        $slider_touch_drag = isset($slider_option['touch_drag']) ? $slider_option['touch_drag'] : 'true';
 
         ?>
         <div class="section">
-        <div class="section-title">Options</div>
-        <p class="description section-description">Customize slider options here.</p>
+            <div class="section-title"><?php echo __('Slider', 'team-pro'); ?></div>
+            <p class="description section-description"><?php echo __('Customize slider settings.', 'team-pro'); ?></p>
+
             <?php
 
-
-            ob_start();
-
-            ?>
-            <div><?php _e('In Destop: (min:1000px and max)', 'woocommerce-products-slider');?></div>
-            <input type="text" placeholder="4"   name="wcps_column_number" value="<?php echo $wcps_column_number;  ?>" />
-
-            <div><?php _e('In Tablet & Small Desktop: (900px max width)', 'woocommerce-products-slider');?></div>
-            <input type="text" placeholder="2"  name="wcps_column_number_tablet" value="<?php echo $wcps_column_number_tablet;  ?>" />
-
-            <div><?php _e('In Mobile: (479px max width)', 'woocommerce-products-slider');?></div>
-            <input type="text" placeholder="1"  name="wcps_column_number_mobile" value="<?php echo $wcps_column_number_mobile;  ?>" />
-            <?php
-
-
-            $html = ob_get_clean();
             $args = array(
-                'id' => 'wcps_shortcodes',
-                'title' => __('Slider column number', 'woocommerce-products-slider'),
-                'details' => '',
-                'type' => 'custom_html',
-                'html' => $html,
-            );
-            $settings_tabs_field->generate_field($args);
-
-
-
-
-
-            $args = array(
-                'id'		=> 'wcps_auto_play',
-                //'parent'		=> '',
-                'title'		=> __('Slider auto play','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider autoplay.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_auto_play,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-
-
-
+                'id'		=> 'slider',
+                'title'		=> __('Slider column count ','team-pro'),
+                'details'	=> __('Set slider column count.','team-pro'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'column_large',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In desktop','team-pro'),
+                        'details'	=> __('min-width: 1200px, ex: 3','team-pro'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_column_large,
+                        'default'		=> 3,
+                        'placeholder'   => '3',
+                    ),
+                    array(
+                        'id'		=> 'column_medium',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In tablet & small desktop','team-pro'),
+                        'details'	=> __('min-width: 992px, ex: 2','team-pro'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_column_medium,
+                        'default'		=> 2,
+                        'placeholder'   => '2',
+                    ),
+                    array(
+                        'id'		=> 'column_small',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In mobile','team-pro'),
+                        'details'	=> __('min-width: 576px, ex: 1','team-pro'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_column_small,
+                        'default'		=> 1,
+                        'placeholder'   => '1',
+                    ),
                 ),
-            );
 
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_auto_play_speed',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slider auto play speed','woocommerce-products-slider'),
-                'details'	=> __('Custom value for auto play speed, 1000 = 1 second','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $wcps_auto_play_speed,
-                'default'		=> '1000',
-                'placeholder'		=> '1000',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_auto_play_timeout',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slider auto play timeout','woocommerce-products-slider'),
-                'details'	=> __('Custom value for auto play timeout, 1000 = 1 second','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $wcps_auto_play_timeout,
-                'default'		=> '1200',
-                'placeholder'		=> '1200',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_slide_speed',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slide speed','woocommerce-products-slider'),
-                'details'	=> __('Custom value for slide speed, 1000 = 1 second','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $wcps_slide_speed,
-                'default'		=> '600',
-                'placeholder'		=> '600',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_pagination_slide_speed',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Pagination Slide Speed','woocommerce-products-slider'),
-                'details'	=> __('Custom value for pagination slide speed, 1000 = 1 second','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $wcps_pagination_slide_speed,
-                'default'		=> '600',
-                'placeholder'		=> '600',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            $args = array(
-                'id'		=> 'wcps_slideBy',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Slider slideby count','woocommerce-products-slider'),
-                'details'	=> __('Custom value for slideby','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $wcps_slideBy,
-                'default'		=> '1',
-                'placeholder'		=> '1',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_rewind',
-                //'parent'		=> '',
-                'title'		=> __('Slider rewind','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider rewind.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_rewind,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            $args = array(
-                'id'		=> 'wcps_loop',
-                //'parent'		=> '',
-                'title'		=> __('Slider loop','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider loop.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_loop,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_center',
-                //'parent'		=> '',
-                'title'		=> __('Slider center','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider center. please set odd number of slider column to work slider center.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_center,
-                'default'		=> 'false',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_stop_on_hover',
-                //'parent'		=> '',
-                'title'		=> __('Slider stop on hover','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider stop on hover.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_stop_on_hover,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-
-            $args = array(
-                'id'		=> 'wcps_slider_navigation',
-                //'parent'		=> '',
-                'title'		=> __('Slider navigation at top','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider navigation at Top.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_navigation,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_slider_navigation_position',
-                //'parent'		=> '',
-                'title'		=> __('Slider navigation position','woocommerce-products-slider'),
-                'details'	=> __('Choose slider navigation position.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_navigation_position,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'topright'=>__('Top Right','woocommerce-products-slider'),
-                    'middle'=>__('Middle','woocommerce-products-slider'),
-                    'middle-fixed'=>__('Middle fixed','woocommerce-products-slider'),
-
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-
-            $args = array(
-                'id'		=> 'wcps_slider_pagination',
-                //'parent'		=> '',
-                'title'		=> __('Slider pagination at bottom','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider pagination at bottom.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_pagination,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1574,189 +1377,308 @@ if(!function_exists('wcps_meta_tab_content_options')) {
 
 
 
+        $args = array(
+            'id'		=> 'auto_play',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Auto play','team-pro'),
+            'details'	=> __('Choose slider auto play.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_auto_play,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
 
-            $args = array(
-                'id'		=> 'wcps_slider_pagination_bg',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Pagination background color','woocommerce-products-slider'),
-                'details'	=> __('Choose custom pagination background color','woocommerce-products-slider'),
-                'type'		=> 'colorpicker',
-                'value'		=> $wcps_slider_pagination_bg,
-                'default'		=> '#ddd',
-            );
+        $settings_tabs_field->generate_field($args);
 
-            $settings_tabs_field->generate_field($args);
+        $args = array(
+            'id'		=> 'auto_play_speed',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Auto play speed','team-pro'),
+            'details'	=> __('Set auto play speed, ex: 1500','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $auto_play_speed,
+            'default'		=> 1500,
+            'placeholder'   => '1500',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'auto_play_timeout',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Auto play timeout','team-pro'),
+            'details'	=> __('Set auto play timeout, ex: 2000','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $auto_play_timeout,
+            'default'		=> 2000,
+            'placeholder'   => '2000',
+            'is_error'   => ($auto_play_speed > $auto_play_timeout)? true : false,
+            'error_details'   => __('Value should larger than <b>Auto play speed</b>'),
+        );
+
+        $settings_tabs_field->generate_field($args);
 
 
-            $args = array(
-                'id'		=> 'wcps_slider_pagination_text_color',
-                //'parent'		=> 'post_grid_meta_options',
-                'title'		=> __('Pagination text color','woocommerce-products-slider'),
-                'details'	=> __('Choose custom pagination text color','woocommerce-products-slider'),
-                'type'		=> 'colorpicker',
-                'value'		=> $wcps_slider_pagination_text_color,
-                'default'		=> '#999',
-            );
+        $args = array(
+            'id'		=> 'rewind',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider rewind','team-pro'),
+            'details'	=> __('Choose slider rewind.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_rewind,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
 
-            $settings_tabs_field->generate_field($args);
+        $settings_tabs_field->generate_field($args);
 
+        $args = array(
+            'id'		=> 'loop',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider loop','team-pro'),
+            'details'	=> __('Choose slider loop.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_loop,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
 
-
-
-            $args = array(
-                'id'		=> 'wcps_slider_pagination_count',
-                //'parent'		=> '',
-                'title'		=> __('Slider pagination number counting','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider pagination number counting.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_pagination_count,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            $args = array(
-                'id'		=> 'wcps_slider_lazy_load',
-                //'parent'		=> '',
-                'title'		=> __('Lazy load enable','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable lazy load for thumbnails.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_lazy_load,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            $args = array(
-                'id'		=> 'wcps_slider_touch_drag',
-                //'parent'		=> '',
-                'title'		=> __('Slider touch drag enable','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider touch drag.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_touch_drag,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
+        $settings_tabs_field->generate_field($args);
 
 
 
-            $args = array(
-                'id'		=> 'wcps_slider_mouse_drag',
-                //'parent'		=> '',
-                'title'		=> __('Slider mouse drag enable','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider mouse drag.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_mouse_drag,
-                'default'		=> 'true',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
+        $args = array(
+            'id'		=> 'center',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider center','team-pro'),
+            'details'	=> __('Choose slider center.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_center,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
 
-            $settings_tabs_field->generate_field($args);
+        $settings_tabs_field->generate_field($args);
 
+        $args = array(
+            'id'		=> 'stop_on_hover',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider stop on hover','team-pro'),
+            'details'	=> __('Choose stop on hover.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_stop_on_hover,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
 
-            $args = array(
-                'id'		=> 'wcps_slider_rtl',
-                //'parent'		=> '',
-                'title'		=> __('RTL enable','woocommerce-products-slider'),
-                'details'	=> __('Enable or disable slider RTL.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_rtl,
-                'default'		=> 'false',
-                'args'		=> array(
-                    'true'=>__('True','woocommerce-products-slider'),
-                    'false'=>__('False','woocommerce-products-slider'),
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
+        $settings_tabs_field->generate_field($args);
 
 
 
-            $args = array(
-                'id'		=> 'wcps_slider_animateout',
-                //'parent'		=> '',
-                'title'		=> __('Animate Out','woocommerce-products-slider'),
-                'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_animateout,
-                'default'		=> 'false',
-                'args'		=> array(
-                    'fadeOut'=>__('fadeOut','woocommerce-products-slider'),
-                    'bounce'=>__('bounce','woocommerce-products-slider'),
-                    'flash'=>__('flash','woocommerce-products-slider'),
-                    'pulse'=>__('pulse','woocommerce-products-slider'),
-                    'shake'=>__('shake','woocommerce-products-slider'),
-                    'swing'=>__('swing','woocommerce-products-slider'),
-                    'tada'=>__('tada','woocommerce-products-slider'),
-                    'wobble'=>__('wobble','woocommerce-products-slider'),
-                    'flip'=>__('flip','woocommerce-products-slider'),
-                    'flipInX'=>__('flipInX','woocommerce-products-slider'),
-                    'flipInY'=>__('flipInY','woocommerce-products-slider'),
-                    'fadeIn'=>__('fadeIn','woocommerce-products-slider'),
-                    'fadeInDown'=>__('fadeInDown','woocommerce-products-slider'),
-                    'fadeInUp'=>__('fadeInUp','woocommerce-products-slider'),
-                    'bounceIn'=>__('bounceIn','woocommerce-products-slider'),
-                    'bounceInDown'=>__('bounceInDown','woocommerce-products-slider'),
-                    'bounceInUp'=>__('bounceInUp','woocommerce-products-slider'),
+
+        $args = array(
+            'id'		=> 'navigation',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider navigation','team-pro'),
+            'details'	=> __('Choose slider navigation.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_navigation,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'slide_speed',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Navigation slide speed','team-pro'),
+            'details'	=> __('Set slide speed, ex: 1000','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $slider_slide_speed,
+            'default'		=> 1000,
+            'placeholder'   => '1000',
+        );
+
+        $settings_tabs_field->generate_field($args);
 
 
-                ),
-            );
+        $args = array(
+            'id'		=> 'navigation_position',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider navigation position','team-pro'),
+            'details'	=> __('Choose slider navigation position.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $navigation_position,
+            'default'		=> 'topright',
+            'args'		=> array('topright'=>__('Top-right','team-pro'),'topleft'=>__('Top-left','team-pro'), 'bottomleft'=>__('Bottom left','team-pro'), 'bottomright'=>__('Bottom right','team-pro'),'middle'=>__('Middle','team-pro') , 'middle-fixed'=>__('Middle-fixed','team-pro')  ), //
+        );
 
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'wcps_slider_animatein',
-                //'parent'		=> '',
-                'title'		=> __('Animate Out','woocommerce-products-slider'),
-                'details'	=> __('Choose animation on out.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> $wcps_slider_animatein,
-                'default'		=> 'false',
-                'args'		=> array(
-                    'fadeOut'=>__('fadeOut','woocommerce-products-slider'),
-                    'bounce'=>__('bounce','woocommerce-products-slider'),
-                    'flash'=>__('flash','woocommerce-products-slider'),
-                    'pulse'=>__('pulse','woocommerce-products-slider'),
-                    'shake'=>__('shake','woocommerce-products-slider'),
-                    'swing'=>__('swing','woocommerce-products-slider'),
-                    'tada'=>__('tada','woocommerce-products-slider'),
-                    'wobble'=>__('wobble','woocommerce-products-slider'),
-                    'flip'=>__('flip','woocommerce-products-slider'),
-                    'flipInX'=>__('flipInX','woocommerce-products-slider'),
-                    'flipInY'=>__('flipInY','woocommerce-products-slider'),
-                    'fadeIn'=>__('fadeIn','woocommerce-products-slider'),
-                    'fadeInDown'=>__('fadeInDown','woocommerce-products-slider'),
-                    'fadeInUp'=>__('fadeInUp','woocommerce-products-slider'),
-                    'bounceIn'=>__('bounceIn','woocommerce-products-slider'),
-                    'bounceInDown'=>__('bounceInDown','woocommerce-products-slider'),
-                    'bounceInUp'=>__('bounceInUp','woocommerce-products-slider'),
-
-
-                ),
-            );
-
-            $settings_tabs_field->generate_field($args);
+        $settings_tabs_field->generate_field($args);
 
 
 
+        $args = array(
+            'id'		=> 'navigation_style',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider navigation style','team-pro'),
+            'details'	=> __('Choose slider navigation style. classes <code>semi-round, round, flat, border</code>','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $navigation_style,
+            'default'		=> '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'navigation_background_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Navigation background color','team-pro'),
+            'details'	=> __('Set navigation background color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $navigation_background_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'navigation_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Navigation text color','team-pro'),
+            'details'	=> __('Set navigation text color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $navigation_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'pagination',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider dots','team-pro'),
+            'details'	=> __('Choose slider dots at bottom.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_pagination,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'dots_background_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Dots background color','team-pro'),
+            'details'	=> __('Set dots background color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $dots_background_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'dots_active_background_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Dots active/hover background color','team-pro'),
+            'details'	=> __('Set dots active/hover background color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $dots_active_background_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'pagination_speed',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Dots slide speed','team-pro'),
+            'details'	=> __('Set dots slide speed, ex: 1200','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $slider_pagination_speed,
+            'default'		=> 1200,
+            'placeholder'   => '1200',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'pagination_count',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider dots count','team-pro'),
+            'details'	=> __('Choose slider dots count.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_pagination_count,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'rtl',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider rtl','team-pro'),
+            'details'	=> __('Choose slider rtl.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_rtl,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+        $args = array(
+            'id'		=> 'lazy_load',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider lazy load','team-pro'),
+            'details'	=> __('Choose slider lazy load.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_lazy_load,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'touch_drag',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider touch drag','team-pro'),
+            'details'	=> __('Choose slider touch drag.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_touch_drag,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'mouse_drag',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider mouse drag','team-pro'),
+            'details'	=> __('Choose slider mouse drag.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_mouse_drag,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
 
 
 
@@ -1772,10 +1694,10 @@ if(!function_exists('wcps_meta_tab_content_options')) {
 }
 
 
-add_action('wcps_meta_tab_content_shortcode', 'wcps_meta_tab_content_shortcode',10, 2);
+add_action('wcps_metabox_content_shortcode', 'wcps_metabox_content_shortcode',10, 2);
 
-if(!function_exists('wcps_meta_tab_content_shortcode')) {
-    function wcps_meta_tab_content_shortcode($tab, $post_id){
+if(!function_exists('wcps_metabox_content_shortcode')) {
+    function wcps_metabox_content_shortcode($tab, $post_id){
 
         $settings_tabs_field = new settings_tabs_field();
 
@@ -1854,3 +1776,35 @@ if(!function_exists('wcps_meta_tab_content_shortcode')) {
         <?php
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('wcps_metaboxe_save','wcps_metaboxe_save');
+
+function wcps_metaboxe_save($job_id){
+
+    $wcps_options = isset($_POST['wcps_options']) ? stripslashes_deep($_POST['wcps_options']) : '';
+    update_post_meta($job_id, 'wcps_options', $wcps_options);
+
+
+//    $job_bm_total_vacancies = isset($_POST['job_bm_total_vacancies']) ? sanitize_text_field($_POST['job_bm_total_vacancies']) : '';
+//    update_post_meta($job_id, 'job_bm_total_vacancies', $job_bm_total_vacancies);
+
+
+}
+
+
+
+
+
+

@@ -15,13 +15,13 @@ if( ! class_exists( 'class_wcps_udpate' ) ) {
         public function __construct()
         {
 
-            //add_action( 'admin_notices', array( $this, 'wcps_version_upgrade_notice' ) );
+            //add_action( 'admin_notices', array( $this, 'wcps_plugin_version_upgrade_notice' ) );
             add_action('wcps_action_install', array($this, 'wcps_update_2_1_13'));
 
         }
 
 
-        function wcps_version_upgrade_notice()
+        function wcps_plugin_version_upgrade_notice()
         {
             $wcps_upgrade = get_option('wcps_upgrade');
 

@@ -1,0 +1,1584 @@
+<?php
+if ( ! defined('ABSPATH')) exit;  // if direct access
+
+
+
+
+add_action('wcps_metabox_content_shortcode', 'wcps_metabox_content_shortcode');
+
+if(!function_exists('wcps_metabox_content_shortcode')) {
+    function wcps_metabox_content_shortcode($post_id){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+
+        ?>
+        <div class="section">
+            <div class="section-title">Shortcodes</div>
+            <p class="description section-description">Simply copy these shortcode and user under post or page content</p>
+
+
+            <?php
+            ob_start();
+            ?>
+
+            <div class="copy-to-clipboard">
+                <input type="text" value="[wcps id='<?php echo $post_id; ?>']"> <span class="copied">Copied</span>
+                <p class="description">You can use this shortcode under post content</p>
+            </div>
+
+            <div class="copy-to-clipboard">
+                To avoid conflict:<br>
+                <input type="text" value="[wcps_pickplugins id='<?php echo $post_id; ?>']"> <span
+                    class="copied">Copied</span>
+                <p class="description">To avoid conflict with 3rd party shortcode also used same <code>[wcps]</code>You can use this shortcode under post content</p>
+            </div>
+
+            <div class="copy-to-clipboard">
+                <textarea cols="50" rows="2" style="background:#bfefff" onClick="this.select();"><?php echo '<?php echo do_shortcode("[wcps id='; echo "'" . $post_id . "']"; echo '"); ?>'; ?></textarea> <span class="copied">Copied</span>
+                <p class="description">PHP Code, you can use under theme .php files.</p>
+            </div>
+
+            <div class="copy-to-clipboard">
+                <textarea cols="50" rows="2" style="background:#bfefff"
+                          onClick="this.select();"><?php echo '<?php echo do_shortcode("[wcps_pickplugins id=';
+                    echo "'" . $post_id . "']";
+                    echo '"); ?>'; ?></textarea> <span class="copied">Copied</span>
+                <p class="description">To avoid conflict, PHP code you can use under theme .php files.</p>
+            </div>
+
+            <style type="text/css">
+                .wcps-meta-box .copy-to-clipboard {
+                }
+
+                .wcps-meta-box .copy-to-clipboard .copied {
+                    display: none;
+                    background: #e5e5e5;
+                    padding: 4px 10px;
+                    line-height: normal;
+                }
+            </style>
+
+            <script>
+                jQuery(document).ready(function ($) {
+                    $(document).on('click', '.wcps-meta-box .copy-to-clipboard input, .wcps-meta-box .copy-to-clipboard textarea', function () {
+                        $(this).focus();
+                        $(this).select();
+                        document.execCommand('copy');
+                        $(this).parent().children('.copied').fadeIn().fadeOut(2000);
+                    })
+                })
+            </script>
+            <?php
+            $html = ob_get_clean();
+            $args = array(
+                'id' => 'wcps_shortcodes',
+                'title' => __('Get shortcode', 'woocommerce-products-slider'),
+                'details' => '',
+                'type' => 'custom_html',
+                'html' => $html,
+            );
+            $settings_tabs_field->generate_field($args);
+
+
+            ?>
+        </div>
+        <?php
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('wcps_metabox_content_style', 'wcps_metabox_content_style');
+
+if(!function_exists('wcps_metabox_content_style')) {
+    function wcps_metabox_content_style($post_id){
+
+        $settings_tabs_field = new settings_tabs_field();
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $slider_ribbon = isset($wcps_options['ribbon']) ? $wcps_options['ribbon'] : array();
+
+        $ribbon_name = isset($slider_ribbon['ribbon_name']) ? $slider_ribbon['ribbon_name'] : '';
+        $ribbon_custom = isset($slider_ribbon['ribbon_custom']) ? $slider_ribbon['ribbon_custom'] : '';
+
+        $item_style = isset($wcps_options['item_style']) ? $wcps_options['item_style'] : array();
+
+        $item_padding = isset($item_style['padding']) ? $item_style['padding'] : '';
+        $item_background_color = isset($item_style['background_color']) ? $item_style['background_color'] : '';
+        $item_text_align = isset($item_style['text_align']) ? $item_style['text_align'] : '';
+
+        $container = isset($wcps_options['container']) ? $wcps_options['container'] : array();
+        $container_background_img_url = isset($container['background_img_url']) ? $container['background_img_url'] : '';
+        $container_background_color = isset($container['background_color']) ? $container['background_color'] : '';
+        $container_text_align = isset($container['text_align']) ? $container['text_align'] : '';
+
+        $class_wcps_functions = new class_wcps_functions();
+
+        $skins = $class_wcps_functions->skins();
+        $ribbons = $class_wcps_functions->ribbons();
+
+
+
+        ?>
+        <div class="section">
+            <div class="section-title">Style</div>
+            <p class="description section-description">Customize style settings.</p>
+
+
+            <?php
+            $ribbons_arr = array();
+
+            if(!empty($ribbons))
+                foreach($ribbons as $ribbon_key => $ribbon_data){
+
+                    $ribbons_arr[$ribbon_key]['name'] = $ribbon_data['name'];
+                    $ribbons_arr[$ribbon_key]['thumb'] = $ribbon_data['src'];
+
+                }
+
+            $args = array(
+                'id'		=> 'ribbon_name',
+                'parent'		=> 'wcps_options[ribbon]',
+                'title'		=> __('Slider ribbon','woocommerce-products-slider'),
+                'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
+                'type'		=> 'radio_image',
+                'value'		=> $ribbon_name,
+                'default'		=> 'none',
+                'width'		=> '100px',
+
+                'args'		=> $ribbons_arr,
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+            $args = array(
+                'id'		=> 'ribbon_custom',
+                'parent'		=> 'wcps_options[ribbon]',
+                'title'		=> __('Custom ribbon','woocommerce-products-slider'),
+                'details'	=> __('Choose custom ribbon, image source url.','woocommerce-products-slider'),
+                'type'		=> 'media_url',
+                'value'		=> $ribbon_custom,
+                'default'		=> '',
+                'placeholder'		=> 'Ribbon image url',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'item_style',
+                'title'		=> __('Item style','team'),
+                'details'	=> __('Customize item style.','team'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'padding',
+                        'parent'		=> 'wcps_options[item_style]',
+                        'title'		=> __('Item padding','team'),
+                        'details'	=> __('Item custom padding','team'),
+                        'type'		=> 'text',
+                        'value'		=> $item_padding,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                    array(
+                        'id'		=> 'background_color',
+                        'parent'		=> 'wcps_options[item_style]',
+                        'title'		=> __('Background color','team'),
+                        'details'	=> __('Item background color','team'),
+                        'type'		=> 'colorpicker',
+                        'value'		=> $item_background_color,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                    array(
+                        'id'		=> 'text_align',
+                        'parent'		=> 'wcps_options[item_style]',
+                        'title'		=> __('Text align','team'),
+                        'details'	=> __('Item text align','team'),
+                        'type'		=> 'select',
+                        'value'		=> $item_text_align,
+                        'default'		=> '',
+                        'args'		=> array('left'=>'Left','center'=>'Center', 'right'=>'Right',),
+                    ),
+                ),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+            $args = array(
+                'id'		=> 'item_width',
+                'title'		=> __('Container style','team'),
+                'details'	=> __('Customize container style.','team'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'background_img_url',
+                        'parent'		=> 'wcps_options[container]',
+                        'title'		=> __('Background image','team'),
+                        'details'	=> __('Container background image','team'),
+                        'type'		=> 'media_url',
+                        'value'		=> $container_background_img_url,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                    array(
+                        'id'		=> 'background_color',
+                        'parent'		=> 'wcps_options[container]',
+                        'title'		=> __('Background color','team'),
+                        'details'	=> __('Container background color','team'),
+                        'type'		=> 'colorpicker',
+                        'value'		=> $container_background_color,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                    array(
+                        'id'		=> 'text_align',
+                        'parent'		=> 'wcps_options[container]',
+                        'title'		=> __('Text align','team'),
+                        'details'	=> __('Container text align','team'),
+                        'type'		=> 'select',
+                        'value'		=> $container_text_align,
+                        'default'		=> '',
+                        'args'		=> array('left'=>'Left','center'=>'Center', 'right'=>'Right',),
+                    ),
+                ),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+            ?>
+
+
+        </div>
+            <?php
+    }
+}
+
+
+
+
+
+
+
+
+
+
+add_action('wcps_metabox_content_layouts','wcps_metabox_content_layouts');
+function wcps_metabox_content_layouts($post_id){
+
+
+    $settings_tabs_field = new settings_tabs_field();
+    $wcps_options = get_post_meta($post_id,'wcps_options', true);
+    $item_layout_id = !empty($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_get_first_product_id();
+
+
+
+    ?>
+    <div class="section">
+        <div class="section-title"><?php echo __('Layouts', 'team'); ?></div>
+        <p class="description section-description"><?php echo __('Choose item layouts.', 'team'); ?></p>
+
+
+        <?php
+
+
+
+        ob_start();
+
+        ?>
+        <p><a target="_blank" class="button" href="<?php echo admin_url().'post-new.php?post_type=team_layout'; ?>"><?php echo __('Create layout','team'); ?></a> </p>
+        <p><a target="_blank" class="button" href="<?php echo admin_url().'edit.php?post_type=team_layout'; ?>"><?php echo __('Manage layouts','team'); ?></a> </p>
+
+        <?php
+
+
+        $html = ob_get_clean();
+
+        $args = array(
+            'id'		=> 'create_team_layout',
+            'parent'		=> 'wcps_options[query]',
+            'title'		=> __('Create layout','team'),
+            'details'	=> __('Please follow the links to create layouts or manage.','team'),
+            'type'		=> 'custom_html',
+            'html'		=> $html,
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $item_layout_args = array();
+
+        $query_args['post_type'] 		= array('wcps_layout');
+        $query_args['post_status'] 		= array('publish');
+        $query_args['orderby']  		= 'date';
+        $query_args['order']  			= 'DESC';
+        $query_args['posts_per_page'] 	= -1;
+        $wp_query = new WP_Query($query_args);
+
+        if ( $wp_query->have_posts() ) :
+
+            while ( $wp_query->have_posts() ) : $wp_query->the_post();
+
+                $post_id = get_the_id();
+                $layout_name = get_the_title();
+                $team_thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'full' );
+                $team_thumb_url = isset($team_thumb['0']) ? esc_url_raw($team_thumb['0']) : '';
+
+                $layout_options = get_post_meta($post_id,'layout_options', true);
+                $layout_preview_img = !empty($layout_options['layout_preview_img']) ? $layout_options['layout_preview_img'] : 'https://i.imgur.com/JyurCtY.jpg';
+
+                $team_thumb_url = !empty( $team_thumb_url ) ? $team_thumb_url : $layout_preview_img;
+
+                $item_layout_args[$post_id] = array('name'=>$layout_name, 'link_text'=>'Edit', 'link'=> get_edit_post_link($post_id), 'thumb'=> $team_thumb_url, );
+
+            endwhile;
+        endif;
+
+
+
+
+
+        $args = array(
+            'id'		=> 'item_layout_id',
+            'parent' => 'wcps_options',
+            'title'		=> __('Item layouts','team'),
+            'details'	=> __('Choose grid item layout.','team'),
+            'type'		=> 'radio_image',
+            'value'		=> $item_layout_id,
+            'default'		=> '',
+            'width'		=> '250px',
+            'args'		=> $item_layout_args,
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+        ?>
+    </div>
+    <?php
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('wcps_metabox_content_query_product', 'wcps_metabox_content_query_product');
+
+if(!function_exists('wcps_metabox_content_query_product')) {
+    function wcps_metabox_content_query_product($post_id){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $wcps_total_items = get_post_meta( $post_id, 'wcps_total_items', true );
+
+
+        $taxonomies = get_post_meta( $post_id, 'wcps_taxonomies', true );
+
+
+        $wcps_query_order = get_post_meta( $post_id, 'wcps_query_order', true );
+        $wcps_query_orderby = get_post_meta( $post_id, 'wcps_query_orderby', true );
+
+        $wcps_hide_out_of_stock = get_post_meta( $post_id, 'wcps_hide_out_of_stock', true );
+        $wcps_product_featured = get_post_meta( $post_id, 'wcps_product_featured', true );
+        $wcps_product_on_sale = get_post_meta( $post_id, 'wcps_product_on_sale', true );
+
+
+        $wcps_product_ids = get_post_meta( $post_id, 'wcps_product_ids', true );
+
+
+
+        ?>
+        <div class="section">
+            <div class="section-title">Query Products</div>
+            <p class="description section-description">Setup product query settings.</p>
+
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wcps_total_items',
+                //'parent'		=> 'post_grid_meta_options',
+                'title'		=> __('Max number of product','woocommerce-products-slider'),
+                'details'	=> __('Set custom number you want to display maximum number of product','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wcps_total_items,
+                'default'		=> '10',
+                'placeholder'		=> '10',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            ob_start();
+            echo wcps_get_categories(get_the_ID());
+            $html = ob_get_clean();
+            $args = array(
+                'id' => 'wcps_categories',
+                'title' => __('Product categories & terms', 'woocommerce-products-slider'),
+                'details' => '',
+                'type' => 'custom_html',
+                'html' => $html,
+            );
+            $settings_tabs_field->generate_field($args);
+
+
+
+            ?>
+
+
+
+            <?php
+
+
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'wcps_query_order',
+                //'parent'		=> '',
+                'title'		=> __('Query order','woocommerce-products-slider'),
+                'details'	=> __('Set query order.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $wcps_query_order,
+                'default'		=> 'DESC',
+                'args'		=> array(
+                    'DESC'=>__('Descending','woocommerce-products-slider'),
+                    'ASC'=>__('Ascending','woocommerce-products-slider'),
+
+
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'wcps_query_orderby',
+                //'parent'		=> '',
+                'title'		=> __('Query orderby','woocommerce-products-slider'),
+                'details'	=> __('Set query orderby.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'multiple'		=> true,
+                'value'		=> $wcps_query_orderby,
+                'default'		=> array('date'),
+                'args'		=> array(
+                    'none'=>__('None','woocommerce-products-slider'),
+                    'ID'=>__('ID','woocommerce-products-slider'),
+                    'date'=>__('date','woocommerce-products-slider'),
+                    'post_date'=>__('post_date','woocommerce-products-slider'),
+                    'name'=>__('name','woocommerce-products-slider'),
+                    'rand'=>__('rand','woocommerce-products-slider'),
+                    'comment_count'=>__('comment_count','woocommerce-products-slider'),
+                    'author'=>__('author','woocommerce-products-slider'),
+                    'title'=>__('title','woocommerce-products-slider'),
+                    'type'=>__('type','woocommerce-products-slider'),
+                    'menu_order'=>__('menu order','woocommerce-products-slider'),
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'wcps_hide_out_of_stock',
+                //'parent'		=> '',
+                'title'		=> __('Hide out of stock items','woocommerce-products-slider'),
+                'details'	=> __('You can hide out of stock items from query.','woocommerce-products-slider'),
+                'type'		=> 'radio',
+                'value'		=> $wcps_hide_out_of_stock,
+                'default'		=> 'no_check',
+                'args'		=> array(
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
+                    'no_check'=>__('No Check','woocommerce-products-slider'),
+
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'wcps_product_featured',
+                //'parent'		=> '',
+                'title'		=> __('Featured product display','woocommerce-products-slider'),
+                'details'	=> __('You include/exclude featured product on query.','woocommerce-products-slider'),
+                'type'		=> 'radio',
+                'value'		=> $wcps_product_featured,
+                'default'		=> 'no_check',
+                'args'		=> array(
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
+                    'no_check'=>__('No Check','woocommerce-products-slider'),
+
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'wcps_product_on_sale',
+                //'parent'		=> '',
+                'title'		=> __('On Sale Product display','woocommerce-products-slider'),
+                'details'	=> __('You include/exclude on sale product on query.','woocommerce-products-slider'),
+                'type'		=> 'radio',
+                'value'		=> $wcps_product_on_sale,
+                'default'		=> 'no',
+                'args'		=> array(
+                    'yes'=>__('Yes','woocommerce-products-slider'),
+                    'no'=>__('No','woocommerce-products-slider'),
+
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'wcps_product_ids',
+                //'parent'		=> 'post_grid_meta_options',
+                'title'		=> __('Product display by Product ID','woocommerce-products-slider'),
+                'details'	=> __('You can display custom product by ids.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wcps_product_ids,
+                'default'		=> '',
+                'placeholder'		=> '1,4,2',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+
+
+
+
+            ?>
+
+        </div>
+
+        <?php
+
+
+
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_action('wcps_metabox_content_slider_options', 'wcps_metabox_content_slider_options');
+
+if(!function_exists('wcps_metabox_content_slider_options')) {
+    function wcps_metabox_content_slider_options($post_id){
+
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $slider_option = isset($wcps_options['slider']) ? $wcps_options['slider'] : array();
+
+        $slider_column_large = isset($slider_option['column_large']) ? $slider_option['column_large'] : 3;
+        $slider_column_medium = isset($slider_option['column_medium']) ? $slider_option['column_medium'] : 2;
+        $slider_column_small = isset($slider_option['column_small']) ? $slider_option['column_small'] : 1;
+
+
+        $slider_slide_speed = isset($slider_option['slide_speed']) ? $slider_option['slide_speed'] : 1000;
+        $slider_pagination_speed = isset($slider_option['pagination_speed']) ? $slider_option['pagination_speed'] : 1200;
+
+
+        $slider_auto_play = isset($slider_option['auto_play']) ? $slider_option['auto_play'] : 'true';
+        $auto_play_speed = isset($slider_option['auto_play_speed']) ? $slider_option['auto_play_speed'] : 1500;
+        $auto_play_timeout = isset($slider_option['auto_play_timeout']) ? $slider_option['auto_play_timeout'] : 2000;
+
+        $slider_rewind = isset($slider_option['rewind']) ? $slider_option['rewind'] : 'true';
+        $slider_loop = isset($slider_option['loop']) ? $slider_option['loop'] : 'true';
+        $slider_center = isset($slider_option['center']) ? $slider_option['center'] : 'true';
+        $slider_stop_on_hover = isset($slider_option['stop_on_hover']) ? $slider_option['stop_on_hover'] : 'true';
+        $slider_navigation = isset($slider_option['navigation']) ? $slider_option['navigation'] : 'true';
+        $navigation_position = isset($slider_option['navigation_position']) ? $slider_option['navigation_position'] : '';
+        $navigation_background_color = isset($slider_option['navigation_background_color']) ? $slider_option['navigation_background_color'] : '';
+        $navigation_color = isset($slider_option['navigation_color']) ? $slider_option['navigation_color'] : '';
+        $navigation_style = isset($slider_option['navigation_style']) ? $slider_option['navigation_style'] : 'flat';
+
+        $dots_background_color = isset($slider_option['dots_background_color']) ? $slider_option['dots_background_color'] : '';
+        $dots_active_background_color = isset($slider_option['dots_active_background_color']) ? $slider_option['dots_active_background_color'] : '';
+
+
+        $slider_pagination = isset($slider_option['pagination']) ? $slider_option['pagination'] : 'true';
+        $slider_pagination_count = isset($slider_option['pagination_count']) ? $slider_option['pagination_count'] : 'false';
+        $slider_rtl = isset($slider_option['rtl']) ? $slider_option['rtl'] : 'false';
+        $slider_lazy_load = isset($slider_option['lazy_load']) ? $slider_option['lazy_load'] : 'false';
+        $slider_mouse_drag = isset($slider_option['mouse_drag']) ? $slider_option['mouse_drag'] : 'true';
+        $slider_touch_drag = isset($slider_option['touch_drag']) ? $slider_option['touch_drag'] : 'true';
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Slider', 'team-pro'); ?></div>
+            <p class="description section-description"><?php echo __('Customize slider settings.', 'team-pro'); ?></p>
+
+            <?php
+
+            $args = array(
+                'id'		=> 'slider',
+                'title'		=> __('Slider column count ','team-pro'),
+                'details'	=> __('Set slider column count.','team-pro'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'column_large',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In desktop','team-pro'),
+                        'details'	=> __('min-width: 1200px, ex: 3','team-pro'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_column_large,
+                        'default'		=> 3,
+                        'placeholder'   => '3',
+                    ),
+                    array(
+                        'id'		=> 'column_medium',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In tablet & small desktop','team-pro'),
+                        'details'	=> __('min-width: 992px, ex: 2','team-pro'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_column_medium,
+                        'default'		=> 2,
+                        'placeholder'   => '2',
+                    ),
+                    array(
+                        'id'		=> 'column_small',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In mobile','team-pro'),
+                        'details'	=> __('min-width: 576px, ex: 1','team-pro'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_column_small,
+                        'default'		=> 1,
+                        'placeholder'   => '1',
+                    ),
+                ),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+        $args = array(
+            'id'		=> 'auto_play',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Auto play','team-pro'),
+            'details'	=> __('Choose slider auto play.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_auto_play,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'auto_play_speed',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Auto play speed','team-pro'),
+            'details'	=> __('Set auto play speed, ex: 1500','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $auto_play_speed,
+            'default'		=> 1500,
+            'placeholder'   => '1500',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'auto_play_timeout',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Auto play timeout','team-pro'),
+            'details'	=> __('Set auto play timeout, ex: 2000','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $auto_play_timeout,
+            'default'		=> 2000,
+            'placeholder'   => '2000',
+            'is_error'   => ($auto_play_speed > $auto_play_timeout)? true : false,
+            'error_details'   => __('Value should larger than <b>Auto play speed</b>'),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'rewind',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider rewind','team-pro'),
+            'details'	=> __('Choose slider rewind.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_rewind,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'loop',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider loop','team-pro'),
+            'details'	=> __('Choose slider loop.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_loop,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+        $args = array(
+            'id'		=> 'center',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider center','team-pro'),
+            'details'	=> __('Choose slider center.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_center,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'stop_on_hover',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider stop on hover','team-pro'),
+            'details'	=> __('Choose stop on hover.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_stop_on_hover,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+
+        $args = array(
+            'id'		=> 'navigation',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider navigation','team-pro'),
+            'details'	=> __('Choose slider navigation.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_navigation,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'slide_speed',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Navigation slide speed','team-pro'),
+            'details'	=> __('Set slide speed, ex: 1000','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $slider_slide_speed,
+            'default'		=> 1000,
+            'placeholder'   => '1000',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'navigation_position',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider navigation position','team-pro'),
+            'details'	=> __('Choose slider navigation position.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $navigation_position,
+            'default'		=> 'topright',
+            'args'		=> array('topright'=>__('Top-right','team-pro'),'topleft'=>__('Top-left','team-pro'), 'bottomleft'=>__('Bottom left','team-pro'), 'bottomright'=>__('Bottom right','team-pro'),'middle'=>__('Middle','team-pro') , 'middle-fixed'=>__('Middle-fixed','team-pro')  ), //
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+        $args = array(
+            'id'		=> 'navigation_style',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider navigation style','team-pro'),
+            'details'	=> __('Choose slider navigation style. classes <code>semi-round, round, flat, border</code>','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $navigation_style,
+            'default'		=> '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'navigation_background_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Navigation background color','team-pro'),
+            'details'	=> __('Set navigation background color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $navigation_background_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'navigation_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Navigation text color','team-pro'),
+            'details'	=> __('Set navigation text color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $navigation_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'pagination',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider dots','team-pro'),
+            'details'	=> __('Choose slider dots at bottom.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_pagination,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'dots_background_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Dots background color','team-pro'),
+            'details'	=> __('Set dots background color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $dots_background_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'dots_active_background_color',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Dots active/hover background color','team-pro'),
+            'details'	=> __('Set dots active/hover background color','team-pro'),
+            'type'		=> 'colorpicker',
+            'value'		=> $dots_active_background_color,
+            'default'		=> '',
+            'placeholder'   => '',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'pagination_speed',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Dots slide speed','team-pro'),
+            'details'	=> __('Set dots slide speed, ex: 1200','team-pro'),
+            'type'		=> 'text',
+            'value'		=> $slider_pagination_speed,
+            'default'		=> 1200,
+            'placeholder'   => '1200',
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'pagination_count',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider dots count','team-pro'),
+            'details'	=> __('Choose slider dots count.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_pagination_count,
+            'default'		=> 'true',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'rtl',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider rtl','team-pro'),
+            'details'	=> __('Choose slider rtl.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_rtl,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+        $args = array(
+            'id'		=> 'lazy_load',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider lazy load','team-pro'),
+            'details'	=> __('Choose slider lazy load.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_lazy_load,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'touch_drag',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider touch drag','team-pro'),
+            'details'	=> __('Choose slider touch drag.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_touch_drag,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+        $args = array(
+            'id'		=> 'mouse_drag',
+            'parent'		=> 'wcps_options[slider]',
+            'title'		=> __('Slider mouse drag','team-pro'),
+            'details'	=> __('Choose slider mouse drag.','team-pro'),
+            'type'		=> 'select',
+            'value'		=> $slider_mouse_drag,
+            'default'		=> 'false',
+            'args'		=> array('true'=>__('True','team-pro'), 'false'=>__('False','team-pro')),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+            ?>
+        </div>
+        <?php
+    }
+}
+
+
+
+
+
+
+
+
+add_action('wcps_metabox_content_custom_scripts', 'wcps_metabox_content_custom_scripts');
+
+if(!function_exists('wcps_metabox_content_custom_scripts')) {
+    function wcps_metabox_content_custom_scripts($post_id){
+
+
+
+        $settings_tabs_field = new settings_tabs_field();
+
+
+	    $wcps_items_custom_css = get_post_meta( $post_id, 'wcps_items_custom_css', true );
+
+
+        ?>
+        <div class="section">
+            <div class="section-title">Custom scripts</div>
+            <p class="description section-description">Add your own scritps and style css.</p>
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wcps_items_custom_css',
+                //'parent'		=> 'post_grid_meta_options',
+                'title'		=> __('Custom CSS','woocommerce-products-slider'),
+                'details'	=> __('Add your own CSS..','woocommerce-products-slider'),
+                'type'		=> 'scripts_css',
+                'value'		=> $wcps_items_custom_css,
+                'default'		=> '.wcps-container #wcps-133{}&#10; .wcps-container #wcps-133 .wcps-items{}&#10;.wcps-container #wcps-133 .wcps-items-thumb{}&#10;',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            ?>
+
+
+        </div>
+
+
+
+            <?php
+
+
+
+
+
+
+	}
+
+}
+
+
+
+
+
+
+add_action('wcps_metabox_content_help_support', 'wcps_metabox_content_help_support');
+
+if(!function_exists('wcps_metabox_content_help_support')) {
+    function wcps_metabox_content_help_support($tab){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Get support', 'team'); ?></div>
+            <p class="description section-description"><?php echo __('Use following to get help and support from our expert team.', 'team'); ?></p>
+
+            <?php
+
+
+            ob_start();
+            ?>
+
+            <p><?php echo __('Ask question for free on our forum and get quick reply from our expert team members.', 'team'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo __('Create support ticket', 'team'); ?></a>
+
+            <p><?php echo __('Read our documentation before asking your question.', 'team'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/documentation/team/"><?php echo __('Documentation', 'team'); ?></a>
+
+            <p><?php echo __('Watch video tutorials.', 'team'); ?></p>
+            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'team'); ?></a>
+
+            <ul>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=zdaRmH_KGCI&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=2">How to create team showcase</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=T2LyT-K4TF8&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=3">Display team showcase slider</a> [pro]</li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=zcWP-rB1xG0&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=4">Create filterable style grid</a> [pro]</li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HjrePb90ToA&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=5">Add custom filter</a> [pro]</li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=8AWlEOLmgA4&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=6">Create glossary grid</a> [pro]</li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=n1aiPFL7QoM&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=7">Team showcase masonry style</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=zDGM9KQxQbg&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=8">Team showcase pagination</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=0YBEhSOXSeI&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=9">Team showcase customize layouts</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=A5ARR__VimA&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=10">Query team members ids</a> [pro]</li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=TtwkAKgYG-M&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=11">Customize team member page</a></li>
+            </ul>
+
+
+
+            <?php
+
+            $html = ob_get_clean();
+
+            $args = array(
+                'id'		=> 'get_support',
+                //'parent'		=> '',
+                'title'		=> __('Ask question','team'),
+                'details'	=> '',
+                'type'		=> 'custom_html',
+                'html'		=> $html,
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            ob_start();
+            ?>
+
+            <p class="">We wish your 2 minutes to write your feedback about the team plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
+
+            <a target="_blank" href="https://wordpress.org/plugins/team/#reviews" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
+
+
+            <?php
+
+            $html = ob_get_clean();
+
+            $args = array(
+                'id'		=> 'reviews',
+                //'parent'		=> '',
+                'title'		=> __('Submit reviews','team'),
+                'details'	=> '',
+                'type'		=> 'custom_html',
+                'html'		=> $html,
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            ?>
+
+
+        </div>
+        <?php
+
+
+    }
+}
+
+
+
+
+
+
+add_action('wcps_metabox_content_buy_pro', 'wcps_metabox_content_buy_pro');
+
+if(!function_exists('wcps_metabox_content_buy_pro')) {
+    function wcps_metabox_content_buy_pro($tab){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Get Premium', 'team'); ?></div>
+            <p class="description section-description"><?php echo __('Thanks for using our plugin, if you looking for some advance feature please buy premium version.', 'team'); ?></p>
+
+            <?php
+
+
+            ob_start();
+            ?>
+
+            <p><?php echo __('If you love our plugin and want more feature please consider to buy pro version.', 'team'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/item/team-responsive-meet-the-team-grid-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'team'); ?></a>
+
+            <h2><?php echo __('See the differences','team'); ?></h2>
+
+            <table class="pro-features">
+                <thead>
+                <tr>
+                    <th class="col-features"><?php echo __('Features','team'); ?></th>
+                    <th class="col-free"><?php echo __('Free','team'); ?></th>
+                    <th class="col-pro"><?php echo __('Premium','team'); ?></th>
+                </tr>
+                </thead>
+
+                <tr>
+                    <td class="col-features"><?php echo __('View type - Slider','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('View type - Filterable','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('View type - Glossary','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Access to layout library(30+ ready layout)','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Query by team members id','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Pagination type - jQuery','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Pagination type - Ajax','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Skill','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Team members custom class','team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('View type - Grid','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Masonry style grid','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Item custom width','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Item margin','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Item text align','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Container style','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout builder','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Wrapper start','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Wrapper end','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Thumbnail','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Title','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Position','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Content','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Social','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Meta fields','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Pagination type - Normal','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Hide Pagination','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Custom CSS','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Custom JS','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Hide featured image(Team member page)','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Hide post title(Team member page)','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Custom team member slug','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Custom meta fields','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Custom social fields','team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <th class="col-features"><?php echo __('Features','team'); ?></th>
+                    <th class="col-free"><?php echo __('Free','team'); ?></th>
+                    <th class="col-pro"><?php echo __('Premium','team'); ?></th>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Buy now','team'); ?></td>
+                    <td> </td>
+                    <td><a class="button" href="https://www.pickplugins.com/item/team-responsive-meet-the-team-grid-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'team'); ?></a></td>
+                </tr>
+
+            </table>
+
+
+
+            <?php
+
+            $html = ob_get_clean();
+
+            $args = array(
+                'id'		=> 'get_pro',
+//                'parent'		=> 'related_post_settings',
+                'title'		=> __('Get pro version','team'),
+                'details'	=> '',
+                'type'		=> 'custom_html',
+                'html'		=> $html,
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            ?>
+
+
+        </div>
+
+        <style type="text/css">
+            .pro-features{
+                margin: 30px 0;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+            }
+            .pro-features th{
+                width: 120px;
+                background: #ddd;
+                padding: 10px;
+            }
+            .pro-features tr{
+            }
+            .pro-features td{
+                border-bottom: 1px solid #ddd;
+                padding: 10px 10px;
+                text-align: center;
+            }
+            .pro-features .col-features{
+                width: 230px;
+                text-align: left;
+            }
+
+            .pro-features .col-free{
+            }
+            .pro-features .col-pro{
+            }
+
+            .pro-features i.fas.fa-check {
+                color: #139e3e;
+                font-size: 16px;
+            }
+            .pro-features i.fas.fa-times {
+                color: #f00;
+                font-size: 17px;
+            }
+        </style>
+        <?php
+
+
+    }
+}
+
+
+
+
+
+
+
+add_action('team_meta_box_save_team','team_meta_box_save_team');
+
+function team_meta_box_save_team($job_id){
+
+    $team_options = isset($_POST['team_options']) ? stripslashes_deep($_POST['team_options']) : '';
+    update_post_meta($job_id, 'team_options', $team_options);
+
+
+//    $job_bm_total_vacancies = isset($_POST['job_bm_total_vacancies']) ? sanitize_text_field($_POST['job_bm_total_vacancies']) : '';
+//    update_post_meta($job_id, 'job_bm_total_vacancies', $job_bm_total_vacancies);
+
+
+}
+

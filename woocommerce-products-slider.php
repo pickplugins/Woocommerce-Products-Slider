@@ -22,24 +22,31 @@ class WoocommerceProductsSlider{
 
 		define('wcps_plugin_url', plugins_url('/', __FILE__)  );
 		define('wcps_plugin_dir', plugin_dir_path( __FILE__ ) );
-		define('wcps_wp_url', 'https://wordpress.org/plugins/woocommerce-products-slider/' );
 		define('wcps_plugin_name', 'PickPlugins Product Slider' );
-        define('wcps_version', '1.12.24' );
-        define('wcps_server_url', 'https://www.pickplugins.com' );
-        define('wcps_plugin_basename', plugin_basename( __FILE__ ) );
+        define('wcps_plugin_version', '1.12.24' );
+
+        require_once( wcps_plugin_dir . 'includes/class-post-types.php');
+        require_once( wcps_plugin_dir . 'includes/class-metabox-wcps.php');
+        require_once( wcps_plugin_dir . 'includes/class-metabox-wcps-hook.php');
+
+        require_once( wcps_plugin_dir . 'includes/class-metabox-wcps-layout.php');
+        require_once( wcps_plugin_dir . 'includes/class-metabox-wcps-layout-hook.php');
+        require_once( wcps_plugin_dir . 'includes/functions-layout-hook.php');
+        require_once( wcps_plugin_dir . 'includes/functions-layout-element.php');
 
 
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/wcps-meta-box.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-meta-box.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions/functions-wcps-settings.php');
 
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-functions.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-shortcodes.php');
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-update.php');
+        //require_once( plugin_dir_path( __FILE__ ) . 'includes/wcps-meta-box.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
+        //require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-wcps-meta-box.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-wcps-settings.php');
 
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-wcps-support.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/classes/class-settings-tabs.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-functions.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-shortcodes.php');
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/class-update.php');
+
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wcps-support.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/class-settings-tabs.php');
 
 
 		// to work upload button
@@ -48,22 +55,28 @@ class WoocommerceProductsSlider{
 		//short-code support into sidebar.
 		add_filter('widget_text', 'do_shortcode');
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'wcps_front_scripts' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'wcps_admin_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, '_front_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, '_admin_scripts' ) );
 
-		add_action( 'plugins_loaded', array( $this, 'textdomain' ));
+		add_action( 'plugins_loaded', array( $this, '_textdomain' ));
 
 
-		register_activation_hook( __FILE__, array( $this, 'wcps_install' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'wcps_uninstall' ) );
+		register_activation_hook( __FILE__, array( $this, '_activation' ) );
+		register_deactivation_hook( __FILE__, array( $this, '_deactivation' ) );
+        //register_uninstall_hook( __FILE__, array( $this, '_uninstall' ) );
 
 
 		}
 
 
 
-	public function textdomain() {
-	  load_plugin_textdomain( 'woocommerce-products-slider', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
+	public function _textdomain() {
+
+        $locale = apply_filters('plugin_locale', get_locale(), 'woocommerce-products-slider');
+        load_textdomain('woocommerce-products-slider', WP_LANG_DIR . '/woocommerce-products-slider/woocommerce-products-slider-' . $locale . '.mo');
+
+        load_plugin_textdomain('woocommerce-products-slider', false, plugin_basename(dirname(__FILE__)) . '/languages/');
+
 	}
 
 
@@ -71,24 +84,26 @@ class WoocommerceProductsSlider{
 
 
 
-	public function wcps_install(){
+	public function _activation(){
 
 
-		do_action( 'wcps_action_install' );
+		do_action( 'wcps_plugin_activation' );
 
 		}
 
-	public function wcps_uninstall(){
+    public function _deactivation(){
 
-		do_action( 'wcps_action_uninstall' );
+        do_action( 'wcps_plugin_deactivation' );
+    }
+
+	public function _uninstall(){
+
+		do_action( 'wcps_plugin_uninstall' );
 		}
 
-	public function wcps_deactivation(){
 
-		do_action( 'wcps_action_deactivation' );
-		}
 
-	public function wcps_front_scripts(){
+	public function _front_scripts(){
 
 		$wcps_load_script_pages = get_option('wcps_load_script_pages');
 
@@ -149,7 +164,7 @@ class WoocommerceProductsSlider{
 
 		}
 
-	public function wcps_admin_scripts(){
+	public function _admin_scripts(){
 
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('wcps_admin_js', plugins_url( '/assets/admin/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
@@ -165,12 +180,31 @@ class WoocommerceProductsSlider{
         wp_enqueue_style('codemirror', wcps_plugin_url.'assets/admin/css/codemirror.css');
 
 
-        wp_enqueue_style('settings-tabs', wcps_plugin_url.'assets/admin/css/settings-tabs.css');
-        wp_enqueue_script('settings-tabs', plugins_url( 'assets/admin/js/settings-tabs.js' , __FILE__ ) , array( 'jquery' ));
+        wp_enqueue_style('settings-tabs', wcps_plugin_url.'assets/settings-tabs/settings-tabs.css');
+        wp_enqueue_script('settings-tabs', plugins_url( 'assets/settings-tabs/settings-tabs.js' , __FILE__ ) , array( 'jquery' ));
 
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wcps_color_picker', plugins_url('assets/admin/js/color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+
+        $cm_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
+
+        wp_localize_script('jquery', 'cm_settings', $cm_settings);
+
+        wp_enqueue_script('wp-theme-plugin-editor');
+        //wp_enqueue_style('wp-codemirror');
+
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-sortable');
+        wp_enqueue_script( 'jquery-ui-core' );
+        wp_enqueue_script('jquery-ui-accordion');
+
+        wp_enqueue_style( 'jquery-ui');
+        wp_enqueue_style( 'font-awesome-5' );
+        wp_enqueue_style( 'settings-tabs' );
+        wp_enqueue_script( 'settings-tabs' );
+
+
 
 		}
 

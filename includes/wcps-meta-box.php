@@ -1,46 +1,6 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
-function wcps_posttype_register() {
-
-    $labels = array(
-        'name' => __('WCPS',  'woocommerce-products-slider'),
-        'singular_name' => __('WCPS',  'woocommerce-products-slider'),
-        'add_new' => __('New WCPS',  'woocommerce-products-slider'),
-        'add_new_item' => __('New WCPS', 'woocommerce-products-slider'),
-        'edit_item' => __('Edit WCPS', 'woocommerce-products-slider'),
-        'new_item' => __('New WCPS', 'woocommerce-products-slider'),
-        'view_item' => __('View WCPS', 'woocommerce-products-slider'),
-        'search_items' => __('Search WCPS', 'woocommerce-products-slider'),
-        'not_found' =>  __('Nothing found', 'woocommerce-products-slider'),
-        'not_found_in_trash' => __('Nothing found in Trash', 'woocommerce-products-slider'),
-        'parent_item_colon' => ''
-    );
-
-
-    $args = array(
-        'labels' => $labels,
-        'public' => false,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'query_var' => true,
-        'menu_icon' => null,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'hierarchical' => false,
-        'menu_position' => null,
-        'supports' => array('title'),
-        'menu_icon' => 'dashicons-media-spreadsheet',
-
-    );
-
-    register_post_type( 'wcps' , $args );
-
-}
-
-add_action('init', 'wcps_posttype_register');
-
-
 /**
  * Adds a box to the main column on the Post and Page edit screens.
  */
@@ -75,58 +35,60 @@ function meta_boxes_wcps_input( $post ) {
     wp_nonce_field( 'meta_boxes_wcps_input', 'meta_boxes_wcps_input_nonce' );
 
     $post_id = $post->ID;
+    $team_options = get_post_meta($post_id,'team_options', true);
+
+    $current_tab = isset($team_options['current_tab']) ? $team_options['current_tab'] : 'query_product';
 
 
     $wcps_settings_tab = array();
 
-
-    $wcps_settings_tab[] = array(
+    $wcps_settings_tabs[] = array(
         'id' => 'shortcode',
-        'title' => __('<i class="fas fa-laptop-code"></i> Shortcode','woocommerce-products-slider'),
+        'title' => sprintf(__('%s Shortcode','team'),'<i class="fas fa-laptop-code"></i>'),
         'priority' => 1,
-        'active' => false,
+        'active' => ($current_tab == 'shortcode') ? true : false,
     );
 
-
-    $wcps_settings_tab[] = array(
-        'id' => 'options',
-        'title' => __('<i class="fa fa-cogs"></i> Options','woocommerce-products-slider'),
+    $wcps_settings_tabs[] = array(
+        'id' => 'slider_options',
+        'title' => sprintf(__('%s Slider options','team'),'<i class="fa fa-cogs"></i>'),
         'priority' => 2,
-        'active' => false,
+        'active' => ($current_tab == 'slider_options') ? true : false,
     );
 
-    $wcps_settings_tab[] = array(
+    $wcps_settings_tabs[] = array(
         'id' => 'query_product',
-        'title' => __('<i class="fas fa-qrcode"></i> Query Product','woocommerce-products-slider'),
+        'title' => sprintf(__('%s Query product','team'),'<i class="fas fa-qrcode"></i>'),
         'priority' => 3,
-        'active' => true,
+        'active' => ($current_tab == 'query_product') ? true : false,
     );
 
-    $wcps_settings_tab[] = array(
+    $wcps_settings_tabs[] = array(
         'id' => 'style',
-        'title' => __('<i class="fas fa-palette"></i> Style','woocommerce-products-slider'),
+        'title' => sprintf(__('%s Style','team'),'<i class="fas fa-palette"></i>'),
         'priority' => 4,
-        'active' => false,
+        'active' => ($current_tab == 'style') ? true : false,
     );
 
-    $wcps_settings_tab[] = array(
+    $wcps_settings_tabs[] = array(
         'id' => 'elements',
-        'title' => __('<i class="fa fa-magic"></i> Elements','woocommerce-products-slider'),
+        'title' => sprintf(__('%s Elements','team'),'<i class="fa fa-magic"></i>'),
         'priority' => 5,
-        'active' => false,
+        'active' => ($current_tab == 'style') ? true : false,
     );
 
-    $wcps_settings_tab[] = array(
+    $wcps_settings_tabs[] = array(
         'id' => 'custom_scripts',
-        'title' => __('<i class="far fa-file-code"></i> Custom CSS','woocommerce-products-slider'),
+        'title' => sprintf(__('%s Custom scripts','team'),'<i class="far fa-file-code"></i>'),
         'priority' => 6,
-        'active' => false,
+        'active' => ($current_tab == 'style') ? true : false,
     );
 
 
 
 
-    $wcps_settings_tabs = apply_filters('wcps_settings_tabs', $wcps_settings_tab);
+
+    $wcps_settings_tabs = apply_filters('wcps_settings_tabs', $wcps_settings_tabs);
 
 
     $tabs_sorted = array();
@@ -134,7 +96,15 @@ function meta_boxes_wcps_input( $post ) {
     array_multisort($tabs_sorted, SORT_ASC, $wcps_settings_tabs);
 
 
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery-ui-sortable');
+    wp_enqueue_script( 'jquery-ui-core' );
+    wp_enqueue_script('jquery-ui-accordion');
 
+    wp_enqueue_style( 'jquery-ui');
+    wp_enqueue_style( 'font-awesome-5' );
+    wp_enqueue_style( 'settings-tabs' );
+    wp_enqueue_script( 'settings-tabs' );
 
 
 
@@ -203,7 +173,7 @@ function meta_boxes_wcps_side( $post ) {
     <div class="post-grid-meta-box">
 
         <ul>
-            <li>Version: <?php echo wcps_version; ?></li>
+            <li>Version: <?php echo wcps_plugin_version; ?></li>
             <li>Tested WP: 5.1</li>
 
         </ul>
@@ -309,7 +279,7 @@ function meta_boxes_wcps_side( $post ) {
 
 
 
-function meta_boxes_wcps_save( $post_id ) {
+function wcps_metaboxe_save( $post_id ) {
 
     /*
      * We need to verify this came from the our screen and with proper authorization,
@@ -343,470 +313,11 @@ function meta_boxes_wcps_save( $post_id ) {
 
     /* OK, its safe for us to save the data now. */
 
-    // Sanitize user input.
-    $wcps_bg_img = sanitize_text_field( $_POST['wcps_bg_img'] );
-    $wcps_container_padding = sanitize_text_field( $_POST['wcps_container_padding'] );
-    $wcps_container_bg_color = sanitize_text_field( $_POST['wcps_container_bg_color'] );
-
-    $wcps_items_bg_color = sanitize_text_field( $_POST['wcps_items_bg_color'] );
-    $wcps_items_padding = sanitize_text_field( $_POST['wcps_items_padding'] );
-
-    $wcps_themes = sanitize_text_field( $_POST['wcps_themes'] );
-
-
-
-
-    $wcps_total_items = sanitize_text_field( $_POST['wcps_total_items'] );
-
-    $wcps_total_items_price_format = sanitize_text_field( $_POST['wcps_total_items_price_format'] );
-
-    $wcps_column_number = sanitize_text_field( $_POST['wcps_column_number'] );
-    $wcps_column_number_mobile = sanitize_text_field( $_POST['wcps_column_number_mobile'] );
-    $wcps_column_number_tablet = sanitize_text_field( $_POST['wcps_column_number_tablet'] );
-
-
-
-
-    if(empty($_POST['wcps_auto_play'])){
-        $wcps_auto_play = '';
-    }
-    else{
-        $wcps_auto_play = sanitize_text_field( $_POST['wcps_auto_play'] );
-    }
-
-    if(empty($_POST['wcps_auto_play_speed']))
-    {
-        $wcps_auto_play_speed = 1000;
-    }
-    else
-    {
-        $wcps_auto_play_speed = sanitize_text_field( $_POST['wcps_auto_play_speed'] );
-    }
-
-
-    if(empty($_POST['wcps_auto_play_timeout']))
-    {
-        $wcps_auto_play_timeout = 1200;
-    }
-    else
-    {
-        $wcps_auto_play_timeout = sanitize_text_field( $_POST['wcps_auto_play_timeout'] );
-    }
-
-
-
-
-    if(empty($_POST['wcps_rewind'])){
-        $wcps_rewind = '';
-    }
-    else{
-        $wcps_rewind = sanitize_text_field( $_POST['wcps_rewind'] );
-    }
-
-    if(empty($_POST['wcps_loop'])){
-        $wcps_loop = '';
-    }
-    else{
-        $wcps_loop = sanitize_text_field( $_POST['wcps_loop'] );
-    }
-
-
-    if(empty($_POST['wcps_slideBy'])){
-        $wcps_slideBy = 1;
-    }
-    else{
-        $wcps_slideBy = sanitize_text_field( $_POST['wcps_slideBy'] );
-    }
-
-
-    if(empty($_POST['wcps_center'])){
-        $wcps_center = '';
-    }
-    else{
-        $wcps_center = sanitize_text_field( $_POST['wcps_center'] );
-    }
-
-
-    if(empty($_POST['wcps_stop_on_hover']))
-    {
-        $wcps_stop_on_hover = '';
-    }
-    else
-    {
-        $wcps_stop_on_hover = sanitize_text_field( $_POST['wcps_stop_on_hover'] );
-    }
-
-
-    if(empty($_POST['wcps_slider_navigation']))
-    {
-        $wcps_slider_navigation = '';
-    }
-    else
-    {
-        $wcps_slider_navigation = sanitize_text_field( $_POST['wcps_slider_navigation'] );
-    }
-
-    $wcps_slider_navigation_position = sanitize_text_field( $_POST['wcps_slider_navigation_position'] );
-
-
-    $wcps_slide_speed = sanitize_text_field( $_POST['wcps_slide_speed'] );
-
-
-    if(empty($_POST['wcps_slider_pagination']))
-    {
-        $wcps_slider_pagination = '';
-    }
-    else
-    {
-        $wcps_slider_pagination = sanitize_text_field( $_POST['wcps_slider_pagination'] );
-    }
-
-
-
-    $wcps_pagination_slide_speed = sanitize_text_field( $_POST['wcps_pagination_slide_speed'] );
-
-
-    if(empty($_POST['wcps_slider_pagination_count']))
-    {
-        $wcps_slider_pagination_count = '';
-    }
-    else
-    {
-        $wcps_slider_pagination_count = sanitize_text_field( $_POST['wcps_slider_pagination_count'] );
-    }
-
-
-
-    $wcps_slider_pagination_bg = sanitize_text_field( $_POST['wcps_slider_pagination_bg'] );
-    $wcps_slider_pagination_text_color = sanitize_text_field( $_POST['wcps_slider_pagination_text_color'] );
-
-    $wcps_slider_lazy_load = sanitize_text_field( $_POST['wcps_slider_lazy_load'] );
-
-
-    if(empty($_POST['wcps_slider_touch_drag']))
-    {
-        $wcps_slider_touch_drag = '';
-    }
-    else
-    {
-        $wcps_slider_touch_drag = sanitize_text_field( $_POST['wcps_slider_touch_drag'] );
-    }
-
-    if(empty($_POST['wcps_slider_mouse_drag']))
-    {
-        $wcps_slider_mouse_drag = '';
-    }
-    else
-    {
-        $wcps_slider_mouse_drag = sanitize_text_field( $_POST['wcps_slider_mouse_drag'] );
-    }
-
-    if(empty($_POST['wcps_slider_rtl']))
-    {
-        $wcps_slider_rtl = 'false';
-    }
-    else
-    {
-        $wcps_slider_rtl = sanitize_text_field( $_POST['wcps_slider_rtl'] );
-    }
-
-
-    if(empty($_POST['wcps_slider_animateout']))
-    {
-        $wcps_slider_animateout = 'fadeOut';
-    }
-    else
-    {
-        $wcps_slider_animateout = sanitize_text_field( $_POST['wcps_slider_animateout'] );
-    }
-
-    if(empty($_POST['wcps_slider_animatein']))
-    {
-        $wcps_slider_animatein = 'flipInX';
-    }
-    else
-    {
-        $wcps_slider_animatein = sanitize_text_field( $_POST['wcps_slider_animatein'] );
-    }
-
-
-
-
-    if(!empty($_POST['wcps_product_categories'])){
-        $wcps_product_categories =  $_POST['wcps_product_categories'] ;
-    }
-    else{
-        $wcps_product_categories = array();
-    }
-
-
-    $wcps_taxonomies = isset($_POST['wcps_taxonomies']) ? stripslashes_deep( $_POST['wcps_taxonomies'] ) : array();
-
-
-
-    $wcps_product_featured = sanitize_text_field( $_POST['wcps_product_featured'] );
-    $wcps_product_on_sale = sanitize_text_field( $_POST['wcps_product_on_sale'] );
-
-    $wcps_product_ids = sanitize_text_field( $_POST['wcps_product_ids'] );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if(empty($_POST['wcps_product_ids']))
-    {
-        $wcps_product_ids = '';
-    }
-    else
-    {
-        $wcps_product_ids = sanitize_text_field( $_POST['wcps_product_ids'] );
-    }
-
-
-
-
-
-    //$wcps_cat_display = sanitize_text_field( $_POST['wcps_cat_display'] );
-    $wcps_items_cat_font_size = sanitize_text_field( $_POST['wcps_items_cat_font_size'] );
-    $wcps_items_cat_text_align = sanitize_text_field( $_POST['wcps_items_cat_text_align'] );
-    $wcps_items_cat_font_color = sanitize_text_field( $_POST['wcps_items_cat_font_color'] );
-    $wcps_items_cat_separator = sanitize_text_field( $_POST['wcps_items_cat_separator'] );
-
-    //$wcps_featured_display = sanitize_text_field( $_POST['wcps_featured_display'] );
-    $wcps_featured_icon_url = sanitize_text_field( $_POST['wcps_featured_icon_url'] );
-
-    //$wcps_sale_display = sanitize_text_field( $_POST['wcps_sale_display'] );
-    $wcps_sale_icon_url = sanitize_text_field( $_POST['wcps_sale_icon_url'] );
-
-
-
-    //$wcps_ratings_display = sanitize_text_field( $_POST['wcps_ratings_display'] );
-    $wcps_ratings_text_align = sanitize_text_field( $_POST['wcps_ratings_text_align'] );
-    $wcps_items_ratings_font_size = sanitize_text_field( $_POST['wcps_items_ratings_font_size'] );
-    $wcps_items_ratings_color = sanitize_text_field( $_POST['wcps_items_ratings_color'] );
-
-    $wcps_cart_style = sanitize_text_field( $_POST['wcps_cart_style'] );
-    //$wcps_cart_display = sanitize_text_field( $_POST['wcps_cart_display'] );
-    $wcps_cart_bg = sanitize_text_field( $_POST['wcps_cart_bg'] );
-
-    $wcps_cart_text_color = sanitize_text_field( $_POST['wcps_cart_text_color'] );
-    $wcps_cart_text_align = sanitize_text_field( $_POST['wcps_cart_text_align'] );
-    $wcps_cart_display_quantity = sanitize_text_field( $_POST['wcps_cart_display_quantity'] );
-
-
-
-    $wcps_grid_items = stripslashes_deep( $_POST['wcps_grid_items'] );
-
-    if(!empty($_POST['wcps_grid_items_hide'])){
-        $wcps_grid_items_hide = stripslashes_deep( $_POST['wcps_grid_items_hide'] );
-    }
-    else{
-        $wcps_grid_items_hide = array();
-    }
-
-    //$wcps_items_title_display = sanitize_text_field( $_POST['wcps_items_title_display'] );
-    $wcps_items_title_color = sanitize_text_field( $_POST['wcps_items_title_color'] );
-    $wcps_items_title_font_size = sanitize_text_field( $_POST['wcps_items_title_font_size'] );
-    $wcps_items_title_text_align = sanitize_text_field( $_POST['wcps_items_title_text_align'] );
-
-    $wcps_items_excerpt_count = sanitize_text_field( $_POST['wcps_items_excerpt_count'] );
-    $wcps_items_excerpt_read_more = sanitize_text_field( $_POST['wcps_items_excerpt_read_more'] );
-    $wcps_items_excerpt_text_align = sanitize_text_field( $_POST['wcps_items_excerpt_text_align'] );
-    $wcps_items_excerpt_font_size = sanitize_text_field( $_POST['wcps_items_excerpt_font_size'] );
-    $wcps_items_excerpt_font_color = sanitize_text_field( $_POST['wcps_items_excerpt_font_color'] );
-
-    //$wcps_items_price_display = sanitize_text_field( $_POST['wcps_items_price_display'] );
-    $wcps_items_price_color = sanitize_text_field( $_POST['wcps_items_price_color'] );
-    $wcps_items_price_font_size = sanitize_text_field( $_POST['wcps_items_price_font_size'] );
-    $wcps_items_price_text_align = sanitize_text_field( $_POST['wcps_items_price_text_align'] );
-
-    $wcps_items_tag_font_size = sanitize_text_field( $_POST['wcps_items_tag_font_size'] );
-    $wcps_items_tag_text_align = sanitize_text_field( $_POST['wcps_items_tag_text_align'] );
-    $wcps_items_tag_font_color = sanitize_text_field( $_POST['wcps_items_tag_font_color'] );
-
-    $wcps_items_thumb_size = sanitize_text_field( $_POST['wcps_items_thumb_size'] );
-
-
-    $wcps_items_thumb_max_hieght = sanitize_text_field( $_POST['wcps_items_thumb_max_hieght'] );
-    $wcps_items_thumb_zoom = sanitize_text_field( $_POST['wcps_items_thumb_zoom'] );
-
-    $wcps_items_empty_thumb = sanitize_text_field( $_POST['wcps_items_empty_thumb'] );
-    $wcps_query_order = sanitize_text_field( $_POST['wcps_query_order'] );
-
-    $wcps_query_orderby = stripslashes_deep( $_POST['wcps_query_orderby'] );
-    $wcps_sale_count_text = stripslashes_deep( $_POST['wcps_sale_count_text'] );
-
-
-    $wcps_hide_out_of_stock = sanitize_text_field( $_POST['wcps_hide_out_of_stock'] );
-    $wcps_items_thumb_link_target = sanitize_text_field( $_POST['wcps_items_thumb_link_target'] );
-    $wcps_items_thumb_lazy_src = sanitize_text_field( $_POST['wcps_items_thumb_lazy_src'] );
-
-
-
-    $wcps_ribbon_name = sanitize_text_field( $_POST['wcps_ribbon_name'] );
-    $wcps_ribbon_custom = sanitize_text_field( $_POST['wcps_ribbon_custom'] );
-
-    $wcps_items_custom_css = sanitize_text_field( $_POST['wcps_items_custom_css'] );
-
-
-    // Update the meta field in the database.
-    update_post_meta( $post_id, 'wcps_bg_img', $wcps_bg_img );
-    update_post_meta( $post_id, 'wcps_container_padding', $wcps_container_padding );
-    update_post_meta( $post_id, 'wcps_container_bg_color', $wcps_container_bg_color );
-
-    update_post_meta( $post_id, 'wcps_items_bg_color', $wcps_items_bg_color );
-    update_post_meta( $post_id, 'wcps_items_padding', $wcps_items_padding );
-
-
-    update_post_meta( $post_id, 'wcps_themes', $wcps_themes );
-
-
-    update_post_meta( $post_id, 'wcps_total_items', $wcps_total_items );
-
-    update_post_meta( $post_id, 'wcps_total_items_price_format', $wcps_total_items_price_format );
-
-    update_post_meta( $post_id, 'wcps_column_number', $wcps_column_number );
-    update_post_meta( $post_id, 'wcps_column_number_mobile', $wcps_column_number_mobile );
-    update_post_meta( $post_id, 'wcps_column_number_tablet', $wcps_column_number_tablet );
-
-
-    update_post_meta( $post_id, 'wcps_auto_play', $wcps_auto_play );
-    update_post_meta( $post_id, 'wcps_auto_play_speed', $wcps_auto_play_speed );
-    update_post_meta( $post_id, 'wcps_auto_play_timeout', $wcps_auto_play_timeout );
-
-    update_post_meta( $post_id, 'wcps_rewind', $wcps_rewind );
-    update_post_meta( $post_id, 'wcps_loop', $wcps_loop );
-    update_post_meta( $post_id, 'wcps_slideBy', $wcps_slideBy );
-    update_post_meta( $post_id, 'wcps_center', $wcps_center );
-
-    update_post_meta( $post_id, 'wcps_stop_on_hover', $wcps_stop_on_hover );
-    update_post_meta( $post_id, 'wcps_slider_navigation', $wcps_slider_navigation );
-    update_post_meta( $post_id, 'wcps_slider_navigation_position', $wcps_slider_navigation_position );
-    update_post_meta( $post_id, 'wcps_slide_speed', $wcps_slide_speed );
-
-    update_post_meta( $post_id, 'wcps_slider_pagination', $wcps_slider_pagination );
-    update_post_meta( $post_id, 'wcps_pagination_slide_speed', $wcps_pagination_slide_speed );
-    update_post_meta( $post_id, 'wcps_slider_pagination_count', $wcps_slider_pagination_count );
-
-    update_post_meta( $post_id, 'wcps_slider_pagination_bg', $wcps_slider_pagination_bg );
-    update_post_meta( $post_id, 'wcps_slider_pagination_text_color', $wcps_slider_pagination_text_color );
-    update_post_meta( $post_id, 'wcps_slider_lazy_load', $wcps_slider_lazy_load );
-
-    update_post_meta( $post_id, 'wcps_slider_touch_drag', $wcps_slider_touch_drag );
-    update_post_meta( $post_id, 'wcps_slider_mouse_drag', $wcps_slider_mouse_drag );
-    update_post_meta( $post_id, 'wcps_slider_rtl', $wcps_slider_rtl );
-    update_post_meta( $post_id, 'wcps_slider_animateout', $wcps_slider_animateout );
-    update_post_meta( $post_id, 'wcps_slider_animatein', $wcps_slider_animatein );
-
-
-
-    update_post_meta( $post_id, 'wcps_product_categories', $wcps_product_categories );
-    update_post_meta( $post_id, 'wcps_taxonomies', $wcps_taxonomies );
-
-    update_post_meta( $post_id, 'wcps_product_featured', $wcps_product_featured );
-    update_post_meta( $post_id, 'wcps_product_on_sale', $wcps_product_on_sale );
-    update_post_meta( $post_id, 'wcps_product_ids', $wcps_product_ids );
-
-
-
-
-
-
-
-
-
-    //update_post_meta( $post_id, 'wcps_content_sku', $wcps_content_sku );
-
-    //update_post_meta( $post_id, 'wcps_taxonomy', $wcps_taxonomy );
-    //update_post_meta( $post_id, 'wcps_taxonomy_category', $wcps_taxonomy_category );
-
-    update_post_meta( $post_id, 'wcps_product_ids', $wcps_product_ids );
-
-    //update_post_meta( $post_id, 'wcps_cat_display', $wcps_cat_display );
-    update_post_meta( $post_id, 'wcps_items_cat_font_size', $wcps_items_cat_font_size );
-    update_post_meta( $post_id, 'wcps_items_cat_text_align', $wcps_items_cat_text_align );
-    update_post_meta( $post_id, 'wcps_items_cat_font_color', $wcps_items_cat_font_color );
-    update_post_meta( $post_id, 'wcps_items_cat_separator', $wcps_items_cat_separator );
-
-    //update_post_meta( $post_id, 'wcps_featured_display', $wcps_featured_display );
-    update_post_meta( $post_id, 'wcps_featured_icon_url', $wcps_featured_icon_url );
-
-    //update_post_meta( $post_id, 'wcps_sale_display', $wcps_sale_display );
-    update_post_meta( $post_id, 'wcps_sale_icon_url', $wcps_sale_icon_url );
-
-
-    //update_post_meta( $post_id, 'wcps_ratings_display', $wcps_ratings_display );
-    update_post_meta( $post_id, 'wcps_ratings_text_align', $wcps_ratings_text_align );
-    update_post_meta( $post_id, 'wcps_items_ratings_font_size', $wcps_items_ratings_font_size );
-    update_post_meta( $post_id, 'wcps_items_ratings_color', $wcps_items_ratings_color );
-
-    update_post_meta( $post_id, 'wcps_cart_style', $wcps_cart_style );
-    //update_post_meta( $post_id, 'wcps_cart_display', $wcps_cart_display );
-    update_post_meta( $post_id, 'wcps_cart_bg', $wcps_cart_bg );
-
-    update_post_meta( $post_id, 'wcps_cart_text_color', $wcps_cart_text_color );
-    update_post_meta( $post_id, 'wcps_cart_text_align', $wcps_cart_text_align );
-    update_post_meta( $post_id, 'wcps_cart_display_quantity', $wcps_cart_display_quantity );
-
-    update_post_meta( $post_id, 'wcps_grid_items', $wcps_grid_items );
-    update_post_meta( $post_id, 'wcps_grid_items_hide', $wcps_grid_items_hide );
-
-    //update_post_meta( $post_id, 'wcps_items_title_display', $wcps_items_title_display );
-    update_post_meta( $post_id, 'wcps_items_title_color', $wcps_items_title_color );
-    update_post_meta( $post_id, 'wcps_items_title_font_size', $wcps_items_title_font_size );
-    update_post_meta( $post_id, 'wcps_items_title_text_align', $wcps_items_title_text_align );
-
-    update_post_meta( $post_id, 'wcps_items_excerpt_count', $wcps_items_excerpt_count );
-    update_post_meta( $post_id, 'wcps_items_excerpt_read_more', $wcps_items_excerpt_read_more );
-    update_post_meta( $post_id, 'wcps_items_excerpt_text_align', $wcps_items_excerpt_text_align );
-    update_post_meta( $post_id, 'wcps_items_excerpt_font_size', $wcps_items_excerpt_font_size );
-    update_post_meta( $post_id, 'wcps_items_excerpt_font_color', $wcps_items_excerpt_font_color );
-
-    update_post_meta( $post_id, 'wcps_items_tag_font_size', $wcps_items_tag_font_size );
-    update_post_meta( $post_id, 'wcps_items_tag_text_align', $wcps_items_tag_text_align );
-    update_post_meta( $post_id, 'wcps_items_tag_font_color', $wcps_items_tag_font_color );
-
-    //update_post_meta( $post_id, 'wcps_items_price_display', $wcps_items_price_display );
-    update_post_meta( $post_id, 'wcps_items_price_color', $wcps_items_price_color );
-    update_post_meta( $post_id, 'wcps_items_price_font_size', $wcps_items_price_font_size );
-    update_post_meta( $post_id, 'wcps_items_price_text_align', $wcps_items_price_text_align );
-
-
-    update_post_meta( $post_id, 'wcps_items_thumb_link_target', $wcps_items_thumb_link_target );
-    update_post_meta( $post_id, 'wcps_items_thumb_lazy_src', $wcps_items_thumb_lazy_src );
-
-    update_post_meta( $post_id, 'wcps_sale_count_text', $wcps_sale_count_text );
-
-    update_post_meta( $post_id, 'wcps_items_thumb_size', $wcps_items_thumb_size );
-    update_post_meta( $post_id, 'wcps_items_thumb_max_hieght', $wcps_items_thumb_max_hieght );
-    update_post_meta( $post_id, 'wcps_items_thumb_zoom', $wcps_items_thumb_zoom );
-
-    update_post_meta( $post_id, 'wcps_items_empty_thumb', $wcps_items_empty_thumb );
-    update_post_meta( $post_id, 'wcps_query_order', $wcps_query_order );
-    update_post_meta( $post_id, 'wcps_query_orderby', $wcps_query_orderby );
-
-    update_post_meta( $post_id, 'wcps_hide_out_of_stock', $wcps_hide_out_of_stock );
-
-
-    update_post_meta( $post_id, 'wcps_ribbon_name', $wcps_ribbon_name );
-    update_post_meta( $post_id, 'wcps_ribbon_custom', $wcps_ribbon_custom );
-
-    update_post_meta( $post_id, 'wcps_items_custom_css', $wcps_items_custom_css );
-
+    do_action('wcps_metaboxe_save', $post_id);
 
 
 }
-add_action( 'save_post', 'meta_boxes_wcps_save' );
+add_action( 'save_post', 'wcps_metaboxe_save' );
 
 
 

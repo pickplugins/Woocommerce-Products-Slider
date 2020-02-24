@@ -27,6 +27,27 @@ function custom_class( $classes ) {
 
 
 
+function wcps_get_first_product_id(){
+
+    $args = array(
+        'post_type' => 'product',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+    );
+
+    $post_id ='';
+
+    $wp_query = new WP_Query($args);
+
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+            $product_id = get_the_id();
+            return $product_id;
+        endwhile;
+    else:
+
+    endif;
+}
 
 
 
