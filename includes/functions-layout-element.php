@@ -3,8 +3,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_action('wcps_layout_element_title', 'wcps_layout_element_title');
-function wcps_layout_element_title($args){
+add_action('wcps_layout_element_post_title', 'wcps_layout_element_post_title');
+function wcps_layout_element_post_title($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
@@ -20,7 +20,7 @@ function wcps_layout_element_title($args){
     $element_class = apply_filters('wcps_layout_element_title_class', $element_class, $args);
 
     ?>
-    <div class="team-title <?php echo $element_class; ?>"><?php echo $post_title; ?></div>
+    <div class="<?php echo $element_class; ?>"><?php echo $post_title; ?></div>
     <?php
 
 }
@@ -35,12 +35,11 @@ function wcps_layout_element_thumbnail($args){
     $element_class = apply_filters('wcps_layout_element_thumbnail_class', $element_class, $args);
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $team_id = isset($args['team_id']) ? $args['team_id'] : '';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
 
     $permalink = get_permalink($product_id);
-    $team_member_url = apply_filters('wcps_layout_element_thumbnail_url', $permalink, $args);
+    $product_url = apply_filters('wcps_layout_element_thumbnail_url', $permalink, $args);
 
 
 
@@ -60,7 +59,7 @@ function wcps_layout_element_thumbnail($args){
 
     if(!empty($member_image_url)){
         ?>
-        <div class="team-thumb <?php echo $element_class; ?>"><a href="<?php echo $team_member_url; ?>"><img src="<?php echo $member_image_url; ?>" /></a></div>
+        <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><img src="<?php echo $member_image_url; ?>" /></a></div>
         <?php
 
     }
@@ -84,163 +83,39 @@ function wcps_layout_element_meta($args){
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $meta_key = isset($elementData['meta_key']) ? $elementData['meta_key'] : '';
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
 
 
+    //echo '<pre>'.var_export($wrapper_html, true).'</pre>';
 
-    //echo '<pre>'.var_export($elementData, true).'</pre>';
+    $meta_key_value = get_post_meta($product_id, $meta_key, true);
 
-    $team_member_data = get_post_meta($product_id, 'team_member_data', true);
-    $meta_key_value = isset($team_member_data['custom_fields'][$meta_key]) ? $team_member_data['custom_fields'][$meta_key] : '';
-    //echo '<pre>'.var_export($meta_key, true).'</pre>';
-
-    //$team_member_position = get_post_meta($product_id,'position', true);
-
-    ?>
-    <div class="team-meta <?php echo $element_class; ?>"><?php echo $meta_key_value; ?></div>
+    if(!empty($meta_key_value)):
+        ?>
+        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $meta_key_value); ?></div>
     <?php
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-add_action('wcps_layout_element_social', 'wcps_layout_element_social');
-function wcps_layout_element_social($args){
-
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
-
-    //
-    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-
-    $social_icon_type = isset($elementData['social_icon_type']) ? $elementData['social_icon_type'] : '';
-    $social_icon_width = isset($elementData['social_icon_width']) ? $elementData['social_icon_width'] : '';
-    $social_icon_height = isset($elementData['social_icon_height']) ? $elementData['social_icon_height'] : '';
-    $social_icon_color = isset($elementData['color']) ? $elementData['color'] : '';
-    $social_icon_font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
-    $social_icon_font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
-
-
-
-    $team_member_data = get_post_meta($product_id, 'team_member_data', true);
-    $social_fields = isset($team_member_data['social_fields']) ? $team_member_data['social_fields'] : array();
-
-    $team_settings = get_option('team_settings');
-    $custom_social_fields = isset($team_settings['custom_social_fields']) ? $team_settings['custom_social_fields'] : array();
-
-    $social_fields_data = array();
-
-    foreach ($custom_social_fields as $social_field){
-
-        $name = isset($social_field['name']) ? $social_field['name'] : '';
-        $meta_key = isset($social_field['meta_key']) ? $social_field['meta_key'] : '';
-        $icon = isset($social_field['icon']) ? $social_field['icon'] : '';
-        $font_icon = isset($social_field['font_icon']) ? $social_field['font_icon'] : '';
-
-        $visibility = isset($social_field['visibility']) ? $social_field['visibility'] : '';
-
-        $social_fields_data[$meta_key] = array('icon'=>$icon, 'font_icon'=>$font_icon, 'name'=>$name, 'visibility'=>$visibility,);
-    }
-
-
-
-
-    ob_start();
-
-    if(!empty($social_fields)):
-        foreach ($social_fields as $fieldIndex => $field):
-
-            $field_icon = isset($social_fields_data[$fieldIndex]['icon']) ? $social_fields_data[$fieldIndex]['icon'] : '';
-            $field_font_icon = isset($social_fields_data[$fieldIndex]['font_icon']) ? $social_fields_data[$fieldIndex]['font_icon'] : '';
-            //echo '<pre>'.var_export($field_font_icon, true).'</pre>';
-
-            if(!empty($field)):
-                ?>
-                <span class="<?php echo $social_icon_type; ?>">
-                    <a href="<?php echo $field; ?>">
-                        <?php
-                        if($social_icon_type == 'image_icon'):
-
-                            if(!empty($field_icon)):
-                                ?><img src="<?php echo $field_icon; ?>"><?php
-                            endif;
-
-                        elseif($social_icon_type == 'font_icon'):
-
-                            if(!empty($field_font_icon)):
-                                ?><?php echo $field_font_icon; ?><?php
-                            endif;
-
-                        elseif($social_icon_type == 'text_link'):
-
-                            ?><?php echo $field_font_icon; ?> <?php echo $field; ?><?php
-                        endif;
-
-                        ?></a>
-                </span>
-            <?php
-            endif;
-
-
-        endforeach;
-
     endif;
 
-    $html = ob_get_clean();
-
-    ?>
-    <div class="team-social <?php echo $element_class; ?>"><?php echo $html; ?></div>
-
-    <style type="text/css">
-        .team-social{
-            margin: 15px 0;
-        }
-        .team-social a{
-            font-size: <?php echo $social_icon_font_size; ?>;
-            color: <?php echo $social_icon_color; ?>;
-        }
-
-        .team-social .text_link{
-            display: block;
-        }
-
-        .team-social .text_link a{
-            text-decoration: none;
-        }
-
-        .team-social a img{
-            width: <?php echo $social_icon_width; ?>;
-            height: <?php echo $social_icon_height; ?>;
-            display: inline-block !important;
-            border-radius: 0;
-            box-shadow: none;
-        }
-
-
-
-    </style>
-
-
-    <?php
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -254,7 +129,6 @@ function wcps_layout_element_content($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
 
-    $team_id = isset($args['team_id']) ? $args['team_id'] : '';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $content_source = isset($elementData['content_source']) ? $elementData['content_source'] : 'excerpt';
@@ -263,8 +137,8 @@ function wcps_layout_element_content($args){
 
     $post_data= get_post($product_id);
 
-    $team_member_url = get_permalink($product_id);
-    $team_member_url = apply_filters('wcps_layout_element_content_link',$team_member_url, $args);
+    $product_url = get_permalink($product_id);
+    $product_url = apply_filters('wcps_layout_element_content_link',$product_url, $args);
 
     $content = isset($post_data->post_content) ? $post_data->post_content : '';
 
@@ -275,14 +149,14 @@ function wcps_layout_element_content($args){
     }
     elseif($content_source=='excerpt'){
 
-        $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $team_member_url .'">'.$read_more_text.'</a>' );
+        $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
     }else{
-        $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $team_member_url .'">'.$read_more_text.'</a>' );
+        $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
     }
 
 
     ?>
-    <div class="team-content <?php echo $element_class; ?>"><?php echo $content_html; ?></div>
+    <div class="<?php echo $element_class; ?>"><?php echo $content_html; ?></div>
     <?php
 
 }
@@ -325,8 +199,8 @@ function wcps_layout_element_wrapper_end($args){
 
 
 
-add_action('wcps_layout_element_css_title', 'wcps_layout_element_css_title');
-function wcps_layout_element_css_title($args){
+add_action('wcps_layout_element_css_post_title', 'wcps_layout_element_css_post_title');
+function wcps_layout_element_css_post_title($args){
 
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';

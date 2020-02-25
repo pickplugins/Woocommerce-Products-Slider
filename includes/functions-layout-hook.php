@@ -3,10 +3,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_action('wcps_layout_elements_option_title','wcps_layout_elements_option_title');
+add_action('wcps_layout_elements_option_post_title','wcps_layout_elements_option_post_title');
 
 
-function wcps_layout_elements_option_title($parameters){
+function wcps_layout_elements_option_post_title($parameters){
 
     $settings_tabs_field = new settings_tabs_field();
 
@@ -41,7 +41,7 @@ function wcps_layout_elements_option_title($parameters){
             $args = array(
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_title_color',
-                'parent' => $input_name.'[title]',
+                'parent' => $input_name.'[post_title]',
                 'title'		=> __('Color','team'),
                 'details'	=> __('Title text color.','team'),
                 'type'		=> 'colorpicker',
@@ -54,7 +54,7 @@ function wcps_layout_elements_option_title($parameters){
             $args = array(
                 'id'		=> 'font_size',
                 'css_id'		=> $element_index.'_font_size',
-                'parent' => $input_name.'[title]',
+                'parent' => $input_name.'[post_title]',
                 'title'		=> __('Font size','team'),
                 'details'	=> __('Set font size.','team'),
                 'type'		=> 'text',
@@ -69,7 +69,7 @@ function wcps_layout_elements_option_title($parameters){
             $args = array(
                 'id'		=> 'font_family',
                 'css_id'		=> $element_index.'_font_family',
-                'parent' => $input_name.'[title]',
+                'parent' => $input_name.'[post_title]',
                 'title'		=> __('Font family','team'),
                 'details'	=> __('Set font family.','team'),
                 'type'		=> 'text',
@@ -84,7 +84,7 @@ function wcps_layout_elements_option_title($parameters){
             $args = array(
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
-                'parent' => $input_name.'[title]',
+                'parent' => $input_name.'[post_title]',
                 'title'		=> __('Margin','team'),
                 'details'	=> __('Set margin.','team'),
                 'type'		=> 'text',
@@ -98,7 +98,7 @@ function wcps_layout_elements_option_title($parameters){
             $args = array(
                 'id'		=> 'link_to',
                 'css_id'		=> $element_index.'_link_to',
-                'parent' => $input_name.'[title]',
+                'parent' => $input_name.'[post_title]',
                 'title'		=> __('Link to','team'),
                 'details'	=> __('Choose option to link team member.','team'),
                 'type'		=> 'select',
@@ -129,36 +129,6 @@ function wcps_layout_elements_option_title($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
-
-            //
-            //            $args = array(
-            //                'id'		=> 'custom_css',
-            //                'css_id'		=> $element_index.'_custom_css',
-            //                'parent' => $input_name.'[title]',
-            //                'title'		=> __('Custom CSS','team'),
-            //                'details'	=> __('Write custom CSS, do not use <code>&lt;style>&lt;/style></code> tag','team'),
-            //                'type'		=> 'scripts_css',
-            //                'value'		=> $custom_css,
-            //                'default'		=> '',
-            //                'placeholder'		=> '',
-            //            );
-            //
-            //            $settings_tabs_field->generate_field($args);
-            //
-            //
-            //            $args = array(
-            //                'id'		=> 'custom_css_hover',
-            //                'css_id'		=> $element_index.'_custom_css_hover',
-            //                'parent' => $input_name.'[title]',
-            //                'title'		=> __('Custom hover CSS','team'),
-            //                'details'	=> __('Write custom hover CSS, do not use <code>&lt;style>&lt;/style></code> tag','team'),
-            //                'type'		=> 'scripts_css',
-            //                'value'		=> $custom_css_hover,
-            //                'default'		=> '',
-            //                'placeholder'		=> '',
-            //            );
-            //
-            //            $settings_tabs_field->generate_field($args);
 
             ?>
 
@@ -348,8 +318,8 @@ function wcps_layout_elements_option_content($parameters){
     $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $content_source = isset($element_data['content_source']) ? $element_data['content_source'] : '';
-    $word_count = isset($element_data['word_count']) ? $element_data['word_count'] : '';
-    $read_more_text = isset($element_data['read_more_text']) ? $element_data['read_more_text'] : '';
+    $word_count = isset($element_data['word_count']) ? $element_data['word_count'] : 15;
+    $read_more_text = isset($element_data['read_more_text']) ? $element_data['read_more_text'] : __('Read more','woocommerce-products-slider');
     $read_more_color = isset($element_data['read_more_color']) ? $element_data['read_more_color'] : '';
 
     $color = isset($element_data['color']) ? $element_data['color'] : '';
@@ -717,6 +687,8 @@ function wcps_layout_elements_option_meta($parameters){
     $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $meta_key = isset($element_data['meta_key']) ? $element_data['meta_key'] : '';
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+
     $color = isset($element_data['color']) ? $element_data['color'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
@@ -731,7 +703,7 @@ function wcps_layout_elements_option_meta($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Meta','team'); ?></span>
+            <span class="expand"><?php echo __('Meta','team'); ?> - <?php echo $meta_key; ?></span>
         </div>
         <div class="element-options options">
 
@@ -746,6 +718,20 @@ function wcps_layout_elements_option_meta($parameters){
                 'type'		=> 'text',
                 'value'		=> $meta_key,
                 'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[meta]',
+                'title'		=> __('Wrapper html','team'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace meta value output.','team'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Prefix text %s',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1137,5 +1123,617 @@ function wcps_layout_elements_option_wrapper_end($parameters){
 
 
 
+add_action('wcps_layout_elements_option_product_category','wcps_layout_elements_option_product_category');
+function wcps_layout_elements_option_product_category($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $max_count = isset($element_data['max_count']) ? $element_data['max_count'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Product category','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'max_count',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Max count','team'),
+                'details'	=> __('Write max count','team'),
+                'type'		=> 'text',
+                'value'		=> $max_count,
+                'default'		=> '',
+                'placeholder'		=> '3',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
+
+
+
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+add_action('wcps_layout_elements_option_product_tag','wcps_layout_elements_option_product_tag');
+function wcps_layout_elements_option_product_tag($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $max_count = isset($element_data['max_count']) ? $element_data['max_count'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Product tag','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'max_count',
+                'parent' => $input_name.'[product_tag]',
+                'title'		=> __('Max count','team'),
+                'details'	=> __('Write max count','team'),
+                'type'		=> 'text',
+                'value'		=> $max_count,
+                'default'		=> '',
+                'placeholder'		=> '3',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+add_action('wcps_layout_elements_option_sale_count','wcps_layout_elements_option_sale_count');
+function wcps_layout_elements_option_sale_count($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Sale count','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[sale_count]',
+                'title'		=> __('Wrapper html','team'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace sale count output.','team'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Prefix text %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+add_action('wcps_layout_elements_option_featured_mark','wcps_layout_elements_option_featured_mark');
+function wcps_layout_elements_option_featured_mark($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $icon_img_src = isset($element_data['icon_img_src']) ? $element_data['icon_img_src'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Featured mark','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'icon_img_src',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('Icon image','team'),
+                'details'	=> __('Choose icon image','team'),
+                'type'		=> 'media_url',
+                'value'		=> $icon_img_src,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+add_action('wcps_layout_elements_option_on_sale_mark','wcps_layout_elements_option_on_sale_mark');
+function wcps_layout_elements_option_on_sale_mark($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $icon_img_src = isset($element_data['icon_img_src']) ? $element_data['icon_img_src'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('On sale mark','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'icon_img_src',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('Icon image','team'),
+                'details'	=> __('Choose icon image','team'),
+                'type'		=> 'media_url',
+                'value'		=> $icon_img_src,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+add_action('wcps_layout_elements_option_add_to_cart','wcps_layout_elements_option_add_to_cart');
+function wcps_layout_elements_option_add_to_cart($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $cart_text = isset($element_data['cart_text']) ? $element_data['cart_text'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Add to cart','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'cart_text',
+                'parent' => $input_name.'[add_to_cart]',
+                'title'		=> __('Cart text','team'),
+                'details'	=> __('Write custom add to cart text.','team'),
+                'type'		=> 'text',
+                'value'		=> $cart_text,
+                'default'		=> '',
+                'placeholder'		=> __('Add to cart','woocommerce-products-slider'),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+
+
+add_action('wcps_layout_elements_option_rating','wcps_layout_elements_option_rating');
+function wcps_layout_elements_option_rating($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $rating_type = isset($element_data['rating_type']) ? $element_data['rating_type'] : 'five_star';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Rating','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'rating_type',
+                'parent' => $input_name.'[rating]',
+                'title'		=> __('Rating type','team'),
+                'details'	=> __('Choose rating type.','team'),
+                'type'		=> 'select',
+                'value'		=> $rating_type,
+                'args'		=> array('text'=> 'Text', 'five_star'=>'Star'),
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+
+
+add_action('wcps_layout_elements_option_product_price','wcps_layout_elements_option_product_price');
+function wcps_layout_elements_option_product_price($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $price_type = isset($element_data['price_type']) ? $element_data['price_type'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Product price','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'price_type',
+                'parent' => $input_name.'[product_price]',
+                'title'		=> __('Price type','team'),
+                'details'	=> __('Choose price type.','team'),
+                'type'		=> 'select',
+                'value'		=> $price_type,
+                'args'		=> array('full'=> 'Full Format', 'sale'=>'Sale price' , 'regular'=>'Regular price'),
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+add_action('wcps_layout_elements_option_stock_status','wcps_layout_elements_option_stock_status');
+function wcps_layout_elements_option_stock_status($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $stock_status_text = isset($element_data['stock_status_text']) ? $element_data['stock_status_text'] : '';
+
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Stock status','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+
+            $args = array(
+                'id'		=> 'stock_status_text',
+                'parent' => $input_name.'[add_to_cart]',
+                'title'		=> __('Stock status text','team'),
+                'details'	=> __('Write custom stock status text.','team'),
+                'type'		=> 'text',
+                'value'		=> $stock_status_text,
+                'default'		=> '',
+                'placeholder'		=> __('In stock','woocommerce-products-slider'),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+add_action('wcps_layout_elements_option_stock_quantity','wcps_layout_elements_option_stock_quantity');
+function wcps_layout_elements_option_stock_quantity($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Stock quantity','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[stock_quantity]',
+                'title'		=> __('Wrapper html','team'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace quantity output.','team'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Prefix text %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+add_action('wcps_layout_elements_option_product_weight','wcps_layout_elements_option_product_weight');
+function wcps_layout_elements_option_product_weight($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Product weight','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[product_weight]',
+                'title'		=> __('Wrapper html','team'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace weight output.','team'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Prefix text %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+add_action('wcps_layout_elements_option_product_dimensions','wcps_layout_elements_option_product_dimensions');
+function wcps_layout_elements_option_product_dimensions($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Product dimensions','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[product_dimensions]',
+                'title'		=> __('Wrapper html','team'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace dimensions output.','team'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Prefix text %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+add_action('wcps_layout_elements_option_share_button','wcps_layout_elements_option_share_button');
+function wcps_layout_elements_option_share_button($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+
+    $social_media = isset($element_data['social_media']) ? $element_data['social_media'] : array();
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Share button','team'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'social_media',
+                'parent' => $input_name.'[share_button]',
+                'title'		=> __('Social media','team'),
+                'details'	=> __('Write social media. use following format, <code>icon html | url</code><br> use following parameter with url, <code>{TITLE}, {PRODUCT_URL}, {THUMBNAIL_SRC}</code>','team'),
+                'type'		=> 'text_multi',
+                'value'		=> $social_media,
+                'default'		=> array(),
+                'placeholder'		=> 'Icon HTML | URL',
+            );
+
+            $settings_tabs_field->generate_field($args);
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}

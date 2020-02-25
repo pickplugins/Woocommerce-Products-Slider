@@ -117,13 +117,15 @@ if(!function_exists('wcps_metabox_content_style')) {
         $item_style = isset($wcps_options['item_style']) ? $wcps_options['item_style'] : array();
 
         $item_padding = isset($item_style['padding']) ? $item_style['padding'] : '';
+        $item_margin = isset($item_style['margin']) ? $item_style['margin'] : '';
+
         $item_background_color = isset($item_style['background_color']) ? $item_style['background_color'] : '';
         $item_text_align = isset($item_style['text_align']) ? $item_style['text_align'] : '';
 
         $container = isset($wcps_options['container']) ? $wcps_options['container'] : array();
         $container_background_img_url = isset($container['background_img_url']) ? $container['background_img_url'] : '';
         $container_background_color = isset($container['background_color']) ? $container['background_color'] : '';
-        $container_text_align = isset($container['text_align']) ? $container['text_align'] : '';
+        $container_padding = isset($container['padding']) ? $container['padding'] : '';
 
         $class_wcps_functions = new class_wcps_functions();
 
@@ -204,6 +206,16 @@ if(!function_exists('wcps_metabox_content_style')) {
                         'placeholder'   => '',
                     ),
                     array(
+                        'id'		=> 'margin',
+                        'parent'		=> 'wcps_options[item_style]',
+                        'title'		=> __('Item margin','team'),
+                        'details'	=> __('Item custom margin','team'),
+                        'type'		=> 'text',
+                        'value'		=> $item_margin,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                    array(
                         'id'		=> 'background_color',
                         'parent'		=> 'wcps_options[item_style]',
                         'title'		=> __('Background color','team'),
@@ -251,6 +263,7 @@ if(!function_exists('wcps_metabox_content_style')) {
                     ),
                     array(
                         'id'		=> 'background_color',
+                        'css_id'		=> 'container_background_color',
                         'parent'		=> 'wcps_options[container]',
                         'title'		=> __('Background color','team'),
                         'details'	=> __('Container background color','team'),
@@ -260,15 +273,24 @@ if(!function_exists('wcps_metabox_content_style')) {
                         'placeholder'   => '',
                     ),
                     array(
-                        'id'		=> 'text_align',
+                        'id'		=> 'padding',
                         'parent'		=> 'wcps_options[container]',
-                        'title'		=> __('Text align','team'),
-                        'details'	=> __('Container text align','team'),
-                        'type'		=> 'select',
-                        'value'		=> $container_text_align,
+                        'title'		=> __('Padding','team'),
+                        'details'	=> __('Container padding','team'),
+                        'type'		=> 'text',
+                        'value'		=> $container_padding,
                         'default'		=> '',
-                        'args'		=> array('left'=>'Left','center'=>'Center', 'right'=>'Right',),
                     ),
+                    array(
+                        'id'		=> 'margin',
+                        'parent'		=> 'wcps_options[container]',
+                        'title'		=> __('Margin','team'),
+                        'details'	=> __('Container margin','team'),
+                        'type'		=> 'text',
+                        'value'		=> $container_padding,
+                        'default'		=> '',
+                    ),
+
                 ),
 
             );
@@ -426,7 +448,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $settings_tabs_field = new settings_tabs_field();
 
         $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
-        $query = isset($wcps_options['query']) ? $wcps_options['query'] : 10;
+        $query = isset($wcps_options['query']) ? $wcps_options['query'] : array();
 
         $max_product_count = isset($query['max_product_count']) ? $query['max_product_count'] : 10;
         $query_order = isset($query['order']) ? $query['order'] : 'DESC';

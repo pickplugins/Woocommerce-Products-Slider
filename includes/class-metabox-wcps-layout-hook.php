@@ -109,10 +109,23 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $layout_elements['wrapper_start'] = array('name' =>__('Wrapper start','woocommerce-products-slider'));
             $layout_elements['wrapper_end'] = array('name' =>__('Wrapper end','woocommerce-products-slider'));
             $layout_elements['thumbnail'] = array('name' =>__('Thumbnail','woocommerce-products-slider'));
-            $layout_elements['title'] = array('name' =>__('Title','woocommerce-products-slider'));
+            $layout_elements['post_title'] = array('name' =>__('Product Title','woocommerce-products-slider'));
             $layout_elements['content'] = array('name' =>__('Content','woocommerce-products-slider'));
-            $layout_elements['social'] = array('name' =>__('Social','woocommerce-products-slider'));
+            $layout_elements['share_button'] = array('name' =>__('Share button','woocommerce-products-slider'));
             $layout_elements['meta'] = array('name' =>__('Meta fields','woocommerce-products-slider'));
+            $layout_elements['product_category'] = array('name' =>__('Product Category','woocommerce-products-slider'));
+            $layout_elements['product_tag'] = array('name' =>__('Product Tag','woocommerce-products-slider'));
+            $layout_elements['sale_count'] = array('name' =>__('Sale Count','woocommerce-products-slider'));
+            $layout_elements['featured_mark'] = array('name' =>__('Featured','woocommerce-products-slider'));
+            $layout_elements['on_sale_mark'] = array('name' =>__('On sale','woocommerce-products-slider'));
+            $layout_elements['add_to_cart'] = array('name' =>__('Add to cart','woocommerce-products-slider'));
+            $layout_elements['rating'] = array('name' =>__('Rating','woocommerce-products-slider'));
+            $layout_elements['product_price'] = array('name' =>__('Price','woocommerce-products-slider'));
+            $layout_elements['stock_status'] = array('name' =>__('Stock status','woocommerce-products-slider'));
+            $layout_elements['stock_quantity'] = array('name' =>__('Stock quantity','woocommerce-products-slider'));
+            $layout_elements['product_weight'] = array('name' =>__('Weight','woocommerce-products-slider'));
+            $layout_elements['product_dimensions'] = array('name' =>__('Dimensions','woocommerce-products-slider'));
+
 
 
             $layout_elements = apply_filters('wcps_layout_elements', $layout_elements);
@@ -204,6 +217,12 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
                 .layout-builder{}
                 .layout-tags{
                     margin-bottom: 20px;
+                    position: sticky;
+                    top: 32px;
+                    z-index: 999;
+                    background: #fff;
+                    padding: 5px 5px;
+                    border-bottom: 1px solid #ddd;
                 }
                 .layout-tags span{
                     background: #ddd;
@@ -245,6 +264,8 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
 
 
             $item_layout_id = get_the_id();
+            $args['layout_id'] = $item_layout_id;
+
             ?>
             <div class="layout-preview">
 

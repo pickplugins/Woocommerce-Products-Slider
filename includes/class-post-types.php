@@ -59,7 +59,7 @@ class team_class_post_types{
 				'query_var' 			=> true,
 				'supports' 				=> array( 'title' ),
 				'show_in_nav_menus' 	=> false,
-				'menu_icon' => 'dashicons-businessman',
+				'menu_icon' => 'dashicons-slides',
 
 			) )
 		); 

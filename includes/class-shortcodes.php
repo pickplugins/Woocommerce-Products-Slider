@@ -9,43 +9,36 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
 
             add_shortcode('wcps', array($this, 'wcps_display'));
             //add_shortcode('wcps_builder', array($this, 'wcps_builder_display'));
+            add_shortcode('wcps_new', array($this, 'wcps_new_display'));
 
 
         }
 
-
-        public function wcps_builder_display($atts, $content = null){
+        public function wcps_new_display($atts, $content = null ) {
             $atts = shortcode_atts(
                 array(
                     'id' => "",
-
-                ), $atts);
+                ), $atts
+            );
 
             $html = '';
-            $post_id = $atts['id'];
+            $wcps_id = isset($atts['id']) ? $atts['id'] : '';
 
-            wp_enqueue_script('wcps-builder');
-            wp_enqueue_style('wcps-builder');
-
-            include wcps_plugin_dir . '/templates/wcps-builder/wcps-builder.php';
-
-
+            $args = array('wcps_id'=> $wcps_id);
 
             ob_start();
-
             ?>
-            <div id="wcps-builder" class="">
+            <div id="wcps-container-<?php echo $wcps_id; ?>" class="wcps-container wcps-container-<?php echo $wcps_id; ?>">
                 <?php
-
-                do_action('wcps_builder', $atts);
-
+                do_action('wcps_slider_main', $args);
                 ?>
             </div>
             <?php
-
             return ob_get_clean();
-
         }
+
+
+
 
 
         public function wcps_display($atts, $content = null){
@@ -195,6 +188,41 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
 
             return $html;
 
+
+        }
+
+
+
+        public function wcps_builder_display($atts, $content = null){
+            $atts = shortcode_atts(
+                array(
+                    'id' => "",
+
+                ), $atts);
+
+            $html = '';
+            $post_id = $atts['id'];
+
+            wp_enqueue_script('wcps-builder');
+            wp_enqueue_style('wcps-builder');
+
+            include wcps_plugin_dir . '/templates/wcps-builder/wcps-builder.php';
+
+
+
+            ob_start();
+
+            ?>
+            <div id="wcps-builder" class="">
+                <?php
+
+                do_action('wcps_builder', $atts);
+
+                ?>
+            </div>
+            <?php
+
+            return ob_get_clean();
 
         }
 
