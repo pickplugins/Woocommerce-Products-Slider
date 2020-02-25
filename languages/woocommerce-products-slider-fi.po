@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Woocommerce Products Slider\n"
-"POT-Creation-Date: 2019-10-21 08:11+0600\n"
-"PO-Revision-Date: 2019-10-21 08:11+0600\n"
+"POT-Creation-Date: 2020-02-25 18:12+0600\n"
+"PO-Revision-Date: 2020-02-25 18:12+0600\n"
 "Last-Translator: Nur Hasan <public.nurhasan@gmail.com>\n"
 "Language-Team: PickPlugins <support@pickplugins.com>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -17,955 +17,1864 @@ msgstr ""
 "X-Poedit-SearchPath-1: includes\n"
 "X-Poedit-SearchPath-2: templates\n"
 
-#: includes/classes/class-functions.php:209
+#: includes/class-functions.php:209
+#: includes/class-metabox-wcps-layout-hook.php:111
+#: includes/functions-layout-hook.php:171
 msgid "Thumbnail"
 msgstr ""
 
-#: includes/classes/class-functions.php:210
+#: includes/class-functions.php:210 includes/functions-layout-hook.php:35
 msgid "Title"
 msgstr ""
 
-#: includes/classes/class-functions.php:211
+#: includes/class-functions.php:211 includes/functions-layout-hook.php:355
 msgid "Excerpt"
 msgstr ""
 
-#: includes/classes/class-functions.php:212
+#: includes/class-functions.php:212
 msgid "Category"
 msgstr ""
 
-#: includes/classes/class-functions.php:213
+#: includes/class-functions.php:213
 msgid "Tags"
 msgstr ""
 
-#: includes/classes/class-functions.php:214
+#: includes/class-functions.php:214
+#: includes/class-metabox-wcps-layout-hook.php:123
 msgid "Price"
 msgstr ""
 
-#: includes/classes/class-functions.php:215
+#: includes/class-functions.php:215
+#: includes/class-metabox-wcps-layout-hook.php:122
+#: includes/functions-layout-hook.php:1429
 msgid "Rating"
 msgstr ""
 
-#: includes/classes/class-functions.php:216
+#: includes/class-functions.php:216
 msgid "Cart"
 msgstr ""
 
-#: includes/classes/class-functions.php:217
+#: includes/class-functions.php:217
 msgid "Sale"
 msgstr ""
 
-#: includes/classes/class-functions.php:219
+#: includes/class-functions.php:219
+#: includes/class-metabox-wcps-layout-hook.php:119
 msgid "Featured"
 msgstr ""
 
-#: includes/classes/class-functions.php:221
+#: includes/class-functions.php:221
+#: includes/class-metabox-wcps-layout-hook.php:118
 msgid "Sale Count"
 msgstr ""
 
-#: includes/classes/class-settings-tabs.php:146
-#: includes/classes/class-settings-tabs.php:226
-msgid "Upload"
-msgstr ""
-
-#: includes/classes/class-settings-tabs.php:147
-#: includes/classes/class-settings-tabs.php:227
-msgid "Clear"
-msgstr ""
-
-#: includes/classes/class-settings-tabs.php:339
-#: includes/classes/class-settings-tabs.php:595
-msgid "Add"
-msgstr ""
-
-#: includes/classes/class-shortcodes.php:180
-msgid "No Product to Slide"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:88
-msgid "How to install"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:93
-msgid "How to create product slider"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:98
-msgid "Display recent products"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:103
-msgid "Display featured product"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:107
-msgid "Display on sale product"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:112
-msgid "[Pro] Display top rated products"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:117
-msgid "[Pro] Display best selling product"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:122
-msgid "Display featured products at first"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:126
-msgid "Display by product ids"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:130
-msgid "Display product randomly"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:135
-msgid "Product by categories"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:140
-msgid "Product by menu order"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:144
-msgid "[Pro] Product by SKU"
-msgstr ""
-
-#: includes/classes/class-wcps-support.php:148
-msgid "[Pro] Product by attributes"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:34
-msgid "Custom CSS"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:35
-msgid "Add your own CSS.."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:229
-msgid "Slider Thumbnail Size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:292
-msgid "_blank"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:293
-msgid "_self"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:294
-msgid "_parent"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:295
-msgid "_top"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:308
-msgid "Slider thumb max hieght(px)"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:314
-msgid "Display Thumbnail Zoom button"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:317
-#: includes/functions/functions-wcps-meta-box.php:443
-#: includes/functions/functions-wcps-meta-box.php:1159
-#: includes/functions/functions-wcps-meta-box.php:1180
-#: includes/functions/functions-wcps-meta-box.php:1201
-#: includes/functions/functions-wcps-settings.php:40
-msgid "No"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:318
-#: includes/functions/functions-wcps-meta-box.php:442
-#: includes/functions/functions-wcps-meta-box.php:1158
-#: includes/functions/functions-wcps-meta-box.php:1179
-#: includes/functions/functions-wcps-meta-box.php:1200
-#: includes/functions/functions-wcps-settings.php:41
-msgid "Yes"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:325
-msgid "Empty Thumbnail"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:326
-msgid "Custom thumbnail image url"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:402
-msgid "Items Add to cart button Style"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:403
-msgid "You can hide items Add to cart button on slider."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:405
-msgid "Default"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:406
-msgid "Custom"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:412
-msgid "Add to cart Background Color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:422
-msgid "Add to cart Text Color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:428
-msgid "Items Cart Text Align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:430
-#: includes/functions/functions-wcps-meta-box.php:507
-#: includes/functions/functions-wcps-meta-box.php:566
-#: includes/functions/functions-wcps-meta-box.php:591
-#: includes/functions/functions-wcps-meta-box.php:647
-#: includes/functions/functions-wcps-meta-box.php:689
-#: includes/functions/functions-wcps-meta-box.php:730
-msgid "Left"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:431
-#: includes/functions/functions-wcps-meta-box.php:508
-#: includes/functions/functions-wcps-meta-box.php:567
-#: includes/functions/functions-wcps-meta-box.php:592
-#: includes/functions/functions-wcps-meta-box.php:648
-#: includes/functions/functions-wcps-meta-box.php:690
-#: includes/functions/functions-wcps-meta-box.php:731
-msgid "Right"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:432
-#: includes/functions/functions-wcps-meta-box.php:509
-#: includes/functions/functions-wcps-meta-box.php:568
-#: includes/functions/functions-wcps-meta-box.php:593
-#: includes/functions/functions-wcps-meta-box.php:650
-#: includes/functions/functions-wcps-meta-box.php:691
-#: includes/functions/functions-wcps-meta-box.php:732
-msgid "Center"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:440
-msgid "Display quantity"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:459
-msgid "Sale marker icon url"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:474
-msgid "sale count text"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:491
-msgid "Items Title Color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:496
-msgid "Items Title Font Size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:503
-msgid "Items Title Text Align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:522
-msgid "Featured marker icon url"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:534
-msgid "Price format on slider"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:537
-msgid "Full Format"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:538
-msgid "Sale price"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:539
-msgid "Regular price"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:548
-msgid "Items Price Color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:554
-msgid "Items price Font Size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:562
-msgid "Price Text Align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:587
-msgid "Items Rating Text Align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:600
-msgid "Items ratings Font Size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:607
-msgid "Items Ratings Color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:624
-msgid "Excerpt word count"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:630
-msgid "Excerpt read more text"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:636
-msgid "Items Excerpt Font Size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:643
-msgid "Excerpt Text Align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:656
-msgid "Items Excerpt Font color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:678
-msgid "Items Category Font Size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:685
-msgid "Category Text Align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:700
-msgid "Items Category Font color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:706
-msgid "Items Category separator"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:722
-msgid "Items tag font size"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:727
-msgid "Tag text align"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:737
-msgid "Items tag font color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:778
-msgid "Elements"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:841
-msgid "Slider themes"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:842
-msgid "Choose slider product themes."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:870
-msgid "Slider ribbon"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:871
-msgid "Choose slider ribbon."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:889
-msgid "Custom ribbon"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:890
-msgid "Choose custom ribbon, image source url."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:905
-msgid "Items padding"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:906
-msgid "Set custom padding for item."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:919
-msgid "Item background color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:920
-msgid "Set custom background color for item."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:938
-msgid "Container Padding"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:939
-msgid "Set custom padding for container."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:951
-msgid "Container background color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:952
-msgid "Set custom background color for container."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:965
-msgid "Container background image"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:966
-msgid "Set custom background image for container."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1049
-msgid "Max number of product"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1050
-msgid "Set custom number you want to display maximum number of product"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1066
-msgid "Product categories & terms"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1093
-msgid "Query order"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1094
-msgid "Set query order."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1099
-msgid "Descending"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1100
-msgid "Ascending"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1114
-msgid "Query orderby"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1115
-msgid "Set query orderby."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1121
-msgid "None"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1122
-msgid "ID"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1123
-msgid "date"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1124
-msgid "post_date"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1125
-msgid "name"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1126
-msgid "rand"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1127
-msgid "comment_count"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1128
-msgid "author"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1129
-msgid "title"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1130
-msgid "type"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1131
-msgid "menu order"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1152
-msgid "Hide out of stock items"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1153
-msgid "You can hide out of stock items from query."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1160
-#: includes/functions/functions-wcps-meta-box.php:1181
-msgid "No Check"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1173
-msgid "Featured product display"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1174
-msgid "You include/exclude featured product on query."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1194
-msgid "On Sale Product display"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1195
-msgid "You include/exclude on sale product on query."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1221
-msgid "Product display by Product ID"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1222
-msgid "You can display custom product by ids."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1331
-msgid "In Destop: (min:1000px and max)"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1334
-msgid "In Tablet & Small Desktop: (900px max width)"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1337
-msgid "In Mobile: (479px max width)"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1345
-msgid "Slider column number"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1359
-msgid "Slider auto play"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1360
-msgid "Enable or disable slider autoplay."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1365
-#: includes/functions/functions-wcps-meta-box.php:1454
-#: includes/functions/functions-wcps-meta-box.php:1470
-#: includes/functions/functions-wcps-meta-box.php:1487
-#: includes/functions/functions-wcps-meta-box.php:1504
-#: includes/functions/functions-wcps-meta-box.php:1522
-#: includes/functions/functions-wcps-meta-box.php:1559
-#: includes/functions/functions-wcps-meta-box.php:1607
-#: includes/functions/functions-wcps-meta-box.php:1626
-#: includes/functions/functions-wcps-meta-box.php:1644
-#: includes/functions/functions-wcps-meta-box.php:1661
-msgid "True"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1366
-#: includes/functions/functions-wcps-meta-box.php:1455
-#: includes/functions/functions-wcps-meta-box.php:1471
-#: includes/functions/functions-wcps-meta-box.php:1488
-#: includes/functions/functions-wcps-meta-box.php:1505
-#: includes/functions/functions-wcps-meta-box.php:1523
-#: includes/functions/functions-wcps-meta-box.php:1560
-#: includes/functions/functions-wcps-meta-box.php:1608
-#: includes/functions/functions-wcps-meta-box.php:1627
-#: includes/functions/functions-wcps-meta-box.php:1645
-#: includes/functions/functions-wcps-meta-box.php:1662
-msgid "False"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1379
-msgid "Slider auto play speed"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1380
-msgid "Custom value for auto play speed, 1000 = 1 second"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1393
-msgid "Slider auto play timeout"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1394
-msgid "Custom value for auto play timeout, 1000 = 1 second"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1407
-msgid "Slide speed"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1408
-msgid "Custom value for slide speed, 1000 = 1 second"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1421
-msgid "Pagination Slide Speed"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1422
-msgid "Custom value for pagination slide speed, 1000 = 1 second"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1434
-msgid "Slider slideby count"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1435
-msgid "Custom value for slideby"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1448
-msgid "Slider rewind"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1449
-msgid "Enable or disable slider rewind."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1464
-msgid "Slider loop"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1465
-msgid "Enable or disable slider loop."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1481
-msgid "Slider center"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1482
-msgid ""
-"Enable or disable slider center. please set odd number of slider column to "
-"work slider center."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1498
-msgid "Slider stop on hover"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1499
-msgid "Enable or disable slider stop on hover."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1516
-msgid "Slider navigation at top"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1517
-msgid "Enable or disable slider navigation at Top."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1533
-msgid "Slider navigation position"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1534
-msgid "Choose slider navigation position."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1539
-msgid "Top Right"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1540
-msgid "Middle"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1541
-msgid "Middle fixed"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1553
-msgid "Slider Pagination at bottom"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1554
-msgid "Enable or disable slider Pagination at bottom."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1573
-msgid "Pagination background color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1574
-msgid "Choose custom pagination background color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1586
-msgid "Pagination text color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1587
-msgid "Choose custom pagination text color"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1601
-msgid "Slider pagination number counting"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1602
-msgid "Enable or disable slider pagination number counting."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1620
-msgid "Slider touch drag enable"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1621
-msgid "Enable or disable slider touch drag."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1638
-msgid "Slider mouse drag enable"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1639
-msgid "Enable or disable slider mouse drag."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1655
-msgid "RTL enable"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1656
-msgid "Enable or disable slider RTL."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1673
-#: includes/functions/functions-wcps-meta-box.php:1707
-msgid "Animate Out"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1674
-#: includes/functions/functions-wcps-meta-box.php:1708
-msgid "Choose animation on out."
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1679
-#: includes/functions/functions-wcps-meta-box.php:1713
-msgid "fadeOut"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1680
-#: includes/functions/functions-wcps-meta-box.php:1714
-msgid "bounce"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1681
-#: includes/functions/functions-wcps-meta-box.php:1715
-msgid "flash"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1682
-#: includes/functions/functions-wcps-meta-box.php:1716
-msgid "pulse"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1683
-#: includes/functions/functions-wcps-meta-box.php:1717
-msgid "shake"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1684
-#: includes/functions/functions-wcps-meta-box.php:1718
-msgid "swing"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1685
-#: includes/functions/functions-wcps-meta-box.php:1719
-msgid "tada"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1686
-#: includes/functions/functions-wcps-meta-box.php:1720
-msgid "wobble"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1687
-#: includes/functions/functions-wcps-meta-box.php:1721
-msgid "flip"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1688
-#: includes/functions/functions-wcps-meta-box.php:1722
-msgid "flipInX"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1689
-#: includes/functions/functions-wcps-meta-box.php:1723
-msgid "flipInY"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1690
-#: includes/functions/functions-wcps-meta-box.php:1724
-msgid "fadeIn"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1691
-#: includes/functions/functions-wcps-meta-box.php:1725
-msgid "fadeInDown"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1692
-#: includes/functions/functions-wcps-meta-box.php:1726
-msgid "fadeInUp"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1693
-#: includes/functions/functions-wcps-meta-box.php:1727
-msgid "bounceIn"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1694
-#: includes/functions/functions-wcps-meta-box.php:1728
-msgid "bounceInDown"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1695
-#: includes/functions/functions-wcps-meta-box.php:1729
-msgid "bounceInUp"
-msgstr ""
-
-#: includes/functions/functions-wcps-meta-box.php:1823
+#: includes/class-metabox-wcps-hook.php:76
+#: includes/functions-wcps-meta-box.php:1766
 msgid "Get shortcode"
 msgstr ""
 
-#: includes/functions/functions-wcps-settings.php:34
+#: includes/class-metabox-wcps-hook.php:157
+#: includes/functions-wcps-meta-box.php:876
+msgid "Slider ribbon"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:158
+#: includes/functions-wcps-meta-box.php:877
+msgid "Choose slider ribbon."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:176
+#: includes/functions-wcps-meta-box.php:895
+msgid "Custom ribbon"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:177
+#: includes/functions-wcps-meta-box.php:896
+msgid "Choose custom ribbon, image source url."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:194
+msgid "Item style"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:195
+msgid "Customize item style."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:201
+msgid "Item padding"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:202
+msgid "Item custom padding"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:211
+msgid "Item margin"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:212
+msgid "Item custom margin"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:221
+#: includes/class-metabox-wcps-hook.php:268
+msgid "Background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:222
+#: includes/functions-wcps-meta-box.php:925
+msgid "Item background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:231
+msgid "Text align"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:232
+msgid "Item text align"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:250
+msgid "Container style"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:251
+msgid "Customize container style."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:257
+msgid "Background image"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:258
+#: includes/functions-wcps-meta-box.php:971
+msgid "Container background image"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:269
+#: includes/functions-wcps-meta-box.php:957
+msgid "Container background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:278
+msgid "Padding"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:279
+msgid "Container padding"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:287
+#: includes/functions-layout-hook.php:88 includes/functions-layout-hook.php:253
+#: includes/functions-layout-hook.php:452
+#: includes/functions-layout-hook.php:636
+#: includes/functions-layout-hook.php:786
+#: includes/functions-layout-hook.php:908
+#: includes/functions-layout-hook.php:1029
+msgid "Margin"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:288
+msgid "Container margin"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:332
+msgid "Layouts"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:333
+msgid "Choose item layouts."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:343
+#: includes/class-metabox-wcps-hook.php:354
+msgid "Create layout"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:344
+msgid "Manage layouts"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:355
+msgid "Please follow the links to create layouts or manage."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:398
+msgid "Item layouts"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:399
+msgid "Choose grid item layout."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:478
+#: includes/functions-wcps-meta-box.php:1055
+msgid "Max number of product"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:479
+#: includes/functions-wcps-meta-box.php:1056
+msgid "Set custom number you want to display maximum number of product"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:544
+msgid "Select terms"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:545
+msgid "Choose some terms."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:584
+#: includes/functions-wcps-meta-box.php:1072
+msgid "Product categories & terms"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:611
+#: includes/functions-wcps-meta-box.php:1099
+msgid "Query order"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:612
+#: includes/functions-wcps-meta-box.php:1100
+msgid "Set query order."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:617
+#: includes/functions-wcps-meta-box.php:1105
+msgid "Descending"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:618
+#: includes/functions-wcps-meta-box.php:1106
+msgid "Ascending"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:632
+#: includes/functions-wcps-meta-box.php:1120
+msgid "Query orderby"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:633
+#: includes/functions-wcps-meta-box.php:1121
+msgid "Set query orderby."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:639
+#: includes/functions-layout-hook.php:107
+#: includes/functions-layout-hook.php:293
+#: includes/functions-layout-hook.php:494
+#: includes/functions-wcps-meta-box.php:1127
+msgid "None"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:640
+#: includes/functions-wcps-meta-box.php:1128
+msgid "ID"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:641
+#: includes/functions-wcps-meta-box.php:1129
+msgid "date"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:642
+#: includes/functions-wcps-meta-box.php:1130
+msgid "post_date"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:643
+#: includes/functions-wcps-meta-box.php:1131
+msgid "name"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:644
+#: includes/functions-wcps-meta-box.php:1132
+msgid "rand"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:645
+#: includes/functions-wcps-meta-box.php:1133
+msgid "comment_count"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:646
+#: includes/functions-wcps-meta-box.php:1134
+msgid "author"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:647
+#: includes/functions-wcps-meta-box.php:1135
+msgid "title"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:648
+#: includes/functions-wcps-meta-box.php:1136
+msgid "type"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:649
+#: includes/functions-wcps-meta-box.php:1137
+msgid "menu order"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:661
+#: includes/functions-wcps-meta-box.php:1158
+msgid "Hide out of stock items"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:662
+#: includes/functions-wcps-meta-box.php:1159
+msgid "You can hide out of stock items from query."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:667
+#: includes/class-metabox-wcps-hook.php:688
+#: includes/class-metabox-wcps-hook.php:709
+#: includes/functions-wcps-meta-box.php:319
+#: includes/functions-wcps-meta-box.php:448
+#: includes/functions-wcps-meta-box.php:1164
+#: includes/functions-wcps-meta-box.php:1185
+#: includes/functions-wcps-meta-box.php:1206
+#: includes/functions-wcps-settings.php:41
+msgid "Yes"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:668
+#: includes/class-metabox-wcps-hook.php:689
+#: includes/class-metabox-wcps-hook.php:710
+#: includes/functions-wcps-meta-box.php:318
+#: includes/functions-wcps-meta-box.php:449
+#: includes/functions-wcps-meta-box.php:1165
+#: includes/functions-wcps-meta-box.php:1186
+#: includes/functions-wcps-meta-box.php:1207
+#: includes/functions-wcps-settings.php:40
+msgid "No"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:669
+#: includes/class-metabox-wcps-hook.php:690
+#: includes/functions-wcps-meta-box.php:1166
+#: includes/functions-wcps-meta-box.php:1187
+msgid "No Check"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:682
+#: includes/functions-wcps-meta-box.php:1179
+msgid "Featured product display"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:683
+#: includes/functions-wcps-meta-box.php:1180
+msgid "You include/exclude featured product on query."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:703
+#: includes/functions-wcps-meta-box.php:1200
+msgid "On Sale Product display"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:704
+#: includes/functions-wcps-meta-box.php:1201
+msgid "You include/exclude on sale product on query."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:730
+#: includes/functions-wcps-meta-box.php:1227
+msgid "Product display by Product ID"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:731
+#: includes/functions-wcps-meta-box.php:1228
+msgid "You can display custom product by ids."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:816
+#: includes/functions-wcps-meta-box.php:1330
+msgid "Slider"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:817
+#: includes/functions-wcps-meta-box.php:1331
+msgid "Customize slider settings."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:823
+#: includes/functions-wcps-meta-box.php:1337
+msgid "Slider column count "
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:824
+#: includes/functions-wcps-meta-box.php:1338
+msgid "Set slider column count."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:830
+#: includes/functions-layout-hook.php:216
+#: includes/functions-wcps-meta-box.php:1344
+msgid "In desktop"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:831
+#: includes/functions-wcps-meta-box.php:1345
+msgid "min-width: 1200px, ex: 3"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:840
+#: includes/functions-layout-hook.php:226
+#: includes/functions-wcps-meta-box.php:1354
+msgid "In tablet & small desktop"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:841
+#: includes/functions-wcps-meta-box.php:1355
+msgid "min-width: 992px, ex: 2"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:850
+#: includes/functions-layout-hook.php:236
+#: includes/functions-wcps-meta-box.php:1364
+msgid "In mobile"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:851
+#: includes/functions-wcps-meta-box.php:1365
+msgid "min-width: 576px, ex: 1"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:869
+#: includes/functions-wcps-meta-box.php:1383
+msgid "Auto play"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:870
+#: includes/functions-wcps-meta-box.php:1384
+msgid "Choose slider auto play."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:874
+#: includes/class-metabox-wcps-hook.php:916
+#: includes/class-metabox-wcps-hook.php:929
+#: includes/class-metabox-wcps-hook.php:944
+#: includes/class-metabox-wcps-hook.php:957
+#: includes/class-metabox-wcps-hook.php:973
+#: includes/class-metabox-wcps-hook.php:1055
+#: includes/class-metabox-wcps-hook.php:1108
+#: includes/class-metabox-wcps-hook.php:1121
+#: includes/class-metabox-wcps-hook.php:1136
+#: includes/class-metabox-wcps-hook.php:1150
+#: includes/class-metabox-wcps-hook.php:1164
+#: includes/functions-wcps-meta-box.php:1388
+#: includes/functions-wcps-meta-box.php:1430
+#: includes/functions-wcps-meta-box.php:1443
+#: includes/functions-wcps-meta-box.php:1458
+#: includes/functions-wcps-meta-box.php:1471
+#: includes/functions-wcps-meta-box.php:1487
+#: includes/functions-wcps-meta-box.php:1569
+#: includes/functions-wcps-meta-box.php:1622
+#: includes/functions-wcps-meta-box.php:1635
+#: includes/functions-wcps-meta-box.php:1650
+#: includes/functions-wcps-meta-box.php:1664
+#: includes/functions-wcps-meta-box.php:1678
+msgid "True"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:874
+#: includes/class-metabox-wcps-hook.php:916
+#: includes/class-metabox-wcps-hook.php:929
+#: includes/class-metabox-wcps-hook.php:944
+#: includes/class-metabox-wcps-hook.php:957
+#: includes/class-metabox-wcps-hook.php:973
+#: includes/class-metabox-wcps-hook.php:1055
+#: includes/class-metabox-wcps-hook.php:1108
+#: includes/class-metabox-wcps-hook.php:1121
+#: includes/class-metabox-wcps-hook.php:1136
+#: includes/class-metabox-wcps-hook.php:1150
+#: includes/class-metabox-wcps-hook.php:1164
+#: includes/functions-wcps-meta-box.php:1388
+#: includes/functions-wcps-meta-box.php:1430
+#: includes/functions-wcps-meta-box.php:1443
+#: includes/functions-wcps-meta-box.php:1458
+#: includes/functions-wcps-meta-box.php:1471
+#: includes/functions-wcps-meta-box.php:1487
+#: includes/functions-wcps-meta-box.php:1569
+#: includes/functions-wcps-meta-box.php:1622
+#: includes/functions-wcps-meta-box.php:1635
+#: includes/functions-wcps-meta-box.php:1650
+#: includes/functions-wcps-meta-box.php:1664
+#: includes/functions-wcps-meta-box.php:1678
+msgid "False"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:882
+#: includes/functions-wcps-meta-box.php:1396
+msgid "Auto play speed"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:883
+#: includes/functions-wcps-meta-box.php:1397
+msgid "Set auto play speed, ex: 1500"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:895
+#: includes/functions-wcps-meta-box.php:1409
+msgid "Auto play timeout"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:896
+#: includes/functions-wcps-meta-box.php:1410
+msgid "Set auto play timeout, ex: 2000"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:902
+#: includes/functions-wcps-meta-box.php:1416
+msgid "Value should larger than <b>Auto play speed</b>"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:911
+#: includes/functions-wcps-meta-box.php:1425
+msgid "Slider rewind"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:912
+#: includes/functions-wcps-meta-box.php:1426
+msgid "Choose slider rewind."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:924
+#: includes/functions-wcps-meta-box.php:1438
+msgid "Slider loop"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:925
+#: includes/functions-wcps-meta-box.php:1439
+msgid "Choose slider loop."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:939
+#: includes/functions-wcps-meta-box.php:1453
+msgid "Slider center"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:940
+#: includes/functions-wcps-meta-box.php:1454
+msgid "Choose slider center."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:952
+#: includes/functions-wcps-meta-box.php:1466
+msgid "Slider stop on hover"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:953
+#: includes/functions-wcps-meta-box.php:1467
+msgid "Choose stop on hover."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:968
+#: includes/functions-wcps-meta-box.php:1482
+msgid "Slider navigation"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:969
+#: includes/functions-wcps-meta-box.php:1483
+msgid "Choose slider navigation."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:981
+#: includes/functions-wcps-meta-box.php:1495
+msgid "Navigation slide speed"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:982
+#: includes/functions-wcps-meta-box.php:1496
+msgid "Set slide speed, ex: 1000"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:995
+#: includes/functions-wcps-meta-box.php:1509
+msgid "Slider navigation position"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:996
+#: includes/functions-wcps-meta-box.php:1510
+msgid "Choose slider navigation position."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1000
+#: includes/functions-wcps-meta-box.php:1514
+msgid "Top-right"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1000
+#: includes/functions-wcps-meta-box.php:1514
+msgid "Top-left"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1000
+#: includes/functions-wcps-meta-box.php:1514
+msgid "Bottom left"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1000
+#: includes/functions-wcps-meta-box.php:1514
+msgid "Bottom right"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1000
+#: includes/functions-wcps-meta-box.php:1514
+msgid "Middle"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1000
+#: includes/functions-wcps-meta-box.php:1514
+msgid "Middle-fixed"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1010
+#: includes/functions-wcps-meta-box.php:1524
+msgid "Slider navigation style"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1011
+#: includes/functions-wcps-meta-box.php:1525
+msgid ""
+"Choose slider navigation style. classes <code>semi-round, round, flat, "
+"border</code>"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1023
+#: includes/functions-wcps-meta-box.php:1537
+msgid "Navigation background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1024
+#: includes/functions-wcps-meta-box.php:1538
+msgid "Set navigation background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1036
+#: includes/functions-wcps-meta-box.php:1550
+msgid "Navigation text color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1037
+#: includes/functions-wcps-meta-box.php:1551
+msgid "Set navigation text color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1050
+#: includes/functions-wcps-meta-box.php:1564
+msgid "Slider dots"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1051
+#: includes/functions-wcps-meta-box.php:1565
+msgid "Choose slider dots at bottom."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1063
+#: includes/functions-wcps-meta-box.php:1577
+msgid "Dots background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1064
+#: includes/functions-wcps-meta-box.php:1578
+msgid "Set dots background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1077
+#: includes/functions-wcps-meta-box.php:1591
+msgid "Dots active/hover background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1078
+#: includes/functions-wcps-meta-box.php:1592
+msgid "Set dots active/hover background color"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1090
+#: includes/functions-wcps-meta-box.php:1604
+msgid "Dots slide speed"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1091
+#: includes/functions-wcps-meta-box.php:1605
+msgid "Set dots slide speed, ex: 1200"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1103
+#: includes/functions-wcps-meta-box.php:1617
+msgid "Slider dots count"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1104
+#: includes/functions-wcps-meta-box.php:1618
+msgid "Choose slider dots count."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1116
+#: includes/functions-wcps-meta-box.php:1630
+msgid "Slider rtl"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1117
+#: includes/functions-wcps-meta-box.php:1631
+msgid "Choose slider rtl."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1131
+#: includes/functions-wcps-meta-box.php:1645
+msgid "Slider lazy load"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1132
+#: includes/functions-wcps-meta-box.php:1646
+msgid "Choose slider lazy load."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1145
+#: includes/functions-wcps-meta-box.php:1659
+msgid "Slider touch drag"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1146
+#: includes/functions-wcps-meta-box.php:1660
+msgid "Choose slider touch drag."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1159
+#: includes/functions-wcps-meta-box.php:1673
+msgid "Slider mouse drag"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1160
+#: includes/functions-wcps-meta-box.php:1674
+msgid "Choose slider mouse drag."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1212
+#: includes/class-metabox-wcps-layout-hook.php:33
+#: includes/functions-layout-hook.php:1016
+#: includes/functions-wcps-meta-box.php:34
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1213
+#: includes/functions-wcps-meta-box.php:35
+msgid "Add your own CSS.."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1257
+msgid "Get support"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1258
+msgid "Use following to get help and support from our expert team."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1266
+msgid ""
+"Ask question for free on our forum and get quick reply from our expert team "
+"members."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1267
+msgid "Create support ticket"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1269
+msgid "Read our documentation before asking your question."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1270
+msgid "Documentation"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1272
+msgid "Watch video tutorials."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1273
+msgid "All tutorials"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1289
+msgid "Ask question"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1314
+msgid "Submit reviews"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1348
+msgid "Get Premium"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1349
+msgid ""
+"Thanks for using our plugin, if you looking for some advance feature please "
+"buy premium version."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1357
+msgid ""
+"If you love our plugin and want more feature please consider to buy pro "
+"version."
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1358
+#: includes/class-metabox-wcps-hook.php:1385
+msgid "Buy premium"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1360
+msgid "See the differences"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1365
+#: includes/class-metabox-wcps-hook.php:1378
+msgid "Features"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1366
+#: includes/class-metabox-wcps-hook.php:1379
+msgid "Free"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1367
+#: includes/class-metabox-wcps-hook.php:1380
+msgid "Premium"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1372
+msgid "View type - Slider"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1383
+msgid "Buy now"
+msgstr ""
+
+#: includes/class-metabox-wcps-hook.php:1399
+msgid "Get pro version"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:25
+msgid "Custom scripts"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:26
+msgid "Write custom scripts to override CSS and scripts."
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:34
+msgid ""
+"Write custom CSS to override default style, do not use <code>&lt;style>&lt;/"
+"style></code> tag. use <code>__ID__</code> to replace by layout id "
+"<code>layout-"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:47
+msgid "Custom JS"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:48
+msgid ""
+"Write custom JS to override default style, do not use <code>&lt;script>&lt;/"
+"script></code> tag."
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:60
+msgid "Preview image"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:61
+msgid "Set layout preview image."
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:105
+msgid "Layout builder"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:106
+msgid "Customize layout settings."
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:109
+#: includes/functions-layout-hook.php:978
+msgid "Wrapper start"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:110
+#: includes/functions-layout-hook.php:1091
+msgid "Wrapper end"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:112
+msgid "Product Title"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:113
+#: includes/functions-layout-hook.php:340
+#: includes/functions-layout-hook.php:355
+msgid "Content"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:114
+#: includes/functions-layout-hook.php:1715
+msgid "Share button"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:115
+msgid "Meta fields"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:116
+msgid "Product Category"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:117
+msgid "Product Tag"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:120
+msgid "On sale"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:121
+#: includes/functions-layout-hook.php:1380
+#: includes/functions-layout-hook.php:1394
+msgid "Add to cart"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:124
+#: includes/functions-layout-hook.php:1523
+msgid "Stock status"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:125
+#: includes/functions-layout-hook.php:1573
+msgid "Stock quantity"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:126
+msgid "Weight"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:127
+msgid "Dimensions"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:204
+#, php-format
+msgid "%s Click to add tags."
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:252
+msgid "Layout elements"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:253
+msgid "Customize layout elements."
+msgstr ""
+
+#: includes/class-metabox-wcps-layout-hook.php:355
+#: includes/class-metabox-wcps-layout-hook.php:356
+msgid "Layout preview"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout.php:19
+msgid "Layout data"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout.php:45
+#, php-format
+msgid "%s Layout builder"
+msgstr ""
+
+#: includes/class-metabox-wcps-layout.php:53 includes/class-metabox-wcps.php:86
+#: includes/wcps-meta-box.php:82
+#, php-format
+msgid "%s Custom scripts"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:19
+msgid "WCPS data"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:50 includes/wcps-meta-box.php:47
+#, php-format
+msgid "%s Shortcode"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:57 includes/wcps-meta-box.php:54
+#, php-format
+msgid "%s Slider options"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:64 includes/wcps-meta-box.php:61
+#, php-format
+msgid "%s Query product"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:71 includes/wcps-meta-box.php:68
+#, php-format
+msgid "%s Style"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:78
+#, php-format
+msgid "%s Layouts"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:93
+#, php-format
+msgid "%s Help support"
+msgstr ""
+
+#: includes/class-metabox-wcps.php:100
+#, php-format
+msgid "%s Buy pro"
+msgstr ""
+
+#: includes/class-post-types.php:19 includes/class-post-types.php:20
+msgid "WCPS"
+msgstr ""
+
+#: includes/class-post-types.php:29 includes/class-post-types.php:78
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: includes/class-post-types.php:30 includes/class-post-types.php:79
+msgid "Add New"
+msgstr ""
+
+#: includes/class-post-types.php:31 includes/class-post-types.php:80
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: includes/class-post-types.php:32 includes/class-post-types.php:81
+msgid "Edit"
+msgstr ""
+
+#: includes/class-post-types.php:33 includes/class-post-types.php:82
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: includes/class-post-types.php:34 includes/class-post-types.php:83
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: includes/class-post-types.php:35 includes/class-post-types.php:36
+#: includes/class-post-types.php:84 includes/class-post-types.php:85
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: includes/class-post-types.php:37 includes/class-post-types.php:86
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: includes/class-post-types.php:38 includes/class-post-types.php:87
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: includes/class-post-types.php:39 includes/class-post-types.php:88
+#, php-format
+msgid "No %s found in trash"
+msgstr ""
+
+#: includes/class-post-types.php:40 includes/class-post-types.php:89
+#, php-format
+msgid "Parent %s"
+msgstr ""
+
+#: includes/class-post-types.php:42 includes/class-post-types.php:91
+#, php-format
+msgid "This is where you can create and manage %s."
+msgstr ""
+
+#: includes/class-post-types.php:68
+msgid "WCPS layout"
+msgstr ""
+
+#: includes/class-post-types.php:69
+msgid "WCPS layouts"
+msgstr ""
+
+#: includes/class-settings-tabs.php:317
+msgid "Placeholder.jpg"
+msgstr ""
+
+#: includes/class-settings-tabs.php:373 includes/class-settings-tabs.php:454
+msgid "Upload"
+msgstr ""
+
+#: includes/class-settings-tabs.php:374 includes/class-settings-tabs.php:455
+msgid "Clear"
+msgstr ""
+
+#: includes/class-settings-tabs.php:565 includes/class-settings-tabs.php:819
+msgid "Add"
+msgstr ""
+
+#: includes/class-shortcodes.php:173
+msgid "No Product to Slide"
+msgstr ""
+
+#: includes/class-wcps-support.php:88
+msgid "How to install"
+msgstr ""
+
+#: includes/class-wcps-support.php:93
+msgid "How to create product slider"
+msgstr ""
+
+#: includes/class-wcps-support.php:98
+msgid "Display recent products"
+msgstr ""
+
+#: includes/class-wcps-support.php:103
+msgid "Display featured product"
+msgstr ""
+
+#: includes/class-wcps-support.php:107
+msgid "Display on sale product"
+msgstr ""
+
+#: includes/class-wcps-support.php:112
+msgid "[Pro] Display top rated products"
+msgstr ""
+
+#: includes/class-wcps-support.php:117
+msgid "[Pro] Display best selling product"
+msgstr ""
+
+#: includes/class-wcps-support.php:122
+msgid "Display featured products at first"
+msgstr ""
+
+#: includes/class-wcps-support.php:126
+msgid "Display by product ids"
+msgstr ""
+
+#: includes/class-wcps-support.php:130
+msgid "Display product randomly"
+msgstr ""
+
+#: includes/class-wcps-support.php:135
+msgid "Product by categories"
+msgstr ""
+
+#: includes/class-wcps-support.php:140
+msgid "Product by menu order"
+msgstr ""
+
+#: includes/class-wcps-support.php:144
+msgid "[Pro] Product by SKU"
+msgstr ""
+
+#: includes/class-wcps-support.php:148
+msgid "[Pro] Product by attributes"
+msgstr ""
+
+#: includes/functions-layout-hook.php:45 includes/functions-layout-hook.php:410
+#: includes/functions-layout-hook.php:593
+#: includes/functions-layout-hook.php:744
+#: includes/functions-layout-hook.php:866
+msgid "Color"
+msgstr ""
+
+#: includes/functions-layout-hook.php:46 includes/functions-layout-hook.php:411
+#: includes/functions-layout-hook.php:594
+#: includes/functions-layout-hook.php:745
+#: includes/functions-layout-hook.php:867
+msgid "Title text color."
+msgstr ""
+
+#: includes/functions-layout-hook.php:58 includes/functions-layout-hook.php:423
+#: includes/functions-layout-hook.php:606
+#: includes/functions-layout-hook.php:757
+#: includes/functions-layout-hook.php:879
+msgid "Font size"
+msgstr ""
+
+#: includes/functions-layout-hook.php:59 includes/functions-layout-hook.php:424
+#: includes/functions-layout-hook.php:607
+#: includes/functions-layout-hook.php:758
+#: includes/functions-layout-hook.php:880
+msgid "Set font size."
+msgstr ""
+
+#: includes/functions-layout-hook.php:73 includes/functions-layout-hook.php:438
+#: includes/functions-layout-hook.php:621
+#: includes/functions-layout-hook.php:772
+#: includes/functions-layout-hook.php:894
+msgid "Font family"
+msgstr ""
+
+#: includes/functions-layout-hook.php:74 includes/functions-layout-hook.php:439
+#: includes/functions-layout-hook.php:622
+#: includes/functions-layout-hook.php:773
+#: includes/functions-layout-hook.php:895
+msgid "Set font family."
+msgstr ""
+
+#: includes/functions-layout-hook.php:89 includes/functions-layout-hook.php:254
+#: includes/functions-layout-hook.php:453
+#: includes/functions-layout-hook.php:637
+#: includes/functions-layout-hook.php:787
+#: includes/functions-layout-hook.php:909
+#: includes/functions-layout-hook.php:1030
+msgid "Set margin."
+msgstr ""
+
+#: includes/functions-layout-hook.php:102
+#: includes/functions-layout-hook.php:288
+#: includes/functions-layout-hook.php:489
+msgid "Link to"
+msgstr ""
+
+#: includes/functions-layout-hook.php:103
+msgid "Choose option to link product."
+msgstr ""
+
+#: includes/functions-layout-hook.php:107
+msgid "product link"
+msgstr ""
+
+#: includes/functions-layout-hook.php:107
+#: includes/functions-layout-hook.php:293
+#: includes/functions-layout-hook.php:494
+msgid "Popup box"
+msgstr ""
+
+#: includes/functions-layout-hook.php:107
+#: includes/functions-layout-hook.php:293
+#: includes/functions-layout-hook.php:494
+msgid "Custom link"
+msgstr ""
+
+#: includes/functions-layout-hook.php:124
+#: includes/functions-layout-hook.php:275
+#: includes/functions-layout-hook.php:476
+#: includes/functions-layout-hook.php:659
+#: includes/functions-layout-hook.php:808
+#: includes/functions-layout-hook.php:930
+#: includes/functions-layout-hook.php:1051
+msgid "Use of CSS"
+msgstr ""
+
+#: includes/functions-layout-hook.php:125
+#: includes/functions-layout-hook.php:276
+#: includes/functions-layout-hook.php:477
+#: includes/functions-layout-hook.php:660
+#: includes/functions-layout-hook.php:809
+#: includes/functions-layout-hook.php:931
+#: includes/functions-layout-hook.php:1052
+msgid "Use following class selector to add custom CSS for this element."
+msgstr ""
+
+#: includes/functions-layout-hook.php:193
+msgid "Thumbnail size"
+msgstr ""
+
+#: includes/functions-layout-hook.php:194
+msgid "Choose thumbnail size."
+msgstr ""
+
+#: includes/functions-layout-hook.php:209
+msgid "Thumbnail height"
+msgstr ""
+
+#: includes/functions-layout-hook.php:210
+msgid "Set thumbnail height."
+msgstr ""
+
+#: includes/functions-layout-hook.php:217
+msgid "min-width: 1200px, ex: 280px"
+msgstr ""
+
+#: includes/functions-layout-hook.php:227
+msgid "min-width: 992px, ex: 280px"
+msgstr ""
+
+#: includes/functions-layout-hook.php:237
+msgid "max-width: 768px, ex: 280px"
+msgstr ""
+
+#: includes/functions-layout-hook.php:289
+#: includes/functions-layout-hook.php:490
+msgid "Choose option to product link."
+msgstr ""
+
+#: includes/functions-layout-hook.php:293
+#: includes/functions-layout-hook.php:494
+msgid "Product link"
+msgstr ""
+
+#: includes/functions-layout-hook.php:322
+msgid "Read more"
+msgstr ""
+
+#: includes/functions-layout-hook.php:350
+msgid "Content source"
+msgstr ""
+
+#: includes/functions-layout-hook.php:351
+msgid "Choose content source."
+msgstr ""
+
+#: includes/functions-layout-hook.php:364
+msgid "Word count"
+msgstr ""
+
+#: includes/functions-layout-hook.php:365
+msgid "Set word count."
+msgstr ""
+
+#: includes/functions-layout-hook.php:379
+msgid "Read more text"
+msgstr ""
+
+#: includes/functions-layout-hook.php:380
+msgid "Set custom read more text."
+msgstr ""
+
+#: includes/functions-layout-hook.php:394
+msgid "Read more color"
+msgstr ""
+
+#: includes/functions-layout-hook.php:395
+msgid "Set custom read more color."
+msgstr ""
+
+#: includes/functions-layout-hook.php:537
+msgid "Social"
+msgstr ""
+
+#: includes/functions-layout-hook.php:548
+msgid "Social icon type"
+msgstr ""
+
+#: includes/functions-layout-hook.php:549
+msgid "Choose icon type."
+msgstr ""
+
+#: includes/functions-layout-hook.php:553
+msgid "Image icon"
+msgstr ""
+
+#: includes/functions-layout-hook.php:553
+msgid "Font icon"
+msgstr ""
+
+#: includes/functions-layout-hook.php:553
+msgid "Text link"
+msgstr ""
+
+#: includes/functions-layout-hook.php:563
+msgid "Icon width"
+msgstr ""
+
+#: includes/functions-layout-hook.php:564
+msgid "Set icon width."
+msgstr ""
+
+#: includes/functions-layout-hook.php:578
+msgid "Icon height"
+msgstr ""
+
+#: includes/functions-layout-hook.php:579
+msgid "Set icon height."
+msgstr ""
+
+#: includes/functions-layout-hook.php:706
+msgid "Meta"
+msgstr ""
+
+#: includes/functions-layout-hook.php:716
+msgid "Meta key"
+msgstr ""
+
+#: includes/functions-layout-hook.php:717
+msgid "Write meta key."
+msgstr ""
+
+#: includes/functions-layout-hook.php:729
+#: includes/functions-layout-hook.php:1254
+#: includes/functions-layout-hook.php:1583
+#: includes/functions-layout-hook.php:1632
+#: includes/functions-layout-hook.php:1680
+msgid "Wrapper html"
+msgstr ""
+
+#: includes/functions-layout-hook.php:730
+#, php-format
+msgid "Write wrapper html, use <code>%s</code> to replace meta value output."
+msgstr ""
+
+#: includes/functions-layout-hook.php:857
+msgid "Position"
+msgstr ""
+
+#: includes/functions-layout-hook.php:990
+#: includes/functions-layout-hook.php:1101
+msgid "Wrapper id"
+msgstr ""
+
+#: includes/functions-layout-hook.php:991
+msgid "Write wrapper id, ex: my-unique-id."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1003
+msgid "Wrapper class"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1004
+msgid "Write wrapper class, ex: layer-thumbnail"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1017
+msgid "Write custom CSS. do not use <code>&lt;style>&lt;/style></code>"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1102
+msgid "Write wrapper id, ex: div, p, span."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1144
+msgid "Product category"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1153
+#: includes/functions-layout-hook.php:1203
+msgid "Max count"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1154
+#: includes/functions-layout-hook.php:1204
+msgid "Write max count"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1194
+msgid "Product tag"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1244
+msgid "Sale count"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1255
+#, php-format
+msgid "Write wrapper html, use <code>%s</code> to replace sale count output."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1291
+msgid "Featured mark"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1300
+#: includes/functions-layout-hook.php:1344
+msgid "Icon image"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1301
+#: includes/functions-layout-hook.php:1345
+msgid "Choose icon image"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1335
+msgid "On sale mark"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1389
+msgid "Cart text"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1390
+msgid "Write custom add to cart text."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1438
+msgid "Rating type"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1439
+msgid "Choose rating type."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1476
+msgid "Product price"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1485
+msgid "Price type"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1486
+msgid "Choose price type."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1533
+msgid "Stock status text"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1534
+msgid "Write custom stock status text."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1538
+msgid "In stock"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1584
+#, php-format
+msgid "Write wrapper html, use <code>%s</code> to replace quantity output."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1622
+msgid "Product weight"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1633
+#, php-format
+msgid "Write wrapper html, use <code>%s</code> to replace weight output."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1670
+msgid "Product dimensions"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1681
+#, php-format
+msgid "Write wrapper html, use <code>%s</code> to replace dimensions output."
+msgstr ""
+
+#: includes/functions-layout-hook.php:1724
+msgid "Social media"
+msgstr ""
+
+#: includes/functions-layout-hook.php:1725
+msgid ""
+"Write social media. use following format, <code>icon html | url</code><br> "
+"use following parameter with url, <code>{TITLE}, {PRODUCT_URL}, "
+"{THUMBNAIL_SRC}</code>"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:230
+msgid "Slider Thumbnail Size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:293
+msgid "_blank"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:294
+msgid "_self"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:295
+msgid "_parent"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:296
+msgid "_top"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:309
+msgid "Slider thumb max hieght(px)"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:315
+msgid "Display Thumbnail Zoom button"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:325
+msgid "Lazy load image"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:331
+msgid "Empty Thumbnail"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:332
+msgid "Custom thumbnail image url"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:408
+msgid "Items Add to cart button Style"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:409
+msgid "You can hide items Add to cart button on slider."
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:411
+msgid "Default"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:412
+msgid "Custom"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:418
+msgid "Add to cart Background Color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:428
+msgid "Add to cart Text Color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:434
+msgid "Items Cart Text Align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:436
+#: includes/functions-wcps-meta-box.php:513
+#: includes/functions-wcps-meta-box.php:572
+#: includes/functions-wcps-meta-box.php:597
+#: includes/functions-wcps-meta-box.php:653
+#: includes/functions-wcps-meta-box.php:695
+#: includes/functions-wcps-meta-box.php:736
+msgid "Left"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:437
+#: includes/functions-wcps-meta-box.php:514
+#: includes/functions-wcps-meta-box.php:573
+#: includes/functions-wcps-meta-box.php:598
+#: includes/functions-wcps-meta-box.php:654
+#: includes/functions-wcps-meta-box.php:696
+#: includes/functions-wcps-meta-box.php:737
+msgid "Right"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:438
+#: includes/functions-wcps-meta-box.php:515
+#: includes/functions-wcps-meta-box.php:574
+#: includes/functions-wcps-meta-box.php:599
+#: includes/functions-wcps-meta-box.php:656
+#: includes/functions-wcps-meta-box.php:697
+#: includes/functions-wcps-meta-box.php:738
+msgid "Center"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:446
+msgid "Display quantity"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:465
+msgid "Sale marker icon url"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:480
+msgid "sale count text"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:497
+msgid "Items Title Color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:502
+msgid "Items Title Font Size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:509
+msgid "Items Title Text Align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:528
+msgid "Featured marker icon url"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:540
+msgid "Price format on slider"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:543
+msgid "Full Format"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:544
+msgid "Sale price"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:545
+msgid "Regular price"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:554
+msgid "Items Price Color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:560
+msgid "Items price Font Size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:568
+msgid "Price Text Align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:593
+msgid "Items Rating Text Align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:606
+msgid "Items ratings Font Size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:613
+msgid "Items Ratings Color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:630
+msgid "Excerpt word count"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:636
+msgid "Excerpt read more text"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:642
+msgid "Items Excerpt Font Size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:649
+msgid "Excerpt Text Align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:662
+msgid "Items Excerpt Font color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:684
+msgid "Items Category Font Size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:691
+msgid "Category Text Align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:706
+msgid "Items Category Font color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:712
+msgid "Items Category separator"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:728
+msgid "Items tag font size"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:733
+msgid "Tag text align"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:743
+msgid "Items tag font color"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:784
+msgid "Elements"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:847
+msgid "Slider themes"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:848
+msgid "Choose slider product themes."
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:911
+msgid "Items padding"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:912
+msgid "Set custom padding for item."
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:926
+msgid "Set custom background color for item."
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:944
+msgid "Container Padding"
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:945
+msgid "Set custom padding for container."
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:958
+msgid "Set custom background color for container."
+msgstr ""
+
+#: includes/functions-wcps-meta-box.php:972
+msgid "Set custom background image for container."
+msgstr ""
+
+#: includes/functions-wcps-settings.php:34
 msgid "Track product View"
 msgstr ""
 
-#: includes/functions/functions-wcps-settings.php:35
+#: includes/functions-wcps-settings.php:35
 msgid "You can track view product by set Yes."
 msgstr ""
 
-#: includes/functions/functions-wcps-settings.php:54
+#: includes/functions-wcps-settings.php:54
 msgid "Optimize CSS & Scripts file load by page"
 msgstr ""
 
-#: includes/functions/functions-wcps-settings.php:55
+#: includes/functions-wcps-settings.php:55
 msgid ""
 "Please use page ids where you using shortcode <code>[wcps id=\"123\"]</"
 "code>Use comma separate value. ex: 12,14"
 msgstr ""
 
-#: includes/functions/functions.php:233
+#: includes/functions.php:180
 msgid "Shortcode"
 msgstr ""
 
-#: includes/functions/functions.php:265
+#: includes/functions.php:212
 msgid "Reset done!"
 msgstr ""
 
-#: includes/functions/functions.php:268
+#: includes/functions.php:215
 msgid "Reset failed!"
 msgstr ""
 
-#: includes/functions/functions.php:334
+#: includes/functions.php:281
 msgid "No categories found!"
 msgstr ""
 
-#: includes/functions/functions.php:392
+#: includes/functions.php:339
 #, php-format
 msgid ""
 "Please activate your license for <b>%s &raquo; <a href=\"%sedit.php?"
 "post_type=wcps&page=wcps_menu_license\">License</a></b>"
 msgstr ""
 
-#: includes/wcps-meta-box.php:7 includes/wcps-meta-box.php:8
-msgid "WCPS"
-msgstr ""
-
-#: includes/wcps-meta-box.php:9 includes/wcps-meta-box.php:10
-#: includes/wcps-meta-box.php:12
-msgid "New WCPS"
-msgstr ""
-
-#: includes/wcps-meta-box.php:11
-msgid "Edit WCPS"
-msgstr ""
-
-#: includes/wcps-meta-box.php:13
-msgid "View WCPS"
-msgstr ""
-
-#: includes/wcps-meta-box.php:14
-msgid "Search WCPS"
-msgstr ""
-
-#: includes/wcps-meta-box.php:15
-msgid "Nothing found"
-msgstr ""
-
-#: includes/wcps-meta-box.php:16
-msgid "Nothing found in Trash"
-msgstr ""
-
-#: includes/wcps-meta-box.php:57
+#: includes/wcps-meta-box.php:17
 msgid "WCPS Options"
 msgstr ""
 
-#: includes/wcps-meta-box.php:59
+#: includes/wcps-meta-box.php:19
 msgid "PickPlugins Product Slider"
 msgstr ""
 
-#: includes/wcps-meta-box.php:85
-msgid "<i class=\"fas fa-laptop-code\"></i> Shortcode"
-msgstr ""
-
-#: includes/wcps-meta-box.php:93
-msgid "<i class=\"fa fa-cogs\"></i> Options"
-msgstr ""
-
-#: includes/wcps-meta-box.php:100
-msgid "<i class=\"fas fa-qrcode\"></i> Query Product"
-msgstr ""
-
-#: includes/wcps-meta-box.php:107
-msgid "<i class=\"fas fa-palette\"></i> Style"
-msgstr ""
-
-#: includes/wcps-meta-box.php:114
-msgid "<i class=\"fa fa-magic\"></i> Elements"
-msgstr ""
-
-#: includes/wcps-meta-box.php:121
-msgid "<i class=\"far fa-file-code\"></i> Custom CSS"
+#: includes/wcps-meta-box.php:75
+#, php-format
+msgid "%s Elements"
 msgstr ""
 
 #: templates/wcps-featured.php:22

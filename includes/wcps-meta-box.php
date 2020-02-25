@@ -35,51 +35,51 @@ function meta_boxes_wcps_input( $post ) {
     wp_nonce_field( 'meta_boxes_wcps_input', 'meta_boxes_wcps_input_nonce' );
 
     $post_id = $post->ID;
-    $team_options = get_post_meta($post_id,'team_options', true);
+    $wcps_options = get_post_meta($post_id,'wcps_options', true);
 
-    $current_tab = isset($team_options['current_tab']) ? $team_options['current_tab'] : 'query_product';
+    $current_tab = isset($wcps_options['current_tab']) ? $wcps_options['current_tab'] : 'query_product';
 
 
     $wcps_settings_tab = array();
 
     $wcps_settings_tabs[] = array(
         'id' => 'shortcode',
-        'title' => sprintf(__('%s Shortcode','team'),'<i class="fas fa-laptop-code"></i>'),
+        'title' => sprintf(__('%s Shortcode','woocommerce-products-slider'),'<i class="fas fa-laptop-code"></i>'),
         'priority' => 1,
         'active' => ($current_tab == 'shortcode') ? true : false,
     );
 
     $wcps_settings_tabs[] = array(
         'id' => 'slider_options',
-        'title' => sprintf(__('%s Slider options','team'),'<i class="fa fa-cogs"></i>'),
+        'title' => sprintf(__('%s Slider options','woocommerce-products-slider'),'<i class="fa fa-cogs"></i>'),
         'priority' => 2,
         'active' => ($current_tab == 'slider_options') ? true : false,
     );
 
     $wcps_settings_tabs[] = array(
         'id' => 'query_product',
-        'title' => sprintf(__('%s Query product','team'),'<i class="fas fa-qrcode"></i>'),
+        'title' => sprintf(__('%s Query product','woocommerce-products-slider'),'<i class="fas fa-qrcode"></i>'),
         'priority' => 3,
         'active' => ($current_tab == 'query_product') ? true : false,
     );
 
     $wcps_settings_tabs[] = array(
         'id' => 'style',
-        'title' => sprintf(__('%s Style','team'),'<i class="fas fa-palette"></i>'),
+        'title' => sprintf(__('%s Style','woocommerce-products-slider'),'<i class="fas fa-palette"></i>'),
         'priority' => 4,
         'active' => ($current_tab == 'style') ? true : false,
     );
 
     $wcps_settings_tabs[] = array(
         'id' => 'elements',
-        'title' => sprintf(__('%s Elements','team'),'<i class="fa fa-magic"></i>'),
+        'title' => sprintf(__('%s Elements','woocommerce-products-slider'),'<i class="fa fa-magic"></i>'),
         'priority' => 5,
         'active' => ($current_tab == 'style') ? true : false,
     );
 
     $wcps_settings_tabs[] = array(
         'id' => 'custom_scripts',
-        'title' => sprintf(__('%s Custom scripts','team'),'<i class="far fa-file-code"></i>'),
+        'title' => sprintf(__('%s Custom scripts','woocommerce-products-slider'),'<i class="far fa-file-code"></i>'),
         'priority' => 6,
         'active' => ($current_tab == 'style') ? true : false,
     );

@@ -32,7 +32,7 @@ function wcps_layout_elements_option_post_title($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Title','team'); ?></span>
+            <span class="expand"><?php echo __('Title','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -42,8 +42,8 @@ function wcps_layout_elements_option_post_title($parameters){
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_title_color',
                 'parent' => $input_name.'[post_title]',
-                'title'		=> __('Color','team'),
-                'details'	=> __('Title text color.','team'),
+                'title'		=> __('Color','woocommerce-products-slider'),
+                'details'	=> __('Title text color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $color,
                 'default'		=> '',
@@ -55,8 +55,8 @@ function wcps_layout_elements_option_post_title($parameters){
                 'id'		=> 'font_size',
                 'css_id'		=> $element_index.'_font_size',
                 'parent' => $input_name.'[post_title]',
-                'title'		=> __('Font size','team'),
-                'details'	=> __('Set font size.','team'),
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_size,
                 'default'		=> '',
@@ -70,8 +70,8 @@ function wcps_layout_elements_option_post_title($parameters){
                 'id'		=> 'font_family',
                 'css_id'		=> $element_index.'_font_family',
                 'parent' => $input_name.'[post_title]',
-                'title'		=> __('Font family','team'),
-                'details'	=> __('Set font family.','team'),
+                'title'		=> __('Font family','woocommerce-products-slider'),
+                'details'	=> __('Set font family.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_family,
                 'default'		=> '',
@@ -85,8 +85,8 @@ function wcps_layout_elements_option_post_title($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[post_title]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -99,12 +99,12 @@ function wcps_layout_elements_option_post_title($parameters){
                 'id'		=> 'link_to',
                 'css_id'		=> $element_index.'_link_to',
                 'parent' => $input_name.'[post_title]',
-                'title'		=> __('Link to','team'),
-                'details'	=> __('Choose option to link team member.','team'),
+                'title'		=> __('Link to','woocommerce-products-slider'),
+                'details'	=> __('Choose option to link product.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $link_to,
-                'default'		=> 'team_member_link',
-                'args'		=> array('none'=> __('None', 'team'),'team_member_link'=> __('Team member link', 'team'),'popup_box'=> __('Popup box', 'team'), 'popup_slider'=> __('Popup slider', 'team'), 'custom_link'=> __('Custom link', 'team') ),
+                'default'		=> 'product_link',
+                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -121,8 +121,8 @@ function wcps_layout_elements_option_post_title($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -168,7 +168,7 @@ function wcps_layout_elements_option_thumbnail($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Thumbnail','team'); ?></span>
+            <span class="expand"><?php echo __('Thumbnail','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -190,8 +190,8 @@ function wcps_layout_elements_option_thumbnail($parameters){
             $args = array(
                 'id'		=> 'thumb_size',
                 'parent' => $input_name.'[thumbnail]',
-                'title'		=> __('Thumbnail size','team'),
-                'details'	=> __('Choose thumbnail size.','team'),
+                'title'		=> __('Thumbnail size','woocommerce-products-slider'),
+                'details'	=> __('Choose thumbnail size.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $thumb_size,
                 'default'		=> 'large',
@@ -206,15 +206,15 @@ function wcps_layout_elements_option_thumbnail($parameters){
 
             $args = array(
                 'id'		=> 'thumb_height',
-                'title'		=> __('Thumbnail height','team'),
-                'details'	=> __('Set thumbnail height.','team'),
+                'title'		=> __('Thumbnail height','woocommerce-products-slider'),
+                'details'	=> __('Set thumbnail height.','woocommerce-products-slider'),
                 'type'		=> 'option_group',
                 'options'		=> array(
                     array(
                         'id'		=> 'large',
                         'parent'		=> $input_name.'[thumbnail][thumb_height]',
-                        'title'		=> __('In desktop','team'),
-                        'details'	=> __('min-width: 1200px, ex: 280px','team'),
+                        'title'		=> __('In desktop','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 1200px, ex: 280px','woocommerce-products-slider'),
                         'type'		=> 'text',
                         'value'		=> $thumb_height_large,
                         'default'		=> '',
@@ -223,8 +223,8 @@ function wcps_layout_elements_option_thumbnail($parameters){
                     array(
                         'id'		=> 'medium',
                         'parent'		=> $input_name.'[thumbnail][thumb_height]',
-                        'title'		=> __('In tablet & small desktop','team'),
-                        'details'	=> __('min-width: 992px, ex: 280px','team'),
+                        'title'		=> __('In tablet & small desktop','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 992px, ex: 280px','woocommerce-products-slider'),
                         'type'		=> 'text',
                         'value'		=> $thumb_height_medium,
                         'default'		=> '',
@@ -233,8 +233,8 @@ function wcps_layout_elements_option_thumbnail($parameters){
                     array(
                         'id'		=> 'small',
                         'parent'		=> $input_name.'[thumbnail][thumb_height]',
-                        'title'		=> __('In mobile','team'),
-                        'details'	=> __('max-width: 768px, ex: 280px','team'),
+                        'title'		=> __('In mobile','woocommerce-products-slider'),
+                        'details'	=> __('max-width: 768px, ex: 280px','woocommerce-products-slider'),
                         'type'		=> 'text',
                         'value'		=> $thumb_height_small,
                         'default'		=> '',
@@ -250,8 +250,8 @@ function wcps_layout_elements_option_thumbnail($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[thumbnail]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -272,8 +272,8 @@ function wcps_layout_elements_option_thumbnail($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -285,12 +285,12 @@ function wcps_layout_elements_option_thumbnail($parameters){
                 'id'		=> 'link_to',
                 'css_id'		=> $element_index.'_link_to',
                 'parent' => $input_name.'[thumbnail]',
-                'title'		=> __('Link to','team'),
-                'details'	=> __('Choose option to link team member.','team'),
+                'title'		=> __('Link to','woocommerce-products-slider'),
+                'details'	=> __('Choose option to product link.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $link_to,
-                'default'		=> 'team_member_link',
-                'args'		=> array('none'=> __('None', 'team'),'team_member_link'=> __('Team member link', 'team'),'popup_box'=> __('Popup box', 'team'), 'popup_slider'=> __('Popup slider', 'team'), 'custom_link'=> __('Custom link', 'team') ),
+                'default'		=> 'product_link',
+                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('Product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -337,7 +337,7 @@ function wcps_layout_elements_option_content($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Content','team'); ?></span>
+            <span class="expand"><?php echo __('Content','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -347,12 +347,12 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'content_source',
                 'css_id'		=> $element_index.'_content_source',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Content source','team'),
-                'details'	=> __('Choose content source.','team'),
+                'title'		=> __('Content source','woocommerce-products-slider'),
+                'details'	=> __('Choose content source.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $content_source,
                 'default'		=> 'excerpt',
-                'args'		=> array('excerpt'=> __('Excerpt', 'team'), 'content'=> __('Content', 'team')),
+                'args'		=> array('excerpt'=> __('Excerpt', 'woocommerce-products-slider'), 'content'=> __('Content', 'woocommerce-products-slider')),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -361,8 +361,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'word_count',
                 'css_id'		=> $element_index.'_word_count',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Word count','team'),
-                'details'	=> __('Set word count.','team'),
+                'title'		=> __('Word count','woocommerce-products-slider'),
+                'details'	=> __('Set word count.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $word_count,
                 'default'		=> '',
@@ -376,8 +376,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'read_more_text',
                 'css_id'		=> $element_index.'_read_more_text',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Read more text','team'),
-                'details'	=> __('Set custom read more text.','team'),
+                'title'		=> __('Read more text','woocommerce-products-slider'),
+                'details'	=> __('Set custom read more text.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $read_more_text,
                 'default'		=> '',
@@ -391,8 +391,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'read_more_color',
                 'css_id'		=> $element_index.'_read_more_color',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Read more color','team'),
-                'details'	=> __('Set custom read more color.','team'),
+                'title'		=> __('Read more color','woocommerce-products-slider'),
+                'details'	=> __('Set custom read more color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $read_more_color,
                 'default'		=> '',
@@ -407,8 +407,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_content_color',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Color','team'),
-                'details'	=> __('Title text color.','team'),
+                'title'		=> __('Color','woocommerce-products-slider'),
+                'details'	=> __('Title text color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $color,
                 'default'		=> '',
@@ -420,8 +420,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'font_size',
                 'css_id'		=> $element_index.'_font_size',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Font size','team'),
-                'details'	=> __('Set font size.','team'),
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_size,
                 'default'		=> '',
@@ -435,8 +435,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'font_family',
                 'css_id'		=> $element_index.'_font_family',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Font family','team'),
-                'details'	=> __('Set font family.','team'),
+                'title'		=> __('Font family','woocommerce-products-slider'),
+                'details'	=> __('Set font family.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_family,
                 'default'		=> '',
@@ -449,8 +449,8 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -473,8 +473,8 @@ function wcps_layout_elements_option_content($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -486,12 +486,12 @@ function wcps_layout_elements_option_content($parameters){
                 'id'		=> 'link_to',
                 'css_id'		=> $element_index.'_link_to',
                 'parent' => $input_name.'[content]',
-                'title'		=> __('Link to','team'),
-                'details'	=> __('Choose option to link team member.','team'),
+                'title'		=> __('Link to','woocommerce-products-slider'),
+                'details'	=> __('Choose option to product link.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $link_to,
-                'default'		=> 'team_member_link',
-                'args'		=> array('none'=> __('None', 'team'),'team_member_link'=> __('Team member link', 'team'),'popup_box'=> __('Popup box', 'team'), 'popup_slider'=> __('Popup slider', 'team'), 'custom_link'=> __('Custom link', 'team') ),
+                'default'		=> 'product_link',
+                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('Product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -534,7 +534,7 @@ function wcps_layout_elements_option_social($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Social','team'); ?></span>
+            <span class="expand"><?php echo __('Social','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -545,12 +545,12 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'social_icon_type',
                 'css_id'		=> $element_index.'_content_source',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Social icon type','team'),
-                'details'	=> __('Choose icon type.','team'),
+                'title'		=> __('Social icon type','woocommerce-products-slider'),
+                'details'	=> __('Choose icon type.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $social_icon_type,
                 'default'		=> 'image_icon',
-                'args'		=> array('image_icon'=> __('Image icon', 'team'), 'font_icon'=> __('Font icon', 'team'), 'text_link'=> __('Text link', 'team')),
+                'args'		=> array('image_icon'=> __('Image icon', 'woocommerce-products-slider'), 'font_icon'=> __('Font icon', 'woocommerce-products-slider'), 'text_link'=> __('Text link', 'woocommerce-products-slider')),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -560,8 +560,8 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'social_icon_width',
                 'css_id'		=> $element_index.'_social_icon_width',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Icon width','team'),
-                'details'	=> __('Set icon width.','team'),
+                'title'		=> __('Icon width','woocommerce-products-slider'),
+                'details'	=> __('Set icon width.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $social_icon_width,
                 'default'		=> '',
@@ -575,8 +575,8 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'social_icon_height',
                 'css_id'		=> $element_index.'_social_icon_height',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Icon height','team'),
-                'details'	=> __('Set icon height.','team'),
+                'title'		=> __('Icon height','woocommerce-products-slider'),
+                'details'	=> __('Set icon height.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $social_icon_height,
                 'default'		=> '',
@@ -590,8 +590,8 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_social_color',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Color','team'),
-                'details'	=> __('Title text color.','team'),
+                'title'		=> __('Color','woocommerce-products-slider'),
+                'details'	=> __('Title text color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $color,
                 'default'		=> '',
@@ -603,8 +603,8 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'font_size',
                 'css_id'		=> $element_index.'_font_size',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Font size','team'),
-                'details'	=> __('Set font size.','team'),
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_size,
                 'default'		=> '',
@@ -618,8 +618,8 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'font_family',
                 'css_id'		=> $element_index.'_font_family',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Font family','team'),
-                'details'	=> __('Set font family.','team'),
+                'title'		=> __('Font family','woocommerce-products-slider'),
+                'details'	=> __('Set font family.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_family,
                 'default'		=> '',
@@ -633,8 +633,8 @@ function wcps_layout_elements_option_social($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[social]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -656,8 +656,8 @@ function wcps_layout_elements_option_social($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -703,7 +703,7 @@ function wcps_layout_elements_option_meta($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Meta','team'); ?> - <?php echo $meta_key; ?></span>
+            <span class="expand"><?php echo __('Meta','woocommerce-products-slider'); ?> - <?php echo $meta_key; ?></span>
         </div>
         <div class="element-options options">
 
@@ -713,8 +713,8 @@ function wcps_layout_elements_option_meta($parameters){
                 'id'		=> 'meta_key',
                 'css_id'		=> $element_index.'_meta_key',
                 'parent' => $input_name.'[meta]',
-                'title'		=> __('Meta key','team'),
-                'details'	=> __('Write meta key.','team'),
+                'title'		=> __('Meta key','woocommerce-products-slider'),
+                'details'	=> __('Write meta key.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $meta_key,
                 'default'		=> '',
@@ -726,8 +726,8 @@ function wcps_layout_elements_option_meta($parameters){
                 'id'		=> 'wrapper_html',
                 'css_id'		=> $element_index.'_wrapper_html',
                 'parent' => $input_name.'[meta]',
-                'title'		=> __('Wrapper html','team'),
-                'details'	=> __('Write wrapper html, use <code>%s</code> to replace meta value output.','team'),
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace meta value output.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
@@ -741,8 +741,8 @@ function wcps_layout_elements_option_meta($parameters){
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_skill_color',
                 'parent' => $input_name.'[meta]',
-                'title'		=> __('Color','team'),
-                'details'	=> __('Title text color.','team'),
+                'title'		=> __('Color','woocommerce-products-slider'),
+                'details'	=> __('Title text color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $color,
                 'default'		=> '',
@@ -754,8 +754,8 @@ function wcps_layout_elements_option_meta($parameters){
                 'id'		=> 'font_size',
                 'css_id'		=> $element_index.'_font_size',
                 'parent' => $input_name.'[meta]',
-                'title'		=> __('Font size','team'),
-                'details'	=> __('Set font size.','team'),
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_size,
                 'default'		=> '',
@@ -769,8 +769,8 @@ function wcps_layout_elements_option_meta($parameters){
                 'id'		=> 'font_family',
                 'css_id'		=> $element_index.'_font_family',
                 'parent' => $input_name.'[meta]',
-                'title'		=> __('Font family','team'),
-                'details'	=> __('Set font family.','team'),
+                'title'		=> __('Font family','woocommerce-products-slider'),
+                'details'	=> __('Set font family.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_family,
                 'default'		=> '',
@@ -783,8 +783,8 @@ function wcps_layout_elements_option_meta($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[meta]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -805,8 +805,8 @@ function wcps_layout_elements_option_meta($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -854,7 +854,7 @@ function wcps_layout_elements_option_position($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Position','team'); ?></span>
+            <span class="expand"><?php echo __('Position','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -863,8 +863,8 @@ function wcps_layout_elements_option_position($parameters){
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_position_color',
                 'parent' => $input_name.'[position]',
-                'title'		=> __('Color','team'),
-                'details'	=> __('Title text color.','team'),
+                'title'		=> __('Color','woocommerce-products-slider'),
+                'details'	=> __('Title text color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $color,
                 'default'		=> '',
@@ -876,8 +876,8 @@ function wcps_layout_elements_option_position($parameters){
                 'id'		=> 'font_size',
                 'css_id'		=> $element_index.'_font_size',
                 'parent' => $input_name.'[position]',
-                'title'		=> __('Font size','team'),
-                'details'	=> __('Set font size.','team'),
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_size,
                 'default'		=> '',
@@ -891,8 +891,8 @@ function wcps_layout_elements_option_position($parameters){
                 'id'		=> 'font_family',
                 'css_id'		=> $element_index.'_font_family',
                 'parent' => $input_name.'[position]',
-                'title'		=> __('Font family','team'),
-                'details'	=> __('Set font family.','team'),
+                'title'		=> __('Font family','woocommerce-products-slider'),
+                'details'	=> __('Set font family.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $font_family,
                 'default'		=> '',
@@ -905,8 +905,8 @@ function wcps_layout_elements_option_position($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[position]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -927,8 +927,8 @@ function wcps_layout_elements_option_position($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -975,7 +975,7 @@ function wcps_layout_elements_option_wrapper_start($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Wrapper start','team'); ?></span>
+            <span class="expand"><?php echo __('Wrapper start','woocommerce-products-slider'); ?></span>
 
             <span class="handle-start"><i class="fas fa-level-up-alt"></i></span>
 
@@ -987,8 +987,8 @@ function wcps_layout_elements_option_wrapper_start($parameters){
             $args = array(
                 'id'		=> 'wrapper_id',
                 'parent' => $input_name.'[wrapper_start]',
-                'title'		=> __('Wrapper id','team'),
-                'details'	=> __('Write wrapper id, ex: my-unique-id.','team'),
+                'title'		=> __('Wrapper id','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper id, ex: my-unique-id.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_id,
                 'default'		=> '',
@@ -1000,8 +1000,8 @@ function wcps_layout_elements_option_wrapper_start($parameters){
             $args = array(
                 'id'		=> 'wrapper_class',
                 'parent' => $input_name.'[wrapper_start]',
-                'title'		=> __('Wrapper class','team'),
-                'details'	=> __('Write wrapper class, ex: layer-thumbnail','team'),
+                'title'		=> __('Wrapper class','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper class, ex: layer-thumbnail','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_class,
                 'default'		=> '',
@@ -1013,8 +1013,8 @@ function wcps_layout_elements_option_wrapper_start($parameters){
                 'id'		=> 'css_idle',
                 'css_id'		=> 'css_idle_'.preg_replace('/\D/', '', $input_name) ,
                 'parent' => $input_name.'[wrapper_start]',
-                'title'		=> __('Custom CSS','team'),
-                'details'	=> __('Write custom CSS. do not use <code>&lt;style>&lt;/style></code>','team'),
+                'title'		=> __('Custom CSS','woocommerce-products-slider'),
+                'details'	=> __('Write custom CSS. do not use <code>&lt;style>&lt;/style></code>','woocommerce-products-slider'),
                 'type'		=> 'scripts_css',
                 'value'		=> $css_idle,
                 'default'		=> '',
@@ -1026,8 +1026,8 @@ function wcps_layout_elements_option_wrapper_start($parameters){
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[wrapper_start]',
-                'title'		=> __('Margin','team'),
-                'details'	=> __('Set margin.','team'),
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $margin,
                 'default'		=> '',
@@ -1048,8 +1048,8 @@ function wcps_layout_elements_option_wrapper_start($parameters){
 
             $args = array(
                 'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','team'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','team'),
+                'title'		=> __('Use of CSS','woocommerce-products-slider'),
+                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
                 'type'		=> 'custom_html',
                 'html'		=> $html,
 
@@ -1088,7 +1088,7 @@ function wcps_layout_elements_option_wrapper_end($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Wrapper end','team'); ?></span>
+            <span class="expand"><?php echo __('Wrapper end','woocommerce-products-slider'); ?></span>
             <span class="handle-end"><i class="fas fa-level-down-alt"></i></span>
         </div>
         <div class="element-options options">
@@ -1098,8 +1098,8 @@ function wcps_layout_elements_option_wrapper_end($parameters){
             $args = array(
                 'id'		=> 'wrapper_id',
                 'parent' => $input_name.'[wrapper_end]',
-                'title'		=> __('Wrapper id','team'),
-                'details'	=> __('Write wrapper id, ex: div, p, span.','team'),
+                'title'		=> __('Wrapper id','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper id, ex: div, p, span.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $meta_key,
                 'default'		=> '',
@@ -1130,10 +1130,14 @@ function wcps_layout_elements_option_product_category($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $max_count = isset($element_data['max_count']) ? $element_data['max_count'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $wrapper_margin = isset($element_data['wrapper_margin']) ? $element_data['wrapper_margin'] : '';
+    $link_color = isset($element_data['link_color']) ? $element_data['link_color'] : '';
 
     ?>
     <div class="item">
@@ -1141,7 +1145,7 @@ function wcps_layout_elements_option_product_category($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Product category','team'); ?></span>
+            <span class="expand"><?php echo __('Product category','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1150,8 +1154,8 @@ function wcps_layout_elements_option_product_category($parameters){
             $args = array(
                 'id'		=> 'max_count',
                 'parent' => $input_name.'[product_category]',
-                'title'		=> __('Max count','team'),
-                'details'	=> __('Write max count','team'),
+                'title'		=> __('Max count','woocommerce-products-slider'),
+                'details'	=> __('Write max count','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $max_count,
                 'default'		=> '',
@@ -1160,8 +1164,46 @@ function wcps_layout_elements_option_product_category($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace category output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Categories: %s',
+            );
 
+            $settings_tabs_field->generate_field($args);
 
+            $args = array(
+                'id'		=> 'wrapper_margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'link_color',
+                'css_id'		=> $element_index.'_position_color',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Link Color','woocommerce-products-slider'),
+                'details'	=> __('Choose link color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $link_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
             ?>
@@ -1180,10 +1222,14 @@ function wcps_layout_elements_option_product_tag($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $max_count = isset($element_data['max_count']) ? $element_data['max_count'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $wrapper_margin = isset($element_data['wrapper_margin']) ? $element_data['wrapper_margin'] : '';
+    $link_color = isset($element_data['link_color']) ? $element_data['link_color'] : '';
 
     ?>
     <div class="item">
@@ -1191,17 +1237,18 @@ function wcps_layout_elements_option_product_tag($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Product tag','team'); ?></span>
+            <span class="expand"><?php echo __('Product tag','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
             <?php
 
+
             $args = array(
                 'id'		=> 'max_count',
                 'parent' => $input_name.'[product_tag]',
-                'title'		=> __('Max count','team'),
-                'details'	=> __('Write max count','team'),
+                'title'		=> __('Max count','woocommerce-products-slider'),
+                'details'	=> __('Write max count','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $max_count,
                 'default'		=> '',
@@ -1210,7 +1257,46 @@ function wcps_layout_elements_option_product_tag($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[product_tag]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace tags output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Tags: %s',
+            );
 
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'wrapper_margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[product_tag]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'link_color',
+                'css_id'		=> $element_index.'_position_color',
+                'parent' => $input_name.'[product_tag]',
+                'title'		=> __('Link Color','woocommerce-products-slider'),
+                'details'	=> __('Choose link color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $link_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1234,6 +1320,7 @@ function wcps_layout_elements_option_sale_count($parameters){
     $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     ?>
     <div class="item">
@@ -1241,7 +1328,7 @@ function wcps_layout_elements_option_sale_count($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Sale count','team'); ?></span>
+            <span class="expand"><?php echo __('Sale count','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1251,15 +1338,36 @@ function wcps_layout_elements_option_sale_count($parameters){
                 'id'		=> 'wrapper_html',
                 'css_id'		=> $element_index.'_wrapper_html',
                 'parent' => $input_name.'[sale_count]',
-                'title'		=> __('Wrapper html','team'),
-                'details'	=> __('Write wrapper html, use <code>%s</code> to replace sale count output.','team'),
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace sale count output.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
-                'placeholder'		=> 'Prefix text %s',
+                'placeholder'		=> 'Total sold: %s',
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[sale_count]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
             ?>
 
         </div>
@@ -1288,7 +1396,7 @@ function wcps_layout_elements_option_featured_mark($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Featured mark','team'); ?></span>
+            <span class="expand"><?php echo __('Featured mark','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1297,8 +1405,8 @@ function wcps_layout_elements_option_featured_mark($parameters){
             $args = array(
                 'id'		=> 'icon_img_src',
                 'parent' => $input_name.'[featured_mark]',
-                'title'		=> __('Icon image','team'),
-                'details'	=> __('Choose icon image','team'),
+                'title'		=> __('Icon image','woocommerce-products-slider'),
+                'details'	=> __('Choose icon image','woocommerce-products-slider'),
                 'type'		=> 'media_url',
                 'value'		=> $icon_img_src,
                 'default'		=> '',
@@ -1332,7 +1440,7 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('On sale mark','team'); ?></span>
+            <span class="expand"><?php echo __('On sale mark','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1341,8 +1449,8 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
             $args = array(
                 'id'		=> 'icon_img_src',
                 'parent' => $input_name.'[on_sale_mark]',
-                'title'		=> __('Icon image','team'),
-                'details'	=> __('Choose icon image','team'),
+                'title'		=> __('Icon image','woocommerce-products-slider'),
+                'details'	=> __('Choose icon image','woocommerce-products-slider'),
                 'type'		=> 'media_url',
                 'value'		=> $icon_img_src,
                 'default'		=> '',
@@ -1366,8 +1474,11 @@ function wcps_layout_elements_option_add_to_cart($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
-    $cart_text = isset($element_data['cart_text']) ? $element_data['cart_text'] : '';
+    $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
+
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
 
@@ -1377,25 +1488,39 @@ function wcps_layout_elements_option_add_to_cart($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Add to cart','team'); ?></span>
+            <span class="expand"><?php echo __('Add to cart','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
             <?php
 
             $args = array(
-                'id'		=> 'cart_text',
+                'id'		=> 'background_color',
+                'css_id'		=> $element_index.'_background_color',
                 'parent' => $input_name.'[add_to_cart]',
-                'title'		=> __('Cart text','team'),
-                'details'	=> __('Write custom add to cart text.','team'),
-                'type'		=> 'text',
-                'value'		=> $cart_text,
+                'title'		=> __('Background Color','woocommerce-products-slider'),
+                'details'	=> __('Choose background color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $background_color,
                 'default'		=> '',
-                'placeholder'		=> __('Add to cart','woocommerce-products-slider'),
-
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'_color',
+                'parent' => $input_name.'[add_to_cart]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
             ?>
 
         </div>
@@ -1415,10 +1540,13 @@ function wcps_layout_elements_option_rating($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $rating_type = isset($element_data['rating_type']) ? $element_data['rating_type'] : 'five_star';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     ?>
     <div class="item">
@@ -1426,7 +1554,7 @@ function wcps_layout_elements_option_rating($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Rating','team'); ?></span>
+            <span class="expand"><?php echo __('Rating','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1435,14 +1563,45 @@ function wcps_layout_elements_option_rating($parameters){
             $args = array(
                 'id'		=> 'rating_type',
                 'parent' => $input_name.'[rating]',
-                'title'		=> __('Rating type','team'),
-                'details'	=> __('Choose rating type.','team'),
+                'title'		=> __('Rating type','woocommerce-products-slider'),
+                'details'	=> __('Choose rating type.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $rating_type,
                 'args'		=> array('text'=> 'Text', 'five_star'=>'Star'),
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[rating]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace rating output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Total sold: %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[rating]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
             ?>
 
         </div>
@@ -1473,7 +1632,7 @@ function wcps_layout_elements_option_product_price($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Product price','team'); ?></span>
+            <span class="expand"><?php echo __('Product price','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1482,8 +1641,8 @@ function wcps_layout_elements_option_product_price($parameters){
             $args = array(
                 'id'		=> 'price_type',
                 'parent' => $input_name.'[product_price]',
-                'title'		=> __('Price type','team'),
-                'details'	=> __('Choose price type.','team'),
+                'title'		=> __('Price type','woocommerce-products-slider'),
+                'details'	=> __('Choose price type.','woocommerce-products-slider'),
                 'type'		=> 'select',
                 'value'		=> $price_type,
                 'args'		=> array('full'=> 'Full Format', 'sale'=>'Sale price' , 'regular'=>'Regular price'),
@@ -1520,7 +1679,7 @@ function wcps_layout_elements_option_stock_status($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Stock status','team'); ?></span>
+            <span class="expand"><?php echo __('Stock status','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1530,8 +1689,8 @@ function wcps_layout_elements_option_stock_status($parameters){
             $args = array(
                 'id'		=> 'stock_status_text',
                 'parent' => $input_name.'[add_to_cart]',
-                'title'		=> __('Stock status text','team'),
-                'details'	=> __('Write custom stock status text.','team'),
+                'title'		=> __('Stock status text','woocommerce-products-slider'),
+                'details'	=> __('Write custom stock status text.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $stock_status_text,
                 'default'		=> '',
@@ -1570,7 +1729,7 @@ function wcps_layout_elements_option_stock_quantity($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Stock quantity','team'); ?></span>
+            <span class="expand"><?php echo __('Stock quantity','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1580,8 +1739,8 @@ function wcps_layout_elements_option_stock_quantity($parameters){
                 'id'		=> 'wrapper_html',
                 'css_id'		=> $element_index.'_wrapper_html',
                 'parent' => $input_name.'[stock_quantity]',
-                'title'		=> __('Wrapper html','team'),
-                'details'	=> __('Write wrapper html, use <code>%s</code> to replace quantity output.','team'),
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace quantity output.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
@@ -1619,7 +1778,7 @@ function wcps_layout_elements_option_product_weight($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Product weight','team'); ?></span>
+            <span class="expand"><?php echo __('Product weight','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1629,8 +1788,8 @@ function wcps_layout_elements_option_product_weight($parameters){
                 'id'		=> 'wrapper_html',
                 'css_id'		=> $element_index.'_wrapper_html',
                 'parent' => $input_name.'[product_weight]',
-                'title'		=> __('Wrapper html','team'),
-                'details'	=> __('Write wrapper html, use <code>%s</code> to replace weight output.','team'),
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace weight output.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
@@ -1667,7 +1826,7 @@ function wcps_layout_elements_option_product_dimensions($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Product dimensions','team'); ?></span>
+            <span class="expand"><?php echo __('Product dimensions','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1677,8 +1836,8 @@ function wcps_layout_elements_option_product_dimensions($parameters){
                 'id'		=> 'wrapper_html',
                 'css_id'		=> $element_index.'_wrapper_html',
                 'parent' => $input_name.'[product_dimensions]',
-                'title'		=> __('Wrapper html','team'),
-                'details'	=> __('Write wrapper html, use <code>%s</code> to replace dimensions output.','team'),
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace dimensions output.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
@@ -1693,6 +1852,8 @@ function wcps_layout_elements_option_product_dimensions($parameters){
     <?php
 
 }
+
+
 
 add_action('wcps_layout_elements_option_share_button','wcps_layout_elements_option_share_button');
 function wcps_layout_elements_option_share_button($parameters){
@@ -1712,7 +1873,7 @@ function wcps_layout_elements_option_share_button($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Share button','team'); ?></span>
+            <span class="expand"><?php echo __('Share button','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -1721,8 +1882,8 @@ function wcps_layout_elements_option_share_button($parameters){
             $args = array(
                 'id'		=> 'social_media',
                 'parent' => $input_name.'[share_button]',
-                'title'		=> __('Social media','team'),
-                'details'	=> __('Write social media. use following format, <code>icon html | url</code><br> use following parameter with url, <code>{TITLE}, {PRODUCT_URL}, {THUMBNAIL_SRC}</code>','team'),
+                'title'		=> __('Social media','woocommerce-products-slider'),
+                'details'	=> __('Write social media. use following format, <code>icon html | url</code><br> use following parameter with url, <code>{TITLE}, {PRODUCT_URL}, {THUMBNAIL_SRC}</code>','woocommerce-products-slider'),
                 'type'		=> 'text_multi',
                 'value'		=> $social_media,
                 'default'		=> array(),

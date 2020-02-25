@@ -103,23 +103,6 @@ function wcps_layout_element_meta($args){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 add_action('wcps_layout_element_content', 'wcps_layout_element_content');
 function wcps_layout_element_content($args){
 
@@ -158,6 +141,197 @@ function wcps_layout_element_content($args){
     ?>
     <div class="<?php echo $element_class; ?>"><?php echo $content_html; ?></div>
     <?php
+
+}
+
+
+
+add_action('wcps_layout_element_product_category', 'wcps_layout_element_product_category');
+function wcps_layout_element_product_category($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $max_count = isset($elementData['max_count']) ? (int) $elementData['max_count'] : '';
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    $term_list = wp_get_post_terms( $product_id, 'product_cat', array( 'fields' => 'all' ) );
+
+    $categories_html = '';
+
+    $term_total_count = count($term_list);
+    //echo '<pre>'.var_export($term_total_count, true).'</pre>';
+
+    $max_term_limit = ($term_total_count < $max_count) ? $term_total_count : $max_count ;
+
+    $i = 0;
+    foreach ($term_list as $term){
+
+
+        if($i >= $max_count){
+            continue;
+        }
+
+
+        $term_id = isset($term->term_id) ? $term->term_id : '';
+        $term_name = isset($term->name) ? $term->name : '';
+
+        $term_link = get_term_link($term_id);
+
+        $categories_html .= '<a href="'.$term_link.'">'.$term_name.'</a>';
+        if( $i+1 < $max_term_limit){
+            $categories_html .= ', ';
+        }
+
+
+
+
+        $i++;
+    }
+
+    //echo '<pre>'.var_export($term_list, true).'</pre>';
+
+    if(!empty($term_total_count)):
+        ?>
+        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $categories_html); ?></div>
+    <?php
+    endif;
+
+
+}
+
+
+
+add_action('wcps_layout_element_product_tag', 'wcps_layout_element_product_tag');
+function wcps_layout_element_product_tag($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $max_count = isset($elementData['max_count']) ? (int) $elementData['max_count'] : '';
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    $term_list = wp_get_post_terms( $product_id, 'product_tag', array( 'fields' => 'all' ) );
+
+    $categories_html = '';
+
+    $term_total_count = count($term_list);
+    //echo '<pre>'.var_export($term_total_count, true).'</pre>';
+
+    $max_term_limit = ($term_total_count < $max_count) ? $term_total_count : $max_count ;
+
+    $i = 0;
+    foreach ($term_list as $term){
+
+
+        if($i >= $max_count){
+            continue;
+        }
+
+
+        $term_id = isset($term->term_id) ? $term->term_id : '';
+        $term_name = isset($term->name) ? $term->name : '';
+
+        $term_link = get_term_link($term_id);
+
+        $categories_html .= '<a href="'.$term_link.'">'.$term_name.'</a>';
+        if( $i+1 < $max_term_limit){
+            $categories_html .= ', ';
+        }
+
+
+
+
+        $i++;
+    }
+
+    //echo '<pre>'.var_export($term_list, true).'</pre>';
+
+    if(!empty($term_total_count)):
+        ?>
+        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $categories_html); ?></div>
+    <?php
+    endif;
+
+
+}
+
+
+add_action('wcps_layout_element_sale_count', 'wcps_layout_element_sale_count');
+function wcps_layout_element_sale_count($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    $total_sales = get_post_meta( $product_id, 'total_sales', true );
+
+    if(!empty($total_sales)):
+        ?>
+        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $total_sales); ?></div>
+    <?php
+    endif;
+}
+
+
+add_action('wcps_layout_element_add_to_cart', 'wcps_layout_element_add_to_cart');
+function wcps_layout_element_add_to_cart($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = isset($elementData['cart_text']) ? $elementData['cart_text'] : '';
+
+    $cart_html = do_shortcode('[add_to_cart show_price="false" quantity="1" id="'.$product_id.'"]');
+
+
+
+    ?>
+    <div class="woocommerce <?php echo $element_class; ?>"><?php echo $cart_html; ?></div>
+    <?php
+
+}
+
+add_action('wcps_layout_element_rating', 'wcps_layout_element_rating');
+function wcps_layout_element_rating($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $rating_type = isset($elementData['rating_type']) ? $elementData['rating_type'] : '';
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    global $product;
+    $average_rating = $product->get_average_rating();
+    $rating_html = wc_get_rating_html( $average_rating );
+
+
+    if($average_rating > 0):
+        ?>
+        <div class="woocommerce <?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $rating_html); ?></div>
+        <?php
+    endif;
+
 
 }
 
@@ -263,8 +437,167 @@ function wcps_layout_element_css_meta($args){
 
 
 
+add_action('wcps_layout_element_css_product_category', 'wcps_layout_element_css_product_category');
+function wcps_layout_element_css_product_category($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $link_color = isset($elementData['link_color']) ? $elementData['link_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $wrapper_margin = isset($elementData['wrapper_margin']) ? $elementData['wrapper_margin'] : '';
 
 
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $wrapper_margin; ?>;
+
+        }
+
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a{
+            color: <?php echo $link_color; ?>;
+            font-size: <?php echo $font_size; ?>;
+            font-family: <?php echo $font_family; ?>;
+            text-decoration: none;
+
+        }
+    </style>
+    <?php
+}
+
+
+
+
+add_action('wcps_layout_element_css_product_tag', 'wcps_layout_element_css_product_tag');
+function wcps_layout_element_css_product_tag($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $link_color = isset($elementData['link_color']) ? $elementData['link_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $wrapper_margin = isset($elementData['wrapper_margin']) ? $elementData['wrapper_margin'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $wrapper_margin; ?>;
+
+        }
+
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a{
+            color: <?php echo $link_color; ?>;
+            font-size: <?php echo $font_size; ?>;
+            font-family: <?php echo $font_family; ?>;
+            text-decoration: none;
+
+        }
+    </style>
+    <?php
+}
+
+
+
+
+add_action('wcps_layout_element_css_sale_count', 'wcps_layout_element_css_sale_count');
+function wcps_layout_element_css_sale_count($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $link_color = isset($elementData['link_color']) ? $elementData['link_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $margin; ?>;
+
+        }
+
+    </style>
+    <?php
+}
+
+add_action('wcps_layout_element_css_add_to_cart', 'wcps_layout_element_css_add_to_cart');
+function wcps_layout_element_css_add_to_cart($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
+    $color = isset($elementData['color']) ? $elementData['color'] : '';
+
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $margin; ?>;
+        }
+
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> .add_to_cart_button {
+            background-color: <?php echo $background_color; ?>;
+            color: <?php echo $color; ?>;
+        }
+
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> p{
+            border: none !important;
+            margin: 0;
+        }
+
+    </style>
+    <?php
+}
+
+
+
+add_action('wcps_layout_element_css_rating', 'wcps_layout_element_css_rating');
+function wcps_layout_element_css_rating($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $link_color = isset($elementData['link_color']) ? $elementData['link_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+
+
+    ?>
+    <style type="text/css">
+
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $margin; ?>;
+        }
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> .star-rating{
+            float: none;
+
+        }
+
+    </style>
+    <?php
+}
 
 
 

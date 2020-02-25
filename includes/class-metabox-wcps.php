@@ -47,35 +47,35 @@ class class_wcps_metabox{
 
         $wcps_settings_tabs[] = array(
             'id' => 'shortcode',
-            'title' => sprintf(__('%s Shortcode','team'),'<i class="fas fa-laptop-code"></i>'),
+            'title' => sprintf(__('%s Shortcode','woocommerce-products-slider'),'<i class="fas fa-laptop-code"></i>'),
             'priority' => 1,
             'active' => ($current_tab == 'shortcode') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'slider_options',
-            'title' => sprintf(__('%s Slider options','team'),'<i class="fa fa-cogs"></i>'),
+            'title' => sprintf(__('%s Slider options','woocommerce-products-slider'),'<i class="fa fa-cogs"></i>'),
             'priority' => 2,
             'active' => ($current_tab == 'slider_options') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'query_product',
-            'title' => sprintf(__('%s Query product','team'),'<i class="fas fa-qrcode"></i>'),
+            'title' => sprintf(__('%s Query product','woocommerce-products-slider'),'<i class="fas fa-qrcode"></i>'),
             'priority' => 3,
             'active' => ($current_tab == 'query_product') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'style',
-            'title' => sprintf(__('%s Style','team'),'<i class="fas fa-palette"></i>'),
+            'title' => sprintf(__('%s Style','woocommerce-products-slider'),'<i class="fas fa-palette"></i>'),
             'priority' => 4,
             'active' => ($current_tab == 'style') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'layouts',
-            'title' => sprintf(__('%s Layouts','team'),'<i class="fas fa-palette"></i>'),
+            'title' => sprintf(__('%s Layouts','woocommerce-products-slider'),'<i class="fas fa-palette"></i>'),
             'priority' => 5,
             'active' => ($current_tab == 'layouts') ? true : false,
         );
@@ -83,21 +83,21 @@ class class_wcps_metabox{
 
         $wcps_settings_tabs[] = array(
             'id' => 'custom_scripts',
-            'title' => sprintf(__('%s Custom scripts','team'),'<i class="far fa-file-code"></i>'),
+            'title' => sprintf(__('%s Custom scripts','woocommerce-products-slider'),'<i class="far fa-file-code"></i>'),
             'priority' => 6,
             'active' => ($current_tab == 'custom_scripts') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'help_support',
-            'title' => sprintf(__('%s Help support','team'),'<i class="far fa-file-code"></i>'),
+            'title' => sprintf(__('%s Help support','woocommerce-products-slider'),'<i class="far fa-file-code"></i>'),
             'priority' => 80,
             'active' => ($current_tab == 'help_support') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'buy_pro',
-            'title' => sprintf(__('%s Buy pro','team'),'<i class="far fa-file-code"></i>'),
+            'title' => sprintf(__('%s Buy pro','woocommerce-products-slider'),'<i class="far fa-file-code"></i>'),
             'priority' => 90,
             'active' => ($current_tab == 'buy_pro') ? true : false,
         );

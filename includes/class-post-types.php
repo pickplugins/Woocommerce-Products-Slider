@@ -1,16 +1,7 @@
 <?php
+if ( ! defined('ABSPATH')) exit;  // if direct access
 
-/*
-* @Author 		ParaTheme
-* @Folder	 	Team/Includes
-* @version     3.0.5
-
-* Copyright: 	2015 ParaTheme
-*/
-
-if ( ! defined('ABSPATH')) exit;  // if direct access 	
-
-class team_class_post_types{
+class class_wcps_post_types{
 	
 	
 	public function __construct(){
@@ -49,11 +40,11 @@ class team_class_post_types{
 					'parent' 				=> sprintf( __( 'Parent %s', 'woocommerce-products-slider' ), $singular )
 				),
 				'description' => sprintf( __( 'This is where you can create and manage %s.', 'woocommerce-products-slider' ), $plural ),
-				'public' 				=> true,
+				'public' 				=> false,
 				'show_ui' 				=> true,
 				'capability_type' 		=> 'post',
 				'map_meta_cap'          => true,
-				'publicly_queryable' 	=> true,
+				'publicly_queryable' 	=> false,
 				'exclude_from_search' 	=> false,
 				'hierarchical' 			=> false,
 				'query_var' 			=> true,
@@ -98,11 +89,11 @@ class team_class_post_types{
                     'parent' 				=> sprintf( __( 'Parent %s', 'woocommerce-products-slider' ), $singular )
                 ),
                 'description' => sprintf( __( 'This is where you can create and manage %s.', 'woocommerce-products-slider' ), $plural ),
-                'public' 				=> true,
+                'public' 				=> false,
                 'show_ui' 				=> true,
                 'capability_type' 		=> 'post',
                 'map_meta_cap'          => true,
-                'publicly_queryable' 	=> true,
+                'publicly_queryable' 	=> false,
                 'exclude_from_search' 	=> false,
                 'hierarchical' 			=> false,
                 'query_var' 			=> true,
@@ -124,4 +115,5 @@ class team_class_post_types{
 
 }
 	
-	new team_class_post_types();
+
+new class_wcps_post_types();
