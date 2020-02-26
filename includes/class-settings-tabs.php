@@ -685,7 +685,7 @@ class settings_tabs_field{
             <?php
             foreach( $args as $key => $name ):
                 if($multiple){
-                    $selected = in_array($key, $value) ? "selected" : "";
+                    $selected =  in_array($key, $value) ? "selected" : "";
                 }else{
                     $selected = $value == $key ? "selected" : "";
                 }

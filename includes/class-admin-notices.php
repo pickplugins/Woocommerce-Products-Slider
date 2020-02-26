@@ -15,11 +15,15 @@ class class_wcps_notices{
         $team_settings_upgrade = isset($wcps_plugin_info['settings_upgrade']) ? $wcps_plugin_info['settings_upgrade'] : '';
 
         $actionurl = admin_url().'edit.php?post_type=wcps&page=upgrade_status';
-        $actionurl = wp_nonce_url( $actionurl,  'team_upgrade' );
+        $actionurl = wp_nonce_url( $actionurl,  'wcps_upgrade' );
 
         $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
 
-        if ( wp_verify_nonce( $nonce, 'team_upgrade' )  ){
+
+        var_dump($wcps_plugin_info);
+
+        if ( wp_verify_nonce( $nonce, 'wcps_upgrade' )  ){
+
             wp_schedule_event(time(), '1minute', 'wcps_cron_upgrade_settings');
 
             return;

@@ -547,7 +547,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                                     'multiple'		=> true,
                                     'value'		=> $categories,
                                     'args'		=> $cat_args,
-                                    'default'		=> '',
+                                    'default'		=> array(),
                                 );
 
                                 $settings_tabs_field->generate_field($args);

@@ -25,8 +25,8 @@ function wcps_settings_content_general(){
         $args = array(
             'id'		=> 'track_product_view',
             'parent' => 'wcps_settings',
-            'title'		=> __('Team member slug','woocommerce-products-slider'),
-            'details'	=> __('Write custom team member slug.','woocommerce-products-slider'),
+            'title'		=> __('Track product view','woocommerce-products-slider'),
+            'details'	=> __('Choose to track product view.','woocommerce-products-slider'),
             'type'		=> 'select',
             'value'		=> $track_product_view,
             'default'		=> '',
@@ -159,20 +159,11 @@ if(!function_exists('wcps_settings_content_help_support')) {
             <p><?php echo __('Watch video tutorials.', 'woocommerce-products-slider'); ?></p>
             <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
 
-            <ul>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=zdaRmH_KGCI&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=2">How to create team showcase</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=T2LyT-K4TF8&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=3">Display team showcase slider</a> [pro]</li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=zcWP-rB1xG0&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=4">Create filterable style grid</a> [pro]</li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HjrePb90ToA&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=5">Add custom filter</a> [pro]</li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=8AWlEOLmgA4&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=6">Create glossary grid</a> [pro]</li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=n1aiPFL7QoM&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=7">Team showcase masonry style</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=zDGM9KQxQbg&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=8">Team showcase pagination</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=0YBEhSOXSeI&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=9">Team showcase customize layouts</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=A5ARR__VimA&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=10">Query team members ids</a> [pro]</li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=TtwkAKgYG-M&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=11">Customize team member page</a></li>
-
-            </ul>
+<!--            <ul>-->
+<!--                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>-->
+<!---->
+<!---->
+<!--            </ul>-->
 
 
 
@@ -365,198 +356,8 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
-                <tr>
-                    <td class="col-features"><?php echo __('View type - Filterable','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/filterable/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('View type - Glossary','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/glossary-custom-index/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Access to layout library(30+ ready layout)','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Query by team members id','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Pagination type - jQuery','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Pagination type - Ajax','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/ajax-pagination/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Pagination type - Load more','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/load-more/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Skill','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/skill-bars/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
 
 
-                <tr>
-                    <td class="col-features"><?php echo __('Team members custom class','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('View type - Grid','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/view-type-grid/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Masonry style grid','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/masonry/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Item custom width','woocommerce-products-slider'); ?> </td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Item margin','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Item text align','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Container style','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout builder','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Wrapper start','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Wrapper end','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Thumbnail','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Title','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Position','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Content','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Social','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Meta fields','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Pagination type - Normal','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Hide Pagination','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Custom CSS','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Custom JS','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-
-
-                <tr>
-                    <td class="col-features"><?php echo __('Hide featured image(Team member page)','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Hide post title(Team member page)','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Custom team member slug','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Custom meta fields','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Custom social fields','woocommerce-products-slider'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
 
                 <tr>
                     <th class="col-features"><?php echo __('Features','woocommerce-products-slider'); ?></th>

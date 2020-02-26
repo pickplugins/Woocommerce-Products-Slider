@@ -72,6 +72,7 @@ class WoocommerceProductsSlider{
 		register_activation_hook( __FILE__, array( $this, '_activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, '_deactivation' ) );
         //register_uninstall_hook( __FILE__, array( $this, '_uninstall' ) );
+        add_filter('cron_schedules', array($this, 'cron_recurrence_interval'));
 
 
 		}
@@ -90,6 +91,16 @@ class WoocommerceProductsSlider{
 
 
 
+    function cron_recurrence_interval($schedules){
+
+        $schedules['1minute'] = array(
+            'interval' => 120,
+            'display' => __('1 Minute', 'team')
+        );
+
+
+        return $schedules;
+    }
 
 
 	public function _activation(){
@@ -100,6 +111,9 @@ class WoocommerceProductsSlider{
 		}
 
     public function _deactivation(){
+
+        wp_clear_scheduled_hook('wcps_cron_upgrade_settings');
+        wp_clear_scheduled_hook('wcps_cron_upgrade_team');
 
         do_action( 'wcps_plugin_deactivation' );
     }

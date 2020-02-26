@@ -54,6 +54,42 @@ function wcps_get_first_product_id(){
 
 
 
+function wcps_layout_data($layout){
+
+    $layout_data = array();
+
+    ob_start();
+    ?>.__ID__ {vertical-align: top;}.__ID__ .layer-media{}.__ID__ .layer-content {padding: 5px 10px;}<?php
+
+    $layout_data['flat']['css'] = ob_get_clean();
+    $layout_data['flat']['preview_img'] = 'https://i.imgur.com/QLfbYkC.png';
+
+
+    ob_start();
+
+    ?>.__ID__ {overflow: hidden;position: relative;vertical-align: top;}.__ID__:hover .layer-media {-webkit-transform: scale(0);transform: scale(0);opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}.__ID__ .layer-media {-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;left: 0;top: 0;width: 100%;}.__ID__:hover .layer-content{opacity: 1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}.__ID__ .layer-content {left: 0;opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";position: absolute;top: 0;width: 100%;-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;}<?php
+
+    $layout_data['zoomout']['css'] = ob_get_clean();
+    $layout_data['zoomout']['preview_img'] = 'https://i.imgur.com/QLfbYkC.png';
+
+
+
+
+    ob_start();
+    ?>.__ID__{}.__ID__ .layer-media {background: rgb(255, 255, 255) none repeat scroll 0 0;border-radius: 50%;overflow: hidden;.__ID__ .layer-media .thumb {height:240px;}.__ID__ .layer-content{}<?php
+
+    $layout_data['thumbrounded']['css'] = ob_get_clean();
+    $layout_data['thumbrounded']['preview_img'] = 'https://i.imgur.com/QLfbYkC.png';
+
+
+    $layout_data = apply_filters('wcps_layout_data', $layout_data);
+
+
+    return isset($layout_data[$layout]) ? $layout_data[$layout] : array();
+
+}
+
+
 
 
 
