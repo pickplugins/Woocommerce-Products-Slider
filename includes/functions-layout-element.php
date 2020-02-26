@@ -277,7 +277,8 @@ function wcps_layout_element_sale_count($args){
     $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
     $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
 
-    $total_sales = get_post_meta( $product_id, 'total_sales', true );
+    global $product;
+    $total_sales = $product->get_total_sales();
 
     if(!empty($total_sales)):
         ?>
@@ -285,6 +286,9 @@ function wcps_layout_element_sale_count($args){
     <?php
     endif;
 }
+
+
+
 
 
 add_action('wcps_layout_element_add_to_cart', 'wcps_layout_element_add_to_cart');
@@ -307,6 +311,123 @@ function wcps_layout_element_add_to_cart($args){
     <?php
 
 }
+
+
+
+add_action('wcps_layout_element_product_price', 'wcps_layout_element_product_price');
+function wcps_layout_element_product_price($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = isset($elementData['cart_text']) ? $elementData['cart_text'] : '';
+    $price_type = isset($elementData['price_type']) ? $elementData['price_type'] : '';
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+    $currency = get_woocommerce_currency_symbol();
+    global $product;
+
+    $string = get_woocommerce_price_format();
+
+
+
+    if ($price_type == 'full') {
+        $price_html = $product->get_price_html();
+    } elseif ($price_type == 'sale') {
+
+
+        $price_html = $product->get_sale_price();
+
+    } elseif ($price_type == 'regular') {
+
+        $price_html = $product->get_regular_price();
+        $price_html = wc_price($price_html);
+
+    } else {
+        $price_html = $product->get_price_html();
+        $price_html = wc_price($price_html);
+
+    }
+
+
+    //echo '<pre>'.var_export(wc_price($price_html), true).'</pre>';
+
+    if(!empty($price_html)):
+        ?>
+        <div class=" <?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $price_html); ?></div>
+        <?php
+    endif;
+
+
+
+}
+
+
+
+
+
+add_action('wcps_layout_element_stock_status', 'wcps_layout_element_stock_status');
+function wcps_layout_element_stock_status($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $stock_status_text = isset($elementData['stock_status_text']) ? $elementData['stock_status_text'] : '';
+    $out_stock_status_text = isset($elementData['out_stock_status_text']) ? $elementData['out_stock_status_text'] : '';
+
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    global $product;
+    $is_in_stock = $product->is_in_stock();
+    $managing_stock = $product->managing_stock();
+
+    //echo '<pre>'.var_export($managing_stock, true).'</pre>';
+
+    if($managing_stock  ):
+        if($is_in_stock):
+            ?>
+            <div class="woocommerce <?php echo $element_class; ?>"><?php echo $stock_status_text; ?></div>
+        <?php
+        else:
+            ?>
+            <div class="woocommerce <?php echo $element_class; ?>"><?php echo $out_stock_status_text; ?></div>
+        <?php
+        endif;
+
+    endif;
+
+
+}
+
+add_action('wcps_layout_element_stock_quantity', 'wcps_layout_element_stock_quantity');
+function wcps_layout_element_stock_quantity($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    global $product;
+    $stock_quantity = $product->get_stock_quantity();
+
+    if(!empty($stock_quantity)):
+        ?>
+        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $stock_quantity); ?></div>
+    <?php
+    endif;
+}
+
 
 add_action('wcps_layout_element_rating', 'wcps_layout_element_rating');
 function wcps_layout_element_rating($args){
@@ -600,9 +721,58 @@ function wcps_layout_element_css_rating($args){
 }
 
 
+add_action('wcps_layout_element_css_product_price', 'wcps_layout_element_css_product_price');
+function wcps_layout_element_css_product_price($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $color = isset($elementData['color']) ? $elementData['color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
 
 
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $margin; ?>;
+            color: <?php echo $color; ?>;
 
+        }
+
+    </style>
+    <?php
+}
+
+
+add_action('wcps_layout_element_css_stock_status', 'wcps_layout_element_css_stock_status');
+function wcps_layout_element_css_stock_status($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $color = isset($elementData['color']) ? $elementData['color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            margin: <?php echo $margin; ?>;
+            color: <?php echo $color; ?>;
+
+        }
+
+    </style>
+    <?php
+}
 
 
 

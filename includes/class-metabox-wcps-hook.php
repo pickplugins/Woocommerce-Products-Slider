@@ -48,10 +48,10 @@ if(!function_exists('wcps_metabox_content_shortcode')) {
             </div>
 
             <style type="text/css">
-                .wcps-meta-box .copy-to-clipboard {
+                .settings-tabs .copy-to-clipboard {
                 }
 
-                .wcps-meta-box .copy-to-clipboard .copied {
+                .settings-tabs .copy-to-clipboard .copied {
                     display: none;
                     background: #e5e5e5;
                     padding: 4px 10px;
@@ -61,7 +61,7 @@ if(!function_exists('wcps_metabox_content_shortcode')) {
 
             <script>
                 jQuery(document).ready(function ($) {
-                    $(document).on('click', '.wcps-meta-box .copy-to-clipboard input, .wcps-meta-box .copy-to-clipboard textarea', function () {
+                    $(document).on('click', '.settings-tabs .copy-to-clipboard input, .settings-tabs .copy-to-clipboard textarea', function () {
                         $(this).focus();
                         $(this).select();
                         document.execCommand('copy');

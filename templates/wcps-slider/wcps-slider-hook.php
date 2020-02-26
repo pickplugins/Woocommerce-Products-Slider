@@ -212,7 +212,7 @@ function wcps_slider_main_scripts( $args){
             jQuery(document).ready(function($){
                 $("#wcps-<?php echo $wcps_id; ?>").owlCarousel({
                     items : <?php echo $slider_column_large; ?>, //10 items above 1000px browser width
-                    autoHeight:true,
+                    autoHeight:false,
                     responsiveClass:true,
                     responsive:{
                         0:{

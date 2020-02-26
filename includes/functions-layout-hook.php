@@ -1621,10 +1621,15 @@ function wcps_layout_elements_option_product_price($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $price_type = isset($element_data['price_type']) ? $element_data['price_type'] : '';
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
+
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     ?>
     <div class="item">
@@ -1649,6 +1654,52 @@ function wcps_layout_elements_option_product_price($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[product_price]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace price output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Price: %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'_color',
+                'parent' => $input_name.'[product_price]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[product_price]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
             ?>
 
         </div>
@@ -1669,9 +1720,13 @@ function wcps_layout_elements_option_stock_status($parameters){
     $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $stock_status_text = isset($element_data['stock_status_text']) ? $element_data['stock_status_text'] : '';
+    $out_stock_status_text = isset($element_data['out_stock_status_text']) ? $element_data['out_stock_status_text'] : '';
+
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
 
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     ?>
     <div class="item">
@@ -1686,11 +1741,13 @@ function wcps_layout_elements_option_stock_status($parameters){
             <?php
 
 
+
+
             $args = array(
                 'id'		=> 'stock_status_text',
-                'parent' => $input_name.'[add_to_cart]',
-                'title'		=> __('Stock status text','woocommerce-products-slider'),
-                'details'	=> __('Write custom stock status text.','woocommerce-products-slider'),
+                'parent' => $input_name.'[stock_status]',
+                'title'		=> __('In stock text','woocommerce-products-slider'),
+                'details'	=> __('Write custom in stock status text.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $stock_status_text,
                 'default'		=> '',
@@ -1700,6 +1757,45 @@ function wcps_layout_elements_option_stock_status($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+            $args = array(
+                'id'		=> 'out_stock_status_text',
+                'parent' => $input_name.'[stock_status]',
+                'title'		=> __('Out of stock text','woocommerce-products-slider'),
+                'details'	=> __('Write custom out of stock status text.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $out_stock_status_text,
+                'default'		=> '',
+                'placeholder'		=> __('In stock','woocommerce-products-slider'),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'stock_status_text_color',
+                'parent' => $input_name.'[stock_status]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[stock_status]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
             ?>
 
