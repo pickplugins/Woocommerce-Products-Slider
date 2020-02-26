@@ -104,7 +104,7 @@ function wcps_layout_elements_option_post_title($parameters){
                 'type'		=> 'select',
                 'value'		=> $link_to,
                 'default'		=> 'product_link',
-                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
+                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'external_product_url'=> __('External product', 'woocommerce-products-slider'), 'product_link'=> __('product link', 'woocommerce-products-slider'), 'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1723,10 +1723,10 @@ function wcps_layout_elements_option_stock_status($parameters){
     $out_stock_status_text = isset($element_data['out_stock_status_text']) ? $element_data['out_stock_status_text'] : '';
 
     $color = isset($element_data['color']) ? $element_data['color'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
-    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     ?>
     <div class="item">
@@ -1819,6 +1819,8 @@ function wcps_layout_elements_option_stock_quantity($parameters){
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
 
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
     ?>
     <div class="item">
         <div class="element-title header ">
@@ -1844,6 +1846,35 @@ function wcps_layout_elements_option_stock_quantity($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'stock_status_text_color',
+                'parent' => $input_name.'[stock_quantity]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[stock_quantity]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
             ?>
 
         </div>
@@ -1867,7 +1898,8 @@ function wcps_layout_elements_option_product_weight($parameters){
 
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
-
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
     ?>
     <div class="item">
         <div class="element-title header ">
@@ -1889,10 +1921,41 @@ function wcps_layout_elements_option_product_weight($parameters){
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
-                'placeholder'		=> 'Prefix text %s',
+                'placeholder'		=> 'Weight: %s',
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'stock_status_text_color',
+                'parent' => $input_name.'[product_weight]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[product_weight]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
             ?>
 
         </div>
@@ -1915,7 +1978,8 @@ function wcps_layout_elements_option_product_dimensions($parameters){
     $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
-
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
     ?>
     <div class="item">
         <div class="element-title header ">
@@ -1937,10 +2001,40 @@ function wcps_layout_elements_option_product_dimensions($parameters){
                 'type'		=> 'text',
                 'value'		=> $wrapper_html,
                 'default'		=> '',
-                'placeholder'		=> 'Prefix text %s',
+                'placeholder'		=> 'Dimensions: %s',
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'stock_status_text_color',
+                'parent' => $input_name.'[product_dimensions]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[product_dimensions]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
             ?>
 
         </div>
