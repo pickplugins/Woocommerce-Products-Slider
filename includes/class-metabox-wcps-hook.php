@@ -455,7 +455,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $query_orderby = isset($query['orderby']) ? $query['orderby'] : 'date';
         $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
         $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
-        $categories = isset($query['categories']) ? $query['categories'] : array();
+        $categories = isset($query['taxonomy_terms']) ? $query['taxonomy_terms'] : array();
 
 
         $on_sale = isset($query['on_sale']) ? $query['on_sale'] : 'no';
@@ -539,7 +539,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
 
 
                                 $args = array(
-                                    'id'		=> 'categories',
+                                    'id'		=> 'taxonomy_terms',
                                     'parent' => 'wcps_options[query]',
                                     'title'		=> __('Select terms','woocommerce-products-slider'),
                                     'details'	=> __('Choose some terms.','woocommerce-products-slider'),

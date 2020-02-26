@@ -45,7 +45,7 @@ wp_enqueue_style('font-awesome-5');
     $meta_query = array();
 
     $meta_query[] = array(
-        'key' => 'team_upgrade_status',
+        'key' => 'wcps_upgrade_status',
         'value' => 'done',
         'compare' => '='
     );
@@ -93,7 +93,7 @@ wp_enqueue_style('font-awesome-5');
     $meta_query = array();
 
     $meta_query[] = array(
-        'key' => 'team_upgrade_status',
+        'key' => 'wcps_upgrade_status',
         'value' => 'done',
         'compare' => '='
     );

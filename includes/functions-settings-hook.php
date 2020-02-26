@@ -8,9 +8,9 @@ function wcps_settings_content_general(){
 
     $wcps_settings = get_option('wcps_settings');
 
-    $custom_social_fields = isset($wcps_settings['custom_social_fields']) ? $wcps_settings['custom_social_fields'] : '';
-    $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
     $track_product_view = isset($wcps_settings['track_product_view']) ? $wcps_settings['track_product_view'] : 'no';
+    $social_media_sites = isset($wcps_settings['social_media_sites']) ? $wcps_settings['social_media_sites'] : array();
+    $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
 
     ?>
     <div class="section">
@@ -91,7 +91,7 @@ function wcps_settings_content_general(){
 
 
         $args = array(
-            'id'		=> 'custom_social_fields',
+            'id'		=> 'social_media_sites',
             'parent'		=> 'wcps_settings',
             'title'		=> __('Social share media','text-domain'),
             'details'	=> __('Custom social share button inputs.','text-domain'),
@@ -99,7 +99,7 @@ function wcps_settings_content_general(){
             'type'		=> 'repeatable',
             'limit'		=> 10,
             'title_field'		=> 'name',
-            'value'		=> $custom_social_fields,
+            'value'		=> $social_media_sites,
             'fields'    => $social_field,
         );
 

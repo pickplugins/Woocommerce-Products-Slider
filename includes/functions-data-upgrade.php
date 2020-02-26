@@ -8,84 +8,31 @@ add_action('wcps_cron_upgrade_settings', 'wcps_cron_upgrade_settings');
 
 function wcps_cron_upgrade_settings(){
 
-    $team_member_slug = get_option( 'team_member_slug' );
-    $team_member_meta_fields = get_option( 'team_member_meta_fields' );
-    $team_member_social_field = get_option( 'team_member_social_field' );
+    $wcps_settings = get_option( 'wcps_settings', array() );
 
-    //echo '<pre>'.var_export($team_member_meta_fields, true).'</pre>';
-
-    //echo '<pre>'.var_export($team_member_meta_fields, true).'</pre>';
-
-
-    $team_settings = array();
-    $team_settings['team_member_slug'] = $team_member_slug;
-
-    $meta_fields_new = array();
-
-    $meta_fields_new[] = array('name'=> 'Custom link', 'meta_key'=> 'custom_link');
-    $meta_fields_new[] = array('name'=> 'Position', 'meta_key'=> 'position');
-
-    if(!empty($team_member_meta_fields)){
-        foreach ($team_member_meta_fields as $fieldIndex => $field){
-            $field_name = isset($field['name']) ? $field['name'] : '';
-            $field_meta_key = isset($field['meta_key']) ? $field['meta_key'] : '';
-
-            $meta_fields_new[] = array('name'=> $field_name, 'meta_key'=> $field_meta_key);
-        }
-    }
-
-
-
-
-
-
-    $team_settings['custom_meta_fields'] = $meta_fields_new;
-
+    $wcps_track_product_view = get_option( 'wcps_track_product_view' );
+    $wcps_settings['track_product_view'] = $wcps_track_product_view;
 
     $social_fields_new = array();
+    $social_fields_new[] = array('name'=> 'Email', 'meta_key'=> 'email', 'icon'=> 'https://i.imgur.com/OS2saH8.png','font_icon'=> '',  'visibility'=> 1   );
+    $social_fields_new[] = array('name'=> 'Facebook', 'meta_key'=> 'facebook', 'icon'=> 'https://i.imgur.com/IftZ9Ng.png','font_icon'=> '',  'visibility'=> 1   );
+    $social_fields_new[] = array('name'=> 'Twitter', 'meta_key'=> 'twitter', 'icon'=> 'https://i.imgur.com/JZDm0R5.png','font_icon'=> '',  'visibility'=> 1   );
+    $social_fields_new[] = array('name'=> 'Pinterest', 'meta_key'=> 'pinterest', 'icon'=> 'https://i.imgur.com/VxUWxZC.png','font_icon'=> '',  'visibility'=> 0   );
+    $social_fields_new[] = array('name'=> 'Linkedin', 'meta_key'=> 'linkedin', 'icon'=> 'https://i.imgur.com/8kuHCtD.png','font_icon'=> '',  'visibility'=> 0   );
+    $social_fields_new[] = array('name'=> 'Instagram', 'meta_key'=> 'instagram', 'icon'=> 'https://i.imgur.com/DYj382i.png','font_icon'=> '',  'visibility'=> 0   );
 
-    if(!empty($team_member_social_field)){
-        foreach ($team_member_social_field as $fieldIndex => $field){
-            $field_name = isset($field['name']) ? $field['name'] : '';
-            $field_meta_key = isset($field['meta_key']) ? $field['meta_key'] : '';
-            $field_icon = !empty($field['icon']) ? $field['icon'] : team_plugin_url.'assets/front/css/icons/'.$field_meta_key.'.png';
-            $font_icon = !empty($field['font_icon']) ? $field['font_icon'] : '';
-
-            $field_visibility = isset($field['visibility']) ? $field['visibility'] : '';
-
-            $social_fields_new[] = array('name'=> $field_name, 'meta_key'=> $field_meta_key, 'icon'=> $field_icon, 'font_icon'=> $font_icon,'visibility'=> $field_visibility,   );
-        }
-    }else{
-
-        $social_fields_new[] = array('name'=> 'Mobile', 'meta_key'=> 'mobile', 'icon'=> 'https://i.imgur.com/rXGIG9B.png','font_icon'=> '', 'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Website', 'meta_key'=> 'website', 'icon'=> 'https://i.imgur.com/Dcueqwy.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Email', 'meta_key'=> 'email', 'icon'=> 'https://i.imgur.com/OS2saH8.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Skype', 'meta_key'=> 'skype', 'icon'=> 'https://i.imgur.com/CmSSnZE.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Facebook', 'meta_key'=> 'facebook', 'icon'=> 'https://i.imgur.com/IftZ9Ng.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Twitter', 'meta_key'=> 'twitter', 'icon'=> 'https://i.imgur.com/JZDm0R5.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Pinterest', 'meta_key'=> 'pinterest', 'icon'=> 'https://i.imgur.com/VxUWxZC.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Linkedin', 'meta_key'=> 'linkedin', 'icon'=> 'https://i.imgur.com/8kuHCtD.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Vimeo', 'meta_key'=> 'vimeo', 'icon'=> 'https://i.imgur.com/6b3drl7.png','font_icon'=> '',  'visibility'=> 1,   );
-        $social_fields_new[] = array('name'=> 'Instagram', 'meta_key'=> 'instagram', 'icon'=> 'https://i.imgur.com/DYj382i.png','font_icon'=> '',  'visibility'=> 1,   );
-
-    }
+    $wcps_settings['social_media_sites'] = $social_fields_new;
 
 
-    $team_settings['custom_social_fields'] = $social_fields_new;
-
-
-    update_option('team_settings', $team_settings);
-
-    //echo '<pre>'.var_export($social_fields_new, true).'</pre>';
-
+    update_option('wcps_settings', $wcps_settings);
 
     wp_clear_scheduled_hook('wcps_cron_upgrade_settings');
     wp_schedule_event(time(), '1minute', 'wcps_cron_upgrade_wcps');
 
-    $team_plugin_info = get_option('team_plugin_info');
-    $team_plugin_info['settings_upgrade'] = 'done';
+    $wcps_plugin_info = get_option('wcps_plugin_info');
+    $wcps_plugin_info['settings_upgrade'] = 'done';
 
-    update_option('team_plugin_info', $team_plugin_info);
+    update_option('wcps_plugin_info', $wcps_plugin_info);
 
 }
 
@@ -102,12 +49,12 @@ function wcps_cron_upgrade_wcps(){
     $meta_query = array();
 
         $meta_query[] = array(
-        'key' => 'team_upgrade_status',
+        'key' => 'wcps_upgrade_status',
         'compare' => 'NOT EXISTS'
     );
 
     $args = array(
-        'post_type'=>'woocommerce-products-slider',
+        'post_type'=>'wcps',
         'post_status'=>'any',
         'posts_per_page'=> 10,
         'meta_query'=> $meta_query,
@@ -129,170 +76,196 @@ function wcps_cron_upgrade_wcps(){
             echo $team_title.'<br/>';
 
 
+            // Product Query options
+            $wcps_total_items = get_post_meta( $team_id, 'wcps_total_items', true );
+            $team_options['query']['post_per_page'] = $wcps_total_items;
 
-            $team_themes = get_post_meta( $team_id, 'team_themes', true );
-            $team_items_link_to_post = get_post_meta( $team_id, 'team_items_link_to_post', true );
+            $wcps_product_categories = get_post_meta( $team_id, 'wcps_product_categories', true );
+            $team_options['query']['taxonomy_terms'] = $wcps_product_categories;
 
+            $wcps_meta_query = get_post_meta( $team_id, 'wcps_meta_query', true );
+            $team_options['query']['meta_query_args'] = $wcps_meta_query;
 
-            $team_items_max_width = get_post_meta( $team_id, 'team_items_max_width', true );
-            $team_options['item_width']['large'] = $team_items_max_width;
+            $wcps_meta_query_relation = get_post_meta( $team_id, 'wcps_meta_query_relation', true );
+            $team_options['query']['meta_query_relation'] = $wcps_meta_query_relation;
 
-            $team_items_width_tablet = get_post_meta( $team_id, 'team_items_width_tablet', true );
-            $team_options['item_width']['medium'] = $team_items_width_tablet;
+            $wcps_query_order = get_post_meta( $team_id, 'wcps_query_order', true );
+            $team_options['query']['order'] = $wcps_query_order;
 
-            $team_items_width_mobile = get_post_meta( $team_id, 'team_items_width_mobile', true );
-            $team_options['item_width']['small'] = $team_items_width_mobile;
+            $wcps_query_orderby = get_post_meta( $team_id, 'wcps_query_orderby', true );
+            $team_options['query']['orderby'] = $wcps_query_orderby;
 
-            $team_items_margin = get_post_meta( $team_id, 'team_items_margin', true );
-            $team_options['item_margin'] = $team_items_margin;
+            $wcps_more_query = get_post_meta( $team_id, 'wcps_more_query', true );
+            $team_options['query']['more_query_args'] = $wcps_more_query;
 
-            $team_item_text_align = get_post_meta( $team_id, 'team_item_text_align', true );
-            $team_options['item_text_align'] = $team_item_text_align;
+            $wcps_hide_out_of_stock = get_post_meta( $team_id, 'wcps_hide_out_of_stock', true );
+            $team_options['query']['stock_status'] = $wcps_hide_out_of_stock;
 
+            $wcps_product_featured = get_post_meta( $team_id, 'wcps_product_featured', true );
+            $team_options['query']['featured'] = $wcps_product_featured;
 
-            $team_bg_img = get_post_meta( $team_id, 'team_bg_img', true );
-            $team_options['container']['background_img_url'] = $team_bg_img;
+            $wcps_product_on_sale = get_post_meta( $team_id, 'wcps_product_on_sale', true );
+            $team_options['query']['on_sale'] = $wcps_product_on_sale;
 
-            $team_container_bg_color = get_post_meta( $team_id, 'team_container_bg_color', true );
-            $team_options['container']['background_color'] = $team_container_bg_color;
+            $wcps_product_only_discounted = get_post_meta( $team_id, 'wcps_product_only_discounted', true );
+            $team_options['query']['only_discounted'] = $wcps_product_only_discounted;
 
-            $team_grid_item_align = get_post_meta( $team_id, 'team_grid_item_align', true );
-            $team_options['container']['text_align'] = $team_grid_item_align;
+            $wcps_product_filter_by = get_post_meta( $team_id, 'wcps_product_filter_by', true );
+            $team_options['query']['filter_by'] = $wcps_product_filter_by;
 
+            $wcps_product_ids = get_post_meta( $team_id, 'wcps_product_ids', true );
+            $team_options['query']['product_ids'] = $wcps_product_ids;
 
+            $wcps_product_sku = get_post_meta( $team_id, 'wcps_product_sku', true );
+            $team_options['query']['product_sku'] = $wcps_product_sku;
 
-            $team_query_orderby = get_post_meta( $team_id, 'team_query_orderby', true );
-            $team_options['query']['orderby'] = $team_query_orderby;
+            $wcps_upsells_crosssells = get_post_meta( $team_id, 'wcps_upsells_crosssells', true );
+            $team_options['query']['upsells_crosssells'] = $wcps_upsells_crosssells;
 
-            $team_query_orderby_meta_key = get_post_meta( $team_id, 'team_query_orderby_meta_key', true );
-            $team_options['query']['orderby_meta_key'] = $team_query_orderby_meta_key;
+            $wcps_related_product_query = get_post_meta( $team_id, 'wcps_related_product_query', true );
+            $team_options['query']['related_product_query'] = $wcps_related_product_query;
 
-            $team_query_order = get_post_meta( $team_id, 'team_query_order', true );
-            $team_options['query']['order'] = $team_query_order;
-
-            $team_total_items = get_post_meta( $team_id, 'team_total_items', true );
-            $team_options['query']['post_per_page'] = $team_total_items;
-
-            $team_taxonomy_terms = get_post_meta( $team_id, 'team_taxonomy_terms', true );
-            $team_options['query']['taxonomy_terms'] = $team_taxonomy_terms;
-
-            $team_post_ids = get_post_meta( $team_id, 'team_post_ids', true );
-            $team_options['query']['member_ids'] = $team_post_ids;
-
-            $team_items_custom_css = get_post_meta( $team_id, 'team_items_custom_css', true );
-            $team_options['custom_scripts']['custom_css'] = $team_items_custom_css;
-
-
-            $team_grid_style = get_post_meta( $team_id, 'team_grid_style', true );
-            $team_options['view_type'] = $team_grid_style;
-
-            $team_masonry_enable = get_post_meta( $team_id, 'team_masonry_enable', true );
-            $team_options['masonry_enable'] = $team_masonry_enable;
-
-            $team_items_post_per_page_mixitup = get_post_meta( $team_id, 'team_items_post_per_page_mixitup', true );
-            $team_options['filterable']['post_per_page'] = $team_items_post_per_page_mixitup;
-
-            $team_items_default_filter_mixitup = get_post_meta( $team_id, 'team_items_default_filter_mixitup', true );
-            $team_options['filterable']['active_filter'] = $team_items_default_filter_mixitup;
-
-            $team_filter_bg_color = get_post_meta( $team_id, 'team_filter_bg_color', true );
-            $team_options['filterable']['background_color'] = $team_filter_bg_color;
-
-            $team_filter_active_bg_color = get_post_meta( $team_id, 'team_filter_active_bg_color', true );
-            $team_options['filterable']['active_background_color'] = $team_filter_active_bg_color;
-
-            $team_filter_text_color = get_post_meta( $team_id, 'team_filter_text_color', true );
-            $team_options['filterable']['font_color'] = $team_filter_text_color;
+            $wcps_related_product_query_by = get_post_meta( $team_id, 'wcps_related_product_query_by', true );
+            $team_options['query']['related_product_query_by'] = $wcps_related_product_query_by;
 
 
-            $team_filter_scroll_top = get_post_meta( $team_id, 'team_filter_scroll_top', true );
-            $team_options['pagination']['scroll_top'] = $team_filter_scroll_top;
+            //Slider options
+            $wcps_column_number = get_post_meta( $team_id, 'wcps_column_number', true );
+            $team_options['slider']['column_large'] = $wcps_column_number;
 
-            $team_pagination_type = get_post_meta( $team_id, 'team_pagination_type', true );
-            $team_options['pagination']['type'] = $team_pagination_type;
+            $wcps_column_number_tablet = get_post_meta( $team_id, 'wcps_column_number_tablet', true );
+            $team_options['slider']['column_medium'] = $wcps_column_number_tablet;
 
-            $team_pagination_prev_text = get_post_meta( $team_id, 'team_pagination_prev_text', true );
-            $team_options['pagination']['prev_text'] = $team_pagination_prev_text;
+            $wcps_column_number_mobile = get_post_meta( $team_id, 'wcps_column_number_mobile', true );
+            $team_options['slider']['column_small'] = $wcps_column_number_mobile;
 
-            $team_pagination_next_text = get_post_meta( $team_id, 'team_pagination_next_text', true );
-            $team_options['pagination']['next_text'] = $team_pagination_next_text;
+            $wcps_rows_enable = get_post_meta( $team_id, 'wcps_rows_enable', true );
+            $team_options['slider']['rows_enable'] = $wcps_rows_enable;
 
-            $team_pagination_bg_color = get_post_meta( $team_id, 'team_pagination_bg_color', true );
-            $team_options['pagination']['background_color'] = $team_pagination_bg_color;
+            $wcps_rows_desktop = get_post_meta( $team_id, 'wcps_rows_desktop', true );
+            $team_options['slider']['row_large'] = $wcps_rows_desktop;
 
-            $team_pagination_active_bg_color = get_post_meta( $team_id, 'team_pagination_active_bg_color', true );
-            $team_options['pagination']['active_background_color'] = $team_pagination_active_bg_color;
+            $wcps_rows_tablet = get_post_meta( $team_id, 'wcps_rows_tablet', true );
+            $team_options['slider']['row_medium'] = $wcps_rows_tablet;
 
-            $team_pagination_top = get_post_meta( $team_id, 'team_pagination_top', true );
-            $team_options['pagination']['on_top'] = $team_pagination_top;
+            $wcps_rows_mobile = get_post_meta( $team_id, 'wcps_rows_mobile', true );
+            $team_options['slider']['row_small'] = $wcps_rows_mobile;
+
+            $wcps_auto_play = get_post_meta( $team_id, 'wcps_auto_play', true );
+            $team_options['slider']['auto_play'] = $wcps_auto_play;
+
+            $wcps_auto_play_speed = get_post_meta( $team_id, 'wcps_auto_play_speed', true );
+            $team_options['slider']['auto_play_speed'] = $wcps_auto_play_speed;
+
+            $wcps_auto_play_timeout = get_post_meta( $team_id, 'wcps_auto_play_timeout', true );
+            $team_options['slider']['auto_play_timeout'] = $wcps_auto_play_timeout;
+
+            $wcps_slide_speed = get_post_meta( $team_id, 'wcps_slide_speed', true );
+            $team_options['slider']['slide_speed'] = $wcps_slide_speed;
+
+            $wcps_slideBy = get_post_meta( $team_id, 'wcps_slideBy', true );
+            $team_options['slider']['slide_by_count'] = $wcps_slideBy;
+
+            $wcps_rewind = get_post_meta( $team_id, 'wcps_rewind', true );
+            $team_options['slider']['rewind'] = $wcps_rewind;
+
+            $wcps_loop = get_post_meta( $team_id, 'wcps_loop', true );
+            $team_options['slider']['loop'] = $wcps_loop;
+
+            $wcps_center = get_post_meta( $team_id, 'wcps_center', true );
+            $team_options['slider']['center'] = $wcps_center;
+
+            $wcps_stop_on_hover = get_post_meta( $team_id, 'wcps_stop_on_hover', true );
+            $team_options['slider']['stop_on_hover'] = $wcps_stop_on_hover;
+
+            $wcps_slider_navigation_position = get_post_meta( $team_id, 'wcps_slider_navigation_position', true );
+            $team_options['slider']['nav_position'] = $wcps_slider_navigation_position;
+
+            $team_options['slider']['navigation_background_color'] = '';
+            $team_options['slider']['navigation_style'] = 'flat';
+            $team_options['slider']['navigation_color'] = '';
+
+            $wcps_slider_pagination = get_post_meta( $team_id, 'wcps_slider_pagination', true );
+            $team_options['slider']['pagination'] = $wcps_slider_pagination;
+
+            $wcps_pagination_slide_speed = get_post_meta( $team_id, 'wcps_pagination_slide_speed', true );
+            $team_options['slider']['pagination_speed'] = $wcps_pagination_slide_speed;
+
+            $wcps_slider_pagination_bg = get_post_meta( $team_id, 'wcps_slider_pagination_bg', true );
+            $team_options['slider']['pagination_background_color'] = $wcps_slider_pagination_bg;
+
+            $wcps_slider_pagination_text_color = get_post_meta( $team_id, 'wcps_slider_pagination_text_color', true );
+            $team_options['slider']['pagination_background_text_color'] = $wcps_slider_pagination_text_color;
+
+            $wcps_slider_pagination_count = get_post_meta( $team_id, 'wcps_slider_pagination_count', true );
+            $team_options['slider']['pagination_count'] = $wcps_slider_pagination_count;
+
+            $wcps_slider_rtl = get_post_meta( $team_id, 'wcps_slider_rtl', true );
+            $team_options['slider']['rtl'] = $wcps_slider_rtl;
+
+            $wcps_slider_mouse_drag = get_post_meta( $team_id, 'wcps_slider_mouse_drag', true );
+            $team_options['slider']['mouse_drag'] = $wcps_slider_mouse_drag;
+
+            $wcps_slider_touch_drag = get_post_meta( $team_id, 'wcps_slider_touch_drag', true );
+            $team_options['slider']['touch_drag'] = $wcps_slider_touch_drag;
+
+            $wcps_slider_animateout = get_post_meta( $team_id, 'wcps_slider_animateout', true );
+            $team_options['slider']['animate_out'] = $wcps_slider_animateout;
+
+            $wcps_slider_animatein = get_post_meta( $team_id, 'wcps_slider_animatein', true );
+            $team_options['slider']['animate_in'] = $wcps_slider_animatein;
 
 
-            $team_column_number = get_post_meta( $team_id, 'team_column_number', true );
-            $team_options['slider']['column_large'] = $team_column_number;
+            $wcps_themes = get_post_meta( $team_id, 'wcps_themes', true );
 
-            $team_column_number_tablet = get_post_meta( $team_id, 'team_column_number_tablet', true );
-            $team_options['slider']['column_medium'] = $team_column_number_tablet;
+            // Ribbon options
+            $wcps_ribbon_name = get_post_meta( $team_id, 'wcps_ribbon_name', true );
+            $team_options['ribbon']['ribbon_name'] = $wcps_ribbon_name;
 
-            $team_column_number_mobile = get_post_meta( $team_id, 'team_column_number_mobile', true );
-            $team_options['slider']['column_small'] = $team_column_number_mobile;
+            $wcps_ribbon_custom = get_post_meta( $team_id, 'wcps_ribbon_custom', true );
+            $team_options['ribbon']['ribbon_custom'] = $wcps_ribbon_custom;
 
-            $team_auto_play = get_post_meta( $team_id, 'team_auto_play', true );
-            $team_options['slider']['auto_play'] = $team_auto_play;
 
-            $team_slide_speed = get_post_meta( $team_id, 'team_slide_speed', true );
-            $team_options['slider']['slide_speed'] = $team_slide_speed;
 
-            $team_pagination_slide_speed = get_post_meta( $team_id, 'team_pagination_slide_speed', true );
-            $team_options['slider']['pagination_speed'] = $team_pagination_slide_speed;
+            // Item options
+            $wcps_items_padding = get_post_meta( $team_id, 'wcps_items_padding', true );
+            $team_options['item_style']['padding'] = $wcps_items_padding;
 
-            $team_slide_loop = get_post_meta( $team_id, 'team_slide_loop', true );
-            $team_options['slider']['loop'] = $team_slide_loop;
+            $wcps_items_bg_color = get_post_meta( $team_id, 'wcps_items_bg_color', true );
+            $team_options['item_style']['background_color'] = $wcps_items_bg_color;
+            $team_options['item_style']['margin'] = '';
 
-            $team_slide_rewind = get_post_meta( $team_id, 'team_slide_rewind', true );
-            $team_options['slider']['rewind'] = $team_slide_rewind;
 
-            $team_slide_center = get_post_meta( $team_id, 'team_slide_center', true );
-            $team_options['slider']['center'] = $team_slide_center;
 
-            $team_slide_rtl = get_post_meta( $team_id, 'team_slide_rtl', true );
-            $team_options['slider']['rtl'] = $team_slide_rtl;
+            //Container options
+            $wcps_container_padding = get_post_meta( $team_id, 'wcps_container_padding', true );
+            $team_options['container']['padding'] = $wcps_container_padding;
 
-            $team_stop_on_hover = get_post_meta( $team_id, 'team_stop_on_hover', true );
-            $team_options['slider']['stop_on_hover'] = $team_stop_on_hover;
+            $wcps_container_bg_color = get_post_meta( $team_id, 'wcps_container_bg_color', true );
+            $team_options['container']['background_color'] = $wcps_container_bg_color;
 
-            $team_slider_pagination = get_post_meta( $team_id, 'team_slider_pagination', true );
-            $team_options['slider']['pagination'] = $team_slider_pagination;
+            $wcps_bg_img = get_post_meta( $team_id, 'wcps_bg_img', true );
+            $team_options['container']['background_img_url'] = $wcps_bg_img;
 
-            $team_slider_pagination_count = get_post_meta( $team_id, 'team_slider_pagination_count', true );
-            $team_options['slider']['pagination_count'] = $team_slider_pagination_count;
+            $team_options['container']['margin'] = '';
 
-            $team_slider_touch_drag = get_post_meta( $team_id, 'team_slider_touch_drag', true );
-            $team_options['slider']['touch_drag'] = $team_slider_touch_drag;
+
+            // Custom Scripts
+            $wcps_items_custom_css = get_post_meta( $team_id, 'wcps_items_custom_css', true );
+            $team_options['custom_scripts']['custom_css'] = $wcps_items_custom_css;
+
+            $team_options['custom_scripts']['custom_js'] = '';
+
+
 
 
 
             // Create layout from team settings.
-            $team_grid_items = get_post_meta( $team_id, 'team_grid_items', true );
-            if(isset($team_grid_items['popup'])){
-                unset($team_grid_items['popup']);
-            }
+            $wcps_grid_items = get_post_meta( $team_id, 'wcps_grid_items', true );
 
-            //unset($team_grid_items['skill']);
-            //unset($team_grid_items['meta']);
-
-            $team_options['grid_items'] = $team_grid_items;
-
-            $team_grid_items_hide = get_post_meta( $team_id, 'team_grid_items_hide', true );
-            if(isset($team_grid_items_hide['popup'])){
-                unset($team_grid_items_hide['popup']);
-            }
+            $wcps_grid_items_hide = get_post_meta( $team_id, 'wcps_grid_items_hide', true );
 
 
-            //unset($team_grid_items_hide['skill']);
-            //unset($team_grid_items_hide['meta']);
-
-
-            $team_options['items_hide'] = $team_grid_items_hide;
 
 
             $layout_elements_data = array();
@@ -301,15 +274,22 @@ function wcps_cron_upgrade_wcps(){
             $layout_elements_data[0]['wrapper_start']['wrapper_class'] = 'layer-media';
             $layout_elements_data[0]['wrapper_start']['css_idle'] = '';
 
-            $team_items_thumb_size = get_post_meta( $team_id, 'team_items_thumb_size', true );
-            $team_items_thumb_max_hieght = get_post_meta( $team_id, 'team_items_thumb_max_hieght', true );
-            $team_items_thumb_max_hieght_tablet = get_post_meta( $team_id, 'team_items_thumb_max_hieght_tablet', true );
-            $team_items_thumb_max_hieght_mobile = get_post_meta( $team_id, 'team_items_thumb_max_hieght_mobile', true );
+            $wcps_items_thumb_size = get_post_meta( $team_id, 'wcps_items_thumb_size', true );
+            $wcps_items_thumb_link_to = get_post_meta( $team_id, 'wcps_items_thumb_link_to', true );
+            $wcps_items_thumb_link_to_meta_value = get_post_meta( $team_id, 'wcps_items_thumb_link_to_meta_value', true );
+            $wcps_items_thumb_link_target = get_post_meta( $team_id, 'wcps_items_thumb_link_target', true );
+            $wcps_items_thumb_max_hieght = get_post_meta( $team_id, 'wcps_items_thumb_max_hieght', true );
+            $wcps_items_empty_thumb = get_post_meta( $team_id, 'wcps_items_empty_thumb', true );
 
-            $layout_elements_data[1]['thumbnail']['thumb_size'] = $team_items_thumb_size;
-            $layout_elements_data[1]['thumbnail']['thumb_height']['large'] = $team_items_thumb_max_hieght;
-            $layout_elements_data[1]['thumbnail']['thumb_height']['medium'] = $team_items_thumb_max_hieght_tablet;
-            $layout_elements_data[1]['thumbnail']['thumb_height']['small'] = $team_items_thumb_max_hieght_mobile;
+            $layout_elements_data[1]['thumbnail']['thumb_size'] = $wcps_items_thumb_size;
+            $layout_elements_data[1]['thumbnail']['link_to'] = $wcps_items_thumb_link_to;
+            $layout_elements_data[1]['thumbnail']['link_to_meta_key'] = $wcps_items_thumb_link_to_meta_value;
+            $layout_elements_data[1]['thumbnail']['link_target'] = $wcps_items_thumb_link_target;
+            $layout_elements_data[1]['thumbnail']['thumb_height']['large'] = $wcps_items_thumb_max_hieght;
+            $layout_elements_data[1]['thumbnail']['thumb_height']['medium'] = '';
+            $layout_elements_data[1]['thumbnail']['thumb_height']['small'] = '';
+            $layout_elements_data[1]['thumbnail']['default_thumb_src'] = $wcps_items_empty_thumb;
+
 
             $layout_elements_data[2]['wrapper_end']['wrapper_id'] = '';
 
@@ -322,8 +302,8 @@ function wcps_cron_upgrade_wcps(){
 
             $item_count = 4;
 
-            if(!empty($team_grid_items))
-            foreach ($team_grid_items as $itemIndex => $item){
+            if(!empty($wcps_grid_items))
+            foreach ($wcps_grid_items as $itemIndex => $item){
 
 
                 if($itemIndex == 'thumbnail'){
@@ -345,14 +325,17 @@ function wcps_cron_upgrade_wcps(){
 
 
                 }elseif($itemIndex == 'title'){
-                    $team_items_title_font_size = get_post_meta( $team_id, 'team_items_title_font_size', true );
-                    $team_items_title_font_family = get_post_meta( $team_id, 'team_items_title_font_family', true );
-                    $team_items_title_color = get_post_meta( $team_id, 'team_items_title_color', true );
+                    $wcps_items_title_font_size = get_post_meta( $team_id, 'wcps_items_title_font_size', true );
+                    $wcps_items_title_color = get_post_meta( $team_id, 'wcps_items_title_color', true );
+                    $wcps_items_title_text_align = get_post_meta( $team_id, 'wcps_items_title_text_align', true );
 
-                    $layout_elements_data[$item_count]['title']['color'] = $team_items_title_color;
-                    $layout_elements_data[$item_count]['title']['font_size'] = $team_items_title_font_size;
-                    $layout_elements_data[$item_count]['title']['font_family'] = $team_items_title_font_family;
-                    $layout_elements_data[$item_count]['title']['margin'] = '5px 0';
+
+                    $layout_elements_data[$item_count]['post_title']['color'] = $wcps_items_title_color;
+                    $layout_elements_data[$item_count]['post_title']['font_size'] = $wcps_items_title_font_size;
+                    $layout_elements_data[$item_count]['post_title']['font_family'] = '';
+                    $layout_elements_data[$item_count]['post_title']['margin'] = '5px 0';
+                    $layout_elements_data[$item_count]['post_title']['text_align'] = $wcps_items_title_text_align;
+
 
                 }elseif($itemIndex == 'position'){
                     $team_items_position_font_size = get_post_meta( $team_id, 'team_items_position_font_size', true );
@@ -364,24 +347,87 @@ function wcps_cron_upgrade_wcps(){
                     $layout_elements_data[$item_count]['position']['font_family'] = $team_items_position_font_family;
                     $layout_elements_data[$item_count]['position']['margin'] = '5px 0';
 
-                }elseif($itemIndex == 'content'){
+                }elseif($itemIndex == 'category'){
+                    $wcps_items_cat_font_size = get_post_meta( $team_id, 'wcps_items_cat_font_size', true );
+                    $wcps_items_cat_font_color = get_post_meta( $team_id, 'wcps_items_cat_font_color', true );
+                    $wcps_items_cat_text_align = get_post_meta( $team_id, 'wcps_items_cat_text_align', true );
+                    $wcps_items_cat_separator = get_post_meta( $team_id, 'wcps_items_cat_separator', true );
 
-                    $team_items_content = get_post_meta( $team_id, 'team_items_content', true );
-                    $team_items_excerpt_count = get_post_meta( $team_id, 'team_items_excerpt_count', true );
-                    $team_items_excerpt_text = get_post_meta( $team_id, 'team_items_excerpt_text', true );
-                    $team_items_content_color = get_post_meta( $team_id, 'team_items_content_color', true );
-                    $team_items_content_font_size = get_post_meta( $team_id, 'team_items_content_font_size', true );
-                    $team_items_content_font_family = get_post_meta( $team_id, 'team_items_content_font_family', true );
+                    $layout_elements_data[$item_count]['product_category']['font_size'] = $wcps_items_cat_font_size;
+                    $layout_elements_data[$item_count]['product_category']['text_align'] = $wcps_items_cat_text_align;
+                    $layout_elements_data[$item_count]['product_category']['margin'] = '5px 0';
+                    $layout_elements_data[$item_count]['product_category']['separator'] = $wcps_items_cat_separator;
+                    $layout_elements_data[$item_count]['product_category']['max_count'] = 3;
+                    $layout_elements_data[$item_count]['product_category']['wrapper_html'] = '';
+                    $layout_elements_data[$item_count]['product_category']['link_color'] = $wcps_items_cat_font_color;
 
-                    $layout_elements_data[$item_count]['content']['content_source'] = $team_items_content;
-                    $layout_elements_data[$item_count]['content']['word_count'] = $team_items_excerpt_count;
-                    $layout_elements_data[$item_count]['content']['read_more_text'] = $team_items_excerpt_text;
+                }elseif($itemIndex == 'price'){
+                    $wcps_total_items_price_format = get_post_meta( $team_id, 'wcps_total_items_price_format', true );
+                    $wcps_items_price_color = get_post_meta( $team_id, 'wcps_items_price_color', true );
+                    $wcps_items_price_font_size = get_post_meta( $team_id, 'wcps_items_price_font_size', true );
+                    $wcps_items_price_text_align = get_post_meta( $team_id, 'wcps_items_price_text_align', true );
 
-                    $layout_elements_data[$item_count]['content']['color'] = $team_items_content_color;
-                    $layout_elements_data[$item_count]['content']['read_more_color'] = $team_items_content_color;
 
-                    $layout_elements_data[$item_count]['content']['font_size'] = $team_items_content_font_size;
-                    $layout_elements_data[$item_count]['content']['font_family'] = $team_items_content_font_family;
+                    $layout_elements_data[$item_count]['product_price']['color'] = $wcps_items_price_color;
+                    $layout_elements_data[$item_count]['product_price']['font_size'] = $wcps_items_price_font_size;
+                    $layout_elements_data[$item_count]['product_price']['text_align'] = $wcps_items_price_text_align;
+                    $layout_elements_data[$item_count]['product_price']['margin'] = '5px 0';
+
+                    $layout_elements_data[$item_count]['product_price']['price_type'] = $wcps_total_items_price_format;
+                    $layout_elements_data[$item_count]['product_price']['wrapper_html'] = '';
+
+                }elseif($itemIndex == 'rating'){
+                    $wcps_total_items_price_format = get_post_meta( $team_id, 'wcps_total_items_price_format', true );
+                    $wcps_items_ratings_color = get_post_meta( $team_id, 'wcps_items_ratings_color', true );
+                    $wcps_items_ratings_font_size = get_post_meta( $team_id, 'wcps_items_ratings_font_size', true );
+                    $wcps_ratings_text_align = get_post_meta( $team_id, 'wcps_ratings_text_align', true );
+
+
+                    $layout_elements_data[$item_count]['rating']['color'] = $wcps_items_ratings_color;
+                    $layout_elements_data[$item_count]['rating']['font_size'] = $wcps_items_ratings_font_size;
+                    $layout_elements_data[$item_count]['rating']['text_align'] = $wcps_ratings_text_align;
+                    $layout_elements_data[$item_count]['rating']['margin'] = '5px 0';
+
+                    $layout_elements_data[$item_count]['rating']['rating_type'] = $wcps_total_items_price_format;
+                    $layout_elements_data[$item_count]['rating']['wrapper_html'] = '';
+
+                }elseif($itemIndex == 'cart'){
+                    $wcps_cart_text = get_post_meta( $team_id, 'wcps_cart_text', true );
+                    $wcps_cart_bg = get_post_meta( $team_id, 'wcps_cart_bg', true );
+                    $wcps_cart_text_color = get_post_meta( $team_id, 'wcps_cart_text_color', true );
+                    $wcps_cart_text_align = get_post_meta( $team_id, 'wcps_cart_text_align', true );
+                    $wcps_cart_display_quantity = get_post_meta( $team_id, 'wcps_cart_display_quantity', true );
+
+
+                    $layout_elements_data[$item_count]['add_to_cart']['background_color'] = $wcps_cart_bg;
+                    $layout_elements_data[$item_count]['add_to_cart']['color'] = $wcps_cart_text_color;
+                    $layout_elements_data[$item_count]['add_to_cart']['text_align'] = $wcps_cart_text_align;
+                    $layout_elements_data[$item_count]['add_to_cart']['margin'] = '5px 0';
+
+                    $layout_elements_data[$item_count]['add_to_cart']['cart_text'] = $wcps_cart_text;
+                    $layout_elements_data[$item_count]['add_to_cart']['show_quantity'] = $wcps_cart_display_quantity;
+
+                }
+
+
+
+                elseif($itemIndex == 'content'){
+
+                    $wcps_items_excerpt_count = get_post_meta( $team_id, 'wcps_items_excerpt_count', true );
+                    $wcps_items_excerpt_read_more = get_post_meta( $team_id, 'wcps_items_excerpt_read_more', true );
+                    $wcps_items_excerpt_font_color = get_post_meta( $team_id, 'wcps_items_excerpt_font_color', true );
+                    $wcps_items_excerpt_font_size = get_post_meta( $team_id, 'wcps_items_excerpt_font_size', true );
+                    $wcps_items_excerpt_text_align = get_post_meta( $team_id, 'wcps_items_excerpt_text_align', true );
+
+                    $layout_elements_data[$item_count]['content']['content_source'] = 'excerpt';
+                    $layout_elements_data[$item_count]['content']['word_count'] = $wcps_items_excerpt_count;
+
+                    $layout_elements_data[$item_count]['content']['read_more_text'] = $wcps_items_excerpt_read_more;
+                    $layout_elements_data[$item_count]['content']['read_more_color'] = $wcps_items_excerpt_font_color;
+                    $layout_elements_data[$item_count]['content']['color'] = $wcps_items_excerpt_font_color;
+
+                    $layout_elements_data[$item_count]['content']['font_size'] = $wcps_items_excerpt_font_size;
+                    $layout_elements_data[$item_count]['content']['font_family'] = $wcps_items_excerpt_text_align;
                     $layout_elements_data[$item_count]['content']['margin'] = '5px 0';
 
                 }elseif($itemIndex == 'skill'){
@@ -436,7 +482,7 @@ function wcps_cron_upgrade_wcps(){
                     'post_title'    => $team_id.' - '.$team_title,
                     'post_content'  => '',
                     'post_status'   => 'publish',
-                    'post_type'   	=> 'team_layout',
+                    'post_type'   	=> 'wcps_layout',
                     'post_author'   => 1,
                 )
             );
@@ -444,7 +490,7 @@ function wcps_cron_upgrade_wcps(){
 
             $team_options['item_layout_id'] = $team_layout_id;
 
-            $layout_data = team_layout_data($team_themes);
+            $layout_data = team_layout_data($wcps_themes);
 
             $layout_data_css = isset($layout_data['css']) ? $layout_data['css'] : '';
             $layout_preview_img = isset($layout_data['preview_img']) ? $layout_data['preview_img'] : '';
@@ -462,7 +508,7 @@ function wcps_cron_upgrade_wcps(){
             update_post_meta($team_layout_id, 'layout_options', $layout_options);
             update_post_meta($team_layout_id, 'layout_elements_data', $layout_elements_data);
             
-            update_post_meta($team_id, 'team_upgrade_status', 'done');
+            update_post_meta($team_id, 'wcps_upgrade_status', 'done');
 
 
 
@@ -472,9 +518,9 @@ function wcps_cron_upgrade_wcps(){
     else:
         wp_clear_scheduled_hook('wcps_cron_upgrade_wcps');
 
-        $team_plugin_info = get_option('team_plugin_info');
-        $team_plugin_info['team_upgrade'] = 'done';
-        update_option('team_plugin_info', $team_plugin_info);
+        $wcps_plugin_info = get_option('wcps_plugin_info');
+        $wcps_plugin_info['team_upgrade'] = 'done';
+        update_option('wcps_plugin_info', $wcps_plugin_info);
     endif;
 
 
@@ -485,13 +531,13 @@ add_action('wcps_cron_reset_migrate','wcps_cron_reset_migrate');
 
 function wcps_cron_reset_migrate(){
 
-    $team_plugin_info = get_option('team_plugin_info');
+    $wcps_plugin_info = get_option('wcps_plugin_info');
 
-    delete_option('team_settings');
+    delete_option('wcps_settings');
 
 
     $team_member_meta_query[] = array(
-        'key' => 'team_upgrade_status',
+        'key' => 'wcps_upgrade_status',
         'compare' => '='
     );
 
@@ -507,7 +553,7 @@ function wcps_cron_reset_migrate(){
     if ($team_member_query->have_posts()) :
         while ($team_member_query->have_posts()) : $team_member_query->the_post();
             $post_id = get_the_id();
-            delete_post_meta($post_id, 'team_upgrade_status');
+            delete_post_meta($post_id, 'wcps_upgrade_status');
             delete_post_meta($post_id, 'team_member_data');
 
         endwhile;
@@ -518,7 +564,7 @@ function wcps_cron_reset_migrate(){
 
 
     $team_meta_query[] = array(
-        'key' => 'team_upgrade_status',
+        'key' => 'wcps_upgrade_status',
         'compare' => '='
     );
 
@@ -534,7 +580,7 @@ function wcps_cron_reset_migrate(){
     if ($team_query->have_posts()) :
         while ($team_query->have_posts()) : $team_query->the_post();
             $post_id = get_the_id();
-            delete_post_meta($post_id, 'team_upgrade_status');
+            delete_post_meta($post_id, 'wcps_upgrade_status');
             delete_post_meta($post_id, 'team_options');
 
         endwhile;
@@ -545,11 +591,11 @@ function wcps_cron_reset_migrate(){
 
     wp_clear_scheduled_hook('wcps_cron_reset_migrate');
 
-    $team_plugin_info['settings_upgrade'] = '';
-    $team_plugin_info['team_members_upgrade'] = '';
-    $team_plugin_info['team_upgrade'] = '';
-    $team_plugin_info['migration_reset'] = 'done';
-    update_option('team_plugin_info', $team_plugin_info);
+    $wcps_plugin_info['settings_upgrade'] = '';
+    $wcps_plugin_info['team_members_upgrade'] = '';
+    $wcps_plugin_info['team_upgrade'] = '';
+    $wcps_plugin_info['migration_reset'] = 'done';
+    update_option('wcps_plugin_info', $wcps_plugin_info);
 
 
 
