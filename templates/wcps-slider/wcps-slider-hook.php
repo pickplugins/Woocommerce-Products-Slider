@@ -153,7 +153,7 @@ function wcps_slider_item($args){
     $args['product_id'] = $product_id;
 
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
-    $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : '';
+    $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
     $layout_elements_data = get_post_meta( $item_layout_id, 'layout_elements_data', true );
 
     $wcps_item_class = apply_filters('wcps_slider_item_class', 'item ', $args);
@@ -304,6 +304,9 @@ function wcps_slider_main_scripts( $args){
 
 
                 });
+
+
+
             });
         </script>
 
@@ -487,6 +490,12 @@ function wcps_slider_main_scripts( $args){
                 width: 50px;
                 height: 50px;
             }
+
+            #wcps-<?php echo $wcps_id; ?> .quantity{
+                width: 45px;
+
+            }
+
 
             <?php
             $custom_scripts = get_post_meta($item_layout_id,'custom_scripts', true);

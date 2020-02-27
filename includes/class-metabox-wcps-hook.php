@@ -498,21 +498,21 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $settings_tabs_field = new settings_tabs_field();
 
         $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
-        $query = isset($wcps_options['query']) ? $wcps_options['query'] : array();
+        $query = !empty($wcps_options['query']) ? $wcps_options['query'] : array();
 
         $max_product_count = isset($query['max_product_count']) ? $query['max_product_count'] : 10;
         $query_order = isset($query['order']) ? $query['order'] : 'DESC';
-        $query_orderby = isset($query['orderby']) ? $query['orderby'] : array('date');
+        $query_orderby = !empty($query['orderby']) ? $query['orderby'] : array('date');
         $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
         $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
-        $categories = isset($query['taxonomy_terms']) ? $query['taxonomy_terms'] : array();
+        $categories = !empty($query['taxonomy_terms']) ? $query['taxonomy_terms'] : array();
 
 
         $on_sale = isset($query['on_sale']) ? $query['on_sale'] : 'no';
         $product_ids = isset($query['product_ids']) ? $query['product_ids'] : '';
 
 
-        //echo '<pre>'.var_export($query, true).'</pre>';
+        //echo '<pre>'.var_export($query_orderby, true).'</pre>';
 
         ?>
         <div class="section">
@@ -577,14 +577,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                                 <?php
                                 $cat_args = array();
                                 foreach($categories_all as $category_info){
-
-                                    $selected = (in_array($taxonomy.','.$category_info->cat_ID, $categories)) ? 'selected' : '';
-
                                     $cat_args[$taxonomy.','.$category_info->cat_ID] = $category_info->cat_name.'('.$category_info->count.')';
-
-
-
-
                                 }
 
 

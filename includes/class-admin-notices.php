@@ -12,7 +12,7 @@ class class_wcps_notices{
     public function data_upgrade(){
 
         $wcps_plugin_info = get_option('wcps_plugin_info');
-        $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wcps_upgrade'] : '';
+        $settings_upgrade = isset($wcps_plugin_info['settings_upgrade']) ? $wcps_plugin_info['settings_upgrade'] : '';
 
         $actionurl = admin_url().'edit.php?post_type=wcps&page=upgrade_status';
         $actionurl = wp_nonce_url( $actionurl,  'wcps_upgrade' );
@@ -30,7 +30,7 @@ class class_wcps_notices{
         }
 
 
-        if(empty($wcps_upgrade)){
+        if(empty($settings_upgrade)){
 
             $tutorial_link = 'https://www.youtube.com/watch?v=iiH8FjNPGFw';
 

@@ -93,7 +93,7 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['query']['order'] = $wcps_query_order;
 
             $wcps_query_orderby = get_post_meta( $wcps_id, 'wcps_query_orderby', true );
-            $wcps_options['query']['orderby'] = $wcps_query_orderby;
+            $wcps_options['query']['orderby'] = is_array($wcps_query_orderby) ? $wcps_query_orderby : array($wcps_query_orderby);
 
             $wcps_more_query = get_post_meta( $wcps_id, 'wcps_more_query', true );
             $wcps_options['query']['more_query_args'] = $wcps_more_query;
@@ -179,10 +179,13 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['slider']['stop_on_hover'] = $wcps_stop_on_hover;
 
             $wcps_slider_navigation_position = get_post_meta( $wcps_id, 'wcps_slider_navigation_position', true );
-            $wcps_options['slider']['nav_position'] = $wcps_slider_navigation_position;
+            $wcps_options['slider']['navigation_position'] = $wcps_slider_navigation_position;
 
             $wcps_options['slider']['navigation_background_color'] = '';
-            $wcps_options['slider']['navigation_style'] = 'flat';
+
+            $navigation_style = ($wcps_slider_navigation_position == 'middle' || $wcps_slider_navigation_position == 'middle-fixed') ? 'round' : 'flat';
+
+            $wcps_options['slider']['navigation_style'] = $navigation_style;
             $wcps_options['slider']['navigation_color'] = '';
 
             $wcps_slider_pagination = get_post_meta( $wcps_id, 'wcps_slider_pagination', true );
@@ -232,7 +235,7 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['ribbon']['height'] = '24px';
 
 
-            $ribbon_position = ($wcps_ribbon_name == 'none') ? 'none' : 'topleft';
+            $ribbon_position = ($wcps_ribbon_name == 'none' || empty($ribbon_url)) ? 'none' : 'topleft';
             $wcps_options['ribbon']['position'] = $ribbon_position;
 
 

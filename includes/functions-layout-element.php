@@ -329,6 +329,7 @@ function wcps_layout_element_product_price($args){
     $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
     $currency = get_woocommerce_currency_symbol();
     global $product;
+    $product = wc_get_product( $product_id );
 
     $string = get_woocommerce_price_format();
 
@@ -714,6 +715,8 @@ add_action('wcps_layout_element_css_add_to_cart', 'wcps_layout_element_css_add_t
 function wcps_layout_element_css_add_to_cart($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
+    $wcps_id = isset($args['wcps_id']) ? $args['wcps_id'] : '';
+
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
@@ -743,6 +746,9 @@ function wcps_layout_element_css_add_to_cart($args){
         }
 
     </style>
+    <script>
+        $('.wcps-container-<?php echo $wcps_id; ?> .wcps-items-cart p').prepend('<input value=1 class=quantity type=number> ');
+    </script>
     <?php
 }
 

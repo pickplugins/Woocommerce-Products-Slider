@@ -23,6 +23,29 @@ function custom_class( $classes ) {
 }
 
 
+function wcps_first_wcps_layout(){
+
+    $args = array(
+        'post_type' => 'wcps_layout',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+    );
+
+    $post_id = '';
+
+    $wp_query = new WP_Query($args);
+
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+
+            $post_id = get_the_id();
+
+            return $post_id;
+        endwhile;
+    else:
+
+    endif;
+}
 
 
 
