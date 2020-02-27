@@ -154,7 +154,7 @@ if(!function_exists('wcps_settings_content_help_support')) {
             <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo __('Create support ticket', 'woocommerce-products-slider'); ?></a>
 
             <p><?php echo __('Read our documentation before asking your question.', 'woocommerce-products-slider'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/documentation/team/"><?php echo __('Documentation', 'woocommerce-products-slider'); ?></a>
+            <a class="button" href="https://www.pickplugins.com/documentation/woocommerce-products-slider/"><?php echo __('Documentation', 'woocommerce-products-slider'); ?></a>
 
             <p><?php echo __('Watch video tutorials.', 'woocommerce-products-slider'); ?></p>
             <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
@@ -187,9 +187,9 @@ if(!function_exists('wcps_settings_content_help_support')) {
             ob_start();
             ?>
 
-            <p class="">We wish your 2 minutes to write your feedback about the team plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
+            <p class="">We wish your 2 minutes to write your feedback about the woocommerce-products-slider plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
 
-            <a target="_blank" href="https://wordpress.org/plugins/team/#reviews" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
+            <a target="_blank" href="https://wordpress.org/plugins/woocommerce-products-slider/#reviews" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
 
 
             <?php
@@ -210,21 +210,21 @@ if(!function_exists('wcps_settings_content_help_support')) {
 
 
             ob_start();
-            $team_plugin_info = get_option('team_plugin_info');
+            $wcps_plugin_info = get_option('wcps_plugin_info');
 
-            $migration_reset_stats = isset($team_plugin_info['migration_reset']) ? $team_plugin_info['migration_reset'] : '';
+            $migration_reset_stats = isset($wcps_plugin_info['migration_reset']) ? $wcps_plugin_info['migration_reset'] : '';
 
-            $actionurl = admin_url().'edit.php?post_type=team&page=settings&tab=help_support';
-            $actionurl = wp_nonce_url( $actionurl,  'team_reset_migration' );
+            $actionurl = admin_url().'edit.php?post_type=wcps&page=settings&tab=help_support';
+            $actionurl = wp_nonce_url( $actionurl,  'wcps_reset_migration' );
 
             $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
 
-            if ( wp_verify_nonce( $nonce, 'team_reset_migration' )  ){
+            if ( wp_verify_nonce( $nonce, 'wcps_reset_migration' )  ){
 
-                $team_plugin_info['migration_reset'] = 'processing';
-                update_option('team_plugin_info', $team_plugin_info);
+                $wcps_plugin_info['migration_reset'] = 'processing';
+                update_option('wcps_plugin_info', $wcps_plugin_info);
 
-                wp_schedule_event(time(), '2minute', 'team_cron_reset_migrate');
+                wp_schedule_event(time(), '1minute', 'wcps_cron_reset_migrate');
 
 
                 $migration_reset_stats = 'processing';
@@ -236,7 +236,7 @@ if(!function_exists('wcps_settings_content_help_support')) {
             if($migration_reset_stats == 'processing'){
                 ?>
                 <p style="color: #f00;"><i class="fas fa-spin fa-spinner"></i> Migration reset on process, please wait until complete.</p>
-                <p><a href="<?php echo admin_url().'edit.php?post_type=team&page=settings&tab=help_support'; ?>">Refresh</a> to check Migration reset stats</p>
+                <p><a href="<?php echo admin_url().'edit.php?post_type=wcps&page=settings&tab=help_support'; ?>">Refresh</a> to check Migration reset stats</p>
                 <?php
             }elseif($migration_reset_stats == 'done'){
                 ?>
@@ -250,7 +250,7 @@ if(!function_exists('wcps_settings_content_help_support')) {
 
             ?>
 
-            <p class="">Please click the button bellow to reset migration data, you can start over, Please use with caution, your new migrate data will deleted. you can use default <a href="<?php echo admin_url().'export.php'; ?>">export</a> menu to take your team member, team or layouts data saved.</p>
+            <p class="">Please click the button bellow to reset migration data, you can start over, Please use with caution, your new migrate data will deleted. you can use default <a href="<?php echo admin_url().'export.php'; ?>">export</a> menu to take your wcps, wcps layouts data saved.</p>
 
             <p class="reset-migration"><a class="button  button-primary" href="<?php echo $actionurl; ?>">Reset migration</a> <span style="display: none; color: #f2433f; margin: 0 5px"> Click again to confirm!</span></p>
 
@@ -336,8 +336,8 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
             ?>
 
             <p><?php echo __('If you love our plugin and want more feature please consider to buy pro version.', 'woocommerce-products-slider'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/item/team-responsive-meet-the-team-grid-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'woocommerce-products-slider'); ?></a>
-            <a class="button" href="http://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo __('See all demo', 'woocommerce-products-slider'); ?></a>
+            <a class="button" href="https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'woocommerce-products-slider'); ?></a>
+            <a class="button" href="http://www.pickplugins.com/demo/woocommerce-products-slider/?ref=dashobard"><?php echo __('See all demo', 'woocommerce-products-slider'); ?></a>
 
             <h2><?php echo __('See the differences','woocommerce-products-slider'); ?></h2>
 
@@ -351,7 +351,7 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
                 </thead>
 
                 <tr>
-                    <td class="col-features"><?php echo __('View type - Slider','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/team/slider/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
+                    <td class="col-features"><?php echo __('View type - Slider','woocommerce-products-slider'); ?> <a href="http://www.pickplugins.com/demo/woocommerce-products-slider/slider/?ref=dashobard"><?php echo __('Demo', 'woocommerce-products-slider'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
@@ -367,7 +367,7 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
                 <tr>
                     <td class="col-features"><?php echo __('Buy now','woocommerce-products-slider'); ?></td>
                     <td> </td>
-                    <td><a class="button" href="https://www.pickplugins.com/item/team-responsive-meet-the-team-grid-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'woocommerce-products-slider'); ?></a></td>
+                    <td><a class="button" href="https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'woocommerce-products-slider'); ?></a></td>
                 </tr>
 
             </table>

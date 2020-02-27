@@ -1,8 +1,60 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
-//add_action('wcps_slider_main', 'wcps_slider_main_ribbon');
-function wcps_slider_main_ribbon(){
+add_action('wcps_slider_main', 'wcps_slider_main_ribbon');
+function wcps_slider_main_ribbon($args){
+    $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
+    $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
+    $slider_ribbon = isset($wcps_options['ribbon']) ? $wcps_options['ribbon'] : array();
+
+    $ribbon_name = isset($slider_ribbon['ribbon_name']) ? $slider_ribbon['ribbon_name'] : '';
+    $ribbon_custom = isset($slider_ribbon['ribbon_custom']) ? $slider_ribbon['ribbon_custom'] : '';
+    $ribbon_position = isset($slider_ribbon['position']) ? $slider_ribbon['position'] : '';
+
+    $ribbon_text = isset($slider_ribbon['text']) ? $slider_ribbon['text'] : '';
+    $ribbon_background_img = isset($slider_ribbon['background_img']) ? $slider_ribbon['background_img'] : '';
+    $ribbon_background_color = isset($slider_ribbon['background_color']) ? $slider_ribbon['background_color'] : '';
+    $ribbon_text_color = isset($slider_ribbon['text_color']) ? $slider_ribbon['text_color'] : '';
+    $ribbon_width = isset($slider_ribbon['width']) ? $slider_ribbon['width'] : '';
+    $ribbon_height = isset($slider_ribbon['height']) ? $slider_ribbon['height'] : '';
+    $ribbon_position = isset($slider_ribbon['position']) ? $slider_ribbon['position'] : '';
+
+
+
+    if($ribbon_name == 'none'){
+        $ribbon_url = '';
+    }elseif($ribbon_name == 'custom'){
+        $ribbon_url = $ribbon_custom;
+    }else{
+        $ribbon_url = wcps_plugin_url.'assets/front/images/ribbons/'.$ribbon_name.'.png';
+    }
+
+
+
+    $ribbon_url = apply_filters( 'wcps_ribbon_img', $ribbon_url );
+
+    //var_dump($slider_ribbon);
+
+    if(!empty($ribbon_url)):
+        ?>
+        <div class="wcps-ribbon <?php echo $ribbon_position; ?>" ><?php echo $ribbon_text; ?></div>
+
+        <style type="text/css">
+            .wcps-ribbon{
+                background-color: <?php echo $ribbon_background_color; ?>;
+                background-image: url("<?php echo $ribbon_background_img; ?>");
+                color: <?php echo $ribbon_text_color; ?>;
+                width: <?php echo $ribbon_width; ?>;
+                height: <?php echo $ribbon_height; ?>;
+                text-align: center;
+                text-transform: uppercase;
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+        </style>
+    <?php
+    endif;
+
 
 }
 
@@ -261,7 +313,57 @@ function wcps_slider_main_scripts( $args){
                 padding: <?php echo $container_padding; ?>;
                 margin: <?php echo $container_margin; ?>;
                 background: <?php echo $container_background_color; ?> url(<?php echo $container_background_img_url; ?>) repeat scroll 0 0;
+                position: relative;
+                overflow: hidden;
             }
+
+
+
+            /*ribbon position*/
+            .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.topright{
+                position: absolute;
+                right: -25px;
+                top: 15px;
+                box-shadow: 0 2px 4px -1px rgb(51, 51, 51);
+                transform: rotate(45deg);
+                z-index: 10;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.topleft{
+                position: absolute;
+                left: -25px;
+                top: 15px;
+                box-shadow: 0 2px 4px -1px rgb(51, 51, 51);
+                transform: rotate(-45deg);
+                z-index: 10;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.bottomleft{
+                position: absolute;
+                left: -25px;
+                bottom: 10px;
+                box-shadow: 0 2px 4px -1px rgb(51, 51, 51);
+                transform: rotate(45deg);
+                z-index: 10;
+            }
+            .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.bottomright{
+                position: absolute;
+                right: -24px;
+                bottom: 10px;
+                box-shadow: 0 2px 4px -1px rgb(51, 51, 51);
+                transform: rotate(-45deg);
+                z-index: 10;
+            }
+
+
+            .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.none{
+                display: none;
+            }
+
+
+
+
+
 
             .wcps-container-<?php echo $wcps_id; ?> .item {
                 padding: <?php echo $item_padding; ?>;
@@ -386,6 +488,13 @@ function wcps_slider_main_scripts( $args){
                 height: 50px;
             }
 
+            <?php
+            $custom_scripts = get_post_meta($item_layout_id,'custom_scripts', true);
+            $custom_css = isset($custom_scripts['custom_css']) ? $custom_scripts['custom_css'] : '';
+
+            echo str_replace('__ID__', 'layout-'.$item_layout_id, $custom_css);
+
+            ?>
         </style>
     <?php
     if(!empty($layout_elements_data))

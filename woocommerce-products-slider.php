@@ -95,7 +95,7 @@ class WoocommerceProductsSlider{
 
         $schedules['1minute'] = array(
             'interval' => 120,
-            'display' => __('1 Minute', 'team')
+            'display' => __('1 Minute', 'woocommerce-products-slider')
         );
 
 
@@ -113,7 +113,7 @@ class WoocommerceProductsSlider{
     public function _deactivation(){
 
         wp_clear_scheduled_hook('wcps_cron_upgrade_settings');
-        wp_clear_scheduled_hook('wcps_cron_upgrade_team');
+        wp_clear_scheduled_hook('wcps_cron_upgrade_wcps');
 
         do_action( 'wcps_plugin_deactivation' );
     }

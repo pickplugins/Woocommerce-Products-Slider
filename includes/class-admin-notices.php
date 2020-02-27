@@ -12,7 +12,7 @@ class class_wcps_notices{
     public function data_upgrade(){
 
         $wcps_plugin_info = get_option('wcps_plugin_info');
-        $team_settings_upgrade = isset($wcps_plugin_info['settings_upgrade']) ? $wcps_plugin_info['settings_upgrade'] : '';
+        $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wcps_upgrade'] : '';
 
         $actionurl = admin_url().'edit.php?post_type=wcps&page=upgrade_status';
         $actionurl = wp_nonce_url( $actionurl,  'wcps_upgrade' );
@@ -30,14 +30,14 @@ class class_wcps_notices{
         }
 
 
-        if(empty($team_settings_upgrade)){
+        if(empty($wcps_upgrade)){
 
             $tutorial_link = 'https://www.youtube.com/watch?v=iiH8FjNPGFw';
 
             ?>
             <div class="update-nag">
                 <?php
-                echo sprintf(__('Data migration required for team plugin, please <a class="button button-primary" href="%s">click to start</a> migration. watch this <a target="_blank" href="%s">video</a> first.', 'woocommerce-products-slider'), $actionurl, $tutorial_link)
+                echo sprintf(__('Data migration required for woocommerce-products-slider plugin, please <a class="button button-primary" href="%s">click to start</a> migration. watch this <a target="_blank" href="%s">video</a> first.', 'woocommerce-products-slider'), $actionurl, $tutorial_link)
                 ?>
             </div>
             <?php

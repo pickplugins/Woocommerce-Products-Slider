@@ -7,8 +7,7 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
 
         public function __construct(){
 
-            add_shortcode('wcps', array($this, 'wcps_display'));
-            //add_shortcode('wcps_builder', array($this, 'wcps_builder_display'));
+            add_shortcode('wcps', array($this, 'wcps_new_display'));
             add_shortcode('wcps_new', array($this, 'wcps_new_display'));
 
 
@@ -42,6 +41,7 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
 
 
         public function wcps_display($atts, $content = null){
+
             $atts = shortcode_atts(
                 array(
                     'id' => "",
@@ -188,41 +188,6 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
 
             return $html;
 
-
-        }
-
-
-
-        public function wcps_builder_display($atts, $content = null){
-            $atts = shortcode_atts(
-                array(
-                    'id' => "",
-
-                ), $atts);
-
-            $html = '';
-            $post_id = $atts['id'];
-
-            wp_enqueue_script('wcps-builder');
-            wp_enqueue_style('wcps-builder');
-
-            include wcps_plugin_dir . '/templates/wcps-builder/wcps-builder.php';
-
-
-
-            ob_start();
-
-            ?>
-            <div id="wcps-builder" class="">
-                <?php
-
-                do_action('wcps_builder', $atts);
-
-                ?>
-            </div>
-            <?php
-
-            return ob_get_clean();
 
         }
 

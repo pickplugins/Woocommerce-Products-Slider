@@ -20,6 +20,7 @@ function wcps_layout_elements_option_post_title($parameters){
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
     $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
     $link_to = isset($element_data['link_to']) ? $element_data['link_to'] : '';
+    $text_align = isset($element_data['text_align']) ? $element_data['text_align'] : '';
 
     $custom_css = isset($element_data['custom_css']) ? $element_data['custom_css'] : '';
     $custom_css_hover = isset($element_data['custom_css_hover']) ? $element_data['custom_css_hover'] : '';
@@ -95,6 +96,22 @@ function wcps_layout_elements_option_post_title($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+
+            $args = array(
+                'id'		=> 'text_align',
+                'css_id'		=> $element_index.'_text_align',
+                'parent' => $input_name.'[post_title]',
+                'title'		=> __('Text align','woocommerce-products-slider'),
+                'details'	=> __('Choose text align.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $text_align,
+                'default'		=> 'left',
+                'args'		=> array('left'=> __('Left', 'woocommerce-products-slider'),'right'=> __('Right', 'woocommerce-products-slider'),'center'=> __('Center', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
             $args = array(
                 'id'		=> 'link_to',
                 'css_id'		=> $element_index.'_link_to',
@@ -153,6 +170,9 @@ function wcps_layout_elements_option_thumbnail($parameters){
     $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
     $thumb_size = isset($element_data['thumb_size']) ? $element_data['thumb_size'] : '';
+    $default_thumb_src = isset($element_data['default_thumb_src']) ? $element_data['default_thumb_src'] : '';
+    $link_to_meta_key = isset($element_data['link_to_meta_key']) ? $element_data['link_to_meta_key'] : '';
+
     $thumb_height = isset($element_data['thumb_height']) ? $element_data['thumb_height'] : '';
     $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
     $link_to = isset($element_data['link_to']) ? $element_data['link_to'] : '';
@@ -247,6 +267,19 @@ function wcps_layout_elements_option_thumbnail($parameters){
             $settings_tabs_field->generate_field($args);
 
             $args = array(
+                'id'		=> 'default_thumb_src',
+                'parent' => $input_name.'[thumbnail]',
+                'title'		=> __('Default thumbnail','woocommerce-products-slider'),
+                'details'	=> __('Choose default thumbnail.','woocommerce-products-slider'),
+                'type'		=> 'media_url',
+                'value'		=> $default_thumb_src,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
                 'id'		=> 'margin',
                 'css_id'		=> $element_index.'_margin',
                 'parent' => $input_name.'[thumbnail]',
@@ -290,7 +323,22 @@ function wcps_layout_elements_option_thumbnail($parameters){
                 'type'		=> 'select',
                 'value'		=> $link_to,
                 'default'		=> 'product_link',
-                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('Product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
+                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('Product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider'), 'meta_value'=> __('Meta value', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'link_to_meta_key',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[thumbnail]',
+                'title'		=> __('Link to meta key','woocommerce-products-slider'),
+                'details'	=> __('Write meta key for meta value link.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $link_to_meta_key,
+                'default'		=> '',
+                'placeholder'		=> '',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -327,6 +375,7 @@ function wcps_layout_elements_option_content($parameters){
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
     $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
     $link_to = isset($element_data['link_to']) ? $element_data['link_to'] : '';
+    $text_align = isset($element_data['text_align']) ? $element_data['text_align'] : '';
 
     $custom_css = isset($element_data['custom_css']) ? $element_data['custom_css'] : '';
     $custom_css_hover = isset($element_data['custom_css_hover']) ? $element_data['custom_css_hover'] : '';
@@ -444,6 +493,21 @@ function wcps_layout_elements_option_content($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'text_align',
+                'css_id'		=> $element_index.'_text_align',
+                'parent' => $input_name.'[content]',
+                'title'		=> __('Text align','woocommerce-products-slider'),
+                'details'	=> __('Choose text align.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $text_align,
+                'default'		=> 'left',
+                'args'		=> array('left'=> __('Left', 'woocommerce-products-slider'),'right'=> __('Right', 'woocommerce-products-slider'),'center'=> __('Center', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
 
             $args = array(
                 'id'		=> 'margin',
@@ -828,131 +892,6 @@ function wcps_layout_elements_option_meta($parameters){
 
 
 
-
-add_action('wcps_layout_elements_option_position','wcps_layout_elements_option_position');
-
-
-function wcps_layout_elements_option_position($parameters){
-
-    $settings_tabs_field = new settings_tabs_field();
-
-    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
-    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
-    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
-
-    $color = isset($element_data['color']) ? $element_data['color'] : '';
-    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
-    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
-    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
-
-    $custom_css = isset($element_data['custom_css']) ? $element_data['custom_css'] : '';
-    $custom_css_hover = isset($element_data['custom_css_hover']) ? $element_data['custom_css_hover'] : '';
-
-    ?>
-    <div class="item">
-        <div class="element-title header ">
-            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
-            <span class="sort"><i class="fas fa-sort"></i></span>
-
-            <span class="expand"><?php echo __('Position','woocommerce-products-slider'); ?></span>
-        </div>
-        <div class="element-options options">
-
-            <?php
-            $args = array(
-                'id'		=> 'color',
-                'css_id'		=> $element_index.'_position_color',
-                'parent' => $input_name.'[position]',
-                'title'		=> __('Color','woocommerce-products-slider'),
-                'details'	=> __('Title text color.','woocommerce-products-slider'),
-                'type'		=> 'colorpicker',
-                'value'		=> $color,
-                'default'		=> '',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            $args = array(
-                'id'		=> 'font_size',
-                'css_id'		=> $element_index.'_font_size',
-                'parent' => $input_name.'[position]',
-                'title'		=> __('Font size','woocommerce-products-slider'),
-                'details'	=> __('Set font size.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $font_size,
-                'default'		=> '',
-                'placeholder'		=> '14px',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-            $args = array(
-                'id'		=> 'font_family',
-                'css_id'		=> $element_index.'_font_family',
-                'parent' => $input_name.'[position]',
-                'title'		=> __('Font family','woocommerce-products-slider'),
-                'details'	=> __('Set font family.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $font_family,
-                'default'		=> '',
-                'placeholder'		=> 'Open Sans',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            $args = array(
-                'id'		=> 'margin',
-                'css_id'		=> $element_index.'_margin',
-                'parent' => $input_name.'[position]',
-                'title'		=> __('Margin','woocommerce-products-slider'),
-                'details'	=> __('Set margin.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $margin,
-                'default'		=> '',
-                'placeholder'		=> '5px 0',
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            ob_start();
-            ?>
-            <code onclick="this.select()">
-                .element-<?php echo $element_index?>{}
-
-            </code>
-            <?php
-
-            $html = ob_get_clean();
-
-            $args = array(
-                'id'		=> 'use_css',
-                'title'		=> __('Use of CSS','woocommerce-products-slider'),
-                'details'	=> __('Use following class selector to add custom CSS for this element.','woocommerce-products-slider'),
-                'type'		=> 'custom_html',
-                'html'		=> $html,
-
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-            ?>
-
-        </div>
-    </div>
-    <?php
-
-}
-
-
-
-
-
-
-
-
-
-
 add_action('wcps_layout_elements_option_wrapper_start','wcps_layout_elements_option_wrapper_start');
 
 
@@ -1138,6 +1077,8 @@ function wcps_layout_elements_option_product_category($parameters){
     $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
     $wrapper_margin = isset($element_data['wrapper_margin']) ? $element_data['wrapper_margin'] : '';
     $link_color = isset($element_data['link_color']) ? $element_data['link_color'] : '';
+    $separator = isset($element_data['separator']) ? $element_data['separator'] : '';
+
 
     ?>
     <div class="item">
@@ -1160,6 +1101,21 @@ function wcps_layout_elements_option_product_category($parameters){
                 'value'		=> $max_count,
                 'default'		=> '',
                 'placeholder'		=> '3',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'separator',
+                'css_id'		=> $element_index.'_position_color',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Link separator','woocommerce-products-slider'),
+                'details'	=> __('Choose link separator.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $separator,
+                'default'		=> '',
+                'placeholder'		=> ', ',
+
             );
 
             $settings_tabs_field->generate_field($args);
@@ -1194,9 +1150,9 @@ function wcps_layout_elements_option_product_category($parameters){
 
             $args = array(
                 'id'		=> 'link_color',
-                'css_id'		=> $element_index.'_position_color',
+                'css_id'		=> $element_index.'_link_color',
                 'parent' => $input_name.'[product_category]',
-                'title'		=> __('Link Color','woocommerce-products-slider'),
+                'title'		=> __('Link color','woocommerce-products-slider'),
                 'details'	=> __('Choose link color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $link_color,
@@ -1204,6 +1160,8 @@ function wcps_layout_elements_option_product_category($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+
 
 
             ?>
@@ -1230,6 +1188,9 @@ function wcps_layout_elements_option_product_tag($parameters){
     $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
     $wrapper_margin = isset($element_data['wrapper_margin']) ? $element_data['wrapper_margin'] : '';
     $link_color = isset($element_data['link_color']) ? $element_data['link_color'] : '';
+    $text_align = isset($element_data['text_align']) ? $element_data['text_align'] : '';
+    $separator = isset($element_data['separator']) ? $element_data['separator'] : '';
+
 
     ?>
     <div class="item">
@@ -1256,6 +1217,22 @@ function wcps_layout_elements_option_product_tag($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'separator',
+                'css_id'		=> $element_index.'_position_color',
+                'parent' => $input_name.'[product_tag]',
+                'title'		=> __('Link separator','woocommerce-products-slider'),
+                'details'	=> __('Choose link separator.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $separator,
+                'default'		=> '',
+                'placeholder'		=> ', ',
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
 
             $args = array(
                 'id'		=> 'wrapper_html',
@@ -1287,9 +1264,9 @@ function wcps_layout_elements_option_product_tag($parameters){
 
             $args = array(
                 'id'		=> 'link_color',
-                'css_id'		=> $element_index.'_position_color',
+                'css_id'		=> $element_index.'_link_color',
                 'parent' => $input_name.'[product_tag]',
-                'title'		=> __('Link Color','woocommerce-products-slider'),
+                'title'		=> __('Link color','woocommerce-products-slider'),
                 'details'	=> __('Choose link color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $link_color,
@@ -1297,6 +1274,22 @@ function wcps_layout_elements_option_product_tag($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'text_align',
+                'css_id'		=> $element_index.'_text_align',
+                'parent' => $input_name.'[product_tag]',
+                'title'		=> __('Text align','woocommerce-products-slider'),
+                'details'	=> __('Choose text align.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $text_align,
+                'default'		=> 'left',
+                'args'		=> array('left'=> __('Left', 'woocommerce-products-slider'),'right'=> __('Right', 'woocommerce-products-slider'),'center'=> __('Center', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
 
 
 
@@ -1481,6 +1474,7 @@ function wcps_layout_elements_option_add_to_cart($parameters){
 
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $show_quantity = isset($element_data['show_quantity']) ? $element_data['show_quantity'] : '';
 
     ?>
     <div class="item">
@@ -1498,7 +1492,7 @@ function wcps_layout_elements_option_add_to_cart($parameters){
                 'id'		=> 'background_color',
                 'css_id'		=> $element_index.'_background_color',
                 'parent' => $input_name.'[add_to_cart]',
-                'title'		=> __('Background Color','woocommerce-products-slider'),
+                'title'		=> __('Background color','woocommerce-products-slider'),
                 'details'	=> __('Choose background color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $background_color,
@@ -1512,7 +1506,7 @@ function wcps_layout_elements_option_add_to_cart($parameters){
                 'id'		=> 'color',
                 'css_id'		=> $element_index.'_color',
                 'parent' => $input_name.'[add_to_cart]',
-                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'title'		=> __('Text color','woocommerce-products-slider'),
                 'details'	=> __('Choose text color.','woocommerce-products-slider'),
                 'type'		=> 'colorpicker',
                 'value'		=> $color,
@@ -1520,6 +1514,21 @@ function wcps_layout_elements_option_add_to_cart($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'show_quantity',
+                'css_id'		=> $element_index.'_display_quantity',
+                'parent' => $input_name.'[add_to_cart]',
+                'title'		=> __('Display quantity','woocommerce-products-slider'),
+                'details'	=> __('Choose display quantity input field.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $show_quantity,
+                'default'		=> 'no',
+                'args'		=> array('no'=> __('No', 'woocommerce-products-slider'),'yes'=> __('Yes', 'woocommerce-products-slider'), ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
 
             ?>
 
@@ -1547,6 +1556,9 @@ function wcps_layout_elements_option_rating($parameters){
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
     $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
     $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
+    $color = isset($element_data['color']) ? $element_data['color'] : '';
+    $text_align = isset($element_data['text_align']) ? $element_data['text_align'] : '';
+
 
     ?>
     <div class="item">
@@ -1598,6 +1610,49 @@ function wcps_layout_elements_option_rating($parameters){
                 'value'		=> $margin,
                 'default'		=> '',
                 'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'color',
+                'css_id'		=> $element_index.'_color',
+                'parent' => $input_name.'[rating]',
+                'title'		=> __('Text Color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'text_align',
+                'css_id'		=> $element_index.'_text_align',
+                'parent' => $input_name.'[rating]',
+                'title'		=> __('Text align','woocommerce-products-slider'),
+                'details'	=> __('Choose text align.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $text_align,
+                'default'		=> 'left',
+                'args'		=> array('left'=> __('Left', 'woocommerce-products-slider'),'right'=> __('Right', 'woocommerce-products-slider'),'center'=> __('Center', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'font_size',
+                'css_id'		=> $element_index.'_font_size',
+                'parent' => $input_name.'[rating]',
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $font_size,
+                'default'		=> '',
+                'placeholder'		=> '14px',
             );
 
             $settings_tabs_field->generate_field($args);

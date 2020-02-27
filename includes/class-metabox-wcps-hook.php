@@ -111,8 +111,13 @@ if(!function_exists('wcps_metabox_content_style')) {
         $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
         $slider_ribbon = isset($wcps_options['ribbon']) ? $wcps_options['ribbon'] : array();
 
-        $ribbon_name = isset($slider_ribbon['ribbon_name']) ? $slider_ribbon['ribbon_name'] : '';
-        $ribbon_custom = isset($slider_ribbon['ribbon_custom']) ? $slider_ribbon['ribbon_custom'] : '';
+        $ribbon_text = isset($slider_ribbon['text']) ? $slider_ribbon['text'] : '';
+        $ribbon_background_img = isset($slider_ribbon['background_img']) ? $slider_ribbon['background_img'] : '';
+        $ribbon_background_color = isset($slider_ribbon['background_color']) ? $slider_ribbon['background_color'] : '';
+        $ribbon_text_color = isset($slider_ribbon['text_color']) ? $slider_ribbon['text_color'] : '';
+        $ribbon_width = isset($slider_ribbon['width']) ? $slider_ribbon['width'] : '';
+        $ribbon_height = isset($slider_ribbon['height']) ? $slider_ribbon['height'] : '';
+        $ribbon_position = isset($slider_ribbon['position']) ? $slider_ribbon['position'] : '';
 
         $item_style = isset($wcps_options['item_style']) ? $wcps_options['item_style'] : array();
 
@@ -141,51 +146,96 @@ if(!function_exists('wcps_metabox_content_style')) {
 
 
             <?php
-            $ribbons_arr = array();
-
-            if(!empty($ribbons))
-                foreach($ribbons as $ribbon_key => $ribbon_data){
-
-                    $ribbons_arr[$ribbon_key]['name'] = $ribbon_data['name'];
-                    $ribbons_arr[$ribbon_key]['thumb'] = $ribbon_data['src'];
-
-                }
-
-            $args = array(
-                'id'		=> 'ribbon_name',
-                'parent'		=> 'wcps_options[ribbon]',
-                'title'		=> __('Slider ribbon','woocommerce-products-slider'),
-                'details'	=> __('Choose slider ribbon.','woocommerce-products-slider'),
-                'type'		=> 'radio_image',
-                'value'		=> $ribbon_name,
-                'default'		=> 'none',
-                'width'		=> '100px',
-
-                'args'		=> $ribbons_arr,
-            );
-
-            $settings_tabs_field->generate_field($args);
-
-
-
 
 
             $args = array(
-                'id'		=> 'ribbon_custom',
-                'parent'		=> 'wcps_options[ribbon]',
-                'title'		=> __('Custom ribbon','woocommerce-products-slider'),
-                'details'	=> __('Choose custom ribbon, image source url.','woocommerce-products-slider'),
-                'type'		=> 'media_url',
-                'value'		=> $ribbon_custom,
-                'default'		=> '',
-                'placeholder'		=> 'Ribbon image url',
+                'id'		=> 'ribbon_options',
+                'title'		=> __('Ribbon style','woocommerce-products-slider'),
+                'details'	=> __('Customize ribbon style.','woocommerce-products-slider'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'text',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon text','woocommerce-products-slider'),
+                        'details'	=> __('Choose custom ribbon text, image source url.','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $ribbon_text,
+                        'default'		=> '',
+                        'placeholder'		=> 'Hot sale',
+                    ),
+                    array(
+                        'id'		=> 'background_img',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon background image','woocommerce-products-slider'),
+                        'details'	=> __('Choose background image source.','woocommerce-products-slider'),
+                        'type'		=> 'media_url',
+                        'value'		=> $ribbon_background_img,
+                        'default'		=> '',
+                        'placeholder'		=> '',
+                    ),
+                    array(
+                        'id'		=> 'background_color',
+                        'css_id'		=> 'ribbon_background_color',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon background color','woocommerce-products-slider'),
+                        'details'	=> __('Choose ribbon background color.','woocommerce-products-slider'),
+                        'type'		=> 'colorpicker',
+                        'value'		=> $ribbon_background_color,
+                        'default'		=> '',
+                        'placeholder'		=> '',
+                    ),
+                    array(
+                        'id'		=> 'text_color',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon text color','woocommerce-products-slider'),
+                        'details'	=> __('Choose ribbon text color.','woocommerce-products-slider'),
+                        'type'		=> 'colorpicker',
+                        'value'		=> $ribbon_text_color,
+                        'default'		=> '',
+                        'placeholder'		=> '',
+                    ),
+                    array(
+                        'id'		=> 'width',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon width','woocommerce-products-slider'),
+                        'details'	=> __('Set ribbon width.','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $ribbon_width,
+                        'default'		=> '90px',
+                        'placeholder'		=> '',
+                    ),
+                    array(
+                        'id'		=> 'height',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon height','woocommerce-products-slider'),
+                        'details'	=> __('Set ribbon height.','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $ribbon_height,
+                        'default'		=> '24px',
+                        'placeholder'		=> '',
+                    ),
+                    array(
+                        'id'		=> 'position',
+                        'parent'		=> 'wcps_options[ribbon]',
+                        'title'		=> __('Ribbon position','woocommerce-products-slider'),
+                        'details'	=> __('Set ribbon position.','woocommerce-products-slider'),
+                        'type'		=> 'select',
+                        'value'		=> $ribbon_position,
+                        'default'		=> 'DESC',
+                        'args'		=> array(
+                            'topright'=>__('Top-right','woocommerce-products-slider'),
+                            'topleft'=>__('Top-left','woocommerce-products-slider'),
+                            'bottomright'=>__('Bottom-right','woocommerce-products-slider'),
+                            'bottomleft'=>__('Bottom-left','woocommerce-products-slider'),
+                            'none'=>__('None','woocommerce-products-slider'),
+                        ),
+                    ),
+                ),
+
             );
 
             $settings_tabs_field->generate_field($args);
-
-
-
-
 
 
 
@@ -452,7 +502,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
 
         $max_product_count = isset($query['max_product_count']) ? $query['max_product_count'] : 10;
         $query_order = isset($query['order']) ? $query['order'] : 'DESC';
-        $query_orderby = isset($query['orderby']) ? $query['orderby'] : 'date';
+        $query_orderby = isset($query['orderby']) ? $query['orderby'] : array('date');
         $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
         $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
         $categories = isset($query['taxonomy_terms']) ? $query['taxonomy_terms'] : array();
@@ -616,9 +666,6 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'args'		=> array(
                     'DESC'=>__('Descending','woocommerce-products-slider'),
                     'ASC'=>__('Ascending','woocommerce-products-slider'),
-
-
-
                 ),
             );
 
@@ -647,7 +694,6 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                     'title'=>__('title','woocommerce-products-slider'),
                     'type'=>__('type','woocommerce-products-slider'),
                     'menu_order'=>__('menu order','woocommerce-products-slider'),
-
                 ),
             );
 

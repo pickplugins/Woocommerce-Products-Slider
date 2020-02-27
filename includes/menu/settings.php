@@ -49,18 +49,18 @@ wp_enqueue_style('settings-tabs');
 wp_enqueue_script('settings-tabs');
 
 
-$team_settings = get_option('team_settings');
+$wcps_settings = get_option('wcps_settings');
 
 ?>
 <div class="wrap">
 	<div id="icon-tools" class="icon32"><br></div><h2><?php echo sprintf(__('%s Settings', 'woocommerce-products-slider'), wcps_plugin_name)?></h2>
 		<form  method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
-	        <input type="hidden" name="team_hidden" value="Y">
+	        <input type="hidden" name="wcps_hidden" value="Y">
             <input type="hidden" name="tab" value="<?php echo $current_tab; ?>">
             <?php
-            if(!empty($_POST['team_hidden'])){
+            if(!empty($_POST['wcps_hidden'])){
                 $nonce = sanitize_text_field($_POST['_wpnonce']);
-                if(wp_verify_nonce( $nonce, 'team_nonce' ) && $_POST['team_hidden'] == 'Y') {
+                if(wp_verify_nonce( $nonce, 'wcps_nonce' ) && $_POST['wcps_hidden'] == 'Y') {
                     do_action('wcps_settings_save');
                     ?>
                     <div class="updated notice  is-dismissible"><p><strong><?php _e('Changes Saved.', 'woocommerce-products-slider' ); ?></strong></p></div>
@@ -127,7 +127,7 @@ $team_settings = get_option('team_settings');
                 ?>
                 <div class="clear clearfix"></div>
                 <p class="submit">
-                    <?php wp_nonce_field( 'team_nonce' ); ?>
+                    <?php wp_nonce_field( 'wcps_nonce' ); ?>
                     <input class="button button-primary" type="submit" name="Submit" value="<?php _e('Save Changes','woocommerce-products-slider' ); ?>" />
                 </p>
             </div>

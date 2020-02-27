@@ -15,12 +15,12 @@ class wcps_class_settings{
 	public function admin_menu() {
 
         $wcps_plugin_info = get_option('wcps_plugin_info');
-        $team_upgrade = isset($wcps_plugin_info['team_upgrade']) ? $wcps_plugin_info['team_upgrade'] : '';
+        $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wcps_upgrade'] : '';
 
         add_submenu_page( 'edit.php?post_type=wcps', __( 'Settings', 'woocommerce-products-slider' ), __( 'Settings', 'woocommerce-products-slider' ), 'manage_options', 'settings', array( $this, 'settings' ) );
 
 
-        if($team_upgrade != 'done'){
+        if($wcps_upgrade != 'done'){
             add_submenu_page( 'edit.php?post_type=wcps', __( 'Upgrade status', 'woocommerce-products-slider' ), __( 'Upgrade status', 'woocommerce-products-slider' ), 'manage_options', 'upgrade_status', array( $this, 'upgrade_status' ) );
 
         }

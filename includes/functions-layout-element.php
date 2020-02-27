@@ -16,7 +16,7 @@ function wcps_layout_element_post_title($args){
     $post_title = apply_filters('wcps_layout_element_title_text', $post_title, $args);
 
 
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-title element-'.$element_index : 'wcps-items-title';
     $element_class = apply_filters('wcps_layout_element_title_class', $element_class, $args);
 
     ?>
@@ -31,7 +31,7 @@ add_action('wcps_layout_element_thumbnail', 'wcps_layout_element_thumbnail');
 function wcps_layout_element_thumbnail($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-thumb element-'.$element_index : 'wcps-items-thumb';
     $element_class = apply_filters('wcps_layout_element_thumbnail_class', $element_class, $args);
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -107,7 +107,7 @@ add_action('wcps_layout_element_content', 'wcps_layout_element_content');
 function wcps_layout_element_content($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-excerpt element-'.$element_index : 'wcps-items-excerpt';
     $element_class = apply_filters('wcps_layout_element_content_class', $element_class, $args);
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -150,7 +150,7 @@ add_action('wcps_layout_element_product_category', 'wcps_layout_element_product_
 function wcps_layout_element_product_category($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-category element-'.$element_index : 'wcps-items-category';
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
@@ -210,7 +210,7 @@ add_action('wcps_layout_element_product_tag', 'wcps_layout_element_product_tag')
 function wcps_layout_element_product_tag($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-tags element-'.$element_index : 'wcps-items-tags';
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
@@ -269,7 +269,7 @@ add_action('wcps_layout_element_sale_count', 'wcps_layout_element_sale_count');
 function wcps_layout_element_sale_count($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-sale-count element-'.$element_index : 'wcps-items-sale-count';
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
@@ -295,7 +295,7 @@ add_action('wcps_layout_element_add_to_cart', 'wcps_layout_element_add_to_cart')
 function wcps_layout_element_add_to_cart($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-cart element-'.$element_index : 'wcps-items-cart';
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
@@ -318,7 +318,7 @@ add_action('wcps_layout_element_product_price', 'wcps_layout_element_product_pri
 function wcps_layout_element_product_price($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-price element-'.$element_index : 'wcps-items-price';
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
@@ -490,7 +490,7 @@ add_action('wcps_layout_element_rating', 'wcps_layout_element_rating');
 function wcps_layout_element_rating($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+    $element_class = !empty($element_index) ? 'wcps-items-rating element-'.$element_index : 'wcps-items-rating';
 
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';

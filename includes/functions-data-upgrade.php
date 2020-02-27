@@ -56,7 +56,7 @@ function wcps_cron_upgrade_wcps(){
     $args = array(
         'post_type'=>'wcps',
         'post_status'=>'publish',
-        'posts_per_page'=> 1,
+        'posts_per_page'=> 10,
         'meta_query'=> $meta_query,
 
     );
@@ -220,10 +220,20 @@ function wcps_cron_upgrade_wcps(){
 
             // Ribbon options
             $wcps_ribbon_name = get_post_meta( $wcps_id, 'wcps_ribbon_name', true );
-            $wcps_options['ribbon']['ribbon_name'] = $wcps_ribbon_name;
-
             $wcps_ribbon_custom = get_post_meta( $wcps_id, 'wcps_ribbon_custom', true );
-            $wcps_options['ribbon']['ribbon_custom'] = $wcps_ribbon_custom;
+
+            $wcps_options['ribbon']['text'] = '';
+            $wcps_options['ribbon']['background_color'] = '';
+
+            $ribbon_url = ($wcps_ribbon_name == 'custom') ? $wcps_ribbon_custom : wcps_plugin_url.'assets/front/images/ribbons/'.$wcps_ribbon_name.'.png';
+            $wcps_options['ribbon']['background_img'] = $ribbon_url;
+            $wcps_options['ribbon']['text_color'] = '#ffffff';
+            $wcps_options['ribbon']['width'] = '90px';
+            $wcps_options['ribbon']['height'] = '24px';
+
+
+            $ribbon_position = ($wcps_ribbon_name == 'none') ? 'none' : 'topleft';
+            $wcps_options['ribbon']['position'] = $ribbon_position;
 
 
 
@@ -233,7 +243,7 @@ function wcps_cron_upgrade_wcps(){
 
             $wcps_items_bg_color = get_post_meta( $wcps_id, 'wcps_items_bg_color', true );
             $wcps_options['item_style']['background_color'] = $wcps_items_bg_color;
-            $wcps_options['item_style']['margin'] = '';
+            $wcps_options['item_style']['margin'] = '0 10px';
 
 
 
@@ -265,8 +275,8 @@ function wcps_cron_upgrade_wcps(){
 
             $wcps_grid_items_hide = get_post_meta( $wcps_id, 'wcps_grid_items_hide', true );
 
-            echo '<pre>'.var_export($wcps_grid_items_hide, true).'</pre>';
-            echo '<pre>'.var_export($wcps_grid_items, true).'</pre>';
+            //echo '<pre>'.var_export($wcps_grid_items_hide, true).'</pre>';
+            //echo '<pre>'.var_export($wcps_grid_items, true).'</pre>';
 
 
             $layout_elements_data = array();
@@ -337,7 +347,27 @@ function wcps_cron_upgrade_wcps(){
                     $layout_elements_data[$item_count]['product_category']['wrapper_html'] = '';
                     $layout_elements_data[$item_count]['product_category']['link_color'] = $wcps_items_cat_font_color;
 
-                }elseif($itemIndex == 'price'){
+
+                }elseif($itemIndex == 'tag'){
+                    $wcps_items_tag_font_size = get_post_meta( $wcps_id, 'wcps_items_tag_font_size', true );
+                    $wcps_items_tag_font_color = get_post_meta( $wcps_id, 'wcps_items_tag_font_color', true );
+                    $wcps_items_tag_text_align = get_post_meta( $wcps_id, 'wcps_items_tag_text_align', true );
+                    $wcps_items_cat_separator = get_post_meta( $wcps_id, 'wcps_items_cat_separator', true );
+
+                    $layout_elements_data[$item_count]['product_tag']['font_size'] = $wcps_items_tag_font_size;
+                    $layout_elements_data[$item_count]['product_tag']['font_family'] = '';
+
+                    $layout_elements_data[$item_count]['product_tag']['text_align'] = $wcps_items_tag_text_align;
+                    $layout_elements_data[$item_count]['product_tag']['wrapper_margin'] = '5px 0';
+                    $layout_elements_data[$item_count]['product_tag']['separator'] = $wcps_items_cat_separator;
+                    $layout_elements_data[$item_count]['product_tag']['max_count'] = 3;
+                    $layout_elements_data[$item_count]['product_tag']['wrapper_html'] = '';
+                    $layout_elements_data[$item_count]['product_tag']['link_color'] = $wcps_items_tag_font_color;
+
+
+                }
+
+                elseif($itemIndex == 'price'){
                     $wcps_total_items_price_format = get_post_meta( $wcps_id, 'wcps_total_items_price_format', true );
                     $wcps_items_price_color = get_post_meta( $wcps_id, 'wcps_items_price_color', true );
                     $wcps_items_price_font_size = get_post_meta( $wcps_id, 'wcps_items_price_font_size', true );
@@ -407,13 +437,13 @@ function wcps_cron_upgrade_wcps(){
 
                     $layout_elements_data[$item_count]['content']['content_source'] = 'excerpt';
                     $layout_elements_data[$item_count]['content']['word_count'] = $wcps_items_excerpt_count;
-
                     $layout_elements_data[$item_count]['content']['read_more_text'] = $wcps_items_excerpt_read_more;
                     $layout_elements_data[$item_count]['content']['read_more_color'] = $wcps_items_excerpt_font_color;
                     $layout_elements_data[$item_count]['content']['color'] = $wcps_items_excerpt_font_color;
-
                     $layout_elements_data[$item_count]['content']['font_size'] = $wcps_items_excerpt_font_size;
-                    $layout_elements_data[$item_count]['content']['font_family'] = $wcps_items_excerpt_text_align;
+                    $layout_elements_data[$item_count]['content']['text_align'] = $wcps_items_excerpt_text_align;
+                    $layout_elements_data[$item_count]['content']['font_family'] = '';
+
                     $layout_elements_data[$item_count]['content']['margin'] = '5px 0';
 
                 }
@@ -442,7 +472,7 @@ function wcps_cron_upgrade_wcps(){
             $layout_data_css = isset($layout_data['css']) ? $layout_data['css'] : '';
             $layout_preview_img = isset($layout_data['preview_img']) ? $layout_data['preview_img'] : '';
 
-            echo '<pre>'.var_export($layout_elements_data, true).'</pre>';
+            //echo '<pre>'.var_export($layout_elements_data, true).'</pre>';
 
             $layout_scripts['custom_css'] = $layout_data_css;
             $layout_options['layout_preview_img'] = $layout_preview_img;
