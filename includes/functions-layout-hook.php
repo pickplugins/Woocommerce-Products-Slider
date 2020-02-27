@@ -175,7 +175,7 @@ function wcps_layout_elements_option_thumbnail($parameters){
             <?php
 
             $thumbnail_sizes = array();
-
+            $thumbnail_sizes['full'] = __('Full', '');
             $get_intermediate_image_sizes =  get_intermediate_image_sizes();
 
             if(!empty($get_intermediate_image_sizes))

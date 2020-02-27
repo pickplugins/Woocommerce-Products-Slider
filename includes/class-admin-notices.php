@@ -20,7 +20,7 @@ class class_wcps_notices{
         $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
 
 
-        var_dump($wcps_plugin_info);
+        //var_dump($wcps_plugin_info);
 
         if ( wp_verify_nonce( $nonce, 'wcps_upgrade' )  ){
 

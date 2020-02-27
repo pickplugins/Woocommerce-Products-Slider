@@ -55,7 +55,7 @@ function wcps_cron_upgrade_wcps(){
 
     $args = array(
         'post_type'=>'wcps',
-        'post_status'=>'any',
+        'post_status'=>'publish',
         'posts_per_page'=> 1,
         'meta_query'=> $meta_query,
 
@@ -265,7 +265,8 @@ function wcps_cron_upgrade_wcps(){
 
             $wcps_grid_items_hide = get_post_meta( $wcps_id, 'wcps_grid_items_hide', true );
 
-
+            echo '<pre>'.var_export($wcps_grid_items_hide, true).'</pre>';
+            echo '<pre>'.var_export($wcps_grid_items, true).'</pre>';
 
 
             $layout_elements_data = array();
@@ -305,6 +306,7 @@ function wcps_cron_upgrade_wcps(){
             if(!empty($wcps_grid_items))
             foreach ($wcps_grid_items as $itemIndex => $item){
 
+                if(array_key_exists($itemIndex, $wcps_grid_items_hide)) continue;
 
                 if($itemIndex == 'thumbnail'){
 
@@ -440,7 +442,7 @@ function wcps_cron_upgrade_wcps(){
             $layout_data_css = isset($layout_data['css']) ? $layout_data['css'] : '';
             $layout_preview_img = isset($layout_data['preview_img']) ? $layout_data['preview_img'] : '';
 
-            //echo '<pre>'.var_export($layout_data_css, true).'</pre>';
+            echo '<pre>'.var_export($layout_elements_data, true).'</pre>';
 
             $layout_scripts['custom_css'] = $layout_data_css;
             $layout_options['layout_preview_img'] = $layout_preview_img;

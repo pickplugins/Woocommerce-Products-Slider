@@ -76,7 +76,7 @@ function wcps_layout_data($layout){
 
 
     ob_start();
-    ?>.__ID__{}.__ID__ .layer-media {background: rgb(255, 255, 255) none repeat scroll 0 0;border-radius: 50%;overflow: hidden;.__ID__ .layer-media .thumb {height:240px;}.__ID__ .layer-content{}<?php
+    ?>.__ID__{}.__ID__ .layer-media {background: rgb(255, 255, 255) none repeat scroll 0 0;border-radius: 50%;overflow: hidden;}.__ID__ .layer-media .thumb {height:240px;}.__ID__ .layer-content{}<?php
 
     $layout_data['thumbrounded']['css'] = ob_get_clean();
     $layout_data['thumbrounded']['preview_img'] = 'https://i.imgur.com/QLfbYkC.png';

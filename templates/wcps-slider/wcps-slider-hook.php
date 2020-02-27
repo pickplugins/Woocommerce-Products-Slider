@@ -170,14 +170,14 @@ function wcps_slider_main_scripts( $args){
     $slider_pagination_speed = isset($slider_option['pagination_speed']) ? $slider_option['pagination_speed'] : 1200;
 
     $slider_auto_play = isset($slider_option['auto_play']) ? $slider_option['auto_play'] : 'true';
-    $auto_play_speed = isset($slider_option['auto_play_speed']) ? $slider_option['auto_play_speed'] : 1000;
-    $auto_play_timeout = isset($slider_option['auto_play_timeout']) ? $slider_option['auto_play_timeout'] : 1200;
+    $auto_play_speed = !empty($slider_option['auto_play_speed']) ? $slider_option['auto_play_speed'] : 1000;
+    $auto_play_timeout = !empty($slider_option['auto_play_timeout']) ? $slider_option['auto_play_timeout'] : 1200;
 
     $auto_play_timeout = ($auto_play_speed > $auto_play_timeout) ? $auto_play_speed + 1000 : $auto_play_timeout;
 
-    $slider_rewind = isset($slider_option['rewind']) ? $slider_option['rewind'] : 'true';
-    $slider_loop = isset($slider_option['loop']) ? $slider_option['loop'] : 'true';
-    $slider_center = isset($slider_option['center']) ? $slider_option['center'] : 'true';
+    $slider_rewind = !empty($slider_option['rewind']) ? $slider_option['rewind'] : 'true';
+    $slider_loop = !empty($slider_option['loop']) ? $slider_option['loop'] : 'true';
+    $slider_center = !empty($slider_option['center']) ? $slider_option['center'] : 'true';
     $slider_stop_on_hover = isset($slider_option['stop_on_hover']) ? $slider_option['stop_on_hover'] : 'true';
     $slider_navigation = isset($slider_option['navigation']) ? $slider_option['navigation'] : 'true';
     $navigation_position = isset($slider_option['navigation_position']) ? $slider_option['navigation_position'] : '';
@@ -190,7 +190,7 @@ function wcps_slider_main_scripts( $args){
 
     $slider_pagination = isset($slider_option['pagination']) ? $slider_option['pagination'] : 'true';
     $slider_pagination_count = isset($slider_option['pagination_count']) ? $slider_option['pagination_count'] : 'false';
-    $slider_rtl = isset($slider_option['rtl']) ? $slider_option['rtl'] : 'false';
+    $slider_rtl = !empty($slider_option['rtl']) ? $slider_option['rtl'] : 'false';
     $slider_lazy_load = isset($slider_option['lazy_load']) ? $slider_option['lazy_load'] : 'true';
     $slider_mouse_drag = isset($slider_option['mouse_drag']) ? $slider_option['mouse_drag'] : 'true';
     $slider_touch_drag = isset($slider_option['touch_drag']) ? $slider_option['touch_drag'] : 'true';
