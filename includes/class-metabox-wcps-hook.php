@@ -219,7 +219,7 @@ if(!function_exists('wcps_metabox_content_style')) {
                         'details'	=> __('Set ribbon position.','woocommerce-products-slider'),
                         'type'		=> 'select',
                         'value'		=> $ribbon_position,
-                        'default'		=> 'DESC',
+                        'default'		=> 'none',
                         'args'		=> array(
                             'topright'=>__('Top-right','woocommerce-products-slider'),
                             'topleft'=>__('Top-left','woocommerce-products-slider'),
@@ -250,7 +250,7 @@ if(!function_exists('wcps_metabox_content_style')) {
                         'type'		=> 'text',
                         'value'		=> $item_padding,
                         'default'		=> '',
-                        'placeholder'   => '',
+                        'placeholder'   => '10px',
                     ),
                     array(
                         'id'		=> 'margin',
@@ -260,7 +260,7 @@ if(!function_exists('wcps_metabox_content_style')) {
                         'type'		=> 'text',
                         'value'		=> $item_margin,
                         'default'		=> '',
-                        'placeholder'   => '',
+                        'placeholder'   => '10px',
                     ),
                     array(
                         'id'		=> 'background_color',

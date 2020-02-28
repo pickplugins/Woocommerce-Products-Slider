@@ -75,6 +75,16 @@ This is exclusive feature if you want to display product slider by product ids, 
 **Query order & orderby**
 You can choose product query order ascending or descending and various oderby options like title, date, author, comment count, menu order and randomly.
 
+**Custom ribbons**
+You can display custom ribbons for each slider, ribbons are very useful to understand slider product objective, you can also customize ribbons background color, text color, height, width and background image. you can also choose 4 pre-define positon to display ribbon at top-right, top-left, bottom-let, bottom-right.
+
+**Slider item style**
+You can customize slider item or product wrapper style by custom padding, margins, background color and text-align.
+
+**Slider container style**
+You can customize slider container or wrapper style by custom padding, margins, background color and background image.
+
+
 
 == Installation ==
 

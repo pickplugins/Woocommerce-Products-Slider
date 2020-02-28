@@ -371,7 +371,9 @@ function wcps_slider_main_scripts( $args){
             .wcps-container-<?php echo $wcps_id; ?> .item {
                 padding: <?php echo $item_padding; ?>;
                 margin: <?php echo $item_margin; ?>;
-                background: <?php echo $item_background_color; ?> ;
+                background: <?php echo $item_background_color; ?>;
+                text-align: <?php echo $item_text_align; ?>;
+
             }
 
             #wcps-<?php echo $wcps_id; ?> .wcps-items{
