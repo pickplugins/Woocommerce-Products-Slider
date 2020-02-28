@@ -54,6 +54,28 @@ You can enable lazy load to delay load product thumbnails which product is not i
 **Touch & Mouse drag**
 This is responsive product slider so your customer can slide product by mouse drag or touch dragging based on their devices.
 
+**Query products limit**
+You can set custom number of query products, like you want to display only 10 item from latest product release. it will save and minimize database query to load faster product slider.
+
+**Product categories & terms**
+You can choose any product categories or product tag to query product. you can also choose multiple product categories to query product to display on slider. we added terms relations for query product so you can choose conditional product query based on product categories or tags.
+
+**Hide out of stock**
+You can choose option to hide product these are out of stock, so that your custom will not see the products are not currently available in stock. this is user friendly product slider will minimize user frustration.
+
+**Featured product**
+You can choose to display or hide featured product on the slider.
+
+**On-sale products**
+You can display or hide on-sale product on the slider, this is really amazing feature for which customer are looking for on-sale products on your site, this will definitely help you to attract customer and increase product sale.
+
+**Product by ids**
+This is exclusive feature if you want to display product slider by product ids, if you have some exclusive product for customer you can display these easily.
+
+**Query order & orderby**
+You can choose product query order ascending or descending and various oderby options like title, date, author, comment count, menu order and randomly.
+
+
 == Installation ==
 
 1. Install as regular WordPress plugin.<br />
