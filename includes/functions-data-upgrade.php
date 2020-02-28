@@ -56,7 +56,7 @@ function wcps_cron_upgrade_wcps(){
     $args = array(
         'post_type'=>'wcps',
         'post_status'=>'publish',
-        'posts_per_page'=> 10,
+        'posts_per_page'=> 1,
         'meta_query'=> $meta_query,
 
     );
@@ -73,7 +73,7 @@ function wcps_cron_upgrade_wcps(){
             $wcps_title = get_the_title();
             $wcps_options = array();
 
-            echo $wcps_title.'<br/>';
+            //echo $wcps_title.'<br/>';
 
 
             // Product Query options
