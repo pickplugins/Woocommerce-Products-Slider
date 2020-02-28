@@ -19,7 +19,7 @@ class class_wcps_notices{
         $actionurl = wp_nonce_url( $actionurl,  'wcps_upgrade' );
 
         $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
-        var_dump($wcps_plugin_info);
+        //var_dump($wcps_plugin_info);
 
         //var_dump($wcps_plugin_info);
 
