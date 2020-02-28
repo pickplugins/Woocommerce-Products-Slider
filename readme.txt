@@ -1,10 +1,10 @@
 ﻿===  PickPlugins Product Slider for WooCommerce ===
 	Contributors: PickPlugins
 	Donate link: https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=wordpress.org
-	Tags: carousel, product, slider, woocommerce, carousel slider, product slider, woocommerce slider, Woocommerce Product slider
+	Tags: product slider, woocommerce slider, woo slider, woo product carousel slider,  woocommerce product slider
 	Requires at least: 3.8
 	Tested up to: 5.3
-	Stable tag: 1.12.24
+	Stable tag: 1.13.0
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,8 +12,7 @@
 
 == Description ==
 
-
-A premium quality carousel slider to slide your woo-commerce product. easy to use via shortcode anywhere 
+PickPlugins Product Slider is easy and user friendly carousel slider for WooCommerce products, You can create unlimited product slider by this plugin and display anywhere via shortcodes. We added layout builder for your product slider to build as you want, easy to customize and add your own CSS via layout editor you can build some fancy and unique layout. No coding is required to build custom layout and add elements to layout. we added tons of option to handle slider functionality to control slide speed, display or hide navigations and dots.
 
 
 ### PickPlugins Product Slider for WooCommerce by http://pickplugins.com
@@ -23,57 +22,50 @@ A premium quality carousel slider to slide your woo-commerce product. easy to us
 * [Support !&raquo;](https://www.pickplugins.com/support/?ref=wordpress.org)
 * [Documentation !&raquo;](https://www.pickplugins.com/documentation/woocommerce-products-slider/?ref=wordpress.org)
 
+###Plugin Features
 
+**Slider column number**
+You can set custom number of slider column number for different devices like desktop, tablet and mobile.
 
-<strong>Plugin Features</strong>
+**Slider autoplay**
+You can choose slider autoplay on page load completed, so that slider will automatically slide your product to display your customers. you can also set custom values for autoplay speed and timeout.
 
-* Fully responsive and mobile ready.
-* Unlimited slider anywhere.
-* Custom number of slider items to query.
-* Custom number of  Slider Column Number for Destop & Tablet & Small Desktop & Mobile.
-* 3 Slider nav positions.
-* Slider Auto Play.
-* Slider Stop on Hover.
-* Slider Touch Drag, Mouse Drag.
-* Custom speed for slider navigation & Pagination.
-* Custom pagination Background Color & Text Color.
-* 3 Ready Themes.
-* 20 Ready Ribbons & Custom Ribbons.
-* Slider Container custom Padding, Background color, Background image.
-* Slider Items custom Background color, Padding.
-* Default Empty Thumbnail & Custom Empty Thumbnail.
-* Hide out of stock product.
-* Filter Slider product by Recent Published, Featured Product, Only Year, Month,
-* Custom color, Font Size, Text Align for slider items Title.
-* Custom word count Excerpt, Custom View product(read more) text, Custom Font Size , Font color & Text Align.
-* Items Category display, Font Size, Font color, Text Align.
-* Display Price 3 format on slider, Full price, sale price, regular price.
-* Custom ratings Font Size, Ratings Color.
-* Add to cart button default & Custom style, custom Background Color, Text Color.
-* Custom Sale marker icon.
-* Custom Featured marker icon.
+**Slider rewind & loop**
+You can set the slider to re-wind when slide item reached to end of the slider and it will automatically start slider from first product. you can also set loop so that slider will never stop and continuously slide to loop through each product.
 
-<strong>Premium Features</strong>
+**Slider stop on hover**
+When your customer want to see a product on the slider it will automatically stop sliding so that your customer can drag by mouse or touch on mobile device to check their desired products.
 
-* 29 Ready Themes.
-* On Sale Product, Best Selling Product, Top Rated Product, Recently viewed, Product Taxonomy & Categories, by Product ID, by SKU
+**Slider center**
+You can choose slider item to display one product on center so both side will display 2 product on half size.
 
-<br />
-<strong>Video Tutorial Here.</strong>
-https://www.youtube.com/watch?v=B0sOSp3h9fE
+**Slider navigations**
+You can display slider navigations so that user can click these to check or slide product one by one, you can also set position for navigation like top-right, top-left, bottom-left, bottom-right, middle, middle fixed. you can also choose some pre-defined style for navigations, set custom value for navigation sliding speed. also custom background color and text color also available to customize as you need.
+
+**Slider navigations**
+You can display slider pagination or dots at bottom so that user can click these to check or slide product by each screen, you can set custom value for dots sliding speed. also custom background color and hover or active color also available to customize as you need.
+
+**Slider RTL**
+If you website is running with RTL languages you are feel free to use, this slider plugin has great support for RTL languages.
+
+**Slider lazy load**
+You can enable lazy load to delay load product thumbnails which product is not in current view, it will increase your page speed and great support for SEO friendly product slider for your WooCommerce.
+
+**Touch & Mouse drag**
+This is responsive product slider so your customer can slide product by mouse drag or touch dragging based on their devices.
 
 == Installation ==
 
 1. Install as regular WordPress plugin.<br />
-2. Go your plugin setting via WordPress Dashboard and find "<strong>Woocommerce Products Slider</strong>" activate it.<br />
+2. Go your plugin setting via WordPress Dashboard and find "<strong>PickPlugins Products Slider</strong>" activate it.<br />
 
-After activate plugin you will see "WCPS" menu at left side on WordPress dashboard click "New WCPS" and use the options field "Woocommerce Products Slider"<br />
+After activate plugin you will see "WCPS" menu at left side on WordPress dashboard click "New WCPS" and use the options field "PickPlugins Products Slider"<br />
 
 <br />
 <strong>How to use on page or post</strong><br />
 When slider options setup done please publish WCPS as like post or page<br />
 
-and then copy shortcode from top of <strong>Woo-commerce Products Slider Options</strong> `[wcps  id="1234" ]`<br />
+and then copy shortcode from top of <strong>PickPlugins Products Slider Options</strong> `[wcps id="1234" ]`<br />
 
 then paste this shortcode anywhere in your page to display slider<br />
 

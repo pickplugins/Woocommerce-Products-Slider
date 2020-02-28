@@ -132,10 +132,7 @@ if(!function_exists('wcps_metabox_content_style')) {
         $container_background_color = isset($container['background_color']) ? $container['background_color'] : '';
         $container_padding = isset($container['padding']) ? $container['padding'] : '';
 
-        $class_wcps_functions = new class_wcps_functions();
 
-        $skins = $class_wcps_functions->skins();
-        $ribbons = $class_wcps_functions->ribbons();
 
 
 
@@ -373,7 +370,7 @@ function wcps_metabox_content_layouts($post_id){
 
     $settings_tabs_field = new settings_tabs_field();
     $wcps_options = get_post_meta($post_id,'wcps_options', true);
-    $item_layout_id = !empty($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_get_first_product_id();
+    $item_layout_id = !empty($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
 
 
 
@@ -625,7 +622,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $args = array(
                 'id' => 'wcps_categories',
                 'title' => __('Product categories & terms', 'woocommerce-products-slider'),
-                'details' => '',
+                'details' => __('Choose product categories & terms. click to expand and see there is categories or terms you can select.', 'woocommerce-products-slider'),
                 'type' => 'custom_html',
                 'html' => $html,
             );
@@ -1338,7 +1335,7 @@ if(!function_exists('wcps_metabox_content_help_support')) {
             ob_start();
             ?>
 
-            <p class="">We wish your 2 minutes to write your feedback about the woocommerce products slider plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
+            <p class="">We wish your 2 minutes to write your feedback about the <b>PickPlugins Product Slider</b> plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
 
             <a target="_blank" href="https://wordpress.org/plugins/woocommerce products slider/#reviews" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
 
