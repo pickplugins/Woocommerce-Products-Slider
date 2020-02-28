@@ -75,7 +75,7 @@ class class_wcps_metabox{
 
         $wcps_settings_tabs[] = array(
             'id' => 'layouts',
-            'title' => sprintf(__('%s Layouts','woocommerce-products-slider'),'<i class="fas fa-palette"></i>'),
+            'title' => sprintf(__('%s Layouts','woocommerce-products-slider'),'<i class="fas fa-qrcode"></i>'),
             'priority' => 5,
             'active' => ($current_tab == 'layouts') ? true : false,
         );
@@ -90,14 +90,14 @@ class class_wcps_metabox{
 
         $wcps_settings_tabs[] = array(
             'id' => 'help_support',
-            'title' => sprintf(__('%s Help support','woocommerce-products-slider'),'<i class="far fa-file-code"></i>'),
+            'title' => sprintf(__('%s Help support','woocommerce-products-slider'),'<i class="fas fa-hands-helping"></i>'),
             'priority' => 80,
             'active' => ($current_tab == 'help_support') ? true : false,
         );
 
         $wcps_settings_tabs[] = array(
             'id' => 'buy_pro',
-            'title' => sprintf(__('%s Buy pro','woocommerce-products-slider'),'<i class="far fa-file-code"></i>'),
+            'title' => sprintf(__('%s Buy pro','woocommerce-products-slider'),'<i class="fas fa-store"></i>'),
             'priority' => 90,
             'active' => ($current_tab == 'buy_pro') ? true : false,
         );

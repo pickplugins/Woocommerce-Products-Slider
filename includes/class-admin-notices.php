@@ -6,6 +6,7 @@ class class_wcps_notices{
     public function __construct(){
 
         add_action('admin_notices', array( $this, 'data_upgrade' ));
+        add_action('admin_notices', array( $this, 'woocommerce_plugin_missing' ));
 
     }
 
@@ -50,6 +51,31 @@ class class_wcps_notices{
         }
 
     }
+
+
+
+    public function woocommerce_plugin_missing(){
+
+        $active_plugins = get_option('active_plugins');
+
+        ob_start();
+
+        if(!in_array( 'woocommerce/woocommerce.php', (array) $active_plugins )):
+            ?>
+            <div class="update-nag">
+                <?php
+                echo sprintf(__('<a href="%s">WooCommerce</a> plugin is required to run <b>PickPlugins Product Slider</b>', 'team-pro'), 'https://wordpress.org/plugins/woocommerce/')
+                ?>
+            </div>
+        <?php
+        endif;
+
+
+        echo ob_get_clean();
+    }
+
+
+
 
 }
 

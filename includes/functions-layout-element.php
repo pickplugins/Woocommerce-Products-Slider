@@ -747,7 +747,7 @@ function wcps_layout_element_css_add_to_cart($args){
 
     </style>
     <script>
-        $('.wcps-container-<?php echo $wcps_id; ?> .wcps-items-cart p').prepend('<input value=1 class=quantity type=number> ');
+        jQuery('.wcps-container-<?php echo $wcps_id; ?> .wcps-items-cart p').prepend('<input value=1 class=quantity type=number> ');
     </script>
     <?php
 }

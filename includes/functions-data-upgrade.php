@@ -235,7 +235,7 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['ribbon']['height'] = '24px';
 
 
-            $ribbon_position = ($wcps_ribbon_name == 'none' || empty($ribbon_url)) ? 'none' : 'topleft';
+            $ribbon_position = ($wcps_ribbon_name == 'none' || empty($wcps_ribbon_name)) ? 'none' : 'topleft';
             $wcps_options['ribbon']['position'] = $ribbon_position;
 
 
