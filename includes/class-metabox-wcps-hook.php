@@ -737,14 +737,15 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $args = array(
                 'id'		=> 'hide_out_of_stock',
                 'parent'		=> 'wcps_options[query]',
-                'title'		=> __('Hide out of stock products','woocommerce-products-slider'),
-                'details'	=> __('You can hide out of stock products from query.','woocommerce-products-slider'),
+                'title'		=> __('Include out of stock products?','woocommerce-products-slider'),
+                'details'	=> __('Include or exclude out of stock products from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $hide_out_of_stock,
                 'default'		=> 'no_check',
                 'args'		=> array(
-                    'yes'=>__('Yes','woocommerce-products-slider'),
-                    'no'=>__('No','woocommerce-products-slider'),
+                    'no'=>__('Include','woocommerce-products-slider'),
+                    'yes'=>__('Exclude','woocommerce-products-slider'),
+
                 ),
             );
 
@@ -755,17 +756,14 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $args = array(
                 'id'		=> 'product_featured',
                 'parent'		=> 'wcps_options[query]',
-                'title'		=> __('Featured product display','woocommerce-products-slider'),
-                'details'	=> __('You include/exclude featured product on query.','woocommerce-products-slider'),
+                'title'		=> __('Include featured products?','woocommerce-products-slider'),
+                'details'	=> __('Include or exclude featured products from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $product_featured,
-                'default'		=> 'no_check',
+                'default'		=> 'no',
                 'args'		=> array(
-                    'yes'=>__('Yes','woocommerce-products-slider'),
-                    'no'=>__('No','woocommerce-products-slider'),
-                    'no_check'=>__('No Check','woocommerce-products-slider'),
-
-
+                    'yes'=>__('Include','woocommerce-products-slider'),
+                    'no'=>__('Exclude','woocommerce-products-slider'),
                 ),
             );
 
@@ -776,15 +774,15 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $args = array(
                 'id'		=> 'on_sale',
                 'parent'		=> 'wcps_options[query]',
-                'title'		=> __('On sale product display','woocommerce-products-slider'),
-                'details'	=> __('You include/exclude on sale product on query.','woocommerce-products-slider'),
+                'title'		=> __('Include on-sale products?','woocommerce-products-slider'),
+                'details'	=> __('Include or exclude on-sale products from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $on_sale,
                 'default'		=> 'no',
                 'args'		=> array(
-                    'yes'=>__('Yes','woocommerce-products-slider'),
-                    'no'=>__('No','woocommerce-products-slider'),
-
+                    'yes'=>__('Include','woocommerce-products-slider'),
+                    'no'=>__('Exclude','woocommerce-products-slider'),
+                    'no_check'=>__('No check','woocommerce-products-slider'),
 
                 ),
             );
@@ -803,8 +801,8 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $args = array(
                 'id'		=> 'product_ids',
                 'parent'		=> 'wcps_options[query]',
-                'title'		=> __('Product display by product ID','woocommerce-products-slider'),
-                'details'	=> __('You can display custom product by ids.','woocommerce-products-slider'),
+                'title'		=> __('Product ID\'s','woocommerce-products-slider'),
+                'details'	=> __('You can display products by ids.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $product_ids,
                 'default'		=> '',

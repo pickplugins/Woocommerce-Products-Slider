@@ -1061,11 +1061,16 @@ function wcps_layout_elements_option_featured_mark($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
 
     $icon_img_src = isset($element_data['icon_img_src']) ? $element_data['icon_img_src'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
-
+    $position = isset($element_data['position']) ? $element_data['position'] : '';
+    $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
+    $text_color = isset($element_data['text_color']) ? $element_data['text_color'] : '';
     ?>
     <div class="item">
         <div class="element-title header ">
@@ -1089,6 +1094,75 @@ function wcps_layout_elements_option_featured_mark($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace on-sale output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'On sale: %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'position',
+                'css_id'		=> $element_index.'_position',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('position','woocommerce-products-slider'),
+                'details'	=> __('Choose position.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $position,
+                'default'		=> '',
+                'args'		=> array(
+                    'topright'=>__('Top-right','woocommerce-products-slider'),
+                    'topleft'=>__('Top-left','woocommerce-products-slider'),
+                    'bottomright'=>__('Bottom-right','woocommerce-products-slider'),
+                    'bottomleft'=>__('Bottom-left','woocommerce-products-slider'),
+                    ''=>__('None','woocommerce-products-slider'),
+                )
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'background_color',
+                'css_id'		=> $element_index.'_background_color',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('Background color','woocommerce-products-slider'),
+                'details'	=> __('Choose background color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $background_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'text_color',
+                'css_id'		=> $element_index.'_text_color',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('Text color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $text_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
             ?>
 
         </div>
@@ -1105,10 +1179,14 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
 
     $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
     $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
 
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
     $icon_img_src = isset($element_data['icon_img_src']) ? $element_data['icon_img_src'] : '';
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
-    $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
+    $position = isset($element_data['position']) ? $element_data['position'] : '';
+    $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
+    $text_color = isset($element_data['text_color']) ? $element_data['text_color'] : '';
 
     ?>
     <div class="item">
@@ -1133,6 +1211,69 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
             );
 
             $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace on-sale output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'On sale: %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'position',
+                'css_id'		=> $element_index.'_position',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('position','woocommerce-products-slider'),
+                'details'	=> __('Choose position.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $position,
+                'default'		=> '',
+                'args'		=> array(
+                    'topright'=>__('Top-right','woocommerce-products-slider'),
+                    'topleft'=>__('Top-left','woocommerce-products-slider'),
+                    'bottomright'=>__('Bottom-right','woocommerce-products-slider'),
+                    'bottomleft'=>__('Bottom-left','woocommerce-products-slider'),
+                    ''=>__('None','woocommerce-products-slider'),
+                )
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'background_color',
+                'css_id'		=> $element_index.'_background_color',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('Background color','woocommerce-products-slider'),
+                'details'	=> __('Choose background color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $background_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'text_color',
+                'css_id'		=> $element_index.'_text_color',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('Text color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $text_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
             ?>
 
         </div>

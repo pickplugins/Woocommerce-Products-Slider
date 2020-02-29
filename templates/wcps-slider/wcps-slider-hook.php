@@ -84,9 +84,10 @@ function wcps_slider_main_items($args){
     wp_enqueue_style( 'font-awesome-5' );
 
     //if(empty($post_id)) return;
+    $query_args = array();
 
     $tax_query = array();
-    $meta_query = array();
+    $query_args['meta_query'] = array();;
 
     $query_args['post_type'] = 'product';
     $query_orderby = (is_array($query_orderby)) ? implode(' ', $query_orderby) : $query_orderby;
@@ -140,11 +141,11 @@ function wcps_slider_main_items($args){
     if($on_sale=='yes'){
 
         $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
-        //$query_args['post__in'] = $wc_get_product_ids_on_sale;
+        $query_args['post__in'] = $wc_get_product_ids_on_sale;
 
     }else if($on_sale=='no'){
         $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
-        //$query_args['post__not_in'] = $wc_get_product_ids_on_sale;
+        $query_args['post__not_in'] = $wc_get_product_ids_on_sale;
     }
 
 
@@ -154,16 +155,14 @@ function wcps_slider_main_items($args){
         $query_args['post__in'] = $product_ids;
     }
 
-    echo '<pre>'.var_export($hide_out_of_stock, true).'</pre>';
+    //echo '<pre>'.var_export($hide_out_of_stock, true).'</pre>';
 
 
-    if(!empty($tax_query)){
-        $query_args['tax_query'] = array_merge(array( 'relation' => $taxonomy_relation ), $tax_query );
+    if(!empty($tax_query))
+    $query_args['tax_query'] = array_merge(array( 'relation' => $taxonomy_relation ), $tax_query );
 
-    }
-
-
-    $query_args = apply_filters('wcps_slider_query_args', $query_args, $args);
+    $args['query_args'] = $query_args;
+    $query_args = apply_filters('wcps_slider_query_args', $args);
     echo '<pre>'.var_export($query_args, true).'</pre>';
 
 
@@ -446,6 +445,81 @@ function wcps_slider_main_scripts( $args){
                 padding-top:45px;
             }
 
+
+            .wcps-container-<?php echo $wcps_id; ?> .on-sale{}
+            .wcps-container-<?php echo $wcps_id; ?> .on-sale img{
+                width: 30px;
+                height: auto;
+                box-shadow: none;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            /*on-sale position*/
+            .wcps-container-<?php echo $wcps_id; ?> .on-sale.topright{
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                z-index: 10;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .on-sale.topleft{
+                position: absolute;
+                left: 20px;
+                top: 15px;
+                z-index: 10;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .on-sale.bottomleft{
+                position: absolute;
+                left: 20px;
+                bottom: 10px;
+                z-index: 10;
+            }
+            .wcps-container-<?php echo $wcps_id; ?> .on-sale.bottomright{
+                position: absolute;
+                right: 20px;
+                bottom: 10px;
+                z-index: 10;
+            }
+
+
+            /*on-sale position*/
+
+            .wcps-container-<?php echo $wcps_id; ?> .featured-mark img{
+                width: 30px;
+                height: auto;
+                box-shadow: none;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .featured-mark.topright{
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                z-index: 10;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .featured-mark.topleft{
+                position: absolute;
+                left: 20px;
+                top: 15px;
+                z-index: 10;
+            }
+
+            .wcps-container-<?php echo $wcps_id; ?> .featured-mark.bottomleft{
+                position: absolute;
+                left: 20px;
+                bottom: 10px;
+                z-index: 10;
+            }
+            .wcps-container-<?php echo $wcps_id; ?> .featured-mark.bottomright{
+                position: absolute;
+                right: 20px;
+                bottom: 10px;
+                z-index: 10;
+            }
             #wcps-<?php echo $wcps_id; ?> .owl-dots {
                 text-align: center;
                 width: 100%;

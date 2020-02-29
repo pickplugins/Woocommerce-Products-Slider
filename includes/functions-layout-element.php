@@ -433,6 +433,65 @@ function wcps_layout_element_stock_quantity($args){
 }
 
 
+add_action('wcps_layout_element_on_sale_mark', 'wcps_layout_element_on_sale_mark');
+function wcps_layout_element_on_sale_mark($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = !empty($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '%s';
+    $icon_img_src = isset($elementData['icon_img_src']) ? $elementData['icon_img_src'] : '';
+    $position = isset($elementData['position']) ? $elementData['position'] : '';
+    $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
+    $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+    $icon = '<img src="'.$icon_img_src.'">';
+
+    global $product;
+    $is_on_sale = $product->is_on_sale();
+
+    if($is_on_sale):
+        ?>
+        <div class="on-sale <?php echo $position; ?> <?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $icon); ?></div>
+    <?php
+    endif;
+}
+
+
+
+
+add_action('wcps_layout_element_featured_mark', 'wcps_layout_element_featured_mark');
+function wcps_layout_element_featured_mark($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = !empty($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '%s';
+    $icon_img_src = isset($elementData['icon_img_src']) ? $elementData['icon_img_src'] : '';
+    $position = isset($elementData['position']) ? $elementData['position'] : '';
+    $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
+    $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+    $icon = '<img src="'.$icon_img_src.'">';
+
+    global $product;
+    $is_featured = $product->get_featured();
+
+
+
+    if($is_featured):
+    ?>
+    <div class="featured-mark <?php echo $position; ?> <?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $icon); ?></div>
+    <?php
+    endif;
+}
+
+
+
 
 
 add_action('wcps_layout_element_product_weight', 'wcps_layout_element_product_weight');
@@ -578,7 +637,6 @@ function wcps_layout_element_css_post_title($args){
             font-size: <?php echo $font_size; ?>;
             font-family: <?php echo $font_family; ?>;
             margin: <?php echo $margin; ?>;
-
         }
     </style>
     <?php
@@ -714,6 +772,54 @@ function wcps_layout_element_css_sale_count($args){
     <?php
 }
 
+add_action('wcps_layout_element_css_on_sale_mark', 'wcps_layout_element_css_on_sale_mark');
+function wcps_layout_element_css_on_sale_mark($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
+    $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            background-color: <?php echo $background_color; ?>;
+            color: <?php echo $text_color; ?>;
+            padding: 5px;
+        }
+
+    </style>
+    <?php
+}
+
+add_action('wcps_layout_element_css_featured_mark', 'wcps_layout_element_css_featured_mark');
+function wcps_layout_element_css_featured_mark($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
+    $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            background-color: <?php echo $background_color; ?>;
+            color: <?php echo $text_color; ?>;
+            padding: 5px;
+        }
+    </style>
+    <?php
+}
+
+
 add_action('wcps_layout_element_css_add_to_cart', 'wcps_layout_element_css_add_to_cart');
 function wcps_layout_element_css_add_to_cart($args){
 
@@ -737,17 +843,14 @@ function wcps_layout_element_css_add_to_cart($args){
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
             margin: <?php echo $margin; ?>;
         }
-
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> .add_to_cart_button {
             background-color: <?php echo $background_color; ?>;
             color: <?php echo $color; ?>;
         }
-
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> p{
             border: none !important;
             margin: 0;
         }
-
     </style>
     <script>
         jQuery('.wcps-container-<?php echo $wcps_id; ?> .wcps-items-cart p').prepend('<input value=1 class=quantity type=number> ');

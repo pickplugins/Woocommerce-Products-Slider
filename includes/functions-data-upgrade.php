@@ -103,6 +103,7 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['query']['hide_out_of_stock'] = $wcps_hide_out_of_stock;
 
             $wcps_product_featured = get_post_meta( $wcps_id, 'wcps_product_featured', true );
+            $wcps_product_featured = ($wcps_product_featured =='yes') ? 'yes' : 'no';
             $wcps_options['query']['featured'] = $wcps_product_featured;
 
             $wcps_product_on_sale = get_post_meta( $wcps_id, 'wcps_product_on_sale', true );
@@ -111,11 +112,22 @@ function wcps_cron_upgrade_wcps(){
             $wcps_product_only_discounted = get_post_meta( $wcps_id, 'wcps_product_only_discounted', true );
             $wcps_options['query']['only_discounted'] = $wcps_product_only_discounted;
 
+
+
+            $wcps_product_best_selling = get_post_meta( $wcps_id, 'wcps_product_best_selling', true );
             $wcps_product_filter_by = get_post_meta( $wcps_id, 'wcps_product_filter_by', true );
+            $wcps_product_filter_by = ($wcps_product_best_selling == 'yes') ? $wcps_product_best_selling : $wcps_product_filter_by;
+
             $wcps_options['query']['filter_by'] = $wcps_product_filter_by;
+
+            $featured_first = ($wcps_product_filter_by == 'featured_first') ? 'yes':'no';
+            $wcps_options['query']['featured_first'] = $featured_first;
+
+
 
             $wcps_product_ids = get_post_meta( $wcps_id, 'wcps_product_ids', true );
             $wcps_options['query']['product_ids'] = $wcps_product_ids;
+
 
             $wcps_product_sku = get_post_meta( $wcps_id, 'wcps_product_sku', true );
             $wcps_options['query']['product_sku'] = $wcps_product_sku;
