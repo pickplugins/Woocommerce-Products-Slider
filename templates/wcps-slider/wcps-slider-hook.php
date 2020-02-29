@@ -87,7 +87,6 @@ function wcps_slider_main_items($args){
     $query_args = array();
 
     $tax_query = array();
-    $query_args['meta_query'] = array();;
 
     $query_args['post_type'] = 'product';
     $query_orderby = (is_array($query_orderby)) ? implode(' ', $query_orderby) : $query_orderby;
@@ -168,7 +167,9 @@ function wcps_slider_main_items($args){
 
     //echo '<pre>'.var_export($query_args, true).'</pre>';
     $wcps_query = new WP_Query($query_args);
-    //echo '<pre>'.var_export($query_args, true).'</pre>';
+
+
+    echo '<pre>'.var_export(('found_posts: '.$wcps_query->found_posts), true).'</pre>';
 
     if ( $wcps_query->have_posts() ) :
 

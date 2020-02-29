@@ -782,7 +782,7 @@ function wcps_layout_elements_option_product_category($parameters){
                 'details'	=> __('Write max count','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $max_count,
-                'default'		=> '',
+                'default'		=> 3,
                 'placeholder'		=> '3',
             );
 
@@ -895,7 +895,7 @@ function wcps_layout_elements_option_product_tag($parameters){
                 'details'	=> __('Write max count','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $max_count,
-                'default'		=> '',
+                'default'		=> 3,
                 'placeholder'		=> '3',
             );
 

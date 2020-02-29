@@ -703,35 +703,131 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $settings_tabs_field->generate_field($args);
 
 
-
-            $args = array(
-                'id'		=> 'orderby',
-                'parent'		=> 'wcps_options[query]',
-                'title'		=> __('Query orderby','woocommerce-products-slider'),
-                'details'	=> __('Set query orderby.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'multiple'		=> true,
-                'value'		=> $query_orderby,
-                'default'		=> array('date'),
-                'args'		=> apply_filters('wcps_query_orderby_args',
-                    array(
-                        'none'=>__('None','woocommerce-products-slider'),
-                        'ID'=>__('ID','woocommerce-products-slider'),
-                        'date'=>__('date','woocommerce-products-slider'),
-                        'post_date'=>__('post_date','woocommerce-products-slider'),
-                        'name'=>__('name','woocommerce-products-slider'),
-                        'rand'=>__('rand','woocommerce-products-slider'),
-                        'comment_count'=>__('comment_count','woocommerce-products-slider'),
-                        'author'=>__('author','woocommerce-products-slider'),
-                        'title'=>__('title','woocommerce-products-slider'),
-                        'type'=>__('type','woocommerce-products-slider'),
-                        'menu_order'=>__('menu order','woocommerce-products-slider'),
-                    )
-                ),
+            $wcps_query_orderby_args = apply_filters('wcps_query_orderby_args',
+                array(
+                    'ID'=>__('ID','woocommerce-products-slider'),
+                    'date'=>__('Date','woocommerce-products-slider'),
+                    'post_date'=>__('Post date','woocommerce-products-slider'),
+                    'name'=>__('Name','woocommerce-products-slider'),
+                    'rand'=>__('Random','woocommerce-products-slider'),
+                    'comment_count'=>__('Comment count','woocommerce-products-slider'),
+                    'author'=>__('Author','woocommerce-products-slider'),
+                    'title'=>__('Title','woocommerce-products-slider'),
+                    'type'=>__('Type','woocommerce-products-slider'),
+                    'menu_order'=>__('Menu order','woocommerce-products-slider'),
+                    'meta_value'=>__('meta_value','woocommerce-products-slider'),
+                    'meta_value_num'=>__('meta value number','woocommerce-products-slider'),
+                    'post__in'=>__('post__in','woocommerce-products-slider'),
+                    'post_name__in'=>__('post_name__in','woocommerce-products-slider'),
+                )
             );
 
-            $settings_tabs_field->generate_field($args);
 
+
+            ob_start();
+
+            if(!empty($wcps_query_orderby_args)){
+
+                $all_team_members_new = array();
+
+                $member_ids_new = array();
+
+                if(!empty($query_orderby))
+                    foreach ($query_orderby as $elementIndex => $argData){
+                        $arg_order = isset($argData['arg_order']) ? $argData['arg_order'] :'';
+                        if(!empty($arg_order))
+                        $query_orderby_new[$elementIndex]  = array('arg_order'=>$arg_order);
+                    }
+
+                //echo '<pre>'.var_export($query_orderby_new, true).'</pre>';
+
+                $wcps_query_orderby_args_new = array_replace($query_orderby_new, $wcps_query_orderby_args);
+
+
+
+
+                ?>
+
+                <div class="expandable sortable">
+
+                    <?php
+
+                    foreach ($wcps_query_orderby_args_new as $argIndex => $argName ) {
+
+                        $arg_order = isset($query_orderby[$argIndex]['arg_order']) ?$query_orderby[$argIndex]['arg_order'] : '';
+
+                        ?>
+                        <div class="item">
+                            <div class="element-title header ">
+                                <span class="sort"><i class="fas fa-sort"></i></span>
+                                <span class="expand"><i class="fas fa-expand"></i><i class="fas fa-compress"></i></span>
+                                <?php
+                                if(!empty($arg_order)):
+                                    ?><i class="fas fa-check"></i><?php
+                                else:
+                                    ?><i class="fas fa-times"></i><?php
+                                endif;?>
+                                <span class="expand"><?php echo $argName; ?></span>
+
+                            </div>
+                            <div class="element-options options">
+
+                                <?php
+
+
+
+                                $args = array(
+                                    'id'		=> 'arg_order',
+                                    'parent' => 'wcps_options[query][orderby]['.$argIndex.']',
+                                    'title'		=> __('Order','woocommerce-products-slider'),
+                                    'details'	=> __('Choose some terms.','woocommerce-products-slider'),
+                                    'type'		=> 'select',
+                                    'value'		=> $arg_order,
+                                    'default'		=> '',
+                                    'args'		=> array(
+                                        ''=>__('None','woocommerce-products-slider'),
+                                        'DESC'=>__('Descending','woocommerce-products-slider'),
+                                        'ASC'=>__('Ascending','woocommerce-products-slider'),
+
+
+                                    ),
+                                );
+
+                                $settings_tabs_field->generate_field($args);
+
+
+
+
+                                ?>
+
+                            </div>
+                        </div>
+                        <?php
+
+
+
+
+
+
+                    }
+
+                    ?>
+                </div>
+                <?php
+
+            }
+
+
+
+            $html = ob_get_clean();
+            $args = array(
+                'id' => 'wcps_ordeby',
+                'title' => __('Query orderby', 'woocommerce-products-slider'),
+                'details' => __('Set query orderby.', 'woocommerce-products-slider'),
+                'type' => 'custom_html',
+                'html' => $html,
+            );
+            $settings_tabs_field->generate_field($args);
 
 
             $args = array(
@@ -745,6 +841,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'args'		=> array(
                     'no'=>__('Include','woocommerce-products-slider'),
                     'yes'=>__('Exclude','woocommerce-products-slider'),
+                    'no_check'=>__('No check','woocommerce-products-slider'),
 
                 ),
             );
@@ -764,6 +861,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'args'		=> array(
                     'yes'=>__('Include','woocommerce-products-slider'),
                     'no'=>__('Exclude','woocommerce-products-slider'),
+                    'no_check'=>__('No check','woocommerce-products-slider'),
                 ),
             );
 

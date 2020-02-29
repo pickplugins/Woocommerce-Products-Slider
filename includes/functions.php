@@ -73,7 +73,29 @@ function wcps_get_first_product_id(){
 }
 
 
+function wcps_featured_product_ids($query_args){
 
+    $query_args['tax_query'][] = array(
+        'taxonomy' => 'product_visibility',
+        'field' => 'name',
+        'terms' => 'featured',
+        'operator' => 'IN',
+    );
+
+    $query_args['post_type'] = 'product';
+    $query_args['post_status'] = 'publish';
+    $query_args['posts_per_page'] = -1;
+
+
+    // var_dump($query_args);
+    $wp_query = new WP_Query($query_args);
+
+    $featured_post_ids = wp_list_pluck( $wp_query->posts, 'ID' );
+    wp_reset_postdata();
+
+    return $featured_post_ids;
+
+}
 
 
 
