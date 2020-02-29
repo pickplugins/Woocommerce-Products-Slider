@@ -69,7 +69,7 @@ function wcps_slider_main_items($args){
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
     $query = isset($wcps_options['query']) ? $wcps_options['query'] : array();
 
-    $max_product_count = isset($query['max_product_count']) ? $query['max_product_count'] : 10;
+    $posts_per_page = isset($query['posts_per_page']) ? $query['posts_per_page'] : 10;
     $query_order = isset($query['order']) ? $query['order'] : 'DESC';
     $query_orderby = isset($query['orderby']) ? $query['orderby'] : 'date';
     $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
@@ -88,14 +88,16 @@ function wcps_slider_main_items($args){
     $tax_query = array();
     $meta_query = array();
 
-    $query_args['post_type'] 		= 'product';
-    $query_args['orderby']  		= $query_orderby;
+    $query_args['post_type'] = 'product';
+    $query_orderby = (is_array($query_orderby)) ? implode(' ', $query_orderby) : $query_orderby;
+
+    $query_args['orderby'] = $query_orderby;
 
     if(!empty($query_orderby_meta_key))
-        $query_args['meta_key']         = $query_orderby_meta_key;
+    $query_args['meta_key']         = $query_orderby_meta_key;
 
     $query_args['order']  			= $query_order;
-    $query_args['posts_per_page'] 	= $max_product_count;
+    $query_args['posts_per_page'] 	= $posts_per_page;
 
     foreach($taxonomies as $taxonomy => $taxonomyData){
 
@@ -114,12 +116,7 @@ function wcps_slider_main_items($args){
 
 
 
-    if(!empty($tax_query)){
-        $tax_query_relation = array( 'relation' => $taxonomy_relation );
-        $tax_query = array_merge($tax_query_relation, $tax_query );
-        $query_args['tax_query'] = $tax_query;
 
-    }
 
     if($hide_out_of_stock == 'yes'){
         $tax_query[] = array(
@@ -143,11 +140,11 @@ function wcps_slider_main_items($args){
     if($on_sale=='yes'){
 
         $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
-        $query_args['post__in'] = $wc_get_product_ids_on_sale;
+        //$query_args['post__in'] = $wc_get_product_ids_on_sale;
 
     }else if($on_sale=='no'){
         $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
-        $query_args['post__not_in'] = $wc_get_product_ids_on_sale;
+        //$query_args['post__not_in'] = $wc_get_product_ids_on_sale;
     }
 
 
@@ -157,10 +154,19 @@ function wcps_slider_main_items($args){
         $query_args['post__in'] = $product_ids;
     }
 
+    echo '<pre>'.var_export($hide_out_of_stock, true).'</pre>';
 
-    echo '<pre>'.var_export($query_args, true).'</pre>';
+
+    if(!empty($tax_query)){
+        $query_args['tax_query'] = array_merge(array( 'relation' => $taxonomy_relation ), $tax_query );
+
+    }
+
 
     $query_args = apply_filters('wcps_slider_query_args', $query_args, $args);
+    echo '<pre>'.var_export($query_args, true).'</pre>';
+
+
     //echo '<pre>'.var_export($query_args, true).'</pre>';
     $wcps_query = new WP_Query($query_args);
     //echo '<pre>'.var_export($query_args, true).'</pre>';

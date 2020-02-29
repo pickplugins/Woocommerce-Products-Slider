@@ -379,8 +379,11 @@ function wcps_layout_element_stock_status($args){
     //echo '<pre>'.var_export($args, true).'</pre>';
     $product_id = isset($args['product_id']) ? $args['product_id'] : '';
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $stock_status_text = isset($elementData['stock_status_text']) ? $elementData['stock_status_text'] : '';
+    $in_stock_status_text = isset($elementData['in_stock_status_text']) ? $elementData['in_stock_status_text'] : '';
     $out_stock_status_text = isset($elementData['out_stock_status_text']) ? $elementData['out_stock_status_text'] : '';
+
+
+
 
     $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
     $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
@@ -394,11 +397,11 @@ function wcps_layout_element_stock_status($args){
     if($managing_stock  ):
         if($is_in_stock):
             ?>
-            <div class="woocommerce <?php echo $element_class; ?>"><?php echo $stock_status_text; ?></div>
+            <div class="woocommerce in-stock <?php echo $element_class; ?>"><?php echo $in_stock_status_text; ?></div>
         <?php
         else:
             ?>
-            <div class="woocommerce <?php echo $element_class; ?>"><?php echo $out_stock_status_text; ?></div>
+            <div class="woocommerce out-stock <?php echo $element_class; ?>"><?php echo $out_stock_status_text; ?></div>
         <?php
         endif;
 
@@ -819,19 +822,26 @@ function wcps_layout_element_css_stock_status($args){
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
 
-    $color = isset($elementData['color']) ? $elementData['color'] : '';
     $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
     $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
     $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
 
+    $in_stock_color = isset($elementData['in_stock_color']) ? $elementData['in_stock_color'] : '';
+    $out_stock_color = isset($elementData['out_stock_color']) ? $elementData['out_stock_color'] : '';
 
     ?>
     <style type="text/css">
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>.in-stock{
             margin: <?php echo $margin; ?>;
-            color: <?php echo $color; ?>;
+            color: <?php echo $in_stock_color; ?>;
 
         }
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>.out-stock{
+            margin: <?php echo $margin; ?>;
+            color: <?php echo $out_stock_color; ?>;
+
+        }
+
 
     </style>
     <?php

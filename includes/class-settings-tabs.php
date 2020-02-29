@@ -681,7 +681,8 @@ class settings_tabs_field{
 
         ob_start();
         ?>
-        <select <?php if($multiple) echo 'multiple'; ?> name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>">
+
+        <select  <?php if($multiple) echo 'multiple'; ?> name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>">
             <?php
             foreach( $args as $key => $name ):
                 if($multiple){
@@ -697,6 +698,14 @@ class settings_tabs_field{
             endforeach;
             ?>
         </select>
+        <?php
+        if($multiple):
+            ?>
+            <div class="button select-reset">Reset</div><br>
+        <?php
+        endif;
+        ?>
+
         <?php
 
         $input_html = ob_get_clean();

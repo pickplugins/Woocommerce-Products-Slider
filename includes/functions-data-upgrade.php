@@ -99,7 +99,8 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['query']['more_query_args'] = $wcps_more_query;
 
             $wcps_hide_out_of_stock = get_post_meta( $wcps_id, 'wcps_hide_out_of_stock', true );
-            $wcps_options['query']['stock_status'] = $wcps_hide_out_of_stock;
+            $wcps_hide_out_of_stock = ($wcps_hide_out_of_stock =='yes') ? 'yes' : 'no';
+            $wcps_options['query']['hide_out_of_stock'] = $wcps_hide_out_of_stock;
 
             $wcps_product_featured = get_post_meta( $wcps_id, 'wcps_product_featured', true );
             $wcps_options['query']['featured'] = $wcps_product_featured;

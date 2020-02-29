@@ -497,7 +497,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
         $query = !empty($wcps_options['query']) ? $wcps_options['query'] : array();
 
-        $max_product_count = isset($query['max_product_count']) ? $query['max_product_count'] : 10;
+        $posts_per_page = isset($query['posts_per_page']) ? $query['posts_per_page'] : 10;
         $query_order = isset($query['order']) ? $query['order'] : 'DESC';
         $query_orderby = !empty($query['orderby']) ? $query['orderby'] : array('date');
         $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
@@ -523,12 +523,12 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             <?php
 
             $args = array(
-                'id'		=> 'max_product_count',
+                'id'		=> 'posts_per_page',
                 'parent'		=> 'wcps_options[query]',
                 'title'		=> __('Max number of product','woocommerce-products-slider'),
                 'details'	=> __('Set custom number you want to display maximum number of product','woocommerce-products-slider'),
                 'type'		=> 'text',
-                'value'		=> $max_product_count,
+                'value'		=> $posts_per_page,
                 'default'		=> '10',
                 'placeholder'		=> '10',
             );
@@ -737,17 +737,14 @@ if(!function_exists('wcps_metabox_content_query_product')) {
             $args = array(
                 'id'		=> 'hide_out_of_stock',
                 'parent'		=> 'wcps_options[query]',
-                'title'		=> __('Hide out of stock items','woocommerce-products-slider'),
-                'details'	=> __('You can hide out of stock items from query.','woocommerce-products-slider'),
+                'title'		=> __('Hide out of stock products','woocommerce-products-slider'),
+                'details'	=> __('You can hide out of stock products from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $hide_out_of_stock,
                 'default'		=> 'no_check',
                 'args'		=> array(
                     'yes'=>__('Yes','woocommerce-products-slider'),
                     'no'=>__('No','woocommerce-products-slider'),
-                    'no_check'=>__('No Check','woocommerce-products-slider'),
-
-
                 ),
             );
 
