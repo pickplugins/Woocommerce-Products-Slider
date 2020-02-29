@@ -500,6 +500,8 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $posts_per_page = isset($query['posts_per_page']) ? $query['posts_per_page'] : 10;
         $query_order = isset($query['order']) ? $query['order'] : 'DESC';
         $query_orderby = !empty($query['orderby']) ? $query['orderby'] : array('date');
+        $ordberby_meta_key = isset($query['ordberby_meta_key']) ? $query['ordberby_meta_key'] : '';
+
         $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
         $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
         $taxonomies = !empty($query['taxonomies']) ? $query['taxonomies'] : array();
@@ -827,6 +829,20 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'type' => 'custom_html',
                 'html' => $html,
             );
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'ordberby_meta_key',
+                'parent'		=> 'wcps_options[query]',
+                'title'		=> __('Orderby meta key','woocommerce-products-slider'),
+                'details'	=> __('Write meta key for orderby meta key value.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $ordberby_meta_key,
+                'default'		=> '',
+                'placeholder'		=> 'meta_key',
+            );
+
             $settings_tabs_field->generate_field($args);
 
 

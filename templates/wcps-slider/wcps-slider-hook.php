@@ -89,9 +89,20 @@ function wcps_slider_main_items($args){
     $tax_query = array();
 
     $query_args['post_type'] = 'product';
-    $query_orderby = (is_array($query_orderby)) ? implode(' ', $query_orderby) : $query_orderby;
 
-    $query_args['orderby'] = $query_orderby;
+    //echo '<pre>'.var_export($query_orderby, true).'</pre>';
+
+    if(!empty($query_orderby))
+        foreach ($query_orderby as $elementIndex => $argData){
+            $arg_order = isset($argData['arg_order']) ? $argData['arg_order'] :'';
+            if(!empty($arg_order))
+                $query_orderby_new[$elementIndex]  = $arg_order;
+        }
+
+    echo '<pre>'.var_export($query_orderby_new, true).'</pre>';
+
+
+    $query_args['orderby'] = $query_orderby_new;
 
     if(!empty($query_orderby_meta_key))
     $query_args['meta_key']         = $query_orderby_meta_key;
@@ -128,21 +139,18 @@ function wcps_slider_main_items($args){
     }
 
 
-    if($product_featured == 'yes'){
+    if($product_featured == 'no'){
         $tax_query[] = array(
             'taxonomy' => 'product_visibility',
             'field' => 'name',
             'terms' => 'featured',
-            'operator' => 'IN',
+            'operator' => 'NOT IN',
         );
     }
 
-    if($on_sale=='yes'){
 
-        $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
-        $query_args['post__in'] = $wc_get_product_ids_on_sale;
 
-    }else if($on_sale=='no'){
+    if($on_sale=='no'){
         $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
         $query_args['post__not_in'] = $wc_get_product_ids_on_sale;
     }
@@ -154,7 +162,7 @@ function wcps_slider_main_items($args){
         $query_args['post__in'] = $product_ids;
     }
 
-    //echo '<pre>'.var_export($hide_out_of_stock, true).'</pre>';
+    //echo '<pre>'.var_export($query_orderby, true).'</pre>';
 
 
     if(!empty($tax_query))
