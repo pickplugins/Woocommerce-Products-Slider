@@ -73,32 +73,6 @@ function wcps_layout_element_thumbnail($args){
 
 
 
-add_action('wcps_layout_element_meta', 'wcps_layout_element_meta');
-function wcps_layout_element_meta($args){
-
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $meta_key = isset($elementData['meta_key']) ? $elementData['meta_key'] : '';
-    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
-    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
-
-
-    //echo '<pre>'.var_export($wrapper_html, true).'</pre>';
-
-    $meta_key_value = get_post_meta($product_id, $meta_key, true);
-
-    if(!empty($meta_key_value)):
-        ?>
-        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $meta_key_value); ?></div>
-    <?php
-    endif;
-
-
-}
 
 
 
@@ -370,68 +344,6 @@ function wcps_layout_element_product_price($args){
 
 
 
-add_action('wcps_layout_element_stock_status', 'wcps_layout_element_stock_status');
-function wcps_layout_element_stock_status($args){
-
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $in_stock_status_text = isset($elementData['in_stock_status_text']) ? $elementData['in_stock_status_text'] : '';
-    $out_stock_status_text = isset($elementData['out_stock_status_text']) ? $elementData['out_stock_status_text'] : '';
-
-
-
-
-    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
-    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
-
-    global $product;
-    $is_in_stock = $product->is_in_stock();
-    $managing_stock = $product->managing_stock();
-
-    //echo '<pre>'.var_export($managing_stock, true).'</pre>';
-
-    if($managing_stock  ):
-        if($is_in_stock):
-            ?>
-            <div class="woocommerce in-stock <?php echo $element_class; ?>"><?php echo $in_stock_status_text; ?></div>
-        <?php
-        else:
-            ?>
-            <div class="woocommerce out-stock <?php echo $element_class; ?>"><?php echo $out_stock_status_text; ?></div>
-        <?php
-        endif;
-
-    endif;
-
-
-}
-
-add_action('wcps_layout_element_stock_quantity', 'wcps_layout_element_stock_quantity');
-function wcps_layout_element_stock_quantity($args){
-
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
-    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
-
-    global $product;
-    $stock_quantity = $product->get_stock_quantity();
-
-    if(!empty($stock_quantity)):
-        ?>
-        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $stock_quantity); ?></div>
-    <?php
-    endif;
-}
-
 
 add_action('wcps_layout_element_on_sale_mark', 'wcps_layout_element_on_sale_mark');
 function wcps_layout_element_on_sale_mark($args){
@@ -492,61 +404,6 @@ function wcps_layout_element_featured_mark($args){
 
 
 
-
-
-add_action('wcps_layout_element_product_weight', 'wcps_layout_element_product_weight');
-function wcps_layout_element_product_weight($args){
-
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
-    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
-    $weight_unit = get_option( 'woocommerce_weight_unit' );
-
-    global $product;
-    $weight = $product->get_weight() . $weight_unit;
-    $has_weight = $product->has_weight();
-
-
-
-    if($has_weight && !empty($weight)):
-        ?>
-        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $weight); ?></div>
-    <?php
-    endif;
-}
-
-
-
-add_action('wcps_layout_element_product_dimensions', 'wcps_layout_element_product_dimensions');
-function wcps_layout_element_product_dimensions($args){
-
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
-    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
-    $dimension_unit = get_option( 'woocommerce_dimension_unit' );
-
-    global $product;
-    $dimensions = $product->get_dimensions();
-    $has_dimensions = $product->has_dimensions();
-
-
-
-    if($has_dimensions && !empty($dimensions)):
-        ?>
-        <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $dimensions); ?></div>
-    <?php
-    endif;
-}
 
 
 add_action('wcps_layout_element_rating', 'wcps_layout_element_rating');
@@ -644,34 +501,6 @@ function wcps_layout_element_css_post_title($args){
 
 
 
-
-
-add_action('wcps_layout_element_css_meta', 'wcps_layout_element_css_meta');
-function wcps_layout_element_css_meta($args){
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
-
-    $color = isset($elementData['color']) ? $elementData['color'] : '';
-    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
-    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
-    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
-
-
-    ?>
-    <style type="text/css">
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
-            color: <?php echo $color; ?>;
-            font-size: <?php echo $font_size; ?>;
-            font-family: <?php echo $font_family; ?>;
-            margin: <?php echo $margin; ?>;
-
-        }
-    </style>
-    <?php
-}
 
 
 
@@ -916,123 +745,6 @@ function wcps_layout_element_css_product_price($args){
     <?php
 }
 
-
-add_action('wcps_layout_element_css_stock_status', 'wcps_layout_element_css_stock_status');
-function wcps_layout_element_css_stock_status($args){
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
-
-    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
-    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
-    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
-
-    $in_stock_color = isset($elementData['in_stock_color']) ? $elementData['in_stock_color'] : '';
-    $out_stock_color = isset($elementData['out_stock_color']) ? $elementData['out_stock_color'] : '';
-
-    ?>
-    <style type="text/css">
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>.in-stock{
-            margin: <?php echo $margin; ?>;
-            color: <?php echo $in_stock_color; ?>;
-
-        }
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>.out-stock{
-            margin: <?php echo $margin; ?>;
-            color: <?php echo $out_stock_color; ?>;
-
-        }
-
-
-    </style>
-    <?php
-}
-
-
-add_action('wcps_layout_element_css_stock_quantity', 'wcps_layout_element_css_stock_quantity');
-function wcps_layout_element_css_stock_quantity($args){
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
-
-    $color = isset($elementData['color']) ? $elementData['color'] : '';
-    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
-    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
-    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
-
-
-    ?>
-    <style type="text/css">
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
-            margin: <?php echo $margin; ?>;
-            color: <?php echo $color; ?>;
-
-        }
-
-    </style>
-    <?php
-}
-
-
-
-add_action('wcps_layout_element_css_product_weight', 'wcps_layout_element_css_product_weight');
-function wcps_layout_element_css_product_weight($args){
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
-
-    $color = isset($elementData['color']) ? $elementData['color'] : '';
-    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
-    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
-    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
-
-
-    ?>
-    <style type="text/css">
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
-            margin: <?php echo $margin; ?>;
-            color: <?php echo $color; ?>;
-
-        }
-
-    </style>
-    <?php
-}
-
-
-
-
-add_action('wcps_layout_element_css_product_dimensions', 'wcps_layout_element_css_product_dimensions');
-function wcps_layout_element_css_product_dimensions($args){
-
-    //echo '<pre>'.var_export($args, true).'</pre>';
-    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
-    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
-    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
-
-    $color = isset($elementData['color']) ? $elementData['color'] : '';
-    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
-    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
-    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
-
-
-    ?>
-    <style type="text/css">
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
-            margin: <?php echo $margin; ?>;
-            color: <?php echo $color; ?>;
-
-        }
-
-    </style>
-    <?php
-}
 
 
 

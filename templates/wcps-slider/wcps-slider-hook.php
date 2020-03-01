@@ -67,11 +67,15 @@ function wcps_slider_main_items($args){
     $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
 
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
+    $developer_options = isset($wcps_options['developer_options']) ? $wcps_options['developer_options'] : array();
+
     $query = isset($wcps_options['query']) ? $wcps_options['query'] : array();
 
     $posts_per_page = isset($query['posts_per_page']) ? $query['posts_per_page'] : 10;
     $query_order = isset($query['order']) ? $query['order'] : 'DESC';
-    $query_orderby = isset($query['orderby']) ? $query['orderby'] : 'date';
+    $query_orderby = isset($query['orderby']) ? $query['orderby'] : array();
+    $query_ordberby_meta_key = isset($query['ordberby_meta_key']) ? $query['ordberby_meta_key'] : '';
+
     $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
     $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
     $taxonomies = !empty($query['taxonomies']) ? $query['taxonomies'] : array();
@@ -87,6 +91,7 @@ function wcps_slider_main_items($args){
     $query_args = array();
 
     $tax_query = array();
+    $query_orderby_new = array();
 
     $query_args['post_type'] = 'product';
 
@@ -99,13 +104,13 @@ function wcps_slider_main_items($args){
                 $query_orderby_new[$elementIndex]  = $arg_order;
         }
 
-    echo '<pre>'.var_export($query_orderby_new, true).'</pre>';
+    //echo '<pre>'.var_export($query_orderby, true).'</pre>';
 
-
+    if(!empty($query_orderby_new))
     $query_args['orderby'] = $query_orderby_new;
 
-    if(!empty($query_orderby_meta_key))
-    $query_args['meta_key']         = $query_orderby_meta_key;
+    if(!empty($query_ordberby_meta_key))
+    $query_args['meta_key']         = $query_ordberby_meta_key;
 
     $query_args['order']  			= $query_order;
     $query_args['posts_per_page'] 	= $posts_per_page;
@@ -170,14 +175,24 @@ function wcps_slider_main_items($args){
 
     $args['query_args'] = $query_args;
     $query_args = apply_filters('wcps_slider_query_args', $args);
-    echo '<pre>'.var_export($query_args, true).'</pre>';
+
+    if(in_array('query_args', $developer_options)){
+        echo 'query_args: ############';
+        echo '<pre>'.var_export($query_args, true).'</pre>';
+    }
+
 
 
     //echo '<pre>'.var_export($query_args, true).'</pre>';
     $wcps_query = new WP_Query($query_args);
 
+    if(in_array('query_args',$developer_options)){
 
-    echo '<pre>'.var_export(('found_posts: '.$wcps_query->found_posts), true).'</pre>';
+        echo 'found_posts: ############';
+        echo '<pre>'.var_export(($wcps_query->found_posts), true).'</pre>';
+    }
+
+
 
     if ( $wcps_query->have_posts() ) :
 

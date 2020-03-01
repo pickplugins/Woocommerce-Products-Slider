@@ -10,7 +10,8 @@ if(!function_exists('wcps_metabox_content_shortcode')) {
     function wcps_metabox_content_shortcode($post_id){
 
         $settings_tabs_field = new settings_tabs_field();
-
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $developer_options = isset($wcps_options['developer_options']) ? $wcps_options['developer_options'] : array();
 
         ?>
         <div class="section">
@@ -79,6 +80,26 @@ if(!function_exists('wcps_metabox_content_shortcode')) {
                 'html' => $html,
             );
             $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'developer_options',
+                'parent'		=> 'wcps_options',
+                'title'		=> __('Developer options','woocommerce-products-slider'),
+                'details'	=> __('var dump following variable.','woocommerce-products-slider'),
+                'type'		=> 'checkbox',
+                'value'		=> $developer_options,
+                'default'		=> 'none',
+                'args'		=> array(
+                    'query_args'=>__('Query arguments','woocommerce-products-slider'),
+                    'found_posts'=>__('Found posts','woocommerce-products-slider'),
+                    'more_query_args'=>__('More query_args','woocommerce-products-slider'),
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
 
 
             ?>
@@ -745,6 +766,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
 
                 $wcps_query_orderby_args_new = array_replace($query_orderby_new, $wcps_query_orderby_args);
 
+                $wcps_query_orderby_args_new = (!empty($wcps_query_orderby_args_new)) ? $wcps_query_orderby_args_new : $wcps_query_orderby_args;
 
 
 

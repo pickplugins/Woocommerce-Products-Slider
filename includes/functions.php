@@ -98,6 +98,17 @@ function wcps_featured_product_ids($query_args){
 }
 
 
+function wcps_recently_viewed_products(){
+
+
+    $viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) : array();
+    $viewed_products = array_filter( array_map( 'absint', $viewed_products ) );
+
+
+    return $viewed_products;
+}
+
+
 
 function wcps_layout_data($layout){
 
