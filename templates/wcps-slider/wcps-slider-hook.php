@@ -399,7 +399,11 @@ function wcps_slider_main_scripts( $args){
 
                 });
 
-
+                $(document).on('change', '#wcps-<?php echo $wcps_id; ?> .wcps-items-cart .quantity', function(){
+                    quantity = $(this).val();
+                    console.log(quantity);
+                    $(this).next().attr('data-quantity', quantity);
+                })
 
             });
         </script>

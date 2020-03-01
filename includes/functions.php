@@ -3,26 +3,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-
-//add_filter( 'body_class', 'custom_class' );
-function custom_class( $classes ) {
-
-
-
-    if(is_singular('page')):
-        global $post;
-        $content = $post->content;
-
-        if ( has_shortcode( $content, 'wcps_builder' ) ) {
-            $classes[] = 'wcps_builder';
-        }
-    endif;
-
-
-    return $classes;
-}
-
-
 function wcps_first_wcps_layout(){
 
     $args = array(
@@ -148,79 +128,15 @@ function wcps_layout_data($layout){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-function wcps_grid_items($grid_items){
-		
-			$grid_items_extra = array(
-							'thumb1'=>'Thumbnail 1',
-							'title1'=>'Title 1',																												
-							);
-							
-			$grid_items = array_merge($grid_items,$grid_items_extra);
-			
-			return $grid_items;
-		}
-
-add_filter('wcps_grid_items', 'wcps_grid_items');
-
-*/
-
-
-
-
-
-function wcps_get_categories($post_id){
-	
-
-		
-	
-	
-	}
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 add_action( 'template_redirect', 'wcps_track_product_view', 20 );
 
 
 function wcps_track_product_view() {
 	
-	$wcps_track_product_view = get_option( 'wcps_track_product_view' );
-	
-	if($wcps_track_product_view=='yes' && is_singular('product')){
+    $wcps_settings = get_option('wcps_settings');
+    $track_product_view = isset($wcps_settings['track_product_view']) ? $wcps_settings['track_product_view'] : 'no';
+
+    if($track_product_view=='yes' && is_singular('product')){
         global $post;
 
         if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) )
@@ -236,33 +152,12 @@ function wcps_track_product_view() {
             array_shift( $viewed_products );
         }
 
-        //var_dump($viewed_products);
-
-
         // Store for session only
         wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -286,168 +181,3 @@ function wcps_posts_shortcode_display( $column, $post_id ) {
 add_action( 'manage_wcps_posts_custom_column' , 'wcps_posts_shortcode_display', 10, 2 );
 
 
-
-
-
-
-
-
-
-
-function wcps_grid_items_reset(){
-	
-	if(current_user_can('manage_options')){
-		
-		$wcps_id = sanitize_text_field($_POST['wcps_id']);
-		
-		if(delete_post_meta($wcps_id, 'wcps_grid_items')){
-			echo __('Reset done!', 'woocommerce-products-slider');
-			}
-		else{
-			echo __('Reset failed!', 'woocommerce-products-slider');
-			}
-			
-		}
-
-	die();
-	
-	}
-	
-add_action('wp_ajax_wcps_grid_items_reset', 'wcps_grid_items_reset');
-//add_action('wp_ajax_nopriv_wcps_grid_items_reset', 'wcps_grid_items_reset');
-
-
-
-function wcps_get_item_thumb_url(){
-	
-	
-	$product_id = (int)sanitize_text_field($_POST['product_id']);
-	
-	$wcps_thumb = wp_get_attachment_image_src( get_post_thumbnail_id($product_id), 'full' );
-	$wcps_thumb_url = $wcps_thumb['0'];
-	
-	
-	echo $wcps_thumb_url;
-	
-	die();
-	
-	}
-	
-add_action('wp_ajax_wcps_get_item_thumb_url', 'wcps_get_item_thumb_url');
-add_action('wp_ajax_nopriv_wcps_get_item_thumb_url', 'wcps_get_item_thumb_url');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function wcps_get_product_categories($postid)
-	{
-		
-		$taxonomy= "product_cat";
-		$wcps_taxonomy_category = get_post_meta( $postid, 'wcps_slide_categories', true );
-		$args=array(
-		  'orderby' => 'name',
-		  'order' => 'ASC',
-		  'taxonomy' => $taxonomy,
-		  );
-	
-	$categories = get_categories($args);
-	
-	
-	if(empty($categories))
-		{
-		echo __('No categories found!', 'woocommerce-products-slider');
-			$categories = array();
-		}
-	
-	
-		$html = '';
-		$html .= '<ul style="margin: 0;">';
-	
-	foreach($categories as $category){
-		
-		if(array_search($category->cat_ID, $wcps_taxonomy_category))
-			{
-				$html .= '<li class='.$category->cat_ID.'><label ><input checked type="checkbox" name="wcps_slide_categories['.$category->cat_ID.']" value ="'.$category->cat_ID.'" />'.$category->cat_name.'</label ></li>';
-			}
-		
-		else
-			{
-				$html .= '<li class='.$category->cat_ID.'><label ><input type="checkbox" name="wcps_slide_categories['.$category->cat_ID.']" value ="'.$category->cat_ID.'" />'.$category->cat_name.'</label ></li>';			
-			}
-		
-		
-
-		
-		}
-	
-		$html .= '</ul>';
-		
-		echo $html;
-	
-		
-	}
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-		
-	function wcps_admin_notices()
-		{
-			$wcps_license_key = get_option('wcps_license_key');
-			
-			$html= '';
-			
-			
-			
-			if(empty($wcps_license_key))
-				{
-					$admin_url = get_admin_url();
-					
-					$html.= '<div class="update-nag">';
-					$html.= sprintf(__('Please activate your license for <b>%s &raquo; <a href="%sedit.php?post_type=wcps&page=wcps_menu_license">License</a></b>', 'woocommerce-products-slider') ,wcps_plugin_name, $admin_url);
-					
-					
-					$html.= '</div>';	
-				}
-			else
-				{
-
-				}
-			
-			
-			
-			
-			
-			
-								
-			
-			
-			echo $html;
-		}
-	
-	//add_action('admin_notices', 'wcps_admin_notices');
-	

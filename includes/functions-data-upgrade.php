@@ -63,7 +63,7 @@ function wcps_cron_upgrade_wcps(){
     $args = array(
         'post_type'=>'wcps',
         'post_status'=>'publish',
-        'posts_per_page'=> 1,
+        'posts_per_page'=>10,
         'meta_query'=> $meta_query,
 
     );
@@ -295,7 +295,6 @@ function wcps_cron_upgrade_wcps(){
 
             // Create layout from wcps settings.
             $wcps_grid_items = get_post_meta( $wcps_id, 'wcps_grid_items', true );
-
             $wcps_grid_items_hide = get_post_meta( $wcps_id, 'wcps_grid_items_hide', true );
 
             //echo '<pre>'.var_export($wcps_grid_items_hide, true).'</pre>';
