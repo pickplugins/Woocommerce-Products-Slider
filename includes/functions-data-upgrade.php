@@ -13,6 +13,13 @@ function wcps_cron_upgrade_settings(){
     $wcps_track_product_view = get_option( 'wcps_track_product_view' );
     $wcps_settings['track_product_view'] = $wcps_track_product_view;
 
+    $wcps_license = get_option( 'wcps_license' );
+    $license_key = isset($wcps_license['license_key']) ? $wcps_license['license_key'] : '';
+
+    $wcps_settings['license_key'] = $license_key;
+
+
+
     $social_fields_new = array();
     $social_fields_new[] = array('name'=> 'Email', 'meta_key'=> 'email', 'icon'=> 'https://i.imgur.com/OS2saH8.png','font_icon'=> '',  'visibility'=> 1   );
     $social_fields_new[] = array('name'=> 'Facebook', 'meta_key'=> 'facebook', 'icon'=> 'https://i.imgur.com/IftZ9Ng.png','font_icon'=> '',  'visibility'=> 1   );

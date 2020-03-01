@@ -186,7 +186,7 @@ function wcps_slider_main_items($args){
     //echo '<pre>'.var_export($query_args, true).'</pre>';
     $wcps_query = new WP_Query($query_args);
 
-    if(in_array('query_args',$developer_options)){
+    if(in_array('found_posts', $developer_options)){
 
         echo 'found_posts: ############';
         echo '<pre>'.var_export(($wcps_query->found_posts), true).'</pre>';
