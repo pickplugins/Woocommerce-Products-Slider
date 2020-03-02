@@ -19,14 +19,12 @@ function wcps_cron_upgrade_settings(){
     $wcps_settings['license_key'] = $license_key;
 
 
-
     $social_fields_new = array();
-    $social_fields_new[] = array('name'=> 'Email', 'meta_key'=> 'email', 'icon'=> 'https://i.imgur.com/OS2saH8.png','font_icon'=> '',  'visibility'=> 1   );
-    $social_fields_new[] = array('name'=> 'Facebook', 'meta_key'=> 'facebook', 'icon'=> 'https://i.imgur.com/IftZ9Ng.png','font_icon'=> '',  'visibility'=> 1   );
-    $social_fields_new[] = array('name'=> 'Twitter', 'meta_key'=> 'twitter', 'icon'=> 'https://i.imgur.com/JZDm0R5.png','font_icon'=> '',  'visibility'=> 1   );
-    $social_fields_new[] = array('name'=> 'Pinterest', 'meta_key'=> 'pinterest', 'icon'=> 'https://i.imgur.com/VxUWxZC.png','font_icon'=> '',  'visibility'=> 0   );
-    $social_fields_new[] = array('name'=> 'Linkedin', 'meta_key'=> 'linkedin', 'icon'=> 'https://i.imgur.com/8kuHCtD.png','font_icon'=> '',  'visibility'=> 0   );
-    $social_fields_new[] = array('name'=> 'Instagram', 'meta_key'=> 'instagram', 'icon'=> 'https://i.imgur.com/DYj382i.png','font_icon'=> '',  'visibility'=> 0   );
+    $social_fields_new[] = array('name'=> 'Email', 'media_id'=> 'email', 'icon'=> 'https://i.imgur.com/OS2saH8.png','font_icon'=> '',  'visibility'=> 1, 'share_url'=>'mailto:?subject=TITLE&body=URL'   );
+    $social_fields_new[] = array('name'=> 'Facebook', 'media_id'=> 'facebook', 'icon'=> 'https://i.imgur.com/IftZ9Ng.png','font_icon'=> '',  'visibility'=> 1, 'share_url'=>'https://www.facebook.com/sharer/sharer.php?u=URL'   );
+    $social_fields_new[] = array('name'=> 'Twitter', 'media_id'=> 'twitter', 'icon'=> 'https://i.imgur.com/JZDm0R5.png','font_icon'=> '',  'visibility'=> 1,'share_url'=>'https://twitter.com/intent/tweet?url=URL&text=TITLE'   );
+    $social_fields_new[] = array('name'=> 'Pinterest', 'media_id'=> 'pinterest', 'icon'=> 'https://i.imgur.com/VxUWxZC.png','font_icon'=> '',  'visibility'=> 0, 'share_url'=>'http://pinterest.com/pin/create/button/?url=URL&media=&description=TITLE'   );
+    $social_fields_new[] = array('name'=> 'Linkedin', 'media_id'=> 'linkedin', 'icon'=> 'https://i.imgur.com/8kuHCtD.png','font_icon'=> '',  'visibility'=> 0,'share_url'=>'https://www.linkedin.com/shareArticle?url=URL&title=TITLE&summary=&source='   );
 
     $wcps_settings['social_media_sites'] = $social_fields_new;
 

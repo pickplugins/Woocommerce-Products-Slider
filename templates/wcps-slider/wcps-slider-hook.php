@@ -684,7 +684,7 @@ function wcps_slider_main_enqueue_scripts( $args){
 
     $wcps_settings = get_option( 'wcps_settings' );
 
-    $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
+    $font_aw_version = !empty($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'v_5';
 
 
 

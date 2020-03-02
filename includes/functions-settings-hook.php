@@ -52,21 +52,31 @@ function wcps_settings_content_general(){
 
             array(
                 'id'		=> 'name',
-                'title'		=> __('Meta Name','woocommerce-products-slider'),
-                'details'	=> __('Write meta field name here.','woocommerce-products-slider'),
+                'title'		=> __('Media name','woocommerce-products-slider'),
+                'details'	=> __('Write media name here.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> '',
                 'default'		=> '',
-                'placeholder'		=> '',
+                'placeholder'		=> 'Facebook',
             ),
             array(
-                'id'		=> 'meta_key',
-                'title'		=> __('Meta key','woocommerce-products-slider'),
-                'details'	=> __('Write meta key here.','woocommerce-products-slider'),
+                'id'		=> 'media_id',
+                'title'		=> __('Media id','woocommerce-products-slider'),
+                'details'	=> __('Write media id here.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> '',
                 'default'		=> '',
-                'placeholder'		=> 'meta_key',
+                'placeholder'		=> 'facebook',
+            ),
+
+            array(
+                'id'		=> 'share_url',
+                'title'		=> __('Share url','woocommerce-products-slider'),
+                'details'	=> __('Write media share url here.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> '',
+                'default'		=> '',
+                'placeholder'		=> 'https://www.facebook.com/sharer/sharer.php?u=URL',
             ),
 
             array(
