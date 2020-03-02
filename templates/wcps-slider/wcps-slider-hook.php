@@ -85,8 +85,6 @@ function wcps_slider_main_items($args){
     $on_sale = isset($query['on_sale']) ? $query['on_sale'] : 'no';
     $product_ids = isset($query['product_ids']) ? $query['product_ids'] : '';
 
-    wp_enqueue_style( 'font-awesome-5' );
-
     //if(empty($post_id)) return;
     $query_args = array();
 
@@ -346,10 +344,25 @@ function wcps_slider_main_scripts( $args){
     $args['layout_id'] = $item_layout_id;
 
 
-    wp_enqueue_script('owl.carousel');
-    wp_enqueue_style('owl.carousel');
+    $wcps_settings = get_option( 'wcps_settings' );
+    $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
 
-        //echo '<pre>'.var_export($item_layout_id, true).'</pre>';
+    if($font_aw_version == 'v_5'){
+        $navigation_text_prev = '<i class="fas fa-chevron-left"></i>';
+        $navigation_text_next = '<i class="fas fa-chevron-right"></i>';
+    }elseif ($font_aw_version == 'v_4'){
+        $navigation_text_prev = '<i class="fa fa-chevron-left"></i>';
+        $navigation_text_next = '<i class="fa fa-chevron-right"></i>';
+    }else{
+        $navigation_text_prev = '<i class="fas fa-chevron-left"></i>';
+        $navigation_text_next = '<i class="fas fa-chevron-right"></i>';
+    }
+
+
+    $navigation_text_prev = !empty($slider_option['navigation_text']['prev']) ? $slider_option['navigation_text']['prev'] : $navigation_text_prev;
+    $navigation_text_next = !empty($slider_option['navigation_text']['next']) ? $slider_option['navigation_text']['next'] : $navigation_text_next;
+
+    //echo '<pre>'.var_export($item_layout_id, true).'</pre>';
 //        echo '<pre>'.var_export($auto_play_speed, true).'</pre>';
 //        echo '<pre>'.var_export($auto_play_timeout, true).'</pre>';
 
@@ -388,7 +401,7 @@ function wcps_slider_main_scripts( $args){
                     rtl:<?php echo $slider_rtl; ?>,
                     navContainerClass: 'owl-nav <?php echo $navigation_position; ?> <?php echo $navigation_style; ?>',
                     nav:<?php echo $slider_navigation; ?>,
-                    navText : ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+                    navText : ['<?php echo $navigation_text_prev; ?>','<?php echo $navigation_text_next; ?>'],
                     navSpeed:<?php echo $slider_slide_speed; ?>,
                     dots:<?php echo $slider_pagination; ?>,
                     dotsSpeed:<?php echo $slider_pagination_speed; ?>,
@@ -409,7 +422,6 @@ function wcps_slider_main_scripts( $args){
         </script>
 
         <style type="text/css">
-
             .wcps-container-<?php echo $wcps_id; ?>{
                 padding: <?php echo $container_padding; ?>;
                 margin: <?php echo $container_margin; ?>;
@@ -417,9 +429,6 @@ function wcps_slider_main_scripts( $args){
                 position: relative;
                 overflow: hidden;
             }
-
-
-
             /*ribbon position*/
             .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.topright{
                 position: absolute;
@@ -429,7 +438,6 @@ function wcps_slider_main_scripts( $args){
                 transform: rotate(45deg);
                 z-index: 10;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.topleft{
                 position: absolute;
                 left: -25px;
@@ -438,7 +446,6 @@ function wcps_slider_main_scripts( $args){
                 transform: rotate(-45deg);
                 z-index: 10;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.bottomleft{
                 position: absolute;
                 left: -25px;
@@ -455,25 +462,18 @@ function wcps_slider_main_scripts( $args){
                 transform: rotate(-45deg);
                 z-index: 10;
             }
-
-
             .wcps-container-<?php echo $wcps_id; ?> .wcps-ribbon.none{
                 display: none;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .item {
                 padding: <?php echo $item_padding; ?>;
                 margin: <?php echo $item_margin; ?>;
                 background: <?php echo $item_background_color; ?>;
                 text-align: <?php echo $item_text_align; ?>;
-
             }
-
             #wcps-<?php echo $wcps_id; ?> .wcps-items{
                 padding-top:45px;
             }
-
-
             .wcps-container-<?php echo $wcps_id; ?> .on-sale{}
             .wcps-container-<?php echo $wcps_id; ?> .on-sale img{
                 width: 30px;
@@ -482,7 +482,6 @@ function wcps_slider_main_scripts( $args){
                 display: inline-block;
                 vertical-align: middle;
             }
-
             /*on-sale position*/
             .wcps-container-<?php echo $wcps_id; ?> .on-sale.topright{
                 position: absolute;
@@ -490,14 +489,12 @@ function wcps_slider_main_scripts( $args){
                 top: 15px;
                 z-index: 10;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .on-sale.topleft{
                 position: absolute;
                 left: 20px;
                 top: 15px;
                 z-index: 10;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .on-sale.bottomleft{
                 position: absolute;
                 left: 20px;
@@ -510,10 +507,7 @@ function wcps_slider_main_scripts( $args){
                 bottom: 10px;
                 z-index: 10;
             }
-
-
             /*on-sale position*/
-
             .wcps-container-<?php echo $wcps_id; ?> .featured-mark img{
                 width: 30px;
                 height: auto;
@@ -521,21 +515,18 @@ function wcps_slider_main_scripts( $args){
                 display: inline-block;
                 vertical-align: middle;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .featured-mark.topright{
                 position: absolute;
                 right: 20px;
                 top: 15px;
                 z-index: 10;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .featured-mark.topleft{
                 position: absolute;
                 left: 20px;
                 top: 15px;
                 z-index: 10;
             }
-
             .wcps-container-<?php echo $wcps_id; ?> .featured-mark.bottomleft{
                 position: absolute;
                 left: 20px;
@@ -561,31 +552,26 @@ function wcps_slider_main_scripts( $args){
                 margin: 5px 7px;
                 width: 15px;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot.active, #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot:hover {
                 background: <?php echo $dots_active_background_color; ?>;
 
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav button{
                 background: <?php echo $navigation_background_color; ?>;
                 color: <?php echo $navigation_color; ?>;
                 margin: 0 5px;
             }
-
             /*navs position*/
             #wcps-<?php echo $wcps_id; ?> .owl-nav.topright  {
                 position: absolute;
                 right: 15px;
                 top: 15px;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.topleft  {
                 position: absolute;
                 left: 15px;
                 top: 15px;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.bottomleft  {
                 position: absolute;
                 left: 15px;
@@ -596,29 +582,24 @@ function wcps_slider_main_scripts( $args){
                 right: 15px;
                 bottom: 15px;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed   {
                 position: absolute;
                 top: 50%;
                 transform: translate(0, -50%);
                 width: 100%;
             }
-
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed  .owl-next {
                 float: right;
             }
             #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed .owl-prev {
                 float: left;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.middle {
                 position: absolute;
                 top: 50%;
                 transform: translate(0, -50%);
                 width: 100%;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.middle  .owl-next {
                 float: right;
                 right: -20%;
@@ -628,24 +609,20 @@ function wcps_slider_main_scripts( $args){
             #wcps-<?php echo $wcps_id; ?>:hover .owl-nav.middle  .owl-next{
                 right: 0;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.middle  .owl-prev {
                 left: -20%;
                 position: absolute;
                 transition: all ease 1s 0s;
             }
-
             #wcps-<?php echo $wcps_id; ?>:hover .owl-nav.middle  .owl-prev {
                 left: 0;
                 position: absolute;
             }
-
             /*navs style*/
             #wcps-<?php echo $wcps_id; ?> .owl-nav.flat button{
                 padding: 5px 20px;
                 border-radius: 0;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.border button{
                 padding: 5px 20px;
                 border: 2px solid #777;
@@ -660,12 +637,10 @@ function wcps_slider_main_scripts( $args){
                 width: 50px;
                 height: 50px;
             }
-
             #wcps-<?php echo $wcps_id; ?> .quantity{
                 width: 45px;
 
             }
-
 
             <?php
             $custom_scripts = get_post_meta($item_layout_id,'custom_scripts', true);
@@ -703,7 +678,28 @@ function wcps_slider_main_scripts( $args){
 
 
 
+add_filter('wcps_slider_main', 'wcps_slider_main_enqueue_scripts');
 
+function wcps_slider_main_enqueue_scripts( $args){
+
+    $wcps_settings = get_option( 'wcps_settings' );
+
+    $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
+
+
+
+    wp_enqueue_script('owl.carousel');
+    wp_enqueue_style('owl.carousel');
+
+    //wp_enqueue_style('owl.carousel');
+    //wp_enqueue_script('owl.carousel');
+
+    if($font_aw_version == 'v_5'){
+        wp_enqueue_style('font-awesome-5');
+    }elseif ($font_aw_version == 'v_4'){
+        wp_enqueue_style('font-awesome-4');
+    }
+}
 
 
 

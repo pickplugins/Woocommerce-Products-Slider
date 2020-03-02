@@ -48,6 +48,8 @@ wp_enqueue_style('font-awesome-5');
 wp_enqueue_style('settings-tabs');
 wp_enqueue_script('settings-tabs');
 
+wp_enqueue_style('codemirror');
+wp_enqueue_script('codemirror');
 
 $wcps_settings = get_option('wcps_settings');
 

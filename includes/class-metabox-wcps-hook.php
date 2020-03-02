@@ -1004,6 +1004,10 @@ if(!function_exists('wcps_metabox_content_slider_options')) {
         $slider_stop_on_hover = isset($slider_option['stop_on_hover']) ? $slider_option['stop_on_hover'] : 'true';
         $slider_navigation = isset($slider_option['navigation']) ? $slider_option['navigation'] : 'true';
         $navigation_position = isset($slider_option['navigation_position']) ? $slider_option['navigation_position'] : '';
+        $navigation_text_prev = isset($slider_option['navigation_text']['prev']) ? $slider_option['navigation_text']['prev'] : '';
+        $navigation_text_next = isset($slider_option['navigation_text']['next']) ? $slider_option['navigation_text']['next'] : '';
+
+
         $navigation_background_color = isset($slider_option['navigation_background_color']) ? $slider_option['navigation_background_color'] : '';
         $navigation_color = isset($slider_option['navigation_color']) ? $slider_option['navigation_color'] : '';
         $navigation_style = isset($slider_option['navigation_style']) ? $slider_option['navigation_style'] : 'flat';
@@ -1210,6 +1214,39 @@ if(!function_exists('wcps_metabox_content_slider_options')) {
 
         $settings_tabs_field->generate_field($args);
 
+
+
+            $args = array(
+                'id'		=> 'nav_text',
+                'title'		=> __('Navigation text','woocommerce-products-slider'),
+                'details'	=> __('Navigation previous & next text.','woocommerce-products-slider'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'prev',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('Previous text','woocommerce-products-slider'),
+                        'details'	=> __('Set previous icon','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $navigation_text_prev,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                    array(
+                        'id'		=> 'next',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('Next text','woocommerce-products-slider'),
+                        'details'	=> __('Set next icon','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $navigation_text_next,
+                        'default'		=> '',
+                        'placeholder'   => '',
+                    ),
+                ),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
         $args = array(

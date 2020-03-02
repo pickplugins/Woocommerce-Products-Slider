@@ -12,15 +12,14 @@ function wcps_settings_content_general(){
     $social_media_sites = isset($wcps_settings['social_media_sites']) ? $wcps_settings['social_media_sites'] : array();
     $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
 
+    //echo '<pre>'.var_export($wcps_settings, true).'</pre>';
+
     ?>
     <div class="section">
         <div class="section-title"><?php echo __('General', 'woocommerce-products-slider'); ?></div>
         <p class="description section-description"><?php echo __('Choose some general options.', 'woocommerce-products-slider'); ?></p>
 
         <?php
-
-
-
 
         $args = array(
             'id'		=> 'track_product_view',
@@ -31,6 +30,19 @@ function wcps_settings_content_general(){
             'value'		=> $track_product_view,
             'default'		=> '',
             'args'		=> array('no'=>'No','yes'=>'Yes' ),
+        );
+
+        $settings_tabs_field->generate_field($args);
+
+        $args = array(
+            'id'		=> 'font_aw_version',
+            'parent'		=> 'wcps_settings',
+            'title'		=> __('Font-awesome version','related-post'),
+            'details'	=> __('Choose font awesome version you want to load.','related-post'),
+            'type'		=> 'select',
+            'value'		=> $font_aw_version,
+            'default'		=> '',
+            'args'		=> array('v_5'=>__('Version 5+','related-post'), 'v_4'=>__('Version 4+','related-post'), 'none'=>__('None','related-post')  ),
         );
 
         $settings_tabs_field->generate_field($args);
@@ -106,18 +118,9 @@ function wcps_settings_content_general(){
         $settings_tabs_field->generate_field($args);
 
 
-        $args = array(
-            'id'		=> 'font_aw_version',
-            'parent'		=> 'wcps_settings',
-            'title'		=> __('Font-awesome version','related-post'),
-            'details'	=> __('Choose font awesome version you want to load.','related-post'),
-            'type'		=> 'select',
-            'value'		=> $font_aw_version,
-            'default'		=> 'none',
-            'args'		=> array('v_5'=>__('Version 5+','related-post'), 'v_4'=>__('Version 4+','related-post'), 'none'=>__('None','related-post')  ),
-        );
 
-        $settings_tabs_field->generate_field($args);
+
+
 
         ?>
 
