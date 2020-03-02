@@ -251,7 +251,8 @@ function wcps_layout_element_sale_count($args){
     $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
     $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
 
-    global $product;
+    $product = wc_get_product( $product_id );
+
     $total_sales = $product->get_total_sales();
 
     if(!empty($total_sales)):
@@ -302,7 +303,6 @@ function wcps_layout_element_product_price($args){
     $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
     $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
     $currency = get_woocommerce_currency_symbol();
-    global $product;
     $product = wc_get_product( $product_id );
 
     $string = get_woocommerce_price_format();
@@ -361,7 +361,8 @@ function wcps_layout_element_on_sale_mark($args){
     $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
     $icon = '<img src="'.$icon_img_src.'">';
 
-    global $product;
+    $product = wc_get_product( $product_id );
+
     $is_on_sale = $product->is_on_sale();
 
     if($is_on_sale):
@@ -390,7 +391,7 @@ function wcps_layout_element_featured_mark($args){
     $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
     $icon = '<img src="'.$icon_img_src.'">';
 
-    global $product;
+    $product = wc_get_product( $product_id );
     $is_featured = $product->get_featured();
 
 
@@ -419,7 +420,7 @@ function wcps_layout_element_rating($args){
     $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
     $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
 
-    global $product;
+    $product = wc_get_product( $product_id );
     $average_rating = $product->get_average_rating();
     $rating_html = wc_get_rating_html( $average_rating );
 

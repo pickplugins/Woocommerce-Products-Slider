@@ -89,12 +89,10 @@ if(!function_exists('wcps_metabox_content_shortcode')) {
                 'details'	=> __('var dump following variable.','woocommerce-products-slider'),
                 'type'		=> 'checkbox',
                 'value'		=> $developer_options,
-                'default'		=> 'none',
+                'default'		=> array('none'),
                 'args'		=> array(
                     'query_args'=>__('Query arguments','woocommerce-products-slider'),
                     'found_posts'=>__('Found posts','woocommerce-products-slider'),
-                    'more_query_args'=>__('More query_args','woocommerce-products-slider'),
-
                 ),
             );
 
@@ -751,9 +749,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
 
             if(!empty($wcps_query_orderby_args)){
 
-                $all_team_members_new = array();
-
-                $member_ids_new = array();
+                $query_orderby_new = array();
 
                 if(!empty($query_orderby))
                     foreach ($query_orderby as $elementIndex => $argData){

@@ -8,8 +8,6 @@ function wcps_settings_content_general(){
 
     $wcps_settings = get_option('wcps_settings');
 
-    $track_product_view = isset($wcps_settings['track_product_view']) ? $wcps_settings['track_product_view'] : 'no';
-    $social_media_sites = isset($wcps_settings['social_media_sites']) ? $wcps_settings['social_media_sites'] : array();
     $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
 
     //echo '<pre>'.var_export($wcps_settings, true).'</pre>';
@@ -21,18 +19,7 @@ function wcps_settings_content_general(){
 
         <?php
 
-        $args = array(
-            'id'		=> 'track_product_view',
-            'parent' => 'wcps_settings',
-            'title'		=> __('Track product view','woocommerce-products-slider'),
-            'details'	=> __('Choose to track product view.','woocommerce-products-slider'),
-            'type'		=> 'select',
-            'value'		=> $track_product_view,
-            'default'		=> '',
-            'args'		=> array('no'=>'No','yes'=>'Yes' ),
-        );
 
-        $settings_tabs_field->generate_field($args);
 
         $args = array(
             'id'		=> 'font_aw_version',
@@ -43,86 +30,6 @@ function wcps_settings_content_general(){
             'value'		=> $font_aw_version,
             'default'		=> '',
             'args'		=> array('v_5'=>__('Version 5+','related-post'), 'v_4'=>__('Version 4+','related-post'), 'none'=>__('None','related-post')  ),
-        );
-
-        $settings_tabs_field->generate_field($args);
-
-
-        $social_field = array(
-
-            array(
-                'id'		=> 'name',
-                'title'		=> __('Media name','woocommerce-products-slider'),
-                'details'	=> __('Write media name here.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> '',
-                'default'		=> '',
-                'placeholder'		=> 'Facebook',
-            ),
-            array(
-                'id'		=> 'media_id',
-                'title'		=> __('Media id','woocommerce-products-slider'),
-                'details'	=> __('Write media id here.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> '',
-                'default'		=> '',
-                'placeholder'		=> 'facebook',
-            ),
-
-            array(
-                'id'		=> 'share_url',
-                'title'		=> __('Share url','woocommerce-products-slider'),
-                'details'	=> __('Write media share url here.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> '',
-                'default'		=> '',
-                'placeholder'		=> 'https://www.facebook.com/sharer/sharer.php?u=URL',
-            ),
-
-            array(
-                'id'		=> 'icon',
-                'title'		=> __('Add icon','woocommerce-products-slider'),
-                'details'	=> __('Upload icon image here.','woocommerce-products-slider'),
-                'type'		=> 'media_url',
-                'value'		=> '',
-                'default'		=> '',
-                'placeholder'		=> '',
-            ),
-
-            array(
-                'id'		=> 'font_icon',
-                'title'		=> __('Add font icon','woocommerce-products-slider'),
-                'details'	=> __('Add font icon html here, you can use <a href="https://fontawesome.com/icons">fontawesome</a>  ex: <code> &lt;i class="fab fa-facebook-square">&lt;/i></code>.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> '',
-                'default'		=> '',
-                'placeholder'		=> '<i class=&quot;fab fa-facebook-square&quot;></i>',
-            ),
-
-            array(
-                'id'		=> 'visibility',
-                'title'		=> __('Visibility','woocommerce-products-slider'),
-                'details'	=> __('Choose visibility.','woocommerce-products-slider'),
-                'type'		=> 'select',
-                'value'		=> '',
-                'default'		=> '',
-                'args'		=> array('1'=>'Yes',''=>'No'),
-            ),
-
-        );
-
-
-        $args = array(
-            'id'		=> 'social_media_sites',
-            'parent'		=> 'wcps_settings',
-            'title'		=> __('Social share media','text-domain'),
-            'details'	=> __('Custom social share button inputs.','text-domain'),
-            'collapsible'=> true,
-            'type'		=> 'repeatable',
-            'limit'		=> 10,
-            'title_field'		=> 'name',
-            'value'		=> $social_media_sites,
-            'fields'    => $social_field,
         );
 
         $settings_tabs_field->generate_field($args);
