@@ -44,7 +44,7 @@ class class_wcps_post_types{
 				'show_ui' 				=> true,
 				'capability_type' 		=> 'post',
 				'map_meta_cap'          => true,
-				'publicly_queryable' 	=> false,
+				'publicly_queryable' 	=> true,
 				'exclude_from_search' 	=> false,
 				'hierarchical' 			=> false,
 				'query_var' 			=> true,

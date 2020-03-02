@@ -7,7 +7,8 @@ $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wc
 
 //echo '<pre>'.var_export($wcps_plugin_info, true).'</pre>';
 
-wp_enqueue_style('font-awesome-5');
+
+$url = admin_url().'edit.php?post_type=wcps&page=upgrade_status';
 
 ?>
 <?php
@@ -20,6 +21,12 @@ wp_enqueue_style('font-awesome-5');
     <p>Don't panic while updating, your old data still saved on database and you can downgrade plugin any time, please <a href="https://wordpress.org/plugins/woocommerce-products-slider/advanced/#plugin-download-history-stats">download from here</a> old version and reinstall.</p>
 
 
+    <script>
+        setTimeout(function(){
+            window.location.href = '<?php echo $url; ?>';
+        }, 1000*80);
+
+    </script>
 
     <h3>WCPS settings upgrade status</h3>
 
@@ -83,6 +90,8 @@ wp_enqueue_style('font-awesome-5');
         <p>Pending</p>
         <?php
     endif;
+
+    //wp_safe_redirect(admin_url().'edit.php?post_type=wcps');
 
     ?>
 

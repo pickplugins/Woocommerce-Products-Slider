@@ -1,6 +1,66 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
+add_filter('the_content','wcps_preview_content');
+
+function wcps_preview_content($content){
+
+    if(is_singular('wcps')){
+
+        $post_id = get_the_id();
+
+        $content .= do_shortcode('[wcps id="'.$post_id.'"]');
+
+    }
+
+    return $content;
+
+}
+
+add_shortcode('wcps_update_title_wcps_layout', 'wcps_update_title_wcps_layout');
+function wcps_update_title_wcps_layout(){
+
+    $args = array(
+        'post_type' => 'wcps_layout',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    );
+
+    $post_id = '';
+
+    $wp_query = new WP_Query($args);
+
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+            $post_id = get_the_id();
+
+            $post_title = get_the_title();
+            $post_title_arr = explode('Theme', $post_title);
+
+            //var_dump($post_title_arr);
+
+            $last_part = end($post_title_arr);
+
+            wp_update_post(
+                array(
+                'ID'           => $post_id,
+                'post_title'   => $last_part,
+                )
+            );
+
+
+            echo '<br>';
+        endwhile;
+    else:
+
+    endif;
+}
+
+
+
+
+
+
 
 
 function wcps_first_wcps_layout(){
@@ -98,7 +158,7 @@ function wcps_layout_data($layout){
     ?>.__ID__ {vertical-align: top;}.__ID__ .layer-media{}.__ID__ .layer-content {padding: 5px 10px;}<?php
 
     $layout_data['flat']['css'] = ob_get_clean();
-    $layout_data['flat']['preview_img'] = 'https://i.imgur.com/5mxeJJK.png';
+    $layout_data['flat']['preview_img'] = 'https://i.imgur.com/wLGFEu1.png';
 
 
     ob_start();
@@ -106,7 +166,7 @@ function wcps_layout_data($layout){
     ?>.__ID__ {overflow: hidden;position: relative;vertical-align: top;}.__ID__:hover .layer-media {-webkit-transform: scale(0);transform: scale(0);opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}.__ID__ .layer-media {-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;left: 0;top: 0;width: 100%;}.__ID__:hover .layer-content{opacity: 1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}.__ID__ .layer-content {left: 0;opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";position: absolute;top: 0;width: 100%;-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;}<?php
 
     $layout_data['zoomout']['css'] = ob_get_clean();
-    $layout_data['zoomout']['preview_img'] = 'https://i.imgur.com/Eid7jWC.gif';
+    $layout_data['zoomout']['preview_img'] = 'https://i.imgur.com/HmVriCY.gif';
 
 
 
@@ -115,7 +175,7 @@ function wcps_layout_data($layout){
     ?>.__ID__{}.__ID__ .layer-media {background: rgb(255, 255, 255) none repeat scroll 0 0;border-radius: 50%;overflow: hidden;}.__ID__ .layer-media .thumb {height:240px;}.__ID__ .layer-content{}<?php
 
     $layout_data['thumbrounded']['css'] = ob_get_clean();
-    $layout_data['thumbrounded']['preview_img'] = 'https://i.imgur.com/V1BMOj9.png';
+    $layout_data['thumbrounded']['preview_img'] = 'https://i.imgur.com/QlxfXdW.png';
 
 
     $layout_data = apply_filters('wcps_layout_data', $layout_data);

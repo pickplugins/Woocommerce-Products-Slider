@@ -17,6 +17,7 @@ function wcps_cron_upgrade_settings(){
     $license_key = isset($wcps_license['license_key']) ? $wcps_license['license_key'] : '';
 
     $wcps_settings['license_key'] = $license_key;
+    $wcps_settings['font_aw_version'] = 'v_5';
 
 
     $social_fields_new = array();
@@ -61,7 +62,7 @@ function wcps_cron_upgrade_wcps(){
     $args = array(
         'post_type'=>'wcps',
         'post_status'=>'publish',
-        'posts_per_page'=>10,
+        'posts_per_page'=>5,
         'meta_query'=> $meta_query,
 
     );
@@ -518,6 +519,9 @@ function wcps_cron_upgrade_wcps(){
         $wcps_plugin_info = get_option('wcps_plugin_info');
         $wcps_plugin_info['wcps_upgrade'] = 'done';
         update_option('wcps_plugin_info', $wcps_plugin_info);
+
+
+
     endif;
 
 
