@@ -307,7 +307,7 @@ function wcps_layout_element_product_price($args){
 
     $string = get_woocommerce_price_format();
 
-
+    //echo '<pre>'.var_export($product_id, true).'</pre>';
 
     if ($price_type == 'full') {
         $price_html = $product->get_price_html();
@@ -491,10 +491,18 @@ function wcps_layout_element_css_post_title($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($color)): ?>
             color: <?php echo $color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
             font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_family)): ?>
             font-family: <?php echo $font_family; ?>;
+        <?php endif; ?>
+        <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+        <?php endif; ?>
         }
     </style>
     <?php
@@ -519,7 +527,7 @@ function wcps_layout_element_css_product_category($args){
     $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
     $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
     $wrapper_margin = isset($elementData['wrapper_margin']) ? $elementData['wrapper_margin'] : '';
-
+    $text_align = isset($elementData['text_align']) ? (int) $elementData['text_align'] : '';
 
     ?>
     <style type="text/css">
@@ -529,11 +537,19 @@ function wcps_layout_element_css_product_category($args){
         }
 
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a{
+        <?php if(!empty($link_color)): ?>
             color: <?php echo $link_color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
             font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_family)): ?>
             font-family: <?php echo $font_family; ?>;
+        <?php endif; ?>
             text-decoration: none;
-
+        <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
+        <?php endif; ?>
         }
     </style>
     <?php
@@ -559,15 +575,23 @@ function wcps_layout_element_css_product_tag($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($wrapper_margin)): ?>
             margin: <?php echo $wrapper_margin; ?>;
+        <?php endif; ?>
 
         }
 
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a{
+        <?php if(!empty($link_color)): ?>
             color: <?php echo $link_color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
             font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_family)): ?>
             font-family: <?php echo $font_family; ?>;
-            text-decoration: none;
+        <?php endif; ?>
+        text-decoration: none;
 
         }
     </style>
@@ -594,7 +618,9 @@ function wcps_layout_element_css_sale_count($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+        <?php endif; ?>
 
         }
 
@@ -617,8 +643,12 @@ function wcps_layout_element_css_on_sale_mark($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($background_color)): ?>
             background-color: <?php echo $background_color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($text_color)): ?>
             color: <?php echo $text_color; ?>;
+        <?php endif; ?>
             padding: 5px;
         }
 
@@ -641,9 +671,13 @@ function wcps_layout_element_css_featured_mark($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($background_color)): ?>
             background-color: <?php echo $background_color; ?>;
-            color: <?php echo $text_color; ?>;
-            padding: 5px;
+        <?php endif; ?>
+        <?php if(!empty($color)): ?>
+            color: <?php echo $color; ?>;
+        <?php endif; ?>
+        padding: 5px;
         }
     </style>
     <?php
@@ -671,11 +705,17 @@ function wcps_layout_element_css_add_to_cart($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+        <?php endif; ?>
         }
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> .add_to_cart_button {
+        <?php if(!empty($background_color)): ?>
             background-color: <?php echo $background_color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($color)): ?>
             color: <?php echo $color; ?>;
+        <?php endif; ?>
         }
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> p{
             border: none !important;
@@ -708,7 +748,9 @@ function wcps_layout_element_css_rating($args){
     <style type="text/css">
 
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+        <?php endif; ?>
         }
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> .star-rating{
             float: none;
@@ -732,13 +774,24 @@ function wcps_layout_element_css_product_price($args){
     $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
     $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
     $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $text_align = isset($elementData['text_align']) ? $elementData['text_align'] : '';
 
 
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+            <?php endif; ?>
+            <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+            <?php endif; ?>
+            <?php if(!empty($color)): ?>
             color: <?php echo $color; ?>;
+            <?php endif; ?>
+            <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
+            <?php endif; ?>
 
         }
 
@@ -773,16 +826,25 @@ function wcps_layout_element_css_content($args){
     ?>
     <style type="text/css">
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+            <?php if(!empty($color)): ?>
             color: <?php echo $color; ?>;
+            <?php endif; ?>
+            <?php if(!empty($font_size)): ?>
             font-size: <?php echo $font_size; ?>;
+            <?php endif; ?>
+            <?php if(!empty($font_family)): ?>
             font-family: <?php echo $font_family; ?>;
+            <?php endif; ?>
+            <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+            <?php endif; ?>
 
         }
 
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a{
+            <?php if(!empty($read_more_color)): ?>
             color: <?php echo $read_more_color; ?>;
-
+            <?php endif; ?>
         }
 
     </style>
@@ -812,7 +874,9 @@ function wcps_layout_element_css_thumbnail($args){
 
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
             overflow: hidden;
+            <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+            <?php endif; ?>
         }
 
         @media only screen and (min-width: 1024px ){

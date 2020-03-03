@@ -761,6 +761,7 @@ function wcps_layout_elements_option_product_category($parameters){
     $wrapper_margin = isset($element_data['wrapper_margin']) ? $element_data['wrapper_margin'] : '';
     $link_color = isset($element_data['link_color']) ? $element_data['link_color'] : '';
     $separator = isset($element_data['separator']) ? $element_data['separator'] : '';
+    $text_align = isset($element_data['text_align']) ? $element_data['text_align'] : '';
 
 
     ?>
@@ -831,6 +832,23 @@ function wcps_layout_elements_option_product_category($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+
+            $args = array(
+                'id'		=> 'font_size',
+                'css_id'		=> $element_index.'_font_size',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Choose font size.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $font_size,
+                'default'		=> '',
+                'placeholder'		=> '16px',
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
             $args = array(
                 'id'		=> 'link_color',
                 'css_id'		=> $element_index.'_link_color',
@@ -846,6 +864,19 @@ function wcps_layout_elements_option_product_category($parameters){
 
 
 
+            $args = array(
+                'id'		=> 'text_align',
+                'css_id'		=> $element_index.'_text_align',
+                'parent' => $input_name.'[product_category]',
+                'title'		=> __('Text align','woocommerce-products-slider'),
+                'details'	=> __('Choose text align.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $text_align,
+                'default'		=> 'left',
+                'args'		=> array('left'=> __('Left', 'woocommerce-products-slider'),'right'=> __('Right', 'woocommerce-products-slider'),'center'=> __('Center', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
 
             ?>
 
@@ -1509,6 +1540,7 @@ function wcps_layout_elements_option_product_price($parameters){
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
     $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
+    $text_align = isset($element_data['text_align']) ? $element_data['text_align'] : '';
 
     ?>
     <div class="item">
@@ -1577,6 +1609,33 @@ function wcps_layout_elements_option_product_price($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+            $args = array(
+                'id'		=> 'font_size',
+                'css_id'		=> $element_index.'_font_size',
+                'parent' => $input_name.'[product_price]',
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Set font size.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $font_size,
+                'default'		=> '',
+                'placeholder'		=> '16px',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'text_align',
+                'css_id'		=> $element_index.'_text_align',
+                'parent' => $input_name.'[product_price]',
+                'title'		=> __('Text align','woocommerce-products-slider'),
+                'details'	=> __('Choose text align.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $text_align,
+                'default'		=> 'left',
+                'args'		=> array('left'=> __('Left', 'woocommerce-products-slider'),'right'=> __('Right', 'woocommerce-products-slider'),'center'=> __('Center', 'woocommerce-products-slider') ),
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
             ?>

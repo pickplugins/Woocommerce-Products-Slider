@@ -198,7 +198,7 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['slider']['stop_on_hover'] = $wcps_stop_on_hover;
 
             $wcps_slider_navigation_position = get_post_meta( $wcps_id, 'wcps_slider_navigation_position', true );
-            $wcps_options['slider']['navigation_position'] = $wcps_slider_navigation_position;
+            $wcps_options['slider']['navigation_position'] = !empty($wcps_slider_navigation_position) ? $wcps_slider_navigation_position : 'topright';
 
             $wcps_options['slider']['navigation_background_color'] = '';
 

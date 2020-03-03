@@ -171,8 +171,7 @@ function wcps_slider_main_items($args){
     if(!empty($tax_query))
     $query_args['tax_query'] = array_merge(array( 'relation' => $taxonomy_relation ), $tax_query );
 
-    $args['query_args'] = $query_args;
-    $query_args = apply_filters('wcps_slider_query_args', $args);
+    $query_args = apply_filters('wcps_slider_query_args', $query_args, $args);
 
     if(in_array('query_args', $developer_options)){
         echo 'query_args: ############';
@@ -187,7 +186,7 @@ function wcps_slider_main_items($args){
     if(in_array('found_posts', $developer_options)){
 
         echo 'found_posts: ############';
-        echo '<pre>'.var_export(($wcps_query->found_posts), true).'</pre>';
+        echo '<pre>'.var_export(((int) $wcps_query->found_posts), true).'</pre>';
     }
 
 
@@ -362,11 +361,8 @@ function wcps_slider_main_scripts( $args){
     $navigation_text_prev = !empty($slider_option['navigation_text']['prev']) ? $slider_option['navigation_text']['prev'] : $navigation_text_prev;
     $navigation_text_next = !empty($slider_option['navigation_text']['next']) ? $slider_option['navigation_text']['next'] : $navigation_text_next;
 
-    //echo '<pre>'.var_export($item_layout_id, true).'</pre>';
-//        echo '<pre>'.var_export($auto_play_speed, true).'</pre>';
-//        echo '<pre>'.var_export($auto_play_timeout, true).'</pre>';
 
-        ?>
+    ?>
         <script>
             jQuery(document).ready(function($){
                 $("#wcps-<?php echo $wcps_id; ?>").owlCarousel({
@@ -408,16 +404,12 @@ function wcps_slider_main_scripts( $args){
                     mouseDrag:<?php echo $slider_mouse_drag; ?>,
                     touchDrag:<?php echo $slider_touch_drag; ?>,
                     lazyLoad:<?php echo $slider_lazy_load; ?>,
-
-
                 });
-
                 $(document).on('change', '#wcps-<?php echo $wcps_id; ?> .wcps-items-cart .quantity', function(){
                     quantity = $(this).val();
                     console.log(quantity);
                     $(this).next().attr('data-quantity', quantity);
                 })
-
             });
         </script>
 
@@ -482,7 +474,6 @@ function wcps_slider_main_scripts( $args){
                 display: inline-block;
                 vertical-align: middle;
             }
-            /*on-sale position*/
             .wcps-container-<?php echo $wcps_id; ?> .on-sale.topright{
                 position: absolute;
                 right: 20px;
@@ -507,7 +498,6 @@ function wcps_slider_main_scripts( $args){
                 bottom: 10px;
                 z-index: 10;
             }
-            /*on-sale position*/
             .wcps-container-<?php echo $wcps_id; ?> .featured-mark img{
                 width: 30px;
                 height: auto;
@@ -539,12 +529,12 @@ function wcps_slider_main_scripts( $args){
                 bottom: 10px;
                 z-index: 10;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-dots {
+            #wcps-<?php echo $wcps_id; ?> .owl-dots{
                 text-align: center;
                 width: 100%;
                 margin: 30px 0 0;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot {
+            #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot{
                 background: <?php echo $dots_background_color; ?>;
                 border-radius: 20px;
                 display: inline-block;
@@ -552,55 +542,53 @@ function wcps_slider_main_scripts( $args){
                 margin: 5px 7px;
                 width: 15px;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot.active, #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot:hover {
+            #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot.active, #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot:hover{
                 background: <?php echo $dots_active_background_color; ?>;
-
             }
             #wcps-<?php echo $wcps_id; ?> .owl-nav button{
                 background: <?php echo $navigation_background_color; ?>;
                 color: <?php echo $navigation_color; ?>;
                 margin: 0 5px;
             }
-            /*navs position*/
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.topright  {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.topright{
                 position: absolute;
                 right: 15px;
                 top: 15px;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.topleft  {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.topleft{
                 position: absolute;
                 left: 15px;
                 top: 15px;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.bottomleft  {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.bottomleft{
                 position: absolute;
                 left: 15px;
                 bottom: 15px;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.bottomright   {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.bottomright{
                 position: absolute;
                 right: 15px;
                 bottom: 15px;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed   {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed{
                 position: absolute;
                 top: 50%;
                 transform: translate(0, -50%);
                 width: 100%;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed  .owl-next {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed  .owl-next{
                 float: right;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed .owl-prev {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle-fixed .owl-prev{
                 float: left;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle{
                 position: absolute;
                 top: 50%;
                 transform: translate(0, -50%);
                 width: 100%;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle  .owl-next {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle  .owl-next{
                 float: right;
                 right: -20%;
                 position: absolute;
@@ -609,16 +597,15 @@ function wcps_slider_main_scripts( $args){
             #wcps-<?php echo $wcps_id; ?>:hover .owl-nav.middle  .owl-next{
                 right: 0;
             }
-            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle  .owl-prev {
+            #wcps-<?php echo $wcps_id; ?> .owl-nav.middle  .owl-prev{
                 left: -20%;
                 position: absolute;
                 transition: all ease 1s 0s;
             }
-            #wcps-<?php echo $wcps_id; ?>:hover .owl-nav.middle  .owl-prev {
+            #wcps-<?php echo $wcps_id; ?>:hover .owl-nav.middle  .owl-prev{
                 left: 0;
                 position: absolute;
             }
-            /*navs style*/
             #wcps-<?php echo $wcps_id; ?> .owl-nav.flat button{
                 padding: 5px 20px;
                 border-radius: 0;
@@ -631,7 +618,6 @@ function wcps_slider_main_scripts( $args){
                 padding: 5px 20px;
                 border-radius: 8px;
             }
-
             #wcps-<?php echo $wcps_id; ?> .owl-nav.round button{
                 border-radius: 50px;
                 width: 50px;
@@ -639,9 +625,7 @@ function wcps_slider_main_scripts( $args){
             }
             #wcps-<?php echo $wcps_id; ?> .quantity{
                 width: 45px;
-
             }
-
             <?php
             $custom_scripts = get_post_meta($item_layout_id,'custom_scripts', true);
             $custom_css = isset($custom_scripts['custom_css']) ? $custom_scripts['custom_css'] : '';
@@ -656,23 +640,11 @@ function wcps_slider_main_scripts( $args){
 
             if(!empty($elementGroupData))
                 foreach ($elementGroupData as $elementIndex => $elementData){
-
-
                     $args['elementData'] = $elementData;
                     $args['element_index'] = $elementGroupIndex;
-
-                    //echo $elementIndex;
                     do_action('wcps_layout_element_css_'.$elementIndex, $args);
                 }
         }
-    ?>
-
-        <?php
-
-
-
-
-
 }
 
 
