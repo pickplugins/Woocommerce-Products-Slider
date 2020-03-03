@@ -42,7 +42,7 @@ You can choose slider item to display one product on center so both side will di
 **Slider navigations**
 You can display slider navigations so that user can click these to check or slide product one by one, you can also set position for navigation like top-right, top-left, bottom-left, bottom-right, middle, middle fixed. you can also choose some pre-defined style for navigations, set custom value for navigation sliding speed. also custom background color and text color also available to customize as you need.
 
-**Slider navigations**
+**Slider dots**
 You can display slider pagination or dots at bottom so that user can click these to check or slide product by each screen, you can set custom value for dots sliding speed. also custom background color and hover or active color also available to customize as you need.
 
 **Slider RTL**

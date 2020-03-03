@@ -20,7 +20,7 @@ class wcps_class_settings{
         add_submenu_page( 'edit.php?post_type=wcps', __( 'Settings', 'woocommerce-products-slider' ), __( 'Settings', 'woocommerce-products-slider' ), 'manage_options', 'settings', array( $this, 'settings' ) );
 
 
-        if($wcps_upgrade != 'done'){
+       if($wcps_upgrade != 'done'){
 
             add_submenu_page( 'edit.php?post_type=wcps', __( 'Upgrade status', 'woocommerce-products-slider' ), __( 'Upgrade status', 'woocommerce-products-slider' ), 'manage_options', 'upgrade_status', array( $this, 'upgrade_status' ) );
 

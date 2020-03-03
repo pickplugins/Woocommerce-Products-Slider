@@ -5,7 +5,7 @@ $wcps_plugin_info = get_option('wcps_plugin_info');
 $wcps_settings_upgrade = isset($wcps_plugin_info['settings_upgrade']) ? $wcps_plugin_info['settings_upgrade'] : '';
 $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wcps_upgrade'] : '';
 
-//echo '<pre>'.var_export($wcps_plugin_info, true).'</pre>';
+//echo '<pre>'.var_export($wcps_upgrade, true).'</pre>';
 
 
 $url = admin_url().'edit.php?post_type=wcps&page=upgrade_status';
@@ -91,7 +91,11 @@ $url = admin_url().'edit.php?post_type=wcps&page=upgrade_status';
         <?php
     endif;
 
-    //wp_safe_redirect(admin_url().'edit.php?post_type=wcps');
+
+    if($wcps_upgrade == 'done'){
+        wp_safe_redirect(admin_url().'edit.php?post_type=wcps');
+    }
+
 
     ?>
 
