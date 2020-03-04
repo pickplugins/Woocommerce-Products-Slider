@@ -1102,6 +1102,9 @@ function wcps_layout_elements_option_featured_mark($parameters){
     $position = isset($element_data['position']) ? $element_data['position'] : '';
     $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
     $text_color = isset($element_data['text_color']) ? $element_data['text_color'] : '';
+    $padding = isset($element_data['padding']) ? $element_data['padding'] : '';
+
+
     ?>
     <div class="item">
         <div class="element-title header ">
@@ -1191,7 +1194,33 @@ function wcps_layout_elements_option_featured_mark($parameters){
             $settings_tabs_field->generate_field($args);
 
 
+            $args = array(
+                'id'		=> 'font_size',
+                'css_id'		=> $element_index.'_font_size',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Choose text font size.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $font_size,
+                'default'		=> '',
+                'placeholder'		=> '16px',
+            );
 
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'padding',
+                'css_id'		=> $element_index.'_padding',
+                'parent' => $input_name.'[featured_mark]',
+                'title'		=> __('padding','woocommerce-products-slider'),
+                'details'	=> __('Choose padding.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $padding,
+                'default'		=> '',
+                'placeholder'		=> '5px 10px',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
             ?>
@@ -1218,6 +1247,7 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
     $position = isset($element_data['position']) ? $element_data['position'] : '';
     $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
     $text_color = isset($element_data['text_color']) ? $element_data['text_color'] : '';
+    $padding = isset($element_data['padding']) ? $element_data['padding'] : '';
 
     ?>
     <div class="item">
@@ -1305,6 +1335,38 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+
+
+            $args = array(
+                'id'		=> 'font_size',
+                'css_id'		=> $element_index.'_font_size',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Choose text font size.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $font_size,
+                'default'		=> '',
+                'placeholder'		=> '16px',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'padding',
+                'css_id'		=> $element_index.'_padding',
+                'parent' => $input_name.'[on_sale_mark]',
+                'title'		=> __('padding','woocommerce-products-slider'),
+                'details'	=> __('Choose padding.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $padding,
+                'default'		=> '',
+                'placeholder'		=> '5px 10px',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
             ?>
 
         </div>
@@ -1326,6 +1388,7 @@ function wcps_layout_elements_option_add_to_cart($parameters){
 
     $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
     $color = isset($element_data['color']) ? $element_data['color'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
 
     $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
     $font_family = isset($element_data['font_family']) ? $element_data['font_family'] : '';
@@ -1384,6 +1447,20 @@ function wcps_layout_elements_option_add_to_cart($parameters){
 
             $settings_tabs_field->generate_field($args);
 
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_margin',
+                'parent' => $input_name.'[add_to_cart]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Set margin.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 0',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
             ?>
 

@@ -4,7 +4,7 @@
 	Tags: product slider, woocommerce slider, woo slider, woo product carousel slider,  woocommerce product slider
 	Requires at least: 3.8
 	Tested up to: 5.3
-	Stable tag: 1.13.0
+	Stable tag: 1.13.1
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,22 @@ then paste this shortcode anywhere in your page to display slider<br />
 5. screenshot-5
 
 == Changelog ==
+
+	= 1.13.0 =
+    * 2020-03-04 add - Layout builder added.
+    * 2020-03-04 add - Navigation custom icon/text
+    * 2020-03-04 add - Navigation style
+    * 2020-03-04 add - Navigation position
+    * 2020-03-04 add - Taxonomy relation
+    * 2020-03-04 update - Query orderby
+    * 2020-03-04 update - Orderby meta key
+    * 2020-03-04 update - Ribbon text
+    * 2020-03-04 update - Ribbon background color
+    * 2020-03-04 update - Ribbon text color
+    * 2020-03-04 update - Ribbon width
+    * 2020-03-04 update - Ribbon height
+    * 2020-03-04 update - Ribbon position
+
 
 	= 1.12.24 =
     * 2020-02-05 fix - Slider pagination at bottom option issue fixed

@@ -277,8 +277,9 @@ function wcps_layout_element_add_to_cart($args){
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $wrapper_html = isset($elementData['cart_text']) ? $elementData['cart_text'] : '';
 
-    $cart_html = do_shortcode('[add_to_cart show_price="false" quantity="1" id="'.$product_id.'"]');
+    $product = wc_get_product( $product_id );
 
+    $cart_html = do_shortcode('[add_to_cart show_price="false" quantity="1" id="'.$product_id.'"]');
 
 
     ?>
@@ -365,7 +366,8 @@ function wcps_layout_element_on_sale_mark($args){
 
     $is_on_sale = $product->is_on_sale();
 
-    if($is_on_sale):
+
+    if($is_on_sale && ($product->is_type('simple') || $product->is_type('variable'))):
         ?>
         <div class="on-sale <?php echo $position; ?> <?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $icon); ?></div>
     <?php
@@ -638,6 +640,8 @@ function wcps_layout_element_css_on_sale_mark($args){
 
     $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
     $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $padding = isset($elementData['padding']) ? $elementData['padding'] : '';
 
 
     ?>
@@ -649,7 +653,13 @@ function wcps_layout_element_css_on_sale_mark($args){
         <?php if(!empty($text_color)): ?>
             color: <?php echo $text_color; ?>;
         <?php endif; ?>
-            padding: 5px;
+        <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        line-height: normal;
+        <?php if(!empty($padding)): ?>
+        padding: <?php echo $padding; ?>;
+        <?php endif; ?>
         }
 
     </style>
@@ -666,6 +676,8 @@ function wcps_layout_element_css_featured_mark($args){
 
     $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
     $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $padding = isset($elementData['padding']) ? $elementData['padding'] : '';
 
 
     ?>
@@ -674,10 +686,16 @@ function wcps_layout_element_css_featured_mark($args){
         <?php if(!empty($background_color)): ?>
             background-color: <?php echo $background_color; ?>;
         <?php endif; ?>
-        <?php if(!empty($color)): ?>
-            color: <?php echo $color; ?>;
+        <?php if(!empty($text_color)): ?>
+            color: <?php echo $text_color; ?>;
         <?php endif; ?>
-        padding: 5px;
+        <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        line-height: normal;
+        <?php if(!empty($padding)): ?>
+        padding: <?php echo $padding; ?>;
+        <?php endif; ?>
         }
     </style>
     <?php
@@ -700,6 +718,7 @@ function wcps_layout_element_css_add_to_cart($args){
     $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
     $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
     $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $show_quantity = isset($elementData['show_quantity']) ? $elementData['show_quantity'] : '';
 
 
     ?>
@@ -709,7 +728,7 @@ function wcps_layout_element_css_add_to_cart($args){
             margin: <?php echo $margin; ?>;
         <?php endif; ?>
         }
-        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> .add_to_cart_button {
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a {
         <?php if(!empty($background_color)): ?>
             background-color: <?php echo $background_color; ?>;
         <?php endif; ?>
@@ -720,11 +739,15 @@ function wcps_layout_element_css_add_to_cart($args){
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> p{
             border: none !important;
             margin: 0;
+            padding: 0 !important;
         }
     </style>
+
+    <?php if($show_quantity == 'yes'): ?>
     <script>
-        jQuery('.wcps-container-<?php echo $wcps_id; ?> .wcps-items-cart p').prepend('<input value=1 class=quantity type=number> ');
+        jQuery('.wcps-container-<?php echo $wcps_id; ?> .wcps-items-cart .add_to_cart_button').parent().prepend('<input value=1 class=quantity type=number> ');
     </script>
+    <?php endif; ?>
     <?php
 }
 

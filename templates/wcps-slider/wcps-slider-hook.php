@@ -541,6 +541,7 @@ function wcps_slider_main_scripts( $args){
                 height: 15px;
                 margin: 5px 7px;
                 width: 15px;
+                outline: none;
             }
             #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot.active, #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot:hover{
                 background: <?php echo $dots_active_background_color; ?>;
@@ -549,6 +550,7 @@ function wcps_slider_main_scripts( $args){
                 background: <?php echo $navigation_background_color; ?>;
                 color: <?php echo $navigation_color; ?>;
                 margin: 0 5px;
+                outline: none;
             }
             #wcps-<?php echo $wcps_id; ?> .owl-nav.topright{
                 position: absolute;
