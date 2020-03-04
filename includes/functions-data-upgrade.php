@@ -566,14 +566,14 @@ function wcps_cron_reset_migrate(){
     endif;
 
 
-    wp_clear_scheduled_hook('wcps_cron_reset_migrate');
+
 
     $wcps_plugin_info['settings_upgrade'] = '';
     $wcps_plugin_info['wcps_upgrade'] = '';
     $wcps_plugin_info['migration_reset'] = 'done';
     update_option('wcps_plugin_info', $wcps_plugin_info);
 
-
+    wp_clear_scheduled_hook('wcps_cron_reset_migrate');
 
 }
 		

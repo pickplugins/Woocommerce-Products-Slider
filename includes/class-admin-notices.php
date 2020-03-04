@@ -4,13 +4,16 @@ if ( ! defined('ABSPATH')) exit; // if direct access
 class class_wcps_notices{
 
     public function __construct(){
+        add_action('admin_notices', array( $this, 'woocommerce_plugin_missing' ));
 
         add_action('admin_notices', array( $this, 'data_upgrade' ));
-        add_action('admin_notices', array( $this, 'woocommerce_plugin_missing' ));
 
     }
 
     public function data_upgrade(){
+
+        if (!is_plugin_active('woocommerce-products-slider/woocommerce-products-slider.php')) return;
+
 
         $wcps_plugin_info = get_option('wcps_plugin_info');
         $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wcps_upgrade'] : '';
@@ -35,7 +38,7 @@ class class_wcps_notices{
             ?>
             <div class="update-nag">
                 <?php
-                echo sprintf(__('Data migration required for <b>PickPlugins Product Slider</b> plugin, please <a class="button button-primary" href="%s">click to start</a> migration.', 'woocommerce-products-slider'), $actionurl);
+                echo sprintf(__('Data migration required for <b>PickPlugins Product Slider</b> plugin, please <a class="button button-primary" href="%s">click to start</a> migration. Watch this <a target="_blank" href="https://youtu.be/kn3skEwh5t4">video</a>  first', 'woocommerce-products-slider'), $actionurl);
                 ?>
             </div>
             <?php
@@ -61,7 +64,15 @@ class class_wcps_notices{
                 ?>
             </div>
         <?php
+
+            if (is_plugin_active('woocommerce-products-slider/woocommerce-products-slider.php')) {
+                deactivate_plugins('woocommerce-products-slider/woocommerce-products-slider.php');
+                flush_rewrite_rules();
+            }
+
         endif;
+
+
 
 
         echo ob_get_clean();

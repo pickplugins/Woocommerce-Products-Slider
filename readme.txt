@@ -84,6 +84,30 @@ You can customize slider item or product wrapper style by custom padding, margin
 **Slider container style**
 You can customize slider container or wrapper style by custom padding, margins, background color and background image.
 
+###Premium Features
+
+
+**Recently viewed products**
+You can display recently viewed product by customer.
+
+**Related products**
+You can display product slider as a related products based on current product category and tags. related product also query based on upsells, cross-sells products.
+
+**Best selling products**
+You can display best selling products based on any categories or tags and custom taxonomies or attributes.
+
+**Top Rated products**
+You can display top rated products based on categories, tags or custom taxonomies or attributes.
+
+**Advance meta fields query**
+Query products based on meta fields for advance products queries.
+
+**Featured products at first**
+You can display featured products at first and then other products.
+
+**Layout element**
+advance layout elements Stock status, Stock quantity, Product Weight, Product Dimensions, Share button, Recently viewed text, Meta fields
+
 
 
 == Installation ==

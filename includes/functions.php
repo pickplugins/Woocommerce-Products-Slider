@@ -1,6 +1,9 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
+
+
+
 add_filter('the_content','wcps_preview_content');
 
 function wcps_preview_content($content){
@@ -162,7 +165,6 @@ function wcps_layout_data($layout){
 
 
     ob_start();
-
     ?>.__ID__ {overflow: hidden;position: relative;vertical-align: top;}.__ID__:hover .layer-media {-webkit-transform: scale(0);transform: scale(0);opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}.__ID__ .layer-media {-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;left: 0;top: 0;width: 100%;}.__ID__:hover .layer-content{opacity: 1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}.__ID__ .layer-content {left: 0;opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";position: absolute;top: 0;width: 100%;-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;}<?php
 
     $layout_data['zoomout']['css'] = ob_get_clean();
@@ -178,6 +180,28 @@ function wcps_layout_data($layout){
     $layout_data['thumbrounded']['preview_img'] = 'https://i.imgur.com/QlxfXdW.png';
 
 
+    ob_start();
+    ?>.__ID__{ overflow: hidden; position: relative; vertical-align: top; } .__ID__:hover .layer-media{ -webkit-transform: scale(1.5); transform: scale(1.5); opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; } .__ID__ .layer-media{ -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; left: 0; top: 0; width: 100%; } .__ID__:hover .layer-content{ opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; } .__ID__ .layer-content{ opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; position: absolute; top: 0; width: 100%; -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; }<?php
+
+    $layout_data['zoomin']['css'] = ob_get_clean();
+    $layout_data['zoomin']['preview_img'] = 'https://i.imgur.com/v2wqjFi.gif';
+
+
+
+    ob_start();
+    ?>.__ID__{ overflow: hidden; position: relative; vertical-align: top; } .__ID__:hover .layer-media{ -webkit-transform: rotate(-30deg); transform: rotate(-30deg); opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; } .__ID__ .layer-media{ -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; left: 0; top: 0; width: 100%; } .__ID__:hover .layer-content{ opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; } .__ID__ .layer-content{ left: 0; opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; position: absolute; top: 0; width: 100%; -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; }<?php
+
+    $layout_data['spinleft']['css'] = ob_get_clean();
+    $layout_data['spinleft']['preview_img'] = 'https://i.imgur.com/tBzV6di.gif';
+
+    ob_start();
+    ?>.__ID__{ overflow: hidden; position: relative; vertical-align: top; } .__ID__:hover .layer-media{ z-index:9; } .__ID__ .layer-media{ -webkit-transition: all 0.4s ease 0s; transition: all 0.4s ease 0s; left: 0; top: 0; width: 100%; } .__ID__:hover .layer-content{ } .__ID__ .layer-content{ background: rgba(33, 33, 33, 0.63) none repeat scroll 0 0; bottom: 0; color: rgb(255, 255, 255); left: 0; position: absolute; -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; width: 100%; padding: 10px 0; }<?php
+
+    $layout_data['contentbottom']['css'] = ob_get_clean();
+    $layout_data['contentbottom']['preview_img'] = 'https://i.imgur.com/sUfqp9d.png';
+
+
+
     $layout_data = apply_filters('wcps_layout_data', $layout_data);
 
 
@@ -188,7 +212,7 @@ function wcps_layout_data($layout){
 
 
 
-//add_action( 'template_redirect', 'wcps_track_product_view', 20 );
+add_action( 'template_redirect', 'wcps_track_product_view', 20 );
 
 
 function wcps_track_product_view() {

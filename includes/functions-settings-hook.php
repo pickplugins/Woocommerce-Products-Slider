@@ -9,6 +9,7 @@ function wcps_settings_content_general(){
     $wcps_settings = get_option('wcps_settings');
 
     $font_aw_version = isset($wcps_settings['font_aw_version']) ? $wcps_settings['font_aw_version'] : 'none';
+    $wcps_preview = isset($wcps_settings['wcps_preview']) ? $wcps_settings['wcps_preview'] : 'yes';
 
     //echo '<pre>'.var_export($wcps_settings, true).'</pre>';
 
@@ -34,6 +35,18 @@ function wcps_settings_content_general(){
 
         $settings_tabs_field->generate_field($args);
 
+        $args = array(
+            'id'		=> 'wcps_preview',
+            'parent'		=> 'wcps_settings',
+            'title'		=> __('Enable WCPS preview','related-post'),
+            'details'	=> __('You can enable preview WCPS.','related-post'),
+            'type'		=> 'select',
+            'value'		=> $wcps_preview,
+            'default'		=> 'yes',
+            'args'		=> array('yes'=>__('Yes','related-post'), 'no'=>__('No','related-post')  ),
+        );
+
+        $settings_tabs_field->generate_field($args);
 
 
 
@@ -77,7 +90,7 @@ if(!function_exists('wcps_settings_content_help_support')) {
             <a class="button" href="https://www.pickplugins.com/documentation/woocommerce-products-slider/"><?php echo __('Documentation', 'woocommerce-products-slider'); ?></a>
 
             <p><?php echo __('Watch video tutorials.', 'woocommerce-products-slider'); ?></p>
-            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
+            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
 
 <!--            <ul>-->
 <!--                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>-->
@@ -132,7 +145,11 @@ if(!function_exists('wcps_settings_content_help_support')) {
             ob_start();
             $wcps_plugin_info = get_option('wcps_plugin_info');
 
+            //delete_option('wcps_plugin_info');
+            //var_dump($wcps_plugin_info);
+
             $migration_reset_stats = isset($wcps_plugin_info['migration_reset']) ? $wcps_plugin_info['migration_reset'] : '';
+
 
             $actionurl = admin_url().'edit.php?post_type=wcps&page=settings&tab=help_support';
             $actionurl = wp_nonce_url( $actionurl,  'wcps_reset_migration' );
@@ -150,16 +167,13 @@ if(!function_exists('wcps_settings_content_help_support')) {
                 $migration_reset_stats = 'processing';
             }
 
-            //var_dump($migration_reset_stats);
-
-
             if($migration_reset_stats == 'processing'){
 
                 $url = admin_url().'edit.php?post_type=wcps&page=settings&tab=help_support';
 
                 ?>
                 <p style="color: #f00;"><i class="fas fa-spin fa-spinner"></i> Migration reset on process, please wait until complete.</p>
-                <p><a href="<?php echo admin_url().'edit.php?post_type=wcps&page=settings&tab=help_support'; ?>">Refresh</a> to check Migration reset stats</p>
+                <p><a href="<?php echo $url; ?>">Refresh</a> to check Migration reset stats</p>
 
                 <script>
                     setTimeout(function(){

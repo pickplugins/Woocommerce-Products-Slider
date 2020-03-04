@@ -1511,7 +1511,7 @@ if(!function_exists('wcps_metabox_content_help_support')) {
             <a class="button" href="https://www.pickplugins.com/documentation/woocommerce-products-slider/"><?php echo __('Documentation', 'woocommerce-products-slider'); ?></a>
 
             <p><?php echo __('Watch video tutorials.', 'woocommerce-products-slider'); ?></p>
-            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
+            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
 
             <ul>
 <!--                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>-->
@@ -1601,6 +1601,7 @@ if(!function_exists('wcps_metabox_content_buy_pro')) {
             <h2><?php echo __('See the differences','woocommerce-products-slider'); ?></h2>
 
             <table class="pro-features">
+
                 <thead>
                 <tr>
                     <th class="col-features"><?php echo __('Features','woocommerce-products-slider'); ?></th>
@@ -1610,8 +1611,303 @@ if(!function_exists('wcps_metabox_content_buy_pro')) {
                 </thead>
 
                 <tr>
-                    <td class="col-features"><?php echo __('View type - Slider','woocommerce-products-slider'); ?></td>
+                    <td class="col-features"><?php echo __('Query by product taxonomies','woocommerce-products-slider'); ?> </td>
                     <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Query by recently viewed products','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Query by SKU','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Related product query(Single product page)','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Upsells cross-sells query(Single product page)','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Order by Best selling','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Order by Top rated','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Advance meta fields query','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Featured products at first','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Query by product attributes','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Stock status','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Stock quantity','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Product Weight','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Product Dimensions','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Share button','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Recently viewed text','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Meta fields','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Price','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Rating','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Add to cart','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - On sale icon','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Featured icon','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Sale Count','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Product Tag','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Product Category','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Content/Excerpt','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Product Title','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Thumbnail','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Wrapper start','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Layout element - Wrapper end','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-features"><?php echo __('Layout builder','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider column count','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider autoplay','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider rewind & loop','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Slider stop on hover','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider center','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider navigations','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider dots','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider RTL','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider lazy load','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider touch & mouse drag','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Query products limit','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Query by product categories & tags','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Hide out of stock products','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Featured product','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('On-sale products','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Product by ids','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Query order & orderby','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Custom ribbons','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('Slider item style','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Slider container style','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
@@ -1625,6 +1921,7 @@ if(!function_exists('wcps_metabox_content_buy_pro')) {
                     <td> </td>
                     <td><a class="button" href="https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'woocommerce-products-slider'); ?></a></td>
                 </tr>
+
 
             </table>
 

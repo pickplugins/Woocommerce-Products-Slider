@@ -18,9 +18,11 @@ class class_wcps_post_types{
 	 
 		$singular  = __( 'WCPS', 'woocommerce-products-slider' );
 		$plural    = __( 'WCPS', 'woocommerce-products-slider' );
-	 
+        $wcps_settings = get_option('wcps_settings');
+        $wcps_preview = isset($wcps_settings['wcps_preview']) ? $wcps_settings['wcps_preview'] : 'yes';
 
-		register_post_type( "wcps",
+
+        register_post_type( "wcps",
 			apply_filters( "wcps_posttype_wcps", array(
 				'labels' => array(
 					'name' 					=> $plural,
@@ -44,7 +46,7 @@ class class_wcps_post_types{
 				'show_ui' 				=> true,
 				'capability_type' 		=> 'post',
 				'map_meta_cap'          => true,
-				'publicly_queryable' 	=> true,
+				'publicly_queryable' 	=> ($wcps_preview =='yes') ?true : false,
 				'exclude_from_search' 	=> false,
 				'hierarchical' 			=> false,
 				'query_var' 			=> true,
