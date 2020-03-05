@@ -263,5 +263,3 @@ function wcps_posts_shortcode_display( $column, $post_id ) {
     }
 }
 add_action( 'manage_wcps_posts_custom_column' , 'wcps_posts_shortcode_display', 10, 2 );
-
-
