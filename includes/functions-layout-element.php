@@ -407,6 +407,22 @@ function wcps_layout_element_featured_mark($args){
 
 
 
+add_action('wcps_layout_element_product_id', 'wcps_layout_element_product_id');
+function wcps_layout_element_product_id($args){
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $element_class = !empty($element_index) ? 'element-'.$element_index : '';
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $wrapper_html = !empty($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '%s';
+
+    ?>
+    <div class="featured-mark <?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $product_id); ?></div>
+    <?php
+
+}
 
 
 add_action('wcps_layout_element_rating', 'wcps_layout_element_rating');
@@ -700,6 +716,47 @@ function wcps_layout_element_css_featured_mark($args){
     </style>
     <?php
 }
+
+
+
+add_action('wcps_layout_element_css_product_id', 'wcps_layout_element_css_product_id');
+function wcps_layout_element_css_product_id($args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $background_color = isset($elementData['background_color']) ? $elementData['background_color'] : '';
+    $text_color = isset($elementData['text_color']) ? $elementData['text_color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($background_color)): ?>
+            background-color: <?php echo $background_color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($text_color)): ?>
+            color: <?php echo $text_color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+            line-height: normal;
+        <?php if(!empty($margin)): ?>
+            padding: <?php echo $margin; ?>;
+        <?php endif; ?>
+        }
+    </style>
+    <?php
+}
+
+
+
+
 
 
 add_action('wcps_layout_element_css_add_to_cart', 'wcps_layout_element_css_add_to_cart');

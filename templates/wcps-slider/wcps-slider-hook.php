@@ -316,7 +316,7 @@ function wcps_slider_main_scripts( $args){
     $auto_play_speed = !empty($slider_option['auto_play_speed']) ? $slider_option['auto_play_speed'] : 1000;
     $auto_play_timeout = !empty($slider_option['auto_play_timeout']) ? $slider_option['auto_play_timeout'] : 1200;
 
-    $auto_play_timeout = ($auto_play_speed > $auto_play_timeout) ? $auto_play_speed + 1000 : $auto_play_timeout;
+    $auto_play_timeout = ($auto_play_speed >= $auto_play_timeout) ? $auto_play_speed + 1000 : $auto_play_timeout;
 
     $slider_rewind = !empty($slider_option['rewind']) ? $slider_option['rewind'] : 'true';
     $slider_loop = !empty($slider_option['loop']) ? $slider_option['loop'] : 'true';

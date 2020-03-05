@@ -1212,7 +1212,7 @@ function wcps_layout_elements_option_featured_mark($parameters){
                 'id'		=> 'padding',
                 'css_id'		=> $element_index.'_padding',
                 'parent' => $input_name.'[featured_mark]',
-                'title'		=> __('padding','woocommerce-products-slider'),
+                'title'		=> __('Padding','woocommerce-products-slider'),
                 'details'	=> __('Choose padding.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $padding,
@@ -1355,7 +1355,7 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
                 'id'		=> 'padding',
                 'css_id'		=> $element_index.'_padding',
                 'parent' => $input_name.'[on_sale_mark]',
-                'title'		=> __('padding','woocommerce-products-slider'),
+                'title'		=> __('Padding','woocommerce-products-slider'),
                 'details'	=> __('Choose padding.','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $padding,
@@ -1374,6 +1374,117 @@ function wcps_layout_elements_option_on_sale_mark($parameters){
     <?php
 
 }
+
+
+add_action('wcps_layout_elements_option_product_id','wcps_layout_elements_option_product_id');
+function wcps_layout_elements_option_product_id($parameters){
+
+    $settings_tabs_field = new settings_tabs_field();
+
+    $input_name = isset($parameters['input_name']) ? $parameters['input_name'] : '{input_name}';
+    $element_data = isset($parameters['element_data']) ? $parameters['element_data'] : array();
+    $element_index = isset($parameters['index']) ? $parameters['index'] : '';
+
+    $wrapper_html = isset($element_data['wrapper_html']) ? $element_data['wrapper_html'] : '';
+    $font_size = isset($element_data['font_size']) ? $element_data['font_size'] : '';
+    $background_color = isset($element_data['background_color']) ? $element_data['background_color'] : '';
+    $text_color = isset($element_data['text_color']) ? $element_data['text_color'] : '';
+    $margin = isset($element_data['margin']) ? $element_data['margin'] : '';
+
+    ?>
+    <div class="item">
+        <div class="element-title header ">
+            <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
+            <span class="sort"><i class="fas fa-sort"></i></span>
+
+            <span class="expand"><?php echo __('Product ID','woocommerce-products-slider'); ?></span>
+        </div>
+        <div class="element-options options">
+
+            <?php
+
+            $args = array(
+                'id'		=> 'wrapper_html',
+                'css_id'		=> $element_index.'_wrapper_html',
+                'parent' => $input_name.'[product_id]',
+                'title'		=> __('Wrapper html','woocommerce-products-slider'),
+                'details'	=> __('Write wrapper html, use <code>%s</code> to replace on-sale output.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $wrapper_html,
+                'default'		=> '',
+                'placeholder'		=> 'Product ID: %s',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'background_color',
+                'css_id'		=> $element_index.'_background_color',
+                'parent' => $input_name.'[product_id]',
+                'title'		=> __('Background color','woocommerce-products-slider'),
+                'details'	=> __('Choose background color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $background_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'text_color',
+                'css_id'		=> $element_index.'_text_color',
+                'parent' => $input_name.'[product_id]',
+                'title'		=> __('Text color','woocommerce-products-slider'),
+                'details'	=> __('Choose text color.','woocommerce-products-slider'),
+                'type'		=> 'colorpicker',
+                'value'		=> $text_color,
+                'default'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'font_size',
+                'css_id'		=> $element_index.'_font_size',
+                'parent' => $input_name.'[product_id]',
+                'title'		=> __('Font size','woocommerce-products-slider'),
+                'details'	=> __('Choose text font size.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $font_size,
+                'default'		=> '',
+                'placeholder'		=> '16px',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'margin',
+                'css_id'		=> $element_index.'_padding',
+                'parent' => $input_name.'[product_id]',
+                'title'		=> __('Margin','woocommerce-products-slider'),
+                'details'	=> __('Choose padding.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $margin,
+                'default'		=> '',
+                'placeholder'		=> '5px 10px',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            ?>
+
+        </div>
+    </div>
+    <?php
+
+}
+
+
 
 
 
