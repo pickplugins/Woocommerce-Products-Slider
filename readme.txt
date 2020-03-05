@@ -141,6 +141,11 @@ then paste this shortcode anywhere in your page to display slider<br />
 
 == Changelog ==
 
+	= 1.13.1 =
+    * 2020-03-05 fix - Data import ribbon issue fixed.
+    * 2020-03-05 fix - Text domain issue fixed.
+    * 2020-03-05 add - Layout element Featured mark, On sale mark padding added
+
 	= 1.13.0 =
     * 2020-03-04 add - Layout builder added.
     * 2020-03-04 add - Navigation custom icon/text

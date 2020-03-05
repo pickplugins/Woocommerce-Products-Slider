@@ -25,12 +25,12 @@ function wcps_settings_content_general(){
         $args = array(
             'id'		=> 'font_aw_version',
             'parent'		=> 'wcps_settings',
-            'title'		=> __('Font-awesome version','related-post'),
-            'details'	=> __('Choose font awesome version you want to load.','related-post'),
+            'title'		=> __('Font-awesome version','woocommerce-products-slider'),
+            'details'	=> __('Choose font awesome version you want to load.','woocommerce-products-slider'),
             'type'		=> 'select',
             'value'		=> $font_aw_version,
             'default'		=> '',
-            'args'		=> array('v_5'=>__('Version 5+','related-post'), 'v_4'=>__('Version 4+','related-post'), 'none'=>__('None','related-post')  ),
+            'args'		=> array('v_5'=>__('Version 5+','woocommerce-products-slider'), 'v_4'=>__('Version 4+','woocommerce-products-slider'), 'none'=>__('None','woocommerce-products-slider')  ),
         );
 
         $settings_tabs_field->generate_field($args);
@@ -38,12 +38,12 @@ function wcps_settings_content_general(){
         $args = array(
             'id'		=> 'wcps_preview',
             'parent'		=> 'wcps_settings',
-            'title'		=> __('Enable WCPS preview','related-post'),
-            'details'	=> __('You can enable preview WCPS.','related-post'),
+            'title'		=> __('Enable WCPS preview','woocommerce-products-slider'),
+            'details'	=> __('You can enable preview WCPS.','woocommerce-products-slider'),
             'type'		=> 'select',
             'value'		=> $wcps_preview,
             'default'		=> 'yes',
-            'args'		=> array('yes'=>__('Yes','related-post'), 'no'=>__('No','related-post')  ),
+            'args'		=> array('yes'=>__('Yes','woocommerce-products-slider'), 'no'=>__('No','woocommerce-products-slider')  ),
         );
 
         $settings_tabs_field->generate_field($args);
@@ -618,7 +618,6 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
 
             $args = array(
                 'id'		=> 'get_pro',
-//                'parent'		=> 'related_post_settings',
                 'title'		=> __('Get pro version','woocommerce-products-slider'),
                 'details'	=> '',
                 'type'		=> 'custom_html',

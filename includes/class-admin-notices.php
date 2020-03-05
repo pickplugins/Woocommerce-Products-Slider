@@ -60,7 +60,7 @@ class class_wcps_notices{
             ?>
             <div class="update-nag">
                 <?php
-                echo sprintf(__('<a href="%s">WooCommerce</a> plugin is required to run <b>PickPlugins Product Slider</b>', 'team-pro'), 'https://wordpress.org/plugins/woocommerce/')
+                echo sprintf(__('<a href="%s">WooCommerce</a> plugin is required to run <b>PickPlugins Product Slider</b>', 'woocommerce-products-slider'), 'https://wordpress.org/plugins/woocommerce/')
                 ?>
             </div>
         <?php

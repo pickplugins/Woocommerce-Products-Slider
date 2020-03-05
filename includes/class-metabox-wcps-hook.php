@@ -1933,7 +1933,6 @@ if(!function_exists('wcps_metabox_content_buy_pro')) {
 
             $args = array(
                 'id'		=> 'get_pro',
-//                'parent'		=> 'related_post_settings',
                 'title'		=> __('Get pro version','woocommerce-products-slider'),
                 'details'	=> '',
                 'type'		=> 'custom_html',

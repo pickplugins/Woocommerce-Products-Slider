@@ -119,6 +119,7 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $layout_elements['add_to_cart'] = array('name' =>__('Add to cart','woocommerce-products-slider'));
             $layout_elements['rating'] = array('name' =>__('Rating','woocommerce-products-slider'));
             $layout_elements['product_price'] = array('name' =>__('Price','woocommerce-products-slider'));
+            $layout_elements['product_id'] = array('name' =>__('Product ID','woocommerce-products-slider'));
 
 
 

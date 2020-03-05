@@ -247,8 +247,18 @@ function wcps_cron_upgrade_wcps(){
             $wcps_options['ribbon']['text'] = '';
             $wcps_options['ribbon']['background_color'] = '';
 
-            $ribbon_url = ($wcps_ribbon_name == 'custom') ? $wcps_ribbon_custom : wcps_plugin_url.'assets/front/images/ribbons/'.$wcps_ribbon_name.'.png';
+            if($wcps_ribbon_name == 'custom'){
+                $ribbon_url = $wcps_ribbon_custom;
+
+            }elseif ($wcps_ribbon_name == 'none'){
+                $ribbon_url = '';
+            }else{
+                $ribbon_url = wcps_plugin_url.'assets/front/images/ribbons/'.$wcps_ribbon_name.'.png';
+            }
+
+
             $wcps_options['ribbon']['background_img'] = $ribbon_url;
+
             $wcps_options['ribbon']['text_color'] = '#ffffff';
             $wcps_options['ribbon']['width'] = '90px';
             $wcps_options['ribbon']['height'] = '24px';
