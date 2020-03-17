@@ -45,12 +45,15 @@ function wcps_layout_element_thumbnail($args){
 
 
     $thumb_size = isset($elementData['thumb_size']) ? $elementData['thumb_size'] : 'full';
+    $default_thumb_src = isset($elementData['default_thumb_src']) ? $elementData['default_thumb_src'] : '';
 
     //echo '<pre>'.var_export($elementData, true).'</pre>';
 
     $wcps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), $thumb_size);
     $member_image_url = isset($wcps_thumb[0]) ? $wcps_thumb[0] : '';
 
+
+    $member_image_url = !empty($member_image_url) ? $member_image_url : $default_thumb_src;
 
     $member_image_url = apply_filters('wcps_layout_element_thumbnail_src', $member_image_url, $args);
 
@@ -502,6 +505,7 @@ function wcps_layout_element_css_post_title($args){
     $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
     $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
     $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $text_align = isset($elementData['text_align']) ? $elementData['text_align'] : '';
 
 
     //echo '<pre>'.var_export($layout_id, true).'</pre>';
@@ -520,6 +524,9 @@ function wcps_layout_element_css_post_title($args){
         <?php endif; ?>
         <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
+        <?php endif; ?>
+        <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
         <?php endif; ?>
         }
     </style>
@@ -872,9 +879,7 @@ function wcps_layout_element_css_product_price($args){
             <?php if(!empty($text_align)): ?>
             text-align: <?php echo $text_align; ?>;
             <?php endif; ?>
-
         }
-
     </style>
     <?php
 }
@@ -901,6 +906,7 @@ function wcps_layout_element_css_content($args){
     $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
     $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
     $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $text_align = isset($elementData['text_align']) ? $elementData['text_align'] : '';
 
 
     ?>
@@ -918,7 +924,9 @@ function wcps_layout_element_css_content($args){
             <?php if(!empty($margin)): ?>
             margin: <?php echo $margin; ?>;
             <?php endif; ?>
-
+        <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
+        <?php endif; ?>
         }
 
         .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?> a{

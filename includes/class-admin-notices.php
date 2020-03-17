@@ -65,10 +65,10 @@ class class_wcps_notices{
             </div>
         <?php
 
-            if (is_plugin_active('woocommerce-products-slider/woocommerce-products-slider.php')) {
-                deactivate_plugins('woocommerce-products-slider/woocommerce-products-slider.php');
-                flush_rewrite_rules();
-            }
+//            if (is_plugin_active('woocommerce-products-slider/woocommerce-products-slider.php')) {
+//                deactivate_plugins('woocommerce-products-slider/woocommerce-products-slider.php');
+//                flush_rewrite_rules();
+//            }
 
         endif;
 
