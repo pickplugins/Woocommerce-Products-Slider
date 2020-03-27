@@ -526,6 +526,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
         $taxonomies = !empty($query['taxonomies']) ? $query['taxonomies'] : array();
         $taxonomy_relation = !empty($query['taxonomy_relation']) ? $query['taxonomy_relation'] : 'OR';
 
+        $query_only = isset($query['query_only']) ? $query['query_only'] : '';
 
 
 
@@ -580,7 +581,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                         $terms = isset($taxonomies[$taxonomy]['terms']) ? $taxonomies[$taxonomy]['terms'] : array();
                         $terms_relation = isset($taxonomies[$taxonomy]['terms_relation']) ? $taxonomies[$taxonomy]['terms_relation'] : 'IN';
 
-                        if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
+                        //if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
                         //if($taxonomy != 'product_cat' && $taxonomy != 'product_tag') continue;
 
                         $the_taxonomy = get_taxonomy($taxonomy);
@@ -873,9 +874,10 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'value'		=> $hide_out_of_stock,
                 'default'		=> 'no_check',
                 'args'		=> array(
+                    'no_check'=>__('No check','woocommerce-products-slider'),
                     'no'=>__('Include','woocommerce-products-slider'),
                     'yes'=>__('Exclude','woocommerce-products-slider'),
-                    'no_check'=>__('No check','woocommerce-products-slider'),
+
 
                 ),
             );
@@ -891,11 +893,12 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'details'	=> __('Include or exclude featured products from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $product_featured,
-                'default'		=> 'no',
+                'default'		=> 'no_check',
                 'args'		=> array(
+                    'no_check'=>__('No check','woocommerce-products-slider'),
                     'yes'=>__('Include','woocommerce-products-slider'),
                     'no'=>__('Exclude','woocommerce-products-slider'),
-                    'no_check'=>__('No check','woocommerce-products-slider'),
+
                 ),
             );
 
@@ -910,19 +913,39 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'details'	=> __('Include or exclude on-sale products from query.','woocommerce-products-slider'),
                 'type'		=> 'radio',
                 'value'		=> $on_sale,
-                'default'		=> 'no',
+                'default'		=> 'no_check',
                 'args'		=> array(
+                    'no_check'=>__('No check','woocommerce-products-slider'),
                     'yes'=>__('Include','woocommerce-products-slider'),
                     'no'=>__('Exclude','woocommerce-products-slider'),
-                    'no_check'=>__('No check','woocommerce-products-slider'),
+
 
                 ),
             );
 
             $settings_tabs_field->generate_field($args);
 
+            $query_only_args = apply_filters('wcps_query_only_args',
+                array(
+                    'no_check'=>__('No check','woocommerce-products-slider'),
+                    'on_sale'=>__('On sale','woocommerce-products-slider'),
+                    'featured'=>__('Featured','woocommerce-products-slider'),
+                    'in_stock'=>__('In stock','woocommerce-products-slider'),
+                )
+            );
 
+            $args = array(
+                'id'		=> 'query_only',
+                'parent'		=> 'wcps_options[query]',
+                'title'		=> __('Query only?','woocommerce-products-slider'),
+                'details'	=> __('Choose option you want to display only products based on options.','woocommerce-products-slider'),
+                'type'		=> 'radio',
+                'value'		=> $query_only,
+                'default'		=> 'no_check',
+                'args'		=> $query_only_args,
+            );
 
+            $settings_tabs_field->generate_field($args);
 
 
 

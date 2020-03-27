@@ -84,6 +84,7 @@ function wcps_slider_main_items($args){
 
     $on_sale = isset($query['on_sale']) ? $query['on_sale'] : 'no';
     $product_ids = isset($query['product_ids']) ? $query['product_ids'] : '';
+    $query_only = isset($query['query_only']) ? $query['query_only'] : 'no_check';
 
     //if(empty($post_id)) return;
     $query_args = array();
@@ -164,6 +165,34 @@ function wcps_slider_main_items($args){
         $product_ids = array_map('intval',explode(',', $product_ids));
         $query_args['post__in'] = $product_ids;
     }
+
+
+    if($query_only == 'on_sale'){
+        $wc_get_product_ids_on_sale = wc_get_product_ids_on_sale();
+        $query_args['post__in'] = $wc_get_product_ids_on_sale;
+
+    }elseif($query_only == 'featured'){
+
+        $tax_query[] = array(
+            'taxonomy' => 'product_visibility',
+            'field' => 'name',
+            'terms' => 'featured',
+            'operator' => 'IN',
+        );
+
+    }elseif($query_only == 'in_stock'){
+
+        $tax_query[] = array(
+            'taxonomy' => 'product_visibility',
+            'field' => 'name',
+            'terms' => 'outofstock',
+            'operator' => 'NOT IN',
+        );
+
+    }
+
+
+
 
     //echo '<pre>'.var_export($query_orderby, true).'</pre>';
 

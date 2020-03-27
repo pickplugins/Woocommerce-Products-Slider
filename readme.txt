@@ -4,7 +4,7 @@
 	Tags: product slider, woocommerce slider, woo slider, woo product carousel slider,  woocommerce product slider
 	Requires at least: 3.8
 	Tested up to: 5.3
-	Stable tag: 1.13.4
+	Stable tag: 1.13.5
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,9 @@ then paste this shortcode anywhere in your page to display slider<br />
 5. screenshot-5
 
 == Changelog ==
+
+	= 1.13.5 =
+    * 2020-03-17 add - query only featured, on-sale, in-stock products.
 
 	= 1.13.4 =
     * 2020-03-17 fix - default thumbnail missing issue fixed.
