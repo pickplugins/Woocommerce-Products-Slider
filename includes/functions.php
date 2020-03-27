@@ -211,7 +211,6 @@ function wcps_layout_data($layout){
 
 
 
-
 add_action( 'template_redirect', 'wcps_track_product_view', 20 );
 
 

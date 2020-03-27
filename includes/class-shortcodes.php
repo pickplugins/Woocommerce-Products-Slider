@@ -8,6 +8,48 @@ if( ! class_exists( 'class_wcps_shortcodes' ) ) {
         public function __construct(){
 
             add_shortcode('wcps', array($this, 'wcps_new_display'));
+            add_shortcode('wcps_import', array($this, 'wcps_import'));
+
+        }
+
+
+        public function wcps_import($atts, $content = null )
+        {
+            $atts = shortcode_atts(
+                array(
+                    'id' => "",
+                ), $atts
+            );
+
+
+            $file = wcps_plugin_url.'sample-data/wcps-layouts.xml';
+
+
+            $html_obj = simplexml_load_string(file_get_contents($file));
+            $channel = isset($html_obj->channel)? $html_obj->channel : array();
+            $items = isset($channel->item)? $channel->item : array();
+
+            //echo '<pre>'.var_export($channel->item, true).'</pre>';
+
+            $item_count = 0;
+            foreach ($items as $item):
+
+                if($item_count > 1) return;
+
+                $item_title = isset($item->title) ? (string)$item->title : '';
+
+                $item_link = isset($item->link) ? (string)$item->link : '';
+                $item_guid = isset($item->guid) ? (string)$item->guid : '';
+                $item_description = isset($item->description) ? (string)$item->description : '';
+
+                echo '<pre>'.var_export($item, true).'</pre>';
+
+
+
+                $item_count++;
+            endforeach;
+
+
 
         }
 

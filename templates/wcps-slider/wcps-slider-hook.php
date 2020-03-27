@@ -67,6 +67,16 @@ function wcps_slider_main_items($args){
     $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
 
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
+    $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
+
+    if(empty($item_layout_id)){
+
+        ?><i class="far fa-times-circle"></i> Please create a <a target="_blank" href="<?php echo admin_url(); ?>post-new.php?post_type=wcps_layout">layout</a> first. watch this video to learn <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">customize layouts</a>
+        <?php
+
+        return;
+    }
+
     $developer_options = isset($wcps_options['developer_options']) ? $wcps_options['developer_options'] : array();
 
     $query = isset($wcps_options['query']) ? $wcps_options['query'] : array();
@@ -328,7 +338,7 @@ function wcps_slider_main_scripts( $args){
     $item_style = isset($wcps_options['item_style']) ? $wcps_options['item_style'] : array();
 
     $item_padding = isset($item_style['padding']) ? $item_style['padding'] : '';
-    $item_margin = isset($item_style['margin']) ? $item_style['margin'] : '';
+    $item_margin = isset($item_style['margin']) ? $item_style['margin'] : '10px';
     $item_background_color = isset($item_style['background_color']) ? $item_style['background_color'] : '';
     $item_text_align = isset($item_style['text_align']) ? $item_style['text_align'] : '';
 

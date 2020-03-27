@@ -401,7 +401,7 @@ function wcps_layout_elements_option_content($parameters){
                 'type'		=> 'select',
                 'value'		=> $content_source,
                 'default'		=> 'excerpt',
-                'args'		=> array('excerpt'=> __('Excerpt', 'woocommerce-products-slider'), 'content'=> __('Content', 'woocommerce-products-slider')),
+                'args'		=> array('short_description'=> __('Short description', 'woocommerce-products-slider'),'excerpt'=> __('Auto Excerpt', 'woocommerce-products-slider'), 'content'=> __('Content', 'woocommerce-products-slider')),
             );
 
             $settings_tabs_field->generate_field($args);

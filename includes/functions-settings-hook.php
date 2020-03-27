@@ -92,11 +92,16 @@ if(!function_exists('wcps_settings_content_help_support')) {
             <p><?php echo __('Watch video tutorials.', 'woocommerce-products-slider'); ?></p>
             <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'woocommerce-products-slider'); ?></a>
 
-<!--            <ul>-->
-<!--                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>-->
-<!---->
-<!---->
-<!--            </ul>-->
+            <ul>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=kn3skEwh5t4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=2">Data migration</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">Customize Layouts</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=UVa0kfo9oI4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=3&t=4s">Query product by categories</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=qJWCizg5res&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=4&t=0s">Exclude featured products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=d_KZg_cghow&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=5&t=0s">Exclude on sale products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HbpNaqrlppk&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=6&t=0s">Exclude out of stock products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=Ss5wkHoyzFE&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=7&t=0s">Query product by tags</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SSIfHT2UK0Y&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9&t=0s">Display latest products</a></li>
+            </ul>
 
 
 

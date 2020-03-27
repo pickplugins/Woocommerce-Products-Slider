@@ -61,7 +61,7 @@ function wcps_cron_upgrade_wcps(){
 
     $args = array(
         'post_type'=>'wcps',
-        'post_status'=>'publish',
+        'post_status'=>'any',
         'posts_per_page'=> 5,
         'meta_query'=> $meta_query,
 

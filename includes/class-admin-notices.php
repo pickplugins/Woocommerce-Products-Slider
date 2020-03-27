@@ -5,10 +5,43 @@ class class_wcps_notices{
 
     public function __construct(){
         add_action('admin_notices', array( $this, 'woocommerce_plugin_missing' ));
-
         add_action('admin_notices', array( $this, 'data_upgrade' ));
+        add_action('admin_notices', array( $this, 'import_layouts' ));
 
     }
+
+
+    public function import_layouts(){
+
+        if (!is_plugin_active('woocommerce-products-slider/woocommerce-products-slider.php')) return;
+
+
+        $wcps_plugin_info = get_option('wcps_plugin_info');
+        $import_layouts = isset($wcps_plugin_info['import_layouts']) ? $wcps_plugin_info['import_layouts'] : '';
+
+
+        $actionurl = admin_url().'edit.php?post_type=wcps&page=import_layouts';
+        $actionurl = wp_nonce_url( $actionurl,  'wcps_nonce' );
+
+
+
+
+        if(empty($import_layouts)){
+
+            ?>
+            <div class="update-nag">
+                <?php
+                echo sprintf(__('Import layouts for <b>PickPlugins Product Slider</b> plugin, please <a class="button button-primary" href="%s">read details</a> here.', 'woocommerce-products-slider'), $actionurl);
+                ?>
+            </div>
+            <?php
+
+
+        }
+
+    }
+
+
 
     public function data_upgrade(){
 

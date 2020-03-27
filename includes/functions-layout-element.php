@@ -106,10 +106,14 @@ function wcps_layout_element_content($args){
 
     if($content_source=='content'){
         $content_html.= do_shortcode($content);
-    }
-    elseif($content_source=='excerpt'){
+    }elseif($content_source=='excerpt'){
 
         $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
+    }elseif($content_source=='short_description'){
+
+        $post_excerpt = isset($post_data->post_excerpt) ? $post_data->post_excerpt : '';
+
+        $content_html.= wp_trim_words( $post_excerpt , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
     }else{
         $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
     }
