@@ -121,7 +121,13 @@ function wcps_layout_elements_option_post_title($parameters){
                 'type'		=> 'select',
                 'value'		=> $link_to,
                 'default'		=> 'product_link',
-                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'external_product_url'=> __('External product', 'woocommerce-products-slider'), 'product_link'=> __('product link', 'woocommerce-products-slider'), 'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
+                'args'		=> array(
+                    'none'=> __('None', 'woocommerce-products-slider'),
+                    'product_link'=> __('product link', 'woocommerce-products-slider'),
+                    'external_product_url'=> __('External product', 'woocommerce-products-slider'),
+//                    'popup_box'=> __('Popup box', 'woocommerce-products-slider'),
+//                    'custom_link'=> __('Custom link', 'woocommerce-products-slider')
+                ),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -323,25 +329,33 @@ function wcps_layout_elements_option_thumbnail($parameters){
                 'type'		=> 'select',
                 'value'		=> $link_to,
                 'default'		=> 'product_link',
-                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('Product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider'), 'meta_value'=> __('Meta value', 'woocommerce-products-slider') ),
+                'args'		=> array(
+
+                    'none'=> __('None', 'woocommerce-products-slider'),
+                    'product_link'=> __('Product link', 'woocommerce-products-slider'),
+                    'external_product_url'=> __('External product', 'woocommerce-products-slider'),
+//                    'popup_box'=> __('Popup box', 'woocommerce-products-slider'),
+//                    'custom_link'=> __('Custom link', 'woocommerce-products-slider'),
+//                    'meta_value'=> __('Meta value', 'woocommerce-products-slider')
+                ),
             );
 
             $settings_tabs_field->generate_field($args);
 
 
-            $args = array(
-                'id'		=> 'link_to_meta_key',
-                'css_id'		=> $element_index.'_margin',
-                'parent' => $input_name.'[thumbnail]',
-                'title'		=> __('Link to meta key','woocommerce-products-slider'),
-                'details'	=> __('Write meta key for meta value link.','woocommerce-products-slider'),
-                'type'		=> 'text',
-                'value'		=> $link_to_meta_key,
-                'default'		=> '',
-                'placeholder'		=> '',
-            );
-
-            $settings_tabs_field->generate_field($args);
+//            $args = array(
+//                'id'		=> 'link_to_meta_key',
+//                'css_id'		=> $element_index.'_margin',
+//                'parent' => $input_name.'[thumbnail]',
+//                'title'		=> __('Link to meta key','woocommerce-products-slider'),
+//                'details'	=> __('Write meta key for meta value link.','woocommerce-products-slider'),
+//                'type'		=> 'text',
+//                'value'		=> $link_to_meta_key,
+//                'default'		=> '',
+//                'placeholder'		=> '',
+//            );
+//
+//            $settings_tabs_field->generate_field($args);
 
             ?>
 
@@ -555,7 +569,13 @@ function wcps_layout_elements_option_content($parameters){
                 'type'		=> 'select',
                 'value'		=> $link_to,
                 'default'		=> 'product_link',
-                'args'		=> array('none'=> __('None', 'woocommerce-products-slider'),'product_link'=> __('Product link', 'woocommerce-products-slider'),'popup_box'=> __('Popup box', 'woocommerce-products-slider'), 'custom_link'=> __('Custom link', 'woocommerce-products-slider') ),
+                'args'		=> array(
+                    'none'=> __('None', 'woocommerce-products-slider'),
+                    'product_link'=> __('Product link', 'woocommerce-products-slider'),
+                    'external_product_url'=> __('External product', 'woocommerce-products-slider'),
+//                    'popup_box'=> __('Popup box', 'woocommerce-products-slider'),
+//                    'custom_link'=> __('Custom link', 'woocommerce-products-slider')
+                ),
             );
 
             $settings_tabs_field->generate_field($args);

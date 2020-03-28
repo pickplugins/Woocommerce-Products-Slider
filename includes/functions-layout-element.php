@@ -25,6 +25,41 @@ function wcps_layout_element_post_title($args){
 
 }
 
+add_filter('wcps_layout_element_title_text', 'wcps_layout_element_title_text', 99, 2);
+function wcps_layout_element_title_text($post_title, $args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $link_to = isset($elementData['link_to']) ? $elementData['link_to'] : '';
+
+    $product = wc_get_product( $product_id );
+
+
+    if($link_to == 'product_link'){
+        $permalink = get_permalink($product_id);
+
+        $post_title = "<a href='".$permalink."'>".$post_title."</a>";
+    }elseif ($link_to == 'external_product_url'){
+
+        if($product->is_type('external')){
+            $permalink = get_post_meta($product_id,'_product_url', true);
+        }else{
+            $permalink = get_permalink($product_id);
+        }
+
+
+
+        $post_title = "<a href='".$permalink."'>".$post_title."</a>";
+    }
+
+    return $post_title;
+
+}
+
+
+
+
 
 
 add_action('wcps_layout_element_thumbnail', 'wcps_layout_element_thumbnail');
@@ -71,6 +106,34 @@ function wcps_layout_element_thumbnail($args){
 
 
 
+add_filter('wcps_layout_element_thumbnail_url', 'wcps_layout_element_thumbnail_url', 99, 2);
+function wcps_layout_element_thumbnail_url($permalink, $args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $link_to = isset($elementData['link_to']) ? $elementData['link_to'] : '';
+
+    $product = wc_get_product( $product_id );
+
+    if($link_to == 'product_link'){
+        $permalink = get_permalink($product_id);
+
+    }elseif ($link_to == 'external_product_url'){
+
+        if($product->is_type('external')){
+            $permalink = get_post_meta($product_id,'_product_url', true);
+        }else{
+            $permalink = get_permalink($product_id);
+        }
+
+    }
+
+    return $permalink;
+
+}
+
+
 
 
 
@@ -98,7 +161,7 @@ function wcps_layout_element_content($args){
     $post_data= get_post($product_id);
 
     $product_url = get_permalink($product_id);
-    $product_url = apply_filters('wcps_layout_element_content_link',$product_url, $args);
+    $product_url = apply_filters('wcps_layout_element_content_link', $product_url, $args);
 
     $content = isset($post_data->post_content) ? $post_data->post_content : '';
 
@@ -124,6 +187,54 @@ function wcps_layout_element_content($args){
     <?php
 
 }
+
+
+
+
+
+
+
+
+add_filter('wcps_layout_element_content_link', 'wcps_layout_element_content_link', 99, 2);
+function wcps_layout_element_content_link($permalink, $args){
+
+    //echo '<pre>'.var_export($args, true).'</pre>';
+    $product_id = isset($args['product_id']) ? $args['product_id'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $link_to = isset($elementData['link_to']) ? $elementData['link_to'] : '';
+
+    $product = wc_get_product( $product_id );
+
+
+    if($link_to == 'product_link'){
+        $permalink = get_permalink($product_id);
+
+    }elseif ($link_to == 'external_product_url'){
+
+        if($product->is_type('external')){
+            $permalink = get_post_meta($product_id,'_product_url', true);
+        }else{
+            $permalink = get_permalink($product_id);
+        }
+
+    }
+
+    return $permalink;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
