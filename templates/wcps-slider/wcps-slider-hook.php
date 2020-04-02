@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
-add_action('wcps_slider_main', 'wcps_slider_main_ribbon');
+add_action('wcps_slider_main', 'wcps_slider_main_ribbon', 10);
 function wcps_slider_main_ribbon($args){
     $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
@@ -60,7 +60,7 @@ function wcps_slider_main_ribbon($args){
 
 
 
-add_action('wcps_slider_main', 'wcps_slider_main_items');
+add_action('wcps_slider_main', 'wcps_slider_main_items', 20);
 
 function wcps_slider_main_items($args){
 
@@ -240,14 +240,17 @@ function wcps_slider_main_items($args){
         <div id="wcps-<?php echo $wcps_id; ?>" class="<?php echo $wcps_items_class; ?>">
             <?php
 
+            $loop_count = 1;
             while ( $wcps_query->have_posts() ) : $wcps_query->the_post();
 
                 $product_id = get_the_id();
                 $args['product_id'] = $product_id;
+                $args['loop_count'] = $loop_count;
 
                 //echo '<pre>'.var_export($product_id, true).'</pre>';
                 do_action('wcps_slider_item', $args);
 
+                $loop_count++;
             endwhile;
 
             wp_reset_query();
@@ -274,7 +277,7 @@ function wcps_slider_main_items($args){
 
 
 
-add_action('wcps_slider_item', 'wcps_slider_item');
+add_action('wcps_slider_item', 'wcps_slider_item', 10);
 
 function wcps_slider_item($args){
 
@@ -321,7 +324,7 @@ function wcps_slider_item($args){
 
 
 
-add_filter('wcps_slider_main', 'wcps_slider_main_scripts');
+add_filter('wcps_slider_main', 'wcps_slider_main_scripts', 90);
 
 function wcps_slider_main_scripts( $args){
 
@@ -691,7 +694,7 @@ function wcps_slider_main_scripts( $args){
 
 
 
-add_filter('wcps_slider_main', 'wcps_slider_main_enqueue_scripts');
+add_filter('wcps_slider_main', 'wcps_slider_main_enqueue_scripts', 99);
 
 function wcps_slider_main_enqueue_scripts( $args){
 

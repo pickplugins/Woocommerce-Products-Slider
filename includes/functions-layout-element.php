@@ -3,7 +3,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_action('wcps_layout_element_post_title', 'wcps_layout_element_post_title');
+add_action('wcps_layout_element_post_title', 'wcps_layout_element_post_title', 10);
 function wcps_layout_element_post_title($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -25,7 +25,7 @@ function wcps_layout_element_post_title($args){
 
 }
 
-add_filter('wcps_layout_element_title_text', 'wcps_layout_element_title_text', 99, 2);
+add_filter('wcps_layout_element_title_text', 'wcps_layout_element_title_text', 10, 2);
 function wcps_layout_element_title_text($post_title, $args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -62,7 +62,7 @@ function wcps_layout_element_title_text($post_title, $args){
 
 
 
-add_action('wcps_layout_element_thumbnail', 'wcps_layout_element_thumbnail');
+add_action('wcps_layout_element_thumbnail', 'wcps_layout_element_thumbnail', 10);
 function wcps_layout_element_thumbnail($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -106,7 +106,7 @@ function wcps_layout_element_thumbnail($args){
 
 
 
-add_filter('wcps_layout_element_thumbnail_url', 'wcps_layout_element_thumbnail_url', 99, 2);
+add_filter('wcps_layout_element_thumbnail_url', 'wcps_layout_element_thumbnail_url', 10, 2);
 function wcps_layout_element_thumbnail_url($permalink, $args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -143,7 +143,7 @@ function wcps_layout_element_thumbnail_url($permalink, $args){
 
 
 
-add_action('wcps_layout_element_content', 'wcps_layout_element_content');
+add_action('wcps_layout_element_content', 'wcps_layout_element_content', 10);
 function wcps_layout_element_content($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -163,21 +163,28 @@ function wcps_layout_element_content($args){
     $product_url = get_permalink($product_id);
     $product_url = apply_filters('wcps_layout_element_content_link', $product_url, $args);
 
-    $content = isset($post_data->post_content) ? $post_data->post_content : '';
 
     $content_html = '';
 
     if($content_source=='content'){
+        $content = isset($post_data->post_content) ? $post_data->post_content : '';
         $content_html.= do_shortcode($content);
     }elseif($content_source=='excerpt'){
+        $content = isset($post_data->post_content) ? $post_data->post_content : '';
 
         $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
+
     }elseif($content_source=='short_description'){
 
         $post_excerpt = isset($post_data->post_excerpt) ? $post_data->post_excerpt : '';
 
-        $content_html.= wp_trim_words( $post_excerpt , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
+        if(!empty($word_count) && $word_count > 0){
+            $content_html.= wp_trim_words( $post_excerpt , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
+        }else{
+            $content_html.= $post_excerpt;
+        }
     }else{
+        $content = isset($post_data->post_content) ? $post_data->post_content : '';
         $content_html.= wp_trim_words( $content , $word_count, ' <a class="read-more" href="'. $product_url .'">'.$read_more_text.'</a>' );
     }
 
@@ -195,7 +202,7 @@ function wcps_layout_element_content($args){
 
 
 
-add_filter('wcps_layout_element_content_link', 'wcps_layout_element_content_link', 99, 2);
+add_filter('wcps_layout_element_content_link', 'wcps_layout_element_content_link', 10, 2);
 function wcps_layout_element_content_link($permalink, $args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -238,7 +245,7 @@ function wcps_layout_element_content_link($permalink, $args){
 
 
 
-add_action('wcps_layout_element_product_category', 'wcps_layout_element_product_category');
+add_action('wcps_layout_element_product_category', 'wcps_layout_element_product_category', 10);
 function wcps_layout_element_product_category($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -298,7 +305,7 @@ function wcps_layout_element_product_category($args){
 
 
 
-add_action('wcps_layout_element_product_tag', 'wcps_layout_element_product_tag');
+add_action('wcps_layout_element_product_tag', 'wcps_layout_element_product_tag', 10);
 function wcps_layout_element_product_tag($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -357,7 +364,7 @@ function wcps_layout_element_product_tag($args){
 }
 
 
-add_action('wcps_layout_element_sale_count', 'wcps_layout_element_sale_count');
+add_action('wcps_layout_element_sale_count', 'wcps_layout_element_sale_count', 10);
 function wcps_layout_element_sale_count($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -384,7 +391,7 @@ function wcps_layout_element_sale_count($args){
 
 
 
-add_action('wcps_layout_element_add_to_cart', 'wcps_layout_element_add_to_cart');
+add_action('wcps_layout_element_add_to_cart', 'wcps_layout_element_add_to_cart', 10);
 function wcps_layout_element_add_to_cart($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -408,7 +415,7 @@ function wcps_layout_element_add_to_cart($args){
 
 
 
-add_action('wcps_layout_element_product_price', 'wcps_layout_element_product_price');
+add_action('wcps_layout_element_product_price', 'wcps_layout_element_product_price', 10);
 function wcps_layout_element_product_price($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -464,7 +471,7 @@ function wcps_layout_element_product_price($args){
 
 
 
-add_action('wcps_layout_element_on_sale_mark', 'wcps_layout_element_on_sale_mark');
+add_action('wcps_layout_element_on_sale_mark', 'wcps_layout_element_on_sale_mark', 10);
 function wcps_layout_element_on_sale_mark($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -495,7 +502,7 @@ function wcps_layout_element_on_sale_mark($args){
 
 
 
-add_action('wcps_layout_element_featured_mark', 'wcps_layout_element_featured_mark');
+add_action('wcps_layout_element_featured_mark', 'wcps_layout_element_featured_mark', 10);
 function wcps_layout_element_featured_mark($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -525,7 +532,7 @@ function wcps_layout_element_featured_mark($args){
 
 
 
-add_action('wcps_layout_element_product_id', 'wcps_layout_element_product_id');
+add_action('wcps_layout_element_product_id', 'wcps_layout_element_product_id', 10);
 function wcps_layout_element_product_id($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -543,7 +550,7 @@ function wcps_layout_element_product_id($args){
 }
 
 
-add_action('wcps_layout_element_rating', 'wcps_layout_element_rating');
+add_action('wcps_layout_element_rating', 'wcps_layout_element_rating', 10);
 function wcps_layout_element_rating($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -574,7 +581,7 @@ function wcps_layout_element_rating($args){
 
 
 
-add_action('wcps_layout_element_wrapper_start', 'wcps_layout_element_wrapper_start');
+add_action('wcps_layout_element_wrapper_start', 'wcps_layout_element_wrapper_start', 10);
 function wcps_layout_element_wrapper_start($args){
 
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
@@ -594,7 +601,7 @@ function wcps_layout_element_wrapper_start($args){
 }
 
 
-add_action('wcps_layout_element_wrapper_end', 'wcps_layout_element_wrapper_end');
+add_action('wcps_layout_element_wrapper_end', 'wcps_layout_element_wrapper_end', 10);
 function wcps_layout_element_wrapper_end($args){
 
 
@@ -608,7 +615,7 @@ function wcps_layout_element_wrapper_end($args){
 
 
 
-add_action('wcps_layout_element_css_post_title', 'wcps_layout_element_css_post_title');
+add_action('wcps_layout_element_css_post_title', 'wcps_layout_element_css_post_title', 10);
 function wcps_layout_element_css_post_title($args){
 
 
@@ -655,7 +662,7 @@ function wcps_layout_element_css_post_title($args){
 
 
 
-add_action('wcps_layout_element_css_product_category', 'wcps_layout_element_css_product_category');
+add_action('wcps_layout_element_css_product_category', 'wcps_layout_element_css_product_category', 10);
 function wcps_layout_element_css_product_category($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -698,7 +705,7 @@ function wcps_layout_element_css_product_category($args){
 
 
 
-add_action('wcps_layout_element_css_product_tag', 'wcps_layout_element_css_product_tag');
+add_action('wcps_layout_element_css_product_tag', 'wcps_layout_element_css_product_tag', 10);
 function wcps_layout_element_css_product_tag($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -741,7 +748,7 @@ function wcps_layout_element_css_product_tag($args){
 
 
 
-add_action('wcps_layout_element_css_sale_count', 'wcps_layout_element_css_sale_count');
+add_action('wcps_layout_element_css_sale_count', 'wcps_layout_element_css_sale_count', 10);
 function wcps_layout_element_css_sale_count($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -768,7 +775,7 @@ function wcps_layout_element_css_sale_count($args){
     <?php
 }
 
-add_action('wcps_layout_element_css_on_sale_mark', 'wcps_layout_element_css_on_sale_mark');
+add_action('wcps_layout_element_css_on_sale_mark', 'wcps_layout_element_css_on_sale_mark', 10);
 function wcps_layout_element_css_on_sale_mark($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -804,7 +811,7 @@ function wcps_layout_element_css_on_sale_mark($args){
     <?php
 }
 
-add_action('wcps_layout_element_css_featured_mark', 'wcps_layout_element_css_featured_mark');
+add_action('wcps_layout_element_css_featured_mark', 'wcps_layout_element_css_featured_mark', 10);
 function wcps_layout_element_css_featured_mark($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -841,7 +848,7 @@ function wcps_layout_element_css_featured_mark($args){
 
 
 
-add_action('wcps_layout_element_css_product_id', 'wcps_layout_element_css_product_id');
+add_action('wcps_layout_element_css_product_id', 'wcps_layout_element_css_product_id', 10);
 function wcps_layout_element_css_product_id($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -881,7 +888,7 @@ function wcps_layout_element_css_product_id($args){
 
 
 
-add_action('wcps_layout_element_css_add_to_cart', 'wcps_layout_element_css_add_to_cart');
+add_action('wcps_layout_element_css_add_to_cart', 'wcps_layout_element_css_add_to_cart', 10);
 function wcps_layout_element_css_add_to_cart($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -932,7 +939,7 @@ function wcps_layout_element_css_add_to_cart($args){
 
 
 
-add_action('wcps_layout_element_css_rating', 'wcps_layout_element_css_rating');
+add_action('wcps_layout_element_css_rating', 'wcps_layout_element_css_rating', 10);
 function wcps_layout_element_css_rating($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -1007,7 +1014,7 @@ function wcps_layout_element_css_product_price($args){
 
 
 
-add_action('wcps_layout_element_css_content', 'wcps_layout_element_css_content');
+add_action('wcps_layout_element_css_content', 'wcps_layout_element_css_content', 10);
 function wcps_layout_element_css_content($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
@@ -1056,7 +1063,7 @@ function wcps_layout_element_css_content($args){
 
 
 
-add_action('wcps_layout_element_css_thumbnail', 'wcps_layout_element_css_thumbnail');
+add_action('wcps_layout_element_css_thumbnail', 'wcps_layout_element_css_thumbnail', 10);
 function wcps_layout_element_css_thumbnail($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';

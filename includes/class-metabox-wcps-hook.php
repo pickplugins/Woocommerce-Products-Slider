@@ -581,7 +581,7 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                         $terms = isset($taxonomies[$taxonomy]['terms']) ? $taxonomies[$taxonomy]['terms'] : array();
                         $terms_relation = isset($taxonomies[$taxonomy]['terms_relation']) ? $taxonomies[$taxonomy]['terms_relation'] : 'IN';
 
-                        //if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
+                        if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
                         //if($taxonomy != 'product_cat' && $taxonomy != 'product_tag') continue;
 
                         $the_taxonomy = get_taxonomy($taxonomy);

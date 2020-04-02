@@ -3,7 +3,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-
 add_filter('the_content','wcps_preview_content');
 
 function wcps_preview_content($content){

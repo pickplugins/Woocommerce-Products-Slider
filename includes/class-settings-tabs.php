@@ -1149,6 +1149,8 @@ class settings_tabs_field{
         $field_name = !empty($parent) ? $parent.'['.$id.']' : $id;
 
 
+
+
         ob_start();
         ?>
         <textarea name="<?php echo $field_name; ?>" id="<?php echo $css_id; ?>" cols="40" rows="5" placeholder="<?php echo $placeholder; ?>"><?php echo $value; ?></textarea>
