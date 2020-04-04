@@ -141,8 +141,10 @@ then paste this shortcode anywhere in your page to display slider<br />
 
 == Changelog ==
 
+
 	= 1.13.8 =
     * 2020-03-31 fix - product short description remove html issue fixed.
+    * 2020-03-31 fix - Custom CSS issue fixed.
 
 	= 1.13.7 =
     * 2020-03-28 fix - Product title link issue fixed.

@@ -1459,8 +1459,9 @@ if(!function_exists('wcps_metabox_content_custom_scripts')) {
 
         $settings_tabs_field = new settings_tabs_field();
 
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $custom_css = isset($wcps_options['custom_css']) ? $wcps_options['custom_css'] : '';
 
-	    $wcps_items_custom_css = get_post_meta( $post_id, 'wcps_items_custom_css', true );
 
 
         ?>
@@ -1474,9 +1475,9 @@ if(!function_exists('wcps_metabox_content_custom_scripts')) {
                 'id'		=> 'custom_css',
                 'parent'		=> 'wcps_options',
                 'title'		=> __('Custom CSS','woocommerce-products-slider'),
-                'details'	=> __('Add your own CSS..','woocommerce-products-slider'),
+                'details'	=> __('Write custom CSS to override default style, do not use <code>&lt;style>&lt;/style></code> tag. use <code>__ID__</code> to replace by wcps id <code>'.$post_id.'</code>.','woocommerce-products-slider'),
                 'type'		=> 'scripts_css',
-                'value'		=> $wcps_items_custom_css,
+                'value'		=> $custom_css,
                 'default'		=> '.wcps-container #wcps-133{}&#10; .wcps-container #wcps-133 .wcps-items{}&#10;.wcps-container #wcps-133 .wcps-items-thumb{}&#10;',
             );
 

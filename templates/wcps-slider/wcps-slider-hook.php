@@ -671,10 +671,14 @@ function wcps_slider_main_scripts( $args){
                 width: 45px;
             }
             <?php
-            $custom_scripts = get_post_meta($item_layout_id,'custom_scripts', true);
-            $custom_css = isset($custom_scripts['custom_css']) ? $custom_scripts['custom_css'] : '';
 
-            echo str_replace('__ID__', 'layout-'.$item_layout_id, $custom_css);
+            $custom_css = isset($wcps_options['custom_css']) ? $wcps_options['custom_css'] : '';
+            echo str_replace('__ID__', $wcps_id, $custom_css);
+
+            $custom_scripts = get_post_meta($item_layout_id,'custom_scripts', true);
+            $layout_custom_css = isset($custom_scripts['custom_css']) ? $custom_scripts['custom_css'] : '';
+
+            echo str_replace('__ID__', 'layout-'.$item_layout_id, $layout_custom_css);
 
             ?>
         </style>
