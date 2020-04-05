@@ -19,6 +19,12 @@ function wcps_layout_element_post_title($args){
     $element_class = !empty($element_index) ? 'wcps-items-title element-'.$element_index : 'wcps-items-title';
     $element_class = apply_filters('wcps_layout_element_title_class', $element_class, $args);
 
+
+//    $WCCT_Appearance = new WCCT_Appearance();
+//
+//    echo $WCCT_Appearance->wcct_trigger_countdown_timer($product_id, array());
+
+
     ?>
     <div class="<?php echo $element_class; ?>"><?php echo $post_title; ?></div>
     <?php
@@ -84,22 +90,22 @@ function wcps_layout_element_thumbnail($args){
 
     //echo '<pre>'.var_export($elementData, true).'</pre>';
 
-    $wcps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), $thumb_size);
-    $member_image_url = isset($wcps_thumb[0]) ? $wcps_thumb[0] : '';
-
-
-    $member_image_url = !empty($member_image_url) ? $member_image_url : $default_thumb_src;
-
-    $member_image_url = apply_filters('wcps_layout_element_thumbnail_src', $member_image_url, $args);
-
-
-    //echo '<pre>'.var_export($member_image_url, true).'</pre>';
-
-    if(!empty($member_image_url)){
+    if(!empty( get_the_post_thumbnail($product_id, $thumb_size))){
         ?>
-        <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><img src="<?php echo $member_image_url; ?>" /></a></div>
+            <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><?php echo get_the_post_thumbnail($product_id, $thumb_size); ?></a>
+            </div>
         <?php
 
+    }else{
+        $wcps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), $thumb_size);
+        $member_image_url = isset($wcps_thumb[0]) ? $wcps_thumb[0] : '';
+        $member_image_url = !empty($member_image_url) ? $member_image_url : $default_thumb_src;
+        $member_image_url = apply_filters('wcps_layout_element_thumbnail_src', $member_image_url, $args);
+
+        ?>
+            <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><img src="<?php echo $member_image_url; ?>" /></a></div>
+
+        <?php
     }
 
 }

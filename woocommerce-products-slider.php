@@ -3,7 +3,7 @@
 Plugin Name: PickPlugins Product Slider for WooCommerce
 Plugin URI: http://pickplugins.com/items/woocommerce-product-slider-for-wordpress/
 Description: Fully responsive and mobile ready Carousel Slider for your WooCommerce product. unlimited slider anywhere via short-codes and easy admin setting.
-Version: 1.13.8
+Version: 1.13.9
 WC requires at least: 3.0.0
 WC tested up to: 4.0
 Author: PickPlugins
@@ -23,7 +23,7 @@ class WoocommerceProductsSlider{
 		define('wcps_plugin_url', plugins_url('/', __FILE__)  );
 		define('wcps_plugin_dir', plugin_dir_path( __FILE__ ) );
 		define('wcps_plugin_name', 'PickPlugins Product Slider' );
-        define('wcps_plugin_version', '1.13.8' );
+        define('wcps_plugin_version', '1.13.9' );
 
         require_once( wcps_plugin_dir . 'includes/class-post-types.php');
         require_once( wcps_plugin_dir . 'includes/class-metabox-wcps.php');
@@ -41,6 +41,7 @@ class WoocommerceProductsSlider{
         require_once( wcps_plugin_dir . 'includes/class-settings.php');
         require_once( wcps_plugin_dir . 'includes/functions-settings-hook.php');
 
+        require_once( wcps_plugin_dir . 'includes/3rd-party/3rd-party.php');
 
 
         require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');

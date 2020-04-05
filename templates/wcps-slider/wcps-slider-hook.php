@@ -247,6 +247,8 @@ function wcps_slider_main_items($args){
                 $args['product_id'] = $product_id;
                 $args['loop_count'] = $loop_count;
 
+                
+
                 //echo '<pre>'.var_export($product_id, true).'</pre>';
                 do_action('wcps_slider_item', $args);
 

@@ -317,29 +317,23 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $custom_css = isset($custom_scripts['custom_css']) ? $custom_scripts['custom_css'] : '';
 
             ?>
-
             <style type="text/css">
                 .layout-preview{
                     background: url(<?php echo wcps_plugin_url; ?>assets/admin/css/tile.png);
                     padding: 20px;
                 }
-
                 .layout-preview .elements-wrapper{
                     width: 400px;
                     overflow: hidden;
                     margin: 0 auto;
                 }
-
                 .layout-preview img{
                     width: 100%;
+                    height: auto;
                 }
-
                 <?php
-
                 echo str_replace('__ID__', 'layout-'.$item_layout_id, $custom_css);
-
                 ?>
-
             </style>
             <?php
 

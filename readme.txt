@@ -4,7 +4,7 @@
 	Tags: product slider, woocommerce slider, woo slider, woo product carousel slider,  woocommerce product slider
 	Requires at least: 3.8
 	Tested up to: 5.3
-	Stable tag: 1.13.8
+	Stable tag: 1.13.9
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,25 @@ then paste this shortcode anywhere in your page to display slider<br />
 5. screenshot-5
 
 == Changelog ==
+
+
+    * 2020-04-05 add - add element for "Wishlist" plugin under layout builder
+    * 2020-04-05 add - add element for "WPC Smart Wishlist" plugin under layout builder
+    * 2020-04-05 add - add element for "WPC Smart Quick View" plugin under layout builder
+    * 2020-04-05 add - add element for "WPC Smart Compare" plugin under layout builder
+    * 2020-04-05 add - add element for "WPC Countdown Timer" plugin under layout builder
+    * 2020-04-05 add - add element for "TI WooCommerce Wishlist" plugin under layout builder
+    * 2020-04-05 add - compatibility check for  "WooCommerce Wholesale Prices" plugin
+
+
+
+	= 1.13.9 =
+    * 2020-04-05 add - add support for "YITH WooCommerce Badge Management"
+    * 2020-04-05 add - add element for "YITH WooCommerce Quick View" under layout builder
+    * 2020-04-05 add - add element for "YITH WooCommerce Wishlist" under layout builder
+    * 2020-04-05 add - add element for "YITH WooCommerce Brands" under layout builder
+    * 2020-04-05 add - add element for "YITH WooCommerce Compare" under layout builder
+    * 2020-04-05 update - product featured image update.
 
 
 	= 1.13.8 =
