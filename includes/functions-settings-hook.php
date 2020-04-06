@@ -603,6 +603,83 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
                 </tr>
 
                 <tr>
+                    <td colspan="3" class="col-features"><?php echo __('3rd party','woocommerce-products-slider'); ?> </td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('YITH WooCommerce Badge Management','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('YITH WooCommerce Quick View','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('YITH WooCommerce Wishlist','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('YITH WooCommerce Brands','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('YITH WooCommerce Compare','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo __('WooCommerce Wholesale Prices','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('TI WooCommerce Wishlist','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('WPC Countdown Timer','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('WPC Smart Compare','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('WPC Smart Quick View','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('WPC Smart Wishlist','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Wishlist by PickPlugins','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('Wish List for WooCommerce','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo __('WooCommerce Wholesale Prices','woocommerce-products-slider'); ?> </td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+
+
+                <tr>
                     <th class="col-features"><?php echo __('Features','woocommerce-products-slider'); ?></th>
                     <th class="col-free"><?php echo __('Free','woocommerce-products-slider'); ?></th>
                     <th class="col-pro"><?php echo __('Premium','woocommerce-products-slider'); ?></th>

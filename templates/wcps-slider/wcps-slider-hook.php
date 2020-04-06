@@ -64,9 +64,12 @@ add_action('wcps_slider_main', 'wcps_slider_main_items', 20);
 
 function wcps_slider_main_items($args){
 
-    $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
 
+    $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
+    $slider_for = isset($wcps_options['slider_for']) ? $wcps_options['slider_for'] : '';
+    if($slider_for != 'products') return;
+
     $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
 
     if(empty($item_layout_id)){
@@ -277,15 +280,11 @@ function wcps_slider_main_items($args){
 
 
 
-
-
 add_action('wcps_slider_item', 'wcps_slider_item', 10);
 
 function wcps_slider_item($args){
 
     $wcps_id = isset($args['wcps_id']) ? $args['wcps_id'] : '';
-    $product_id = isset($args['product_id']) ? $args['product_id'] : 0;
-    $args['product_id'] = $product_id;
 
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
     $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
@@ -321,6 +320,125 @@ function wcps_slider_item($args){
     <?php
 
 }
+
+
+
+
+add_action('wcps_slider_main', 'wcps_slider_main_items_categories', 20);
+
+function wcps_slider_main_items_categories($args){
+
+
+    $wcps_id = isset($args['wcps_id']) ? (int) $args['wcps_id'] : 0;
+    $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
+    $slider_for = isset($wcps_options['slider_for']) ? $wcps_options['slider_for'] : '';
+    if($slider_for != 'categories') return;
+
+    $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
+
+    $query = !empty($wcps_options['query_categories']) ? $wcps_options['query_categories'] : array();
+    $taxonomies = !empty($query['taxonomies']) ? $query['taxonomies'] : array();
+
+    if(empty($item_layout_id)){
+
+        ?><i class="far fa-times-circle"></i> Please create a <a target="_blank" href="<?php echo admin_url(); ?>post-new.php?post_type=wcps_layout">layout</a> first. watch this video to learn <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">customize layouts</a>
+        <?php
+
+        return;
+    }
+
+
+
+    $terms_list = array();
+    $loop_count = 0;
+
+    if(!empty($taxonomies) && is_array($taxonomies)):
+
+            $wcps_items_class = apply_filters('wcps_items_wrapper_class', 'wcps-items owl-carousel owl-theme', $args);
+
+            ?>
+            <div id="wcps-<?php echo $wcps_id; ?>" class="<?php echo $wcps_items_class; ?>">
+            <?php
+
+            foreach ($taxonomies as $taxonomy){
+                $terms = isset($taxonomy['terms']) ? $taxonomy['terms'] : array();
+                foreach ( $terms as $terms_id){
+                    //$terms_list[] =  $terms_id;
+
+                    $args['term_id'] = $terms_id;
+                    $args['loop_count'] = $loop_count;
+
+                    do_action('wcps_slider_item_term', $args);
+
+                    $loop_count++;
+                }
+            }
+
+            ?>
+        </div>
+        <?php
+
+    else:
+        do_action('wcps_slider_no_item');
+    endif;
+
+
+    //echo '<pre>'.var_export($terms_list, true).'</pre>';
+
+
+}
+
+
+
+add_action('wcps_slider_item_term', 'wcps_slider_item_term', 10);
+
+function wcps_slider_item_term($args){
+
+    $first_term_id = (int) wcps_get_first_category_id();
+
+    $wcps_id = isset($args['wcps_id']) ? $args['wcps_id'] : '';
+    $term_id = isset($args['term_id']) ? $args['term_id'] : $first_term_id;
+
+    $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
+    $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
+    $layout_elements_data = get_post_meta( $item_layout_id, 'layout_elements_data', true );
+
+    $wcps_item_class = apply_filters('wcps_slider_item_class', 'item ', $args);
+
+    ?>
+    <div class="<?php echo $wcps_item_class; ?>">
+        <div class="elements-wrapper layout-<?php echo $item_layout_id; ?>">
+            <?php
+            if(!empty($layout_elements_data))
+                foreach ($layout_elements_data as $elementGroupIndex => $elementGroupData){
+
+                    if(!empty($elementGroupData))
+                        foreach ($elementGroupData as $elementIndex => $elementData){
+
+                            $args['elementData'] = $elementData;
+                            $args['element_index'] = $elementGroupIndex;
+
+                            //echo '<pre>'.var_export($elementIndex, true).'</pre>';
+
+                            do_action('wcps_layout_element_'.$elementIndex, $args);
+                        }
+                }
+            ?>
+        </div>
+    </div>
+    <?php
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

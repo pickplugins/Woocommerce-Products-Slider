@@ -391,6 +391,8 @@ function wcps_metabox_content_layouts($post_id){
     $wcps_options = get_post_meta($post_id,'wcps_options', true);
     $item_layout_id = !empty($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();
 
+    $wcps_plugin_info = get_option('wcps_plugin_info');
+    $import_layouts = isset($wcps_plugin_info['import_layouts']) ? $wcps_plugin_info['import_layouts'] : '';
 
 
     ?>
@@ -410,6 +412,12 @@ function wcps_metabox_content_layouts($post_id){
         <p><a target="_blank" class="button" href="<?php echo admin_url().'edit.php?post_type=wcps_layout'; ?>"><?php echo __('Manage layouts','woocommerce-products-slider'); ?></a> </p>
 
         <?php
+        if($import_layouts != 'done'):
+            ?>
+            <p><a target="_blank" class="button" href="<?php echo admin_url().'edit.php?post_type=wcps_layout'; ?>"><?php echo __('Import layouts','woocommerce-products-slider'); ?></a> </p>
+            <?php
+        endif;
+
 
 
         $html = ob_get_clean();
@@ -988,6 +996,225 @@ if(!function_exists('wcps_metabox_content_query_product')) {
 
     }
 }
+
+
+
+
+
+add_action('wcps_metabox_content_query_categories', 'wcps_metabox_content_query_categories');
+
+if(!function_exists('wcps_metabox_content_query_categories')) {
+    function wcps_metabox_content_query_categories($post_id){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $query = !empty($wcps_options['query_categories']) ? $wcps_options['query_categories'] : array();
+
+        $posts_per_page = isset($query['posts_per_page']) ? $query['posts_per_page'] : 10;
+        $query_order = isset($query['order']) ? $query['order'] : 'DESC';
+        $query_orderby = !empty($query['orderby']) ? $query['orderby'] : array('date');
+        $ordberby_meta_key = isset($query['ordberby_meta_key']) ? $query['ordberby_meta_key'] : '';
+
+        $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
+        $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
+        $taxonomies = !empty($query['taxonomies']) ? $query['taxonomies'] : array();
+        $taxonomy_relation = !empty($query['taxonomy_relation']) ? $query['taxonomy_relation'] : 'OR';
+
+        $query_only = isset($query['query_only']) ? $query['query_only'] : '';
+
+
+
+        $on_sale = isset($query['on_sale']) ? $query['on_sale'] : 'no';
+        $product_ids = isset($query['product_ids']) ? $query['product_ids'] : '';
+
+
+        //echo '<pre>'.var_export($taxonomies, true).'</pre>';
+
+        ?>
+        <div class="section">
+            <div class="section-title">Query categories</div>
+            <p class="description section-description">Setup categories query settings.</p>
+
+
+            <?php
+
+
+
+            $wcps_allowed_taxonomies = apply_filters('wcps_allowed_taxonomies', array('product_cat', 'product_tag'));
+
+            ob_start();
+
+
+            $post_types =  array('product');
+            $post_taxonomies =  array();
+
+            $post_taxonomies = get_object_taxonomies( $post_types );
+
+            if(!empty($post_taxonomies)){
+
+                ?>
+
+                <div class="expandable sortable">
+
+                    <?php
+
+                    foreach ($post_taxonomies as $taxonomy ) {
+
+                        $terms = isset($taxonomies[$taxonomy]['terms']) ? $taxonomies[$taxonomy]['terms'] : array();
+                        $terms_relation = isset($taxonomies[$taxonomy]['terms_relation']) ? $taxonomies[$taxonomy]['terms_relation'] : 'IN';
+
+                        if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
+                        //if($taxonomy != 'product_cat' && $taxonomy != 'product_tag') continue;
+
+                        $the_taxonomy = get_taxonomy($taxonomy);
+                        $args=array('orderby' => 'name', 'order' => 'ASC', 'taxonomy' => $taxonomy, 'hide_empty' => false);
+                        $categories_all = get_categories($args);
+
+
+
+                        ?>
+                        <div class="item">
+                            <div class="element-title header ">
+                                <span class="expand"><i class="fas fa-expand"></i><i class="fas fa-compress"></i></span>
+                                <?php
+                                if(!empty($terms)):
+                                    ?><i class="fas fa-check"></i><?php
+                                else:
+                                    ?><i class="fas fa-times"></i><?php
+                                endif;?>
+                                <span class="expand"><?php echo $the_taxonomy->labels->name; ?> - <?php echo $taxonomy; ?></span>
+
+                            </div>
+                            <div class="element-options options">
+
+                                <?php
+                                $term_list = array();
+                                foreach($categories_all as $category_info){
+                                    $term_list[$category_info->cat_ID] = $category_info->cat_name.'('.$category_info->count.')';
+                                }
+
+
+
+
+                                $args = array(
+                                    'id'		=> 'terms',
+                                    'parent' => 'wcps_options[query_categories][taxonomies]['.$taxonomy.']',
+                                    'title'		=> __('Select terms','woocommerce-products-slider'),
+                                    'details'	=> __('Choose some terms.','woocommerce-products-slider'),
+                                    'type'		=> 'select',
+                                    'multiple'		=> true,
+                                    'value'		=> $terms,
+                                    'args'		=> $term_list,
+                                    'default'		=> array(),
+                                );
+
+                                $settings_tabs_field->generate_field($args);
+
+
+                                ?>
+
+                            </div>
+                        </div>
+                        <?php
+
+
+
+
+
+
+                    }
+
+                    ?>
+                </div>
+                <?php
+
+            }
+            else{
+                echo 'No categories found.';
+            }
+
+
+
+            $html = ob_get_clean();
+            $args = array(
+                'id' => 'wcps_categories',
+                'title' => __('Product taxonomy  & terms', 'woocommerce-products-slider'),
+                'details' => __('Choose product taxonomy & terms. click to expand and see there is categories or terms you can select.', 'woocommerce-products-slider'),
+                'type' => 'custom_html',
+                'html' => $html,
+            );
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'order',
+                'parent'		=> 'wcps_options[query]',
+                'title'		=> __('Query order','woocommerce-products-slider'),
+                'details'	=> __('Set query order.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $query_order,
+                'default'		=> 'DESC',
+                'args'		=> array(
+                    'DESC'=>__('Descending','woocommerce-products-slider'),
+                    'ASC'=>__('Ascending','woocommerce-products-slider'),
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $wcps_query_orderby_args = apply_filters('wcps_query_orderby_args',
+                array(
+                    'ID'=>__('ID','woocommerce-products-slider'),
+                    'date'=>__('Date','woocommerce-products-slider'),
+                    'post_date'=>__('Post date','woocommerce-products-slider'),
+                    'name'=>__('Name','woocommerce-products-slider'),
+                    'rand'=>__('Random','woocommerce-products-slider'),
+                    'comment_count'=>__('Comment count','woocommerce-products-slider'),
+                    'author'=>__('Author','woocommerce-products-slider'),
+                    'title'=>__('Title','woocommerce-products-slider'),
+                    'type'=>__('Type','woocommerce-products-slider'),
+                    'menu_order'=>__('Menu order','woocommerce-products-slider'),
+                    'meta_value'=>__('meta_value','woocommerce-products-slider'),
+                    'meta_value_num'=>__('meta value number','woocommerce-products-slider'),
+                    'post__in'=>__('post__in','woocommerce-products-slider'),
+                    'post_name__in'=>__('post_name__in','woocommerce-products-slider'),
+                )
+            );
+
+
+
+
+
+
+
+
+
+
+
+            ?>
+
+        </div>
+
+        <?php
+
+
+
+
+
+
+    }
+}
+
 
 
 

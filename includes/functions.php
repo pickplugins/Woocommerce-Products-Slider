@@ -115,6 +115,20 @@ function wcps_get_first_product_id(){
 }
 
 
+function wcps_get_first_category_id(){
+
+    $terms = get_terms( array(
+        'taxonomy' => 'product_cat',
+        'hide_empty' => false,
+    ) );
+
+    return $terms[1]->term_id;
+
+
+}
+
+
+
 function wcps_featured_product_ids($query_args){
 
     $query_args['tax_query'][] = array(

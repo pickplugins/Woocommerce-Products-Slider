@@ -148,7 +148,8 @@ then paste this shortcode anywhere in your page to display slider<br />
     * 2020-04-05 add - add element for "WPC Smart Compare" plugin under layout builder
     * 2020-04-05 add - add element for "WPC Countdown Timer" plugin under layout builder
     * 2020-04-05 add - add element for "TI WooCommerce Wishlist" plugin under layout builder
-    * 2020-04-05 add - compatibility check for  "WooCommerce Wholesale Prices" plugin
+    * 2020-04-05 add - compatibility check for "WooCommerce Wholesale Prices" plugin
+    * 2020-04-05 add - add element for "Wish List for WooCommerce" plugin under layout builder
 
 
 

@@ -19,12 +19,6 @@ function wcps_layout_element_post_title($args){
     $element_class = !empty($element_index) ? 'wcps-items-title element-'.$element_index : 'wcps-items-title';
     $element_class = apply_filters('wcps_layout_element_title_class', $element_class, $args);
 
-
-//    $WCCT_Appearance = new WCCT_Appearance();
-//
-//    echo $WCCT_Appearance->wcct_trigger_countdown_timer($product_id, array());
-
-
     ?>
     <div class="<?php echo $element_class; ?>"><?php echo $post_title; ?></div>
     <?php
@@ -617,6 +611,93 @@ function wcps_layout_element_wrapper_end($args){
 
 }
 
+add_action('wcps_layout_element_term_title', 'wcps_layout_element_term_title', 10);
+function wcps_layout_element_term_title($args){
+
+    $term_id = isset($args['term_id']) ? $args['term_id'] : (int) wcps_get_first_category_id();
+
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+
+    $element_class = !empty($element_index) ? 'element-term_title element-'.$element_index : 'element-term_title';
+    $term = get_term( $term_id );
+    $term_title = isset($term->name) ? $term->name : '';
+
+    ?>
+    <div class="<?php echo $element_class; ?>"><?php echo $term_title; ?></div>
+    <?php
+
+}
+
+
+add_action('wcps_layout_element_term_thumb', 'wcps_layout_element_term_thumb', 10);
+function wcps_layout_element_term_thumb($args){
+
+    $term_id = isset($args['term_id']) ? $args['term_id'] : (int) wcps_get_first_category_id();
+
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+
+    $element_class = !empty($element_index) ? 'element-term_thumb element-'.$element_index : 'element-term_thumb';
+
+    $thumbnail_id = get_term_meta( $term_id, 'thumbnail_id', true );
+    $image_url = wp_get_attachment_url( $thumbnail_id );
+
+    ?>
+    <div class="<?php echo $element_class; ?>"><img src="<?php echo $image_url; ?>"></div>
+    <?php
+
+}
+
+add_action('wcps_layout_element_term_description', 'wcps_layout_element_term_description', 10);
+function wcps_layout_element_term_description($args){
+
+    $term_id = isset($args['term_id']) ? $args['term_id'] : (int) wcps_get_first_category_id();
+
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+
+    $element_class = !empty($element_index) ? 'element-term_title element-'.$element_index : 'element-term_title';
+    $term = get_term( $term_id );
+    $term_description = isset($term->description) ? $term->description : '';
+
+    //var_dump($term);
+
+    ?>
+    <div class="<?php echo $element_class; ?>"><?php echo $term_description; ?></div>
+    <?php
+
+}
+
+
+add_action('wcps_layout_element_term_post_count', 'wcps_layout_element_term_post_count', 10);
+function wcps_layout_element_term_post_count($args){
+
+    $term_id = isset($args['term_id']) ? $args['term_id'] : (int) wcps_get_first_category_id();
+
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+
+    $wrapper_html = isset($elementData['wrapper_html']) ? $elementData['wrapper_html'] : '';
+    $wrapper_html = !empty($wrapper_html) ? $wrapper_html : '%s';
+
+    $element_class = !empty($element_index) ? 'element-term_title element-'.$element_index : 'element-term_title';
+    $term = get_term( $term_id );
+    $term_count = isset($term->count) ? $term->count : '';
+
+    //var_dump($term);
+
+    ?>
+    <div class="<?php echo $element_class; ?>"><?php echo sprintf($wrapper_html, $term_count); ?></div>
+    <?php
+
+}
+
+
+
+
+
+
 
 
 
@@ -663,7 +744,129 @@ function wcps_layout_element_css_post_title($args){
 
 
 
+add_action('wcps_layout_element_css_term_title', 'wcps_layout_element_css_term_title', 10);
+function wcps_layout_element_css_term_title($args){
 
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $color = isset($elementData['color']) ? $elementData['color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $text_align = isset($elementData['text_align']) ? $elementData['text_align'] : '';
+
+
+    //echo '<pre>'.var_export($layout_id, true).'</pre>';
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($color)): ?>
+            color: <?php echo $color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_family)): ?>
+            font-family: <?php echo $font_family; ?>;
+        <?php endif; ?>
+        <?php if(!empty($margin)): ?>
+            margin: <?php echo $margin; ?>;
+        <?php endif; ?>
+        <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
+        <?php endif; ?>
+        }
+    </style>
+    <?php
+}
+
+
+
+add_action('wcps_layout_element_css_term_description', 'wcps_layout_element_css_term_description', 10);
+function wcps_layout_element_css_term_description($args){
+
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $color = isset($elementData['color']) ? $elementData['color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $text_align = isset($elementData['text_align']) ? $elementData['text_align'] : '';
+
+
+    //echo '<pre>'.var_export($layout_id, true).'</pre>';
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($color)): ?>
+            color: <?php echo $color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_family)): ?>
+            font-family: <?php echo $font_family; ?>;
+        <?php endif; ?>
+        <?php if(!empty($margin)): ?>
+            margin: <?php echo $margin; ?>;
+        <?php endif; ?>
+        <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
+        <?php endif; ?>
+        }
+    </style>
+    <?php
+}
+
+
+
+add_action('wcps_layout_element_css_term_post_count', 'wcps_layout_element_css_term_post_count', 10);
+function wcps_layout_element_css_term_post_count($args){
+
+
+    $element_index = isset($args['element_index']) ? $args['element_index'] : '';
+    $elementData = isset($args['elementData']) ? $args['elementData'] : array();
+    $layout_id = isset($args['layout_id']) ? $args['layout_id'] : '';
+
+    $color = isset($elementData['color']) ? $elementData['color'] : '';
+    $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '';
+    $font_family = isset($elementData['font_family']) ? $elementData['font_family'] : '';
+    $margin = isset($elementData['margin']) ? $elementData['margin'] : '';
+    $text_align = isset($elementData['text_align']) ? $elementData['text_align'] : '';
+
+
+    //echo '<pre>'.var_export($layout_id, true).'</pre>';
+
+    ?>
+    <style type="text/css">
+        .layout-<?php echo $layout_id; ?> .element-<?php echo $element_index; ?>{
+        <?php if(!empty($color)): ?>
+            color: <?php echo $color; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_size)): ?>
+            font-size: <?php echo $font_size; ?>;
+        <?php endif; ?>
+        <?php if(!empty($font_family)): ?>
+            font-family: <?php echo $font_family; ?>;
+        <?php endif; ?>
+        <?php if(!empty($margin)): ?>
+            margin: <?php echo $margin; ?>;
+        <?php endif; ?>
+        <?php if(!empty($text_align)): ?>
+            text-align: <?php echo $text_align; ?>;
+        <?php endif; ?>
+        }
+    </style>
+    <?php
+}
 
 
 

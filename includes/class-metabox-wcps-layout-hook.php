@@ -121,6 +121,12 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $layout_elements['product_price'] = array('name' =>__('Price','woocommerce-products-slider'));
             $layout_elements['product_id'] = array('name' =>__('Product ID','woocommerce-products-slider'));
 
+            $layout_elements['term_title'] = array('name' =>__('Term title','woocommerce-products-slider'));
+            $layout_elements['term_thumb'] = array('name' =>__('Term thumbnail','woocommerce-products-slider'));
+            $layout_elements['term_description'] = array('name' =>__('Term description','woocommerce-products-slider'));
+            $layout_elements['term_slug'] = array('name' =>__('Term slug','woocommerce-products-slider'));
+            $layout_elements['term_post_count'] = array('name' =>__('Term post count','woocommerce-products-slider'));
+
 
 
 

@@ -41,6 +41,7 @@ class class_wcps_metabox{
 
         $wcps_options = get_post_meta($post_id,'wcps_options', true);
         $current_tab = isset($wcps_options['current_tab']) ? $wcps_options['current_tab'] : 'layouts';
+        $slider_for = !empty($wcps_options['slider_for']) ? $wcps_options['slider_for'] : 'products';
 
 
         $wcps_settings_tab = array();
@@ -64,6 +65,17 @@ class class_wcps_metabox{
             'title' => sprintf(__('%s Query product','woocommerce-products-slider'),'<i class="fas fa-qrcode"></i>'),
             'priority' => 3,
             'active' => ($current_tab == 'query_product') ? true : false,
+            'data_visible' => 'products',
+            'hidden' => ($slider_for == 'categories')? true : false,
+        );
+
+        $wcps_settings_tabs[] = array(
+            'id' => 'query_categories',
+            'title' => sprintf(__('%s Query categories','woocommerce-products-slider'),'<i class="fas fa-qrcode"></i>'),
+            'priority' => 3,
+            'active' => ($current_tab == 'query_categories') ? true : false,
+            'data_visible' => 'categories',
+            'hidden' => ($slider_for == 'products')? true : false ,
         );
 
         $wcps_settings_tabs[] = array(
@@ -126,11 +138,62 @@ class class_wcps_metabox{
 
 
 		?>
+        <script>
+            jQuery(document).ready(function($){
+                $(document).on('click', '.settings-tabs input[name="wcps_options[slider_for]"]', function(){
+                    var val = $(this).val();
 
+                    console.log( val );
+
+                    $('.settings-tabs .tab-navs li').each(function( index ) {
+                        data_visible = $( this ).attr('data_visible');
+
+                        if(typeof data_visible != 'undefined'){
+                            //console.log('undefined '+ data_visible );
+
+                            n = data_visible.indexOf(val);
+                            if(n<0){
+                                $( this ).hide();
+                            }else{
+                                $( this ).show();
+                            }
+                        }else{
+                            console.log('Not matched: '+ data_visible );
+
+
+                        }
+                    });
+
+
+                })
+            })
+
+
+        </script>
 
         <div class="settings-tabs vertical">
             <input class="current_tab" type="hidden" name="wcps_options[current_tab]" value="<?php echo $current_tab; ?>">
+            <div class="view-types">
 
+                <?php
+
+                $team_view_types = apply_filters('team_view_types', array('grid'=>'Grid'));
+
+                $args = array(
+                    'id'		=> 'slider_for',
+                    'parent'		=> 'wcps_options',
+                    'title'		=> __('Slider for','team'),
+                    'details'	=> '',
+                    'type'		=> 'radio',
+                    'value'		=> $slider_for,
+                    'default'		=> '',
+                    'args'		=> array('products' => 'Products', 'categories' => 'Categories'),
+                );
+
+                $settings_tabs_field->generate_field($args);
+
+                ?>
+            </div>
 
             <ul class="tab-navs">
                 <?php

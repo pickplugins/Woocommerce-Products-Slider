@@ -9,6 +9,10 @@ if ( is_plugin_active( 'wishlist/wishlist.php' ) ) {
 }
 
 
+if ( is_plugin_active( 'wish-list-for-woocommerce/wish-list-for-woocommerce.php' ) ) {
+    require_once( wcps_plugin_dir . 'includes/3rd-party/wish-list-for-woocommerce.php');
+}
+
 
 //WPClever.net
 if ( is_plugin_active( 'woo-smart-wishlist/index.php' ) ) {
