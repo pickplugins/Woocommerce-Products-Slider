@@ -33,7 +33,7 @@ function wcps_layout_elements_option_post_title($parameters){
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Title','woocommerce-products-slider'); ?></span>
+            <span class="expand"><?php echo __('Post title','woocommerce-products-slider'); ?></span>
         </div>
         <div class="element-options options">
 

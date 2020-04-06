@@ -66,7 +66,16 @@ class class_wcps_metabox{
             'priority' => 3,
             'active' => ($current_tab == 'query_product') ? true : false,
             'data_visible' => 'products',
-            'hidden' => ($slider_for == 'categories')? true : false,
+            'hidden' => ($slider_for == 'categories')? true : false || ($slider_for == 'orders')? true : false,
+        );
+
+        $wcps_settings_tabs[] = array(
+            'id' => 'query_orders',
+            'title' => sprintf(__('%s Query orders','woocommerce-products-slider'),'<i class="fas fa-qrcode"></i>'),
+            'priority' => 3,
+            'active' => ($current_tab == 'query_orders') ? true : false,
+            'data_visible' => 'orders',
+            'hidden' => ($slider_for == 'products')? true : false || ($slider_for == 'categories')? true : false ,
         );
 
         $wcps_settings_tabs[] = array(
@@ -75,8 +84,11 @@ class class_wcps_metabox{
             'priority' => 3,
             'active' => ($current_tab == 'query_categories') ? true : false,
             'data_visible' => 'categories',
-            'hidden' => ($slider_for == 'products')? true : false ,
+            'hidden' => ($slider_for == 'products')? true : false || ($slider_for == 'orders')? true : false,
         );
+
+
+
 
         $wcps_settings_tabs[] = array(
             'id' => 'style',
@@ -187,7 +199,7 @@ class class_wcps_metabox{
                     'type'		=> 'radio',
                     'value'		=> $slider_for,
                     'default'		=> '',
-                    'args'		=> array('products' => 'Products', 'categories' => 'Categories'),
+                    'args'		=> array('products' => 'Products','orders' => 'Orders', 'categories' => 'Categories'),
                 );
 
                 $settings_tabs_field->generate_field($args);

@@ -109,7 +109,7 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $layout_elements['wrapper_start'] = array('name' =>__('Wrapper start','woocommerce-products-slider'));
             $layout_elements['wrapper_end'] = array('name' =>__('Wrapper end','woocommerce-products-slider'));
             $layout_elements['thumbnail'] = array('name' =>__('Thumbnail','woocommerce-products-slider'));
-            $layout_elements['post_title'] = array('name' =>__('Product Title','woocommerce-products-slider'));
+            $layout_elements['post_title'] = array('name' =>__('Post Title','woocommerce-products-slider'));
             $layout_elements['content'] = array('name' =>__('Content','woocommerce-products-slider'));
             $layout_elements['product_category'] = array('name' =>__('Product Category','woocommerce-products-slider'));
             $layout_elements['product_tag'] = array('name' =>__('Product Tag','woocommerce-products-slider'));
@@ -126,6 +126,14 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $layout_elements['term_description'] = array('name' =>__('Term description','woocommerce-products-slider'));
             $layout_elements['term_slug'] = array('name' =>__('Term slug','woocommerce-products-slider'));
             $layout_elements['term_post_count'] = array('name' =>__('Term post count','woocommerce-products-slider'));
+
+            $layout_elements['order_title'] = array('name' =>__('Order title','woocommerce-products-slider'));
+            $layout_elements['order_date'] = array('name' =>__('Order date','woocommerce-products-slider'));
+            $layout_elements['order_customer_id'] = array('name' =>__('Order customer id','woocommerce-products-slider'));
+            $layout_elements['order_customer_name'] = array('name' =>__('Order customer name','woocommerce-products-slider'));
+            $layout_elements['order_customer_thumb'] = array('name' =>__('Order customer thumbnail','woocommerce-products-slider'));
+            $layout_elements['order_country'] = array('name' =>__('Order country','woocommerce-products-slider'));
+            $layout_elements['order_payment_method'] = array('name' =>__('Order payment method','woocommerce-products-slider'));
 
 
 
