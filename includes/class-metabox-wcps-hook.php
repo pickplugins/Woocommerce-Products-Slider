@@ -1009,24 +1009,15 @@ if(!function_exists('wcps_metabox_content_query_categories')) {
         $settings_tabs_field = new settings_tabs_field();
 
         $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
-        $query = !empty($wcps_options['query_categories']) ? $wcps_options['query_categories'] : array();
+        $query_categories = !empty($wcps_options['query_categories']) ? $wcps_options['query_categories'] : array();
 
-        $posts_per_page = isset($query['posts_per_page']) ? $query['posts_per_page'] : 10;
-        $query_order = isset($query['order']) ? $query['order'] : 'DESC';
-        $query_orderby = !empty($query['orderby']) ? $query['orderby'] : array('date');
-        $ordberby_meta_key = isset($query['ordberby_meta_key']) ? $query['ordberby_meta_key'] : '';
-
-        $hide_out_of_stock = isset($query['hide_out_of_stock']) ? $query['hide_out_of_stock'] : 'no_check';
-        $product_featured = isset($query['product_featured']) ? $query['product_featured'] : 'no_check';
-        $taxonomies = !empty($query['taxonomies']) ? $query['taxonomies'] : array();
-        $taxonomy_relation = !empty($query['taxonomy_relation']) ? $query['taxonomy_relation'] : 'OR';
-
-        $query_only = isset($query['query_only']) ? $query['query_only'] : '';
+        $posts_per_page = isset($query_categories['posts_per_page']) ? $query_categories['posts_per_page'] : 10;
+        $query_order = isset($query_categories['order']) ? $query_categories['order'] : 'DESC';
+        $query_orderby = !empty($query_categories['orderby']) ? $query_categories['orderby'] : array('name');
+        $hide_empty = isset($query_categories['hide_empty']) ? $query_categories['hide_empty'] : '';
 
 
-
-        $on_sale = isset($query['on_sale']) ? $query['on_sale'] : 'no';
-        $product_ids = isset($query['product_ids']) ? $query['product_ids'] : '';
+        $taxonomies = !empty($query_categories['taxonomies']) ? $query_categories['taxonomies'] : array();
 
 
         //echo '<pre>'.var_export($taxonomies, true).'</pre>';
@@ -1151,13 +1142,35 @@ if(!function_exists('wcps_metabox_content_query_categories')) {
 
 
 
+            $args = array(
+                'id'		=> 'orderby',
+                'parent'		=> 'wcps_options[query_categories]',
+                'title'		=> __('Query orderby','woocommerce-products-slider'),
+                'details'	=> __('Set query orderby.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $query_order,
+                'default'		=> 'DESC',
+                'args'		=> array(
+                    'name'=>__('Name','woocommerce-products-slider'),
+                    'slug'=>__('Slug','woocommerce-products-slider'),
+                    'term_group'=>__('Term group','woocommerce-products-slider'),
+                    'term_id'=>__('Term id','woocommerce-products-slider'),
+                    'id'=>__('ID','woocommerce-products-slider'),
+                    'description'=>__('Description','woocommerce-products-slider'),
+                    'parent'=>__('Parent','woocommerce-products-slider'),
 
+
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
 
             $args = array(
                 'id'		=> 'order',
-                'parent'		=> 'wcps_options[query]',
+                'parent'		=> 'wcps_options[query_categories]',
                 'title'		=> __('Query order','woocommerce-products-slider'),
                 'details'	=> __('Set query order.','woocommerce-products-slider'),
                 'type'		=> 'select',
@@ -1170,6 +1183,34 @@ if(!function_exists('wcps_metabox_content_query_categories')) {
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'hide_empty',
+                'parent'		=> 'wcps_options[query_categories]',
+                'title'		=> __('Hide empty','woocommerce-products-slider'),
+                'details'	=> __('Choose hide empty terms.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $hide_empty,
+                'default'		=> '1',
+                'args'		=> array('1'=>__('True','woocommerce-products-slider'), '0'=>__('False','woocommerce-products-slider')),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
 
 
 
@@ -1337,6 +1378,136 @@ if(!function_exists('wcps_metabox_content_query_orders')) {
 
     }
 }
+
+
+
+
+
+
+add_action('wcps_metabox_content_query_dokan_vendors', 'wcps_metabox_content_query_dokan_vendors');
+
+if(!function_exists('wcps_metabox_content_query_dokan_vendors')) {
+    function wcps_metabox_content_query_dokan_vendors($post_id){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
+        $vendors_query = !empty($wcps_options['dokan_vendors_query']) ? $wcps_options['dokan_vendors_query'] : array();
+
+        $posts_per_page = isset($vendors_query['posts_per_page']) ? $vendors_query['posts_per_page'] : 10;
+        $query_order = isset($vendors_query['order']) ? $vendors_query['order'] : 'DESC';
+        $query_orderby = isset($vendors_query['orderby']) ? $vendors_query['orderby'] : 'ID';
+
+        $vendors_ids = isset($vendors_query['vendors_ids']) ? $vendors_query['vendors_ids'] : '';
+
+        ?>
+        <div class="section">
+            <div class="section-title">Query Vendors</div>
+            <p class="description section-description">Setup vendors query settings.</p>
+
+
+            <?php
+
+            $args = array(
+                'id'		=> 'posts_per_page',
+                'parent'		=> 'wcps_options[dokan_vendors_query]',
+                'title'		=> __('Max number of vendors','woocommerce-products-slider'),
+                'details'	=> __('Set custom number you want to display maximum number of vendors','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $posts_per_page,
+                'default'		=> '10',
+                'placeholder'		=> '10',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+            $args = array(
+                'id'		=> 'order',
+                'parent'		=> 'wcps_options[dokan_vendors_query]',
+                'title'		=> __('Query order','woocommerce-products-slider'),
+                'details'	=> __('Set query order.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $query_order,
+                'default'		=> 'DESC',
+                'args'		=> array(
+                    'DESC'=>__('Descending','woocommerce-products-slider'),
+                    'ASC'=>__('Ascending','woocommerce-products-slider'),
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            $args = array(
+                'id'		=> 'orderby',
+                'parent'		=> 'wcps_options[dokan_vendors_query]',
+                'title'		=> __('Query orderby','woocommerce-products-slider'),
+                'details'	=> __('Set query orderby.','woocommerce-products-slider'),
+                'type'		=> 'select',
+                'value'		=> $query_orderby,
+                'default'		=> 'DESC',
+                'args'		=> array(
+                    'ID'=>__('ID','woocommerce-products-slider'),
+                    'display_name'=>__('display name','woocommerce-products-slider'),
+                    'user_login'=>__('user login','woocommerce-products-slider'),
+                    'user_nicename'=>__('user nicename','woocommerce-products-slider'),
+
+
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'vendors_ids',
+                'parent'		=> 'wcps_options[dokan_vendors_query]',
+                'title'		=> __('vendor ID\'s','woocommerce-products-slider'),
+                'details'	=> __('You can display vendors by ids.','woocommerce-products-slider'),
+                'type'		=> 'text',
+                'value'		=> $vendors_ids,
+                'default'		=> '',
+                'placeholder'		=> '1,4,2',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+
+
+            ?>
+
+        </div>
+
+        <?php
+
+
+
+
+
+
+    }
+}
+
+
+
+
+
+
 
 
 

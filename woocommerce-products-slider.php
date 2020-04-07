@@ -133,8 +133,7 @@ class WoocommerceProductsSlider{
         wp_register_style('animate', wcps_plugin_url.'assets/front/css/animate.css');
 
 
-
-		}
+	}
 
 	public function _admin_scripts(){
 
@@ -142,22 +141,17 @@ class WoocommerceProductsSlider{
         wp_register_style('font-awesome-4', wcps_plugin_url.'assets/global/css/font-awesome-4.css');
         wp_register_style('font-awesome-5', wcps_plugin_url.'assets/global/css/font-awesome-5.css');
 
-        wp_register_script('codemirror', wcps_plugin_url.'assets/admin/js/codemirror.js' , array( 'jquery' ));
-        wp_register_style('codemirror', wcps_plugin_url.'assets/admin/css/codemirror.css');
-
         wp_register_style('settings-tabs', wcps_plugin_url.'assets/settings-tabs/settings-tabs.css');
         wp_register_script('settings-tabs', wcps_plugin_url.'assets/settings-tabs/settings-tabs.js'  , array( 'jquery' ));
 
+        $settings_tabs_field = new settings_tabs_field();
+        $settings_tabs_field->admin_scripts();
 
-
-        $cm_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
-        wp_localize_script('jquery', 'cm_settings', $cm_settings);
-        wp_enqueue_script('wp-theme-plugin-editor');
-
-
-
-		}
 
 	}
 
-	new WoocommerceProductsSlider();
+
+}
+
+
+new WoocommerceProductsSlider();

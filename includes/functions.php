@@ -90,7 +90,27 @@ function wcps_first_wcps_layout(){
 }
 
 
+function wcps_get_first_order_id(){
 
+    $args = array(
+        'post_type' => 'shop_order',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+    );
+
+    $post_id ='';
+
+    $wp_query = new WP_Query($args);
+
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+            $product_id = get_the_id();
+            return $product_id;
+        endwhile;
+    else:
+
+    endif;
+}
 
 function wcps_get_first_product_id(){
 
@@ -127,7 +147,20 @@ function wcps_get_first_category_id(){
 
 }
 
+function wcps_get_first_dokan_vendor_id(){
 
+    $args = array(
+        'role'         => 'shop_vendor',
+        'orderby'      => 'registered',
+        'order'        => 'DESC',
+        'number'       => 1
+    );
+
+    $users = get_users( $args );
+    $last_user_registered = isset($users[0]) ? $users[0] : '';
+
+    return $last_user_registered->ID;
+}
 
 function wcps_featured_product_ids($query_args){
 
@@ -152,6 +185,9 @@ function wcps_featured_product_ids($query_args){
     return $featured_post_ids;
 
 }
+
+
+
 
 
 function wcps_recently_viewed_products(){
