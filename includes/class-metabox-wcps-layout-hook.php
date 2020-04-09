@@ -108,6 +108,9 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             <?php
             $layout_elements['wrapper_start'] = array('name' =>__('Wrapper start','woocommerce-products-slider'));
             $layout_elements['wrapper_end'] = array('name' =>__('Wrapper end','woocommerce-products-slider'));
+            $layout_elements['custom_text'] = array('name' =>__('Custom text','woocommerce-products-slider'));
+
+
             $layout_elements['thumbnail'] = array('name' =>__('Thumbnail','woocommerce-products-slider'));
             $layout_elements['post_title'] = array('name' =>__('Post Title','woocommerce-products-slider'));
             $layout_elements['content'] = array('name' =>__('Content','woocommerce-products-slider'));
@@ -127,20 +130,15 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
             $layout_elements['term_slug'] = array('name' =>__('Term slug','woocommerce-products-slider'));
             $layout_elements['term_post_count'] = array('name' =>__('Term post count','woocommerce-products-slider'));
 
-            $layout_elements['order_title'] = array('name' =>__('Order title','woocommerce-products-slider'));
             $layout_elements['order_date'] = array('name' =>__('Order date','woocommerce-products-slider'));
             $layout_elements['order_customer_name'] = array('name' =>__('Order customer name','woocommerce-products-slider'));
             $layout_elements['order_customer_thumb'] = array('name' =>__('Order customer thumbnail','woocommerce-products-slider'));
             $layout_elements['order_country'] = array('name' =>__('Order country','woocommerce-products-slider'));
             $layout_elements['order_payment_method'] = array('name' =>__('Order payment method','woocommerce-products-slider'));
+            $layout_elements['order_total'] = array('name' =>__('Order total','woocommerce-products-slider'));
+            $layout_elements['order_items'] = array('name' =>__('Order items','woocommerce-products-slider'));
+            $layout_elements['order_discount_total'] = array('name' =>__('Order discount total','woocommerce-products-slider'));
 
-            $layout_elements['dokan_store_name'] = array('name' =>__('Dokan store name','woocommerce-products-slider'));
-            $layout_elements['dokan_store_address'] = array('name' =>__('Dokan store address','woocommerce-products-slider'));
-            $layout_elements['dokan_store_city'] = array('name' =>__('Dokan store city','woocommerce-products-slider'));
-            $layout_elements['dokan_store_country'] = array('name' =>__('Dokan store country','woocommerce-products-slider'));
-            $layout_elements['dokan_store_phone'] = array('name' =>__('Dokan store phone','woocommerce-products-slider'));
-            $layout_elements['dokan_banner'] = array('name' =>__('Dokan banner','woocommerce-products-slider'));
-            $layout_elements['dokan_avatar'] = array('name' =>__('Dokan avatar','woocommerce-products-slider'));
 
 
             $layout_elements = apply_filters('wcps_layout_elements', $layout_elements);
@@ -238,6 +236,8 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
                     background: #fff;
                     padding: 5px 5px;
                     border-bottom: 1px solid #ddd;
+                    max-height: 70px;
+                    overflow-y: scroll;
                 }
                 .layout-tags span{
                     background: #ddd;

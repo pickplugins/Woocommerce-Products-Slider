@@ -7,7 +7,7 @@ class class_wcps_metabox{
 
 		//meta box action for "wcps"
 		add_action('add_meta_boxes', array($this, 'wcps_post_meta_wcps'));
-		add_action('save_post', array($this, 'meta_boxes_wcps_save'));
+		add_action('save_post', array($this, 'meta_boxes_wcps_save'), 99);
 
 
 
@@ -17,13 +17,65 @@ class class_wcps_metabox{
 	public function wcps_post_meta_wcps($post_type){
 
             add_meta_box('metabox-wcps',__('WCPS data', 'woocommerce-products-slider'), array($this, 'meta_box_wcps_data'), 'wcps', 'normal', 'high');
+        add_meta_box('metabox-wcps-side',__('WCPS Help', 'woocommerce-products-slider'), array($this, 'meta_box_wcps_side'), 'wcps', 'side', 'low');
 
 		}
 
 
 
+    public function meta_box_wcps_side($post){
+
+	    ?>
+        <div class="plugin-help-search">
+            <input type="search" value="" placeholder="Start typing">
+
+            <ul>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=kn3skEwh5t4&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=2">Data migration</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=8&amp;t=0s">Customize Layouts</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=UVa0kfo9oI4&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=3&amp;t=4s">Query product by categories</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=qJWCizg5res&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=4&amp;t=0s">Exclude featured products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=d_KZg_cghow&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=5&amp;t=0s">Exclude on sale products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HbpNaqrlppk&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=6&amp;t=0s">Exclude out of stock products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=Ss5wkHoyzFE&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=7&amp;t=0s">Query product by tags</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SSIfHT2UK0Y&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=9&amp;t=0s">Display latest products</a></li>
+            </ul>
+        </div>
 
 
+
+        <style type="text/css">
+            .plugin-help-search{}
+            .plugin-help-search input[type=search]{
+                width: 100%;
+            }
+        </style>
+
+        <script>
+            jQuery(document).ready(function($){
+                jQuery(document).on('keyup', '.plugin-help-search input', function(){
+                    keyword = jQuery(this).val().toLowerCase();
+                    content_body = [];
+
+                    console.log(keyword);
+
+                    $('.plugin-help-search li').each(function( index ) {
+                        $( this ).hide();
+                        content = $( this ).text().toLowerCase();
+                        content_body[index] = content;
+                        n = content_body[index].indexOf(keyword);
+                        if(n<0){
+                            $( this ).hide();
+                        }else{
+                            $( this ).show();
+                        }
+                    });
+                })
+            })
+        </script>
+
+        <?php
+
+    }
 
 	public function meta_box_wcps_data($post) {
  
@@ -206,7 +258,7 @@ class class_wcps_metabox{
                     'type'		=> 'radio',
                     'value'		=> $slider_for,
                     'default'		=> '',
-                    'args'		=> array('products' => 'Products','orders' => 'Orders', 'categories' => 'Categories' , 'dokan_vendors' => 'Dokan vendors' ),
+                    'args'		=> apply_filters('wcps_slider_for_args', array('products' => 'Products','orders' => 'Orders', 'categories' => 'Categories' )),
                 );
 
                 $settings_tabs_field->generate_field($args);

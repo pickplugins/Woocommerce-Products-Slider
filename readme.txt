@@ -1,10 +1,10 @@
 ﻿===  PickPlugins Product Slider for WooCommerce ===
 	Contributors: PickPlugins
 	Donate link: https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=wordpress.org
-	Tags: product slider, woocommerce slider, woo slider, woo product carousel slider,  woocommerce product slider
+	Tags: product slider, woocommerce slider, carousel slider, product category slider, woo slider, carousel slider,  woocommerce product slider
 	Requires at least: 3.8
-	Tested up to: 5.3
-	Stable tag: 1.13.9
+	Tested up to: 5.4
+	Stable tag: 1.13.10
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -141,7 +141,30 @@ then paste this shortcode anywhere in your page to display slider<br />
 
 == Changelog ==
 
-
+    = 1.13.10 =
+    * 2020-04-05 add - Customer Orders slider
+    * 2020-04-05 add - Categories slider
+    * 2020-04-05 add - Dokan vendors slider
+    * 2020-04-05 add - add element "Term title" under layout builder
+    * 2020-04-05 add - add element "Term thumbnail" under layout builder
+    * 2020-04-05 add - add element "Term description" under layout builder
+    * 2020-04-05 add - add element "Term slug" under layout builder
+    * 2020-04-05 add - add element "Term post count" under layout builder
+    * 2020-04-05 add - add element "Order date" under layout builder
+    * 2020-04-05 add - add element "Order customer name" under layout builder
+    * 2020-04-05 add - add element "Order customer thumbnail" under layout builder
+    * 2020-04-05 add - add element "Order country" under layout builder
+    * 2020-04-05 add - add element "Order payment method" under layout builder
+    * 2020-04-05 add - add element "Order total" under layout builder
+    * 2020-04-05 add - add element "Order items" under layout builder
+    * 2020-04-05 add - add element "Order discount total" under layout builder
+    * 2020-04-05 add - add element "Dokan store name" under layout builder
+    * 2020-04-05 add - add element "Dokan store address" under layout builder
+    * 2020-04-05 add - add element "Dokan store city" under layout builder
+    * 2020-04-05 add - add element "Dokan store country" under layout builder
+    * 2020-04-05 add - add element "Dokan store phone" under layout builder
+    * 2020-04-05 add - add element "Dokan store banner" under layout builder
+    * 2020-04-05 add - add element "Dokan store avatar" under layout builder
     * 2020-04-05 add - add element for "Wishlist" plugin under layout builder
     * 2020-04-05 add - add element for "WPC Smart Wishlist" plugin under layout builder
     * 2020-04-05 add - add element for "WPC Smart Quick View" plugin under layout builder

@@ -159,7 +159,9 @@ function wcps_get_first_dokan_vendor_id(){
     $users = get_users( $args );
     $last_user_registered = isset($users[0]) ? $users[0] : '';
 
-    return $last_user_registered->ID;
+    $vendor_id = isset($last_user_registered->ID) ?$last_user_registered->ID : '';
+
+    return $vendor_id;
 }
 
 function wcps_featured_product_ids($query_args){

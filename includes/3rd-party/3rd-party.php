@@ -4,6 +4,15 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 
+
+if ( is_plugin_active( 'dokan-lite/dokan.php' ) ) {
+    require_once( wcps_plugin_dir . 'includes/3rd-party/functions-layout-element-dokan.php');
+}
+
+
+
+
+
 if ( is_plugin_active( 'wishlist/wishlist.php' ) ) {
     require_once( wcps_plugin_dir . 'includes/3rd-party/wishlist.php');
 }
