@@ -30,14 +30,20 @@ class class_wcps_metabox{
             <input type="search" value="" placeholder="Start typing">
 
             <ul>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=kn3skEwh5t4&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=2">Data migration</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=8&amp;t=0s">Customize Layouts</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=UVa0kfo9oI4&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=3&amp;t=4s">Query product by categories</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=qJWCizg5res&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=4&amp;t=0s">Exclude featured products</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=d_KZg_cghow&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=5&amp;t=0s">Exclude on sale products</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HbpNaqrlppk&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=6&amp;t=0s">Exclude out of stock products</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=Ss5wkHoyzFE&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=7&amp;t=0s">Query product by tags</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SSIfHT2UK0Y&amp;list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&amp;index=9&amp;t=0s">Display latest products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=kn3skEwh5t4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=2">Data migration</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">Customize Layouts</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=UVa0kfo9oI4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=3&t=4s">Query product by categories</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=qJWCizg5res&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=4&t=0s">Exclude featured products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=d_KZg_cghow&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=5&t=0s">Exclude on sale products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HbpNaqrlppk&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=6&t=0s">Exclude out of stock products</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=Ss5wkHoyzFE&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=7&t=0s">Query product by tags</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SSIfHT2UK0Y&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9&t=0s">Display latest products</a></li>
+
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=bWVvTFbSups&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=13&t=0s">Dokan vendors slider</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=dy68CuFe51w&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=11">Create categories slider</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=RLMXZmb_9_g&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=10">Create slider for customer orders</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=hEmggd6pDFw&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9">Version 1 13 10 overview</a></li>
+
             </ul>
         </div>
 

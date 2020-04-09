@@ -2066,6 +2066,12 @@ if(!function_exists('wcps_metabox_content_help_support')) {
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=HbpNaqrlppk&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=6&t=0s">Exclude out of stock products</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=Ss5wkHoyzFE&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=7&t=0s">Query product by tags</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SSIfHT2UK0Y&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9&t=0s">Display latest products</a></li>
+
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=bWVvTFbSups&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=13&t=0s">Dokan vendors slider</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=dy68CuFe51w&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=11">Create categories slider</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=RLMXZmb_9_g&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=10">Create slider for customer orders</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=hEmggd6pDFw&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9">Version 1 13 10 overview</a></li>
+
             </ul>
 
 
