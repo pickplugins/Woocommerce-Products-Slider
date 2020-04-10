@@ -130,10 +130,9 @@ add_action('wcps_slider_item_edd_download', 'wcps_slider_item_edd_download', 10)
 
 function wcps_slider_item_edd_download($args){
 
-    $first_term_id = (int) wcps_get_first_category_id();
 
     $wcps_id = isset($args['wcps_id']) ? $args['wcps_id'] : '';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : $first_term_id;
+    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
 
     $wcps_options = get_post_meta( $wcps_id, 'wcps_options', true );
     $item_layout_id = isset($wcps_options['item_layout_id']) ? $wcps_options['item_layout_id'] : wcps_first_wcps_layout();

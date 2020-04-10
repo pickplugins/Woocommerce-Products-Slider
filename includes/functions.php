@@ -135,10 +135,37 @@ function wcps_get_first_product_id(){
 }
 
 
-function wcps_get_first_category_id(){
+function wcps_get_first_post($post_type = 'product'){
+
+    $args = array(
+        'post_type' => $post_type,
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+    );
+
+    $post_id ='';
+
+    $wp_query = new WP_Query($args);
+
+    if ($wp_query->have_posts()) :
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+            $product_id = get_the_id();
+            return $product_id;
+        endwhile;
+    else:
+
+    endif;
+}
+
+
+
+
+function wcps_get_first_category_id($taxonomy = 'product_cat'){
+
+
 
     $terms = get_terms( array(
-        'taxonomy' => 'product_cat',
+        'taxonomy' => $taxonomy,
         'hide_empty' => false,
     ) );
 

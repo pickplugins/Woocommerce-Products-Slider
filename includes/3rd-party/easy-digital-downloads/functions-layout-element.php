@@ -25,7 +25,7 @@ add_action('wcps_layout_element_edd_post_title', 'wcps_layout_element_edd_post_t
 function wcps_layout_element_edd_post_title($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
+    $post_id = isset($args['post_id']) ? $args['post_id'] :  wcps_get_first_post('download');
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 
@@ -53,7 +53,7 @@ add_action('wcps_layout_element_edd_add_to_cart', 'wcps_layout_element_edd_add_t
 function wcps_layout_element_edd_add_to_cart($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
+    $post_id = isset($args['post_id']) ? $args['post_id'] :  wcps_get_first_post('download');
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 
@@ -77,7 +77,7 @@ add_action('wcps_layout_element_edd_price', 'wcps_layout_element_edd_price', 10)
 function wcps_layout_element_edd_price($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
+    $post_id = isset($args['post_id']) ? $args['post_id'] :  wcps_get_first_post('download');
     $element_data = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 
@@ -118,7 +118,7 @@ add_action('wcps_layout_element_edd_variable_prices', 'wcps_layout_element_edd_v
 function wcps_layout_element_edd_variable_prices($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
+    $post_id = isset($args['post_id']) ? $args['post_id'] :  wcps_get_first_post('download');
     $element_data = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 
@@ -157,7 +157,7 @@ add_action('wcps_layout_element_edd_categories', 'wcps_layout_element_edd_catego
 function wcps_layout_element_edd_categories($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
+    $post_id = isset($args['post_id']) ? $args['post_id'] : wcps_get_first_post('download');
     $element_data = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 
@@ -193,7 +193,7 @@ add_action('wcps_layout_element_edd_tags', 'wcps_layout_element_edd_tags', 10);
 function wcps_layout_element_edd_tags($args){
 
     //echo '<pre>'.var_export($args, true).'</pre>';
-    $post_id = isset($args['post_id']) ? $args['post_id'] : '';
+    $post_id = isset($args['post_id']) ? $args['post_id'] :  wcps_get_first_post('download');
     $element_data = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 

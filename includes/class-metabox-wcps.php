@@ -30,6 +30,7 @@ class class_wcps_metabox{
             <input type="search" value="" placeholder="Start typing">
 
             <ul>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=hEmggd6pDFw&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9">Version 1 13 10 overview</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=kn3skEwh5t4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=2">Data migration</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">Customize Layouts</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=UVa0kfo9oI4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=3&t=4s">Query product by categories</a></li>
@@ -42,7 +43,11 @@ class class_wcps_metabox{
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=bWVvTFbSups&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=13&t=0s">Dokan vendors slider</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=dy68CuFe51w&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=11">Create categories slider</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=RLMXZmb_9_g&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=10">Create slider for customer orders</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=hEmggd6pDFw&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9">Version 1 13 10 overview</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=0XTVH09YuIo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=13">Easy digital downloads slider</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.pickplugins.com/documentation/woocommerce-products-slider/faq/how-to-activate-license/">How to activate license?</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.pickplugins.com/documentation/woocommerce-products-slider/faq/install-pro-version/">How to install pro version?</a></li>
+
+
 
             </ul>
         </div>

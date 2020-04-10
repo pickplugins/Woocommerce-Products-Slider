@@ -133,12 +133,12 @@ function wcps_layout_element_thumbnail_url($permalink, $args){
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $link_to = isset($elementData['link_to']) ? $elementData['link_to'] : '';
 
-    $product = wc_get_product( $product_id );
 
     if($link_to == 'product_link'){
         $permalink = get_permalink($product_id);
 
     }elseif ($link_to == 'external_product_url'){
+        $product = wc_get_product( $product_id );
 
         if($product->is_type('external')){
             $permalink = get_post_meta($product_id,'_product_url', true);
