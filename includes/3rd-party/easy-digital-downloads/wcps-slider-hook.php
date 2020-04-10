@@ -26,12 +26,12 @@ function wcps_slider_main_items_edd_downloads($args){
 
     $developer_options = isset($wcps_options['developer_options']) ? $wcps_options['developer_options'] : array();
 
-    $query_orders = isset($wcps_options['query_orders']) ? $wcps_options['query_orders'] : array();
+    $edd_downloads_query = isset($wcps_options['edd_downloads_query']) ? $wcps_options['edd_downloads_query'] : array();
 
-    $posts_per_page = isset($query_orders['posts_per_page']) ? $query_orders['posts_per_page'] : 10;
-    $query_order = isset($query_orders['order']) ? $query_orders['order'] : 'DESC';
-    $query_orderby = isset($query_orders['orderby']) ? $query_orders['orderby'] : 'date';
-    $product_ids = isset($query_orders['post_ids']) ? $query_orders['post_ids'] : '';
+    $posts_per_page = isset($edd_downloads_query['posts_per_page']) ? $edd_downloads_query['posts_per_page'] : 10;
+    $query_order = isset($edd_downloads_query['order']) ? $edd_downloads_query['order'] : 'DESC';
+    $query_orderby = isset($edd_downloads_query['orderby']) ? $edd_downloads_query['orderby'] : 'date';
+    $product_ids = isset($edd_downloads_query['post_ids']) ? $edd_downloads_query['post_ids'] : '';
 
     //if(empty($post_id)) return;
     $query_args = array();

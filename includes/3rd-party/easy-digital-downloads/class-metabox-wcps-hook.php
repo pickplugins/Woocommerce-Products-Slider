@@ -44,13 +44,19 @@ if(!function_exists('wcps_metabox_content_query_edd_downloads')) {
         $settings_tabs_field = new settings_tabs_field();
 
         $wcps_options = get_post_meta( $post_id, 'wcps_options', true );
-        $vendors_query = !empty($wcps_options['edd_downloads_query']) ? $wcps_options['edd_downloads_query'] : array();
+        $downloads_query = !empty($wcps_options['edd_downloads_query']) ? $wcps_options['edd_downloads_query'] : array();
 
-        $posts_per_page = isset($vendors_query['posts_per_page']) ? $vendors_query['posts_per_page'] : 10;
-        $query_order = isset($vendors_query['order']) ? $vendors_query['order'] : 'DESC';
-        $query_orderby = isset($vendors_query['orderby']) ? $vendors_query['orderby'] : 'ID';
+        $posts_per_page = isset($downloads_query['posts_per_page']) ? $downloads_query['posts_per_page'] : 10;
+        $query_order = isset($downloads_query['order']) ? $downloads_query['order'] : 'DESC';
+        $query_orderby = isset($downloads_query['orderby']) ? $downloads_query['orderby'] : 'ID';
 
-        $vendors_ids = isset($vendors_query['vendors_ids']) ? $vendors_query['vendors_ids'] : '';
+        $taxonomies = !empty($downloads_query['taxonomies']) ? $downloads_query['taxonomies'] : array();
+        $taxonomy_relation = !empty($downloads_query['taxonomy_relation']) ? $downloads_query['taxonomy_relation'] : 'OR';
+
+        $post_ids = isset($downloads_query['post_ids']) ? $downloads_query['post_ids'] : '';
+
+        //var_dump($taxonomies);
+
 
         ?>
         <div class="section">
@@ -63,8 +69,8 @@ if(!function_exists('wcps_metabox_content_query_edd_downloads')) {
             $args = array(
                 'id'		=> 'posts_per_page',
                 'parent'		=> 'wcps_options[edd_downloads_query]',
-                'title'		=> __('Max number of vendors','woocommerce-products-slider'),
-                'details'	=> __('Set custom number you want to display maximum number of vendors','woocommerce-products-slider'),
+                'title'		=> __('Max number of download','woocommerce-products-slider'),
+                'details'	=> __('Set custom number you want to display maximum number of download','woocommerce-products-slider'),
                 'type'		=> 'text',
                 'value'		=> $posts_per_page,
                 'default'		=> '10',
@@ -74,6 +80,147 @@ if(!function_exists('wcps_metabox_content_query_edd_downloads')) {
             $settings_tabs_field->generate_field($args);
 
 
+
+            $wcps_allowed_taxonomies = apply_filters('wcps_allowed_taxonomies', array('download_category', 'download_tag'));
+
+            ob_start();
+
+
+            $post_types =  array('download');
+            $post_taxonomies =  array();
+
+            $post_taxonomies = get_object_taxonomies( $post_types );
+
+            if(!empty($post_taxonomies)){
+
+                ?>
+
+                <div class="expandable sortable">
+
+                    <?php
+
+                    foreach ($post_taxonomies as $taxonomy ) {
+
+                        $terms = isset($taxonomies[$taxonomy]['terms']) ? $taxonomies[$taxonomy]['terms'] : array();
+                        $terms_relation = isset($taxonomies[$taxonomy]['terms_relation']) ? $taxonomies[$taxonomy]['terms_relation'] : 'IN';
+
+                        if(!in_array($taxonomy, $wcps_allowed_taxonomies)) continue;
+                        //if($taxonomy != 'product_cat' && $taxonomy != 'product_tag') continue;
+
+                        $the_taxonomy = get_taxonomy($taxonomy);
+                        $args=array('orderby' => 'name', 'order' => 'ASC', 'taxonomy' => $taxonomy, 'hide_empty' => false);
+                        $categories_all = get_categories($args);
+
+
+
+                        ?>
+                        <div class="item">
+                            <div class="element-title header ">
+                                <span class="expand"><i class="fas fa-expand"></i><i class="fas fa-compress"></i></span>
+                                <?php
+                                if(!empty($terms)):
+                                    ?><i class="fas fa-check"></i><?php
+                                else:
+                                    ?><i class="fas fa-times"></i><?php
+                                endif;?>
+                                <span class="expand"><?php echo $the_taxonomy->labels->name; ?> - <?php echo $taxonomy; ?></span>
+
+                            </div>
+                            <div class="element-options options">
+
+                                <?php
+                                $term_list = array();
+                                foreach($categories_all as $category_info){
+                                    $term_list[$category_info->cat_ID] = $category_info->cat_name.'('.$category_info->count.')';
+                                }
+
+
+
+
+                                $args = array(
+                                    'id'		=> 'terms',
+                                    'parent' => 'wcps_options[edd_downloads_query][taxonomies]['.$taxonomy.']',
+                                    'title'		=> __('Select terms','woocommerce-products-slider'),
+                                    'details'	=> __('Choose some terms.','woocommerce-products-slider'),
+                                    'type'		=> 'select',
+                                    'multiple'		=> true,
+                                    'value'		=> $terms,
+                                    'args'		=> $term_list,
+                                    'default'		=> array(),
+                                );
+
+                                $settings_tabs_field->generate_field($args);
+
+                                $args = array(
+                                    'id'		=> 'terms_relation',
+                                    'css_id'		=> $taxonomy.'_terms_relation',
+                                    'parent'		=> 'wcps_options[edd_downloads_query][taxonomies]['.$taxonomy.']',
+                                    'title'		=> __('Terms relation','post-grid'),
+                                    'details'	=> __('Choose term relation.','post-grid'),
+                                    'type'		=> 'radio',
+                                    'value'		=> $terms_relation,
+                                    'default'		=> 'IN',
+                                    'args'		=> array(
+                                        'IN'=>__('IN','post-grid'),
+                                        'NOT IN'=>__('NOT IN','post-grid'),
+                                        'AND'=>__('AND','post-grid'),
+                                        'EXISTS'=>__('EXISTS','post-grid'),
+                                        'NOT EXISTS'=>__('NOT EXISTS','post-grid'),
+                                    ),
+                                );
+
+                                $settings_tabs_field->generate_field($args, $post_id);
+
+
+                                ?>
+
+                            </div>
+                        </div>
+                        <?php
+
+
+
+
+
+
+                    }
+
+                    ?>
+                </div>
+                <?php
+
+            }
+            else{
+                echo 'No categories found.';
+            }
+
+
+
+            $html = ob_get_clean();
+            $args = array(
+                'id' => 'wcps_categories',
+                'title' => __('Download taxonomy  & terms', 'woocommerce-products-slider'),
+                'details' => __('Choose download taxonomy & terms. click to expand and see there is categories or terms you can select.', 'woocommerce-products-slider'),
+                'type' => 'custom_html',
+                'html' => $html,
+            );
+            $settings_tabs_field->generate_field($args);
+
+            $args = array(
+                'id'		=> 'taxonomy_relation',
+                'parent'		=> 'wcps_options[edd_downloads_query]',
+                'title'		=> __('Taxonomy relation','woocommerce-products-slider'),
+                'details'	=> __('Set taxonomy relation.','woocommerce-products-slider'),
+                'type'		=> 'radio',
+                'value'		=> $taxonomy_relation,
+                'default'		=> 'OR',
+                'args'		=> array(
+                    'OR'=>__('OR','post-grid'),
+                    'AND'=>__('AND','post-grid'),
+                ),
+            );
+
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'		=> 'order',
@@ -120,12 +267,12 @@ if(!function_exists('wcps_metabox_content_query_edd_downloads')) {
 
 
             $args = array(
-                'id'		=> 'vendors_ids',
+                'id'		=> 'post_ids',
                 'parent'		=> 'wcps_options[edd_downloads_query]',
-                'title'		=> __('vendor ID\'s','woocommerce-products-slider'),
-                'details'	=> __('You can display vendors by ids.','woocommerce-products-slider'),
+                'title'		=> __('Download ID\'s','woocommerce-products-slider'),
+                'details'	=> __('You can display download by ids.','woocommerce-products-slider'),
                 'type'		=> 'text',
-                'value'		=> $vendors_ids,
+                'value'		=> $post_ids,
                 'default'		=> '',
                 'placeholder'		=> '1,4,2',
             );

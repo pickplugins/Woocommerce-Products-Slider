@@ -767,9 +767,6 @@ function wcps_layout_element_order_customer_thumb($args){
     $elementData = isset($args['elementData']) ? $args['elementData'] : array();
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
 
-    $post_data = get_post($post_id);
-    $post_title = isset($post_data->post_title) ? $post_data->post_title : '';
-
     if(empty($post_id)) return;
 
 
