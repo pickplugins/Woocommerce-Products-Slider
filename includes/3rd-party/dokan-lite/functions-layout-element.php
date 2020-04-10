@@ -2,13 +2,6 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
-add_filter('wcps_slider_for_args', 'wcps_slider_for_args_dokan');
-function wcps_slider_for_args_dokan($args){
-
-    $args['dokan_vendors'] = __('Dokan vendors', 'woocommerce-products-slider');
-
-    return $args;
-}
 
 
 

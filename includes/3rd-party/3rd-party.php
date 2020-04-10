@@ -6,10 +6,18 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 
 if ( is_plugin_active( 'dokan-lite/dokan.php' ) ) {
-    require_once( wcps_plugin_dir . 'includes/3rd-party/functions-layout-element-dokan.php');
+
+    require_once( wcps_plugin_dir . 'includes/3rd-party/dokan-lite/class-metabox-wcps-hook.php');
+    require_once( wcps_plugin_dir . 'includes/3rd-party/dokan-lite/functions-layout-element.php');
 }
 
+if ( is_plugin_active( 'easy-digital-downloads/easy-digital-downloads.php' ) ) {
 
+    require_once( wcps_plugin_dir . 'includes/3rd-party/easy-digital-downloads/class-metabox-wcps-hook.php');
+    require_once( wcps_plugin_dir . 'includes/3rd-party/easy-digital-downloads/functions-layout-element.php');
+    require_once( wcps_plugin_dir . 'includes/3rd-party/easy-digital-downloads/wcps-slider-hook.php');
+
+}
 
 
 
