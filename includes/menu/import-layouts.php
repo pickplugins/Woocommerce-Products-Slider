@@ -119,12 +119,12 @@ $max_num_pages = 0;
 
                             </div>
                             <div class="actions">
-                                <span class="button">Import</span>
+                                <span class="button"><i class="fas fa-download"></i> Import</span>
 
                                 <?php if($is_pro == 'yes'): ?>
-                                    <span class="is_pro button">Pro</span>
+                                    <span class="is_pro button"><i class="fas fa-crown"></i> Pro</span>
                                 <?php else: ?>
-                                    <span class="is_free button">Free</span>
+                                    <span class="is_free button"><i class="far fa-lightbulb"></i> Free</span>
                                 <?php endif; ?>
 
 
