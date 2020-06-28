@@ -42,101 +42,13 @@ class settings_tabs_field{
     function field_template($option){
 
         $id 			= isset( $option['id'] ) ? $option['id'] : "";
-        $wraper_class			= isset( $option['wraper_class'] ) ? $option['wraper_class'] : "";
-        $conditions 	= isset( $option['conditions'] ) ? $option['conditions'] : array();
-
         $is_error 			= isset( $option['is_error'] ) ? $option['is_error'] : false;
         $error_details 			= isset( $option['error_details'] ) ? $option['error_details'] : '';
-
-
-
-        if(!empty($conditions)):
-
-            $depends = '';
-
-            $field = isset($conditions['field']) ? $conditions['field'] :'';
-            $cond_value = isset($conditions['value']) ? $conditions['value']: '';
-            $type = isset($conditions['type']) ? $conditions['type'] : '';
-            $pattern = isset($conditions['pattern']) ? $conditions['pattern'] : '';
-            $modifier = isset($conditions['modifier']) ? $conditions['modifier'] : '';
-            $like = isset($conditions['like']) ? $conditions['like'] : '';
-            $strict = isset($conditions['strict']) ? $conditions['strict'] : '';
-            $empty = isset($conditions['empty']) ? $conditions['empty'] : '';
-            $sign = isset($conditions['sign']) ? $conditions['sign'] : '';
-            $min = isset($conditions['min']) ? $conditions['min'] : '';
-            $max = isset($conditions['max']) ? $conditions['max'] : '';
-
-            $depends .= "{'[name=$field]':";
-            $depends .= '{';
-
-            if(!empty($type)):
-                $depends .= "'type':";
-                $depends .= "'".$type."'";
-            endif;
-
-            if(!empty($modifier)):
-                $depends .= ",'modifier':";
-                $depends .= "'".$modifier."'";
-            endif;
-
-            if(!empty($like)):
-                $depends .= ",'like':";
-                $depends .= "'".$like."'";
-            endif;
-
-            if(!empty($strict)):
-                $depends .= ",'strict':";
-                $depends .= "'".$strict."'";
-            endif;
-
-            if(!empty($empty)):
-                $depends .= ",'empty':";
-                $depends .= "'".$empty."'";
-            endif;
-
-            if(!empty($sign)):
-                $depends .= ",'sign':";
-                $depends .= "'".$sign."'";
-            endif;
-
-            if(!empty($min)):
-                $depends .= ",'min':";
-                $depends .= "'".$min."'";
-            endif;
-
-            if(!empty($max)):
-                $depends .= ",'max':";
-                $depends .= "'".$max."'";
-            endif;
-            if(!empty($cond_value)):
-                $depends .= ",'value':";
-                if(is_array($cond_value)):
-                    $count= count($cond_value);
-                    $i = 1;
-                    $depends .= "[";
-                    foreach ($cond_value as $val):
-                        $depends .= "'".$val."'";
-                        if($i<$count)
-                            $depends .= ",";
-                        $i++;
-                    endforeach;
-                    $depends .= "]";
-                else:
-                    $depends .= "[";
-                    $depends .= "'".$cond_value."'";
-                    $depends .= "]";
-                endif;
-            endif;
-            $depends .= '}}';
-
-        endif;
-
-
 
         ob_start();
 
         ?>
-        <div <?php if(!empty($depends)) {?> data-depends="[<?php echo $depends; ?>]" <?php } ?> class="setting-field <?php if($is_error) echo 'field-error';  ?> <?php echo $wraper_class; ?> <?php if(!empty($depends)) echo 'dependency-field'; ?>">
+        <div class="setting-field <?php if($is_error) echo 'field-error';  ?>">
             <div class="field-lable">%s</div>
             <div class="field-input">%s
                 <p class="description">%s</p>
@@ -609,66 +521,71 @@ class settings_tabs_field{
 
         $settings_tabs_field = new settings_tabs_field();
 
-
         ob_start();
         ?>
-        <div class="item-wrap collapsible">
-            <div class="header">
-                <span class="remove" onclick="jQuery(this).parent().parent().remove()"><?php echo $remove_text; ?></span>
-                <?php
-                if($sortable):
-                    ?>
-                    <span class="sort" ><i class="fas fa-arrows-alt"></i></span>
-                <?php
-                endif;
-                ?>
-                <span  class="title-text">#TIMEINDEX</span>
-            </div>
-            <?php
+        <script>
+            jQuery(document).ready(function($) {
+                jQuery(document).on("click", ".field-repeatable-wrapper-<?php echo $css_id; ?> .add-repeat-field", function() {
 
 
-            if(!empty($fields)):
-                foreach ($fields as $field):
-
-                    $fieldType = isset($field['type']) ? $field['type'] : '';
-                    $field['parent'] = $field_name.'[TIMEINDEX]';
-
-
-                    ?>
-                    <div class="item">
-                        <?php if($collapsible):?>
-                        <div class="content">
-                            <?php endif; ?>
-
-                            <?php
-                            $settings_tabs_field->generate_field($field);
-                            ?>
-                            <?php if($collapsible):?>
-                        </div>
+                    now = jQuery.now();
+                    fields_arr = <?php echo json_encode($fields); ?>;
+                    html = '<div class="item-wrap collapsible"><div class="header"><span class="remove" ' +
+                        'onclick="jQuery(this).parent().parent().remove()"><?php echo $remove_text; ?></span> ';
+                    <?php if($sortable):?>
+                    html += '<span class="sort" ><i class="fas fa-arrows-alt"></i></span>';
                     <?php endif; ?>
+                    html += ' <span  class="title-text">#'+now+'</span></div>';
 
-                    </div>
-                <?php
+                    <?php
 
-                endforeach;
-            endif;
-            ?>
-        </div>
-        <?php
+                    $fieldHtml = '';
 
-        $fieldHtml = ob_get_clean();
+                        if(!empty($fields)):
+                            foreach ($fields as $field):
 
-        $fieldHtml = preg_replace("/[\r\n]+/", "\n", $fieldHtml);
-        $fieldHtml = preg_replace("/\s+/", ' ', $fieldHtml);
+                                $fieldType = isset($field['type']) ? $field['type'] : '';
+                                $field['parent'] = $field_name.'[TIMEINDEX]';
+
+                                ob_start();
+                                ?>
+                                <div class="item">
+                                    <?php if($collapsible):?>
+                                        <div class="content">
+                                    <?php endif; ?>
+
+                                    <?php
+                                    $settings_tabs_field->generate_field($field);
+                                    ?>
+                                    <?php if($collapsible):?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+                                <?php
+                                $fieldHtml .= ob_get_clean();
+                            endforeach;
+                        endif;
 
 
-        ob_start();
-        ?>
+                    $string = str_replace("\n", "", $fieldHtml);
+                    $fieldHtml = str_replace("\r", "", $string);
 
 
+                    ?>
+
+                    fieldHtml = '<?php echo $fieldHtml; ?>';
+                    html+= fieldHtml.replace(/TIMEINDEX/g, now);
+                    html+='</div>';
+
+                    jQuery('.<?php echo 'field-repeatable-wrapper-'.$css_id; ?> .repeatable-field-list').append(html);
+
+                })
+            });
+        </script>
         <div id="input-wrapper-<?php echo $css_id; ?>" class=" input-wrapper field-repeatable-wrapper
             field-repeatable-wrapper-<?php echo $css_id; ?>">
-            <div add_html="<?php echo esc_attr($fieldHtml); ?>" class="add-repeat-field"><i class="far fa-plus-square"></i> <?php _e('Add','woocommerce-products-slider'); ?></div>
+            <div class="add-repeat-field"><i class="far fa-plus-square"></i> <?php _e('Add','woocommerce-products-slider'); ?></div>
             <div class="repeatable-field-list sortable" id="<?php echo $css_id; ?>">
                 <?php
                 if(!empty($values)):
@@ -843,7 +760,7 @@ class settings_tabs_field{
         $pro_text 	        = isset( $option['pro_text'] ) ? $option['pro_text'] : '';
 
 
-        //var_dump($css_id);
+        var_dump($css_id);
 
         if($multiple){
             $value 	= isset( $option['value'] ) ? $option['value'] : array();
@@ -1574,15 +1491,14 @@ class settings_tabs_field{
                 //var_dump($checked);
 
                 ?>
-                <label style="width: <?php echo $width; ?>;" title="<?php echo $name; ?>" class="<?php if($checked =='checked') echo 'active';?> <?php if($disabled == true) echo 'disabled';?>">
+                <label title="<?php echo $name; ?>" class="<?php if($checked =='checked') echo 'active';?> <?php if($disabled == true) echo 'disabled';?>">
                     <input <?php if($disabled) echo 'disabled'; ?>  name="<?php echo $field_name; ?>" type="radio" id="<?php echo $css_id; ?>-<?php echo $key; ?>" value="<?php echo $key; ?>"  <?php echo $checked; ?>>
 
                     <?php
                     if(!empty($thumb)):
-
                         ?>
-                        <img  alt="<?php echo $name; ?>" src="<?php echo $thumb; ?>">
-                        <div style="padding: 5px;" class="name"><?php echo $name; ?></div>
+                            <img style="width: <?php echo $width; ?>;" alt="<?php echo $name; ?>" src="<?php echo $thumb; ?>">
+                            <div style="padding: 5px;" class="name"><?php echo $name; ?></div>
 
                         <?php
                     else:
@@ -1671,7 +1587,6 @@ class settings_tabs_field{
             .radio-img img{
 
                 vertical-align: top;
-                width: 100%;
             }
 
         </style>

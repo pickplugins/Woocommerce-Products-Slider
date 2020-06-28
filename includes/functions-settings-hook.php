@@ -159,7 +159,7 @@ if(!function_exists('wcps_settings_content_help_support')) {
             $actionurl = admin_url().'edit.php?post_type=wcps&page=settings&tab=help_support';
             $actionurl = wp_nonce_url( $actionurl,  'wcps_reset_migration' );
 
-            $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
+            $nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
 
             if ( wp_verify_nonce( $nonce, 'wcps_reset_migration' )  ){
 

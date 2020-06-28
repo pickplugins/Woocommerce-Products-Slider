@@ -142,7 +142,7 @@ class class_metabox_wcps_layout{
         if (!isset($_POST['wcps_nonce_check_value']))
             return $post_id;
 
-        $nonce = $_POST['wcps_nonce_check_value'];
+        $nonce = sanitize_text_field($_POST['wcps_nonce_check_value']);
 
         // Verify that the nonce is valid.
         if (!wp_verify_nonce($nonce, 'wcps_nonce_check'))
@@ -167,13 +167,7 @@ class class_metabox_wcps_layout{
 
         /* OK, its safe for us to save the data now. */
 
-        // Sanitize the user input.
-        //$grid_item_layout = stripslashes_deep($_POST['grid_item_layout']);
-
-
         // Update the meta field.
-        //update_post_meta($post_id, 'grid_item_layout', $grid_item_layout);
-
         do_action('wcps_layout_metabox_save', $post_id);
 
 

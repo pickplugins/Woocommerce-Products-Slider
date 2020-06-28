@@ -32,7 +32,8 @@ class class_wcps_metabox{
             <ul>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=hEmggd6pDFw&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=9">Version 1 13 10 overview</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=kn3skEwh5t4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=2">Data migration</a></li>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">Customize Layouts</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=lQuacOHKp5U&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=15">Custom thumbnail size</a></li>
+                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=_HMHaSjjHdo&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=8&t=0s">Customize layouts</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=UVa0kfo9oI4&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=3&t=4s">Query product by categories</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=qJWCizg5res&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=4&t=0s">Exclude featured products</a></li>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=d_KZg_cghow&list=PL0QP7T2SN94bgierw1J8Qn3sf4mZo7F9f&index=5&t=0s">Exclude on sale products</a></li>
@@ -249,12 +250,11 @@ class class_wcps_metabox{
 
                 <?php
 
-                $team_view_types = apply_filters('team_view_types', array('grid'=>'Grid'));
 
                 $args = array(
                     'id'		=> 'slider_for',
                     'parent'		=> 'wcps_options',
-                    'title'		=> __('Slider for','team'),
+                    'title'		=> __('Slider for','woocommerce-products-slider'),
                     'details'	=> '',
                     'type'		=> 'radio',
                     'value'		=> $slider_for,
@@ -319,7 +319,7 @@ class class_wcps_metabox{
         if (!isset($_POST['wcps_nonce_check_value']))
             return $post_id;
 
-        $nonce = $_POST['wcps_nonce_check_value'];
+        $nonce = sanitize_text_field($_POST['wcps_nonce_check_value']);
 
         // Verify that the nonce is valid.
         if (!wp_verify_nonce($nonce, 'wcps_nonce_check'))

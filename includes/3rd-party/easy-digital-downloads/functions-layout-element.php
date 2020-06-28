@@ -60,7 +60,7 @@ function wcps_layout_element_edd_add_to_cart($args){
 
     $element_class = !empty($element_index) ? 'element-post-title element-'.$element_index : 'element-post-title';
 
-    $purchase_link = do_shortcode('[purchase_link id="'.$post_id.'" text="'.__('Add to Cart','post-grid').'" style="button"]'  );
+    $purchase_link = do_shortcode('[purchase_link id="'.$post_id.'" text="'.__('Add to Cart','woocommerce-products-slider').'" style="button"]'  );
 
 
 

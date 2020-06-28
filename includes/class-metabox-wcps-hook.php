@@ -640,17 +640,17 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                                     'id'		=> 'terms_relation',
                                     'css_id'		=> $taxonomy.'_terms_relation',
                                     'parent'		=> 'wcps_options[query][taxonomies]['.$taxonomy.']',
-                                    'title'		=> __('Terms relation','post-grid'),
-                                    'details'	=> __('Choose term relation.','post-grid'),
+                                    'title'		=> __('Terms relation','woocommerce-products-slider'),
+                                    'details'	=> __('Choose term relation.','woocommerce-products-slider'),
                                     'type'		=> 'radio',
                                     'value'		=> $terms_relation,
                                     'default'		=> 'IN',
                                     'args'		=> array(
-                                        'IN'=>__('IN','post-grid'),
-                                        'NOT IN'=>__('NOT IN','post-grid'),
-                                        'AND'=>__('AND','post-grid'),
-                                        'EXISTS'=>__('EXISTS','post-grid'),
-                                        'NOT EXISTS'=>__('NOT EXISTS','post-grid'),
+                                        'IN'=>__('IN','woocommerce-products-slider'),
+                                        'NOT IN'=>__('NOT IN','woocommerce-products-slider'),
+                                        'AND'=>__('AND','woocommerce-products-slider'),
+                                        'EXISTS'=>__('EXISTS','woocommerce-products-slider'),
+                                        'NOT EXISTS'=>__('NOT EXISTS','woocommerce-products-slider'),
                                     ),
                                 );
 
@@ -702,8 +702,8 @@ if(!function_exists('wcps_metabox_content_query_product')) {
                 'value'		=> $taxonomy_relation,
                 'default'		=> 'OR',
                 'args'		=> array(
-                    'OR'=>__('OR','post-grid'),
-                    'AND'=>__('AND','post-grid'),
+                    'OR'=>__('OR','woocommerce-products-slider'),
+                    'AND'=>__('AND','woocommerce-products-slider'),
                 ),
             );
 
@@ -2428,11 +2428,6 @@ function wcps_metabox_save($job_id){
 
     $wcps_options = isset($_POST['wcps_options']) ? stripslashes_deep($_POST['wcps_options']) : '';
     update_post_meta($job_id, 'wcps_options', $wcps_options);
-
-
-//    $job_bm_total_vacancies = isset($_POST['job_bm_total_vacancies']) ? sanitize_text_field($_POST['job_bm_total_vacancies']) : '';
-//    update_post_meta($job_id, 'job_bm_total_vacancies', $job_bm_total_vacancies);
-
 
 }
 

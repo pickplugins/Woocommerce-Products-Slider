@@ -16,14 +16,9 @@ class wcps_class_settings{
 
         $wcps_plugin_info = get_option('wcps_plugin_info');
         $wcps_upgrade = isset($wcps_plugin_info['wcps_upgrade']) ? $wcps_plugin_info['wcps_upgrade'] : '';
-        $import_layouts = isset($wcps_plugin_info['import_layouts']) ? $wcps_plugin_info['import_layouts'] : '';
 
         add_submenu_page( 'edit.php?post_type=wcps', __( 'Settings', 'woocommerce-products-slider' ), __( 'Settings', 'woocommerce-products-slider' ), 'manage_options', 'settings', array( $this, 'settings' ) );
-
-        if($import_layouts != 'done')
         add_submenu_page( 'edit.php?post_type=wcps', __( 'Import layouts', 'woocommerce-products-slider' ), __( 'Import layouts', 'woocommerce-products-slider' ), 'manage_options', 'import_layouts', array( $this, 'import_layouts' ) );
-
-
 
        if($wcps_upgrade != 'done')
         add_submenu_page( 'edit.php?post_type=wcps', __( 'Upgrade status', 'woocommerce-products-slider' ), __( 'Upgrade status', 'woocommerce-products-slider' ), 'manage_options', 'upgrade_status', array( $this, 'upgrade_status' ) );
