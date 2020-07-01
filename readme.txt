@@ -4,7 +4,7 @@
 	Tags: product slider, woocommerce slider, carousel slider, product category slider, woo slider, carousel slider,  woocommerce product slider
 	Requires at least: 3.8
 	Tested up to: 5.4
-	Stable tag: 1.13.12
+	Stable tag: 1.13.14
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -141,6 +141,13 @@ then paste this shortcode anywhere in your page to display slider<br />
 
 == Changelog ==
 
+    = 1.13.14 =
+    * 2020-07-01 remove - remove import layout notice.
+
+
+
+    = 1.13.13 =
+    * 2020-07-01 add - added layouts library.
 
     = 1.13.12 =
     * 2020-05-17 update - Minor css update

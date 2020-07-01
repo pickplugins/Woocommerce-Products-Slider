@@ -45,7 +45,7 @@ function wcps_ajax_fetch_block_hub_by_id(){
      *
      * */
     if (is_wp_error($server_response)){
-        $responses['error'] = __('There is a server error', 'wp-block-hub');
+        $responses['error'] = __('There is a server error', 'woocommerce-products-slider');
     }
     else{
 

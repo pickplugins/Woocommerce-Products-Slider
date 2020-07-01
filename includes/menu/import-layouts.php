@@ -21,22 +21,17 @@ wp_enqueue_script('wcps_js');
 
 ?>
 <div class="wrap">
-    <h2><?php _e('WP Block Hub', 'wp-block-hub'); ?></h2>
+    <h2><?php _e('PickPlugins Product Slider - Import Layouts', 'woocommerce-products-slider'); ?></h2>
 
     <div class="wpblockhub-search">
 
         <div class="wp-filter">
             <ul class="filter-links">
-                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=latest" class="<?php if($tabs == 'latest') echo 'current'; ?>" aria-current="page"><?php _e('Latest', 'wp-block-hub'); ?></a> </li>
-                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=popular" class="<?php if($tabs == 'popular') echo 'current'; ?>" aria-current="page"><?php _e('Popular', 'wp-block-hub'); ?></a> </li>
-                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=top_rate" class="<?php if($tabs == 'top_rate') echo 'current'; ?>" aria-current="page"><?php _e('Top Rated', 'wp-block-hub'); ?></a> </li>
+                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=latest" class="<?php if($tabs == 'latest') echo 'current'; ?>" aria-current="page"><?php _e('Latest', 'woocommerce-products-slider'); ?></a> </li>
+                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=free" class="<?php if($tabs == 'free') echo 'current'; ?>" aria-current="page"><?php _e('Free', 'woocommerce-products-slider'); ?></a> </li>
+                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=pro" class="<?php if($tabs == 'pro') echo 'current'; ?>" aria-current="page"><?php _e('Premium', 'woocommerce-products-slider'); ?></a> </li>
             </ul>
 
-            <form class="block-search-form">
-                <span class="loading"></span>
-                <input id="block-keyword" type="search" placeholder="<?php _e('Start typing...', 'wp-block-hub'); ?>"
-                       value="<?php echo $keyword; ?>">
-            </form>
         </div>
 
         <?php
@@ -46,7 +41,6 @@ wp_enqueue_script('wcps_js');
             'keyword' => $keyword,
             'paged' => $paged,
             'tabs' => $tabs,
-
         );
 
         // Send query to the license manager server
@@ -64,8 +58,8 @@ wp_enqueue_script('wcps_js');
             ?>
             <div class="return-empty">
                 <ul>
-                    <li><?php echo __("Unexpected Error! The query returned with an error.", 'wp-block-hub'); ?></li>
-                    <li><?php echo __("Make sure your internet connection is up.", 'wp-block-hub'); ?></li>
+                    <li><?php echo __("Unexpected Error! The query returned with an error.", 'woocommerce-products-slider'); ?></li>
+                    <li><?php echo __("Make sure your internet connection is up.", 'woocommerce-products-slider'); ?></li>
                 </ul>
             </div>
             <?php
@@ -96,11 +90,13 @@ wp_enqueue_script('wcps_js');
                     //var_dump($item);
 
                     $post_id      = isset($item->post_id) ? $item->post_id : '';
-                    $block_title        = isset($item->title) ? $item->title : __('No title', 'wp-block-hub');
+                    $block_title        = isset($item->title) ? $item->title : __('No title', 'woocommerce-products-slider');
                     $post_url           = isset($item->post_url) ? $item->post_url : '';
+                    $download_count           = isset($item->download_count) ? $item->download_count : 0;
+
                     $layout_options           = isset($item->layout_options) ? unserialize($item->layout_options) : '';
 
-                    $is_pro           = isset($layout_options['is_pro']) ? $layout_options['is_pro'] : '';
+                    $is_pro           = isset($layout_options['is_pro']) ? $layout_options['is_pro'] : 'yes';
                     $layout_preview_img           = isset($layout_options['layout_preview_img']) ? $layout_options['layout_preview_img'] : '';
 
 
@@ -124,13 +120,15 @@ wp_enqueue_script('wcps_js');
 
                             </div>
                             <div class="actions">
-                                <span class="button import-layout" post_id="<?php echo $post_id; ?>"><i class="fas fa-download"></i> Import</span>
+
+                                <span class="button import-layout" title="Enter license key to import" post_id="<?php echo $post_id; ?>"><i class="fas fa-download"></i> Import (<?php echo $download_count; ?>)</span>
 
                                 <?php if($is_pro == 'yes'): ?>
                                     <span class="is_pro button"><i class="fas fa-crown"></i> Pro</span>
                                 <?php else: ?>
                                     <span class="is_free button"><i class="far fa-lightbulb"></i> Free</span>
                                 <?php endif; ?>
+
 
 
                             </div>
@@ -186,15 +184,7 @@ wp_enqueue_script('wcps_js');
 
 <style type="text/css">
 
-    .wpblockhub-search{}
-    .block-search-form{
-        float: right;
-        padding: 10px;
-    }
-    .block-search-form input[type="search"]{
-        width: 225px;
-        padding: 5px;
-    }
+
     .block-list-items{}
     .block-list-items a{ text-decoration: none}
     .block-list-items .item{
