@@ -2,7 +2,6 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
 if(!current_user_can('manage_options')) return;
-define('wpblockhub_server_url', 'http://localhost/wp/');
 
 $keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
 $paged = isset($_GET['paged']) ? sanitize_text_field($_GET['paged']) : '';
@@ -14,6 +13,9 @@ $wpblockhub_block_hub_ids = get_option('wpblockhub_block_hub_ids', array());
 //$domain = (is_multisite()) ? site_url() : get_bloginfo('url');
 
 $max_num_pages = 0;
+
+wp_enqueue_script('wcps-layouts-api');
+
 
 //var_dump($_SERVER);
 
@@ -48,7 +50,7 @@ $max_num_pages = 0;
         );
 
         // Send query to the license manager server
-        $response = wp_remote_get(add_query_arg($api_params, wpblockhub_server_url), array('timeout' => 20, 'sslverify' => false));
+        $response = wp_remote_get(add_query_arg($api_params, wcps_server_url), array('timeout' => 20, 'sslverify' => false));
 
 
         //echo '<pre>'.var_export($response, true).'</pre>';
@@ -90,13 +92,16 @@ $max_num_pages = 0;
 
                 foreach ($post_data as $item_index=>$item):
 
-                    $thumbnail_url      = isset($item->thumbnail_url) ? $item->thumbnail_url : '';
+
+                    //var_dump($item);
+
+                    $post_id      = isset($item->post_id) ? $item->post_id : '';
                     $block_title        = isset($item->title) ? $item->title : __('No title', 'wp-block-hub');
                     $post_url           = isset($item->post_url) ? $item->post_url : '';
-                    $layout_options           = isset($item->layout_options) ? $item->layout_options : '';
+                    $layout_options           = isset($item->layout_options) ? unserialize($item->layout_options) : '';
 
-                    $is_pro           = isset($layout_options->is_pro) ? $layout_options->is_pro : '';
-                    $layout_preview_img           = isset($layout_options->layout_preview_img) ? $layout_options->layout_preview_img : '';
+                    $is_pro           = isset($layout_options['is_pro']) ? $layout_options['is_pro'] : '';
+                    $layout_preview_img           = isset($layout_options['layout_preview_img']) ? $layout_options['layout_preview_img'] : '';
 
 
                     //echo '<pre>'.var_export($is_pro, true).'</pre>';
@@ -119,7 +124,7 @@ $max_num_pages = 0;
 
                             </div>
                             <div class="actions">
-                                <span class="button"><i class="fas fa-download"></i> Import</span>
+                                <span class="button import-layout" post_id="<?php echo $post_id; ?>"><i class="fas fa-download"></i> Import</span>
 
                                 <?php if($is_pro == 'yes'): ?>
                                     <span class="is_pro button"><i class="fas fa-crown"></i> Pro</span>

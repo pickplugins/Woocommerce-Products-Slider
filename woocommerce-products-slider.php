@@ -24,10 +24,12 @@ class WoocommerceProductsSlider{
 		define('wcps_plugin_dir', plugin_dir_path( __FILE__ ) );
 		define('wcps_plugin_name', 'PickPlugins Product Slider' );
         define('wcps_plugin_version', '1.13.12' );
+        define('wcps_server_url', 'http://localhost/wp/');
 
         require_once( wcps_plugin_dir . 'includes/class-post-types.php');
         require_once( wcps_plugin_dir . 'includes/class-metabox-wcps.php');
         require_once( wcps_plugin_dir . 'includes/class-metabox-wcps-hook.php');
+        require_once( wcps_plugin_dir . 'includes/functions-layout-api.php');
 
         require_once( wcps_plugin_dir . 'includes/class-metabox-wcps-layout.php');
         require_once( wcps_plugin_dir . 'includes/class-metabox-wcps-layout-hook.php');
@@ -137,12 +139,22 @@ class WoocommerceProductsSlider{
 
 	public function _admin_scripts(){
 
+        wp_enqueue_script('wcps_js', plugins_url('assets/admin/js/scripts.js', __FILE__), array('jquery'));
+        wp_localize_script('wcps_js', 'wcps_ajax', array(
+                'wcps_ajaxurl' => admin_url('admin-ajax.php'),
+                'ajax_nonce' => wp_create_nonce('wcps_ajax_nonce'),
+            )
+        );
 
         wp_register_style('font-awesome-4', wcps_plugin_url.'assets/global/css/font-awesome-4.css');
         wp_register_style('font-awesome-5', wcps_plugin_url.'assets/global/css/font-awesome-5.css');
 
         wp_register_style('settings-tabs', wcps_plugin_url.'assets/settings-tabs/settings-tabs.css');
         wp_register_script('settings-tabs', wcps_plugin_url.'assets/settings-tabs/settings-tabs.js'  , array( 'jquery' ));
+        wp_register_script('wcps-layouts-api', wcps_plugin_url.'assets/admin/js/scripts-layouts.js'  , array( 'jquery' ));
+
+
+
 
         $settings_tabs_field = new settings_tabs_field();
         $settings_tabs_field->admin_scripts();

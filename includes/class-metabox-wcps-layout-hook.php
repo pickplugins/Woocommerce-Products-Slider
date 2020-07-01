@@ -20,6 +20,7 @@ if(!function_exists('wcps_layout_metabox_content_custom_scripts')){
 
 
 
+
         ?>
         <div class="section">
             <div class="section-title"><?php echo __('Custom scripts', 'woocommerce-products-slider'); ?></div>
@@ -98,7 +99,8 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
 
         $layout_elements_data = get_post_meta($post_id,'layout_elements_data', true);
 
-
+        $layout_options = get_post_meta($post_id,'layout_elements_data', true);
+        echo '<pre>'.var_export($layout_options, true).'</pre>';
 
         ?>
         <div class="section">
