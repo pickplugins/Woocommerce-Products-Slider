@@ -14,7 +14,7 @@ $wpblockhub_block_hub_ids = get_option('wpblockhub_block_hub_ids', array());
 
 $max_num_pages = 0;
 
-wp_enqueue_script('wcps-layouts-api');
+wp_enqueue_script('wcps_js');
 
 
 //var_dump($_SERVER);

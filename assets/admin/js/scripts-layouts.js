@@ -19,11 +19,19 @@ jQuery(document).ready(function($){
                 var data = JSON.parse( response );
                 post_data = data['post_data'];
                 download_count = data['download_count'];
+                is_saved = data['is_saved'];
 
-                console.log(data);
+                console.log(is_saved);
 
-                $(this).addClass('saved');
-                $(this).text('Saved');
+                if(is_saved == 'yes'){
+                    $(this).addClass('saved');
+                    $(this).text('Saved');
+                }else{
+                    $(this).addClass('saved');
+                    $(this).text('Not Saved');
+                }
+
+
 
                 $(_this).removeClass('updating-message');
             }

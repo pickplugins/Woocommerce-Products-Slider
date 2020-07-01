@@ -99,8 +99,7 @@ if(!function_exists('wcps_layout_metabox_content_layout_builder')){
 
         $layout_elements_data = get_post_meta($post_id,'layout_elements_data', true);
 
-        $layout_options = get_post_meta($post_id,'layout_elements_data', true);
-        echo '<pre>'.var_export($layout_options, true).'</pre>';
+        //echo '<pre>'.var_export($layout_elements_data, true).'</pre>';
 
         ?>
         <div class="section">
