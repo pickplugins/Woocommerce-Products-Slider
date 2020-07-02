@@ -7,10 +7,8 @@ $keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
 $paged = isset($_GET['paged']) ? sanitize_text_field($_GET['paged']) : '';
 $tabs = isset($_GET['tabs']) ? sanitize_text_field($_GET['tabs']) : 'latest';
 
-$active_plugins = get_option('active_plugins');
-$wpblockhub_block_hub_ids = get_option('wpblockhub_block_hub_ids', array());
-
-//$domain = (is_multisite()) ? site_url() : get_bloginfo('url');
+$wcps_settings = get_option('wcps_settings');
+$license_key = isset($wcps_settings['license_key']) ? $wcps_settings['license_key'] : '';
 
 $max_num_pages = 0;
 
@@ -31,13 +29,17 @@ wp_enqueue_script('wcps_js');
                 <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=free" class="<?php if($tabs == 'free') echo 'current'; ?>" aria-current="page"><?php _e('Free', 'woocommerce-products-slider'); ?></a> </li>
                 <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=pro" class="<?php if($tabs == 'pro') echo 'current'; ?>" aria-current="page"><?php _e('Premium', 'woocommerce-products-slider'); ?></a> </li>
             </ul>
-
+            <form class="block-search-form">
+                <span class="loading"></span>
+                <input id="block-keyword" type="search" placeholder="<?php _e('Start typing...', 'wp-block-hub'); ?>"
+                       value="<?php echo $keyword; ?>">
+            </form>
         </div>
 
         <?php
 
         $api_params = array(
-            'block_hub_remote_action' => 'blockSearch',
+            'wcps_remote_action' => 'layoutSearch',
             'keyword' => $keyword,
             'paged' => $paged,
             'tabs' => $tabs,
@@ -95,8 +97,8 @@ wp_enqueue_script('wcps_js');
                     $download_count           = isset($item->download_count) ? $item->download_count : 0;
 
                     $layout_options           = isset($item->layout_options) ? unserialize($item->layout_options) : '';
+                    $is_pro           = isset($item->is_pro) ? $item->is_pro : '';
 
-                    $is_pro           = isset($layout_options['is_pro']) ? $layout_options['is_pro'] : 'yes';
                     $layout_preview_img           = isset($layout_options['layout_preview_img']) ? $layout_options['layout_preview_img'] : '';
 
 
@@ -121,10 +123,20 @@ wp_enqueue_script('wcps_js');
                             </div>
                             <div class="actions">
 
-                                <span class="button import-layout" title="Enter license key to import" post_id="<?php echo $post_id; ?>"><i class="fas fa-download"></i> Import (<?php echo $download_count; ?>)</span>
+                                <?php
+                                if ($is_pro == 'yes' && empty($license_key)) {
+
+                                }else{
+                                    ?>
+                                    <span class="button  import-layout"  post_id="<?php echo $post_id; ?>"><i class="fas fa-download"></i> Import (<?php echo $download_count; ?>)</span>
+                                    <?php
+                                }
+
+                                ?>
+
 
                                 <?php if($is_pro == 'yes'): ?>
-                                    <span class="is_pro button"><i class="fas fa-crown"></i> Pro</span>
+                                    <span title="Enter license key to import" class="is_pro button"><i class="fas fa-crown"></i> Pro</span>
                                 <?php else: ?>
                                     <span class="is_free button"><i class="far fa-lightbulb"></i> Free</span>
                                 <?php endif; ?>
@@ -181,10 +193,51 @@ wp_enqueue_script('wcps_js');
 
 </div>
 
+<script>
+    jQuery(document).ready(function($) {
+
+        var delay = (function(){
+            var timer = 0;
+            return function(callback, ms){
+                clearTimeout (timer);
+                timer = setTimeout(callback, ms);
+            };
+        })();
+
+
+        $(document).on('keyup','#block-keyword',function(){
+            _this = this;
+            keyword = $(this).val();
+
+            url = window.location.href
+            //console.log();
+            var url = new URL(url);
+
+
+            delay(function(){
+                $(_this).parent().children('.loading').addClass('button updating-message');
+
+                url.searchParams.append('keyword', keyword);
+                url.searchParams.delete('paged');
+                window.location.href = url.href;
+
+            }, 1000 );
+
+
+        })
+    })
+</script>
 
 <style type="text/css">
 
-
+    .block-search-form{
+        float: right;
+        padding: 10px;
+    }
+    .block-search-form input[type="search"]{
+        width: 225px;
+        padding: 0 10px;
+    }
     .block-list-items{}
     .block-list-items a{ text-decoration: none}
     .block-list-items .item{

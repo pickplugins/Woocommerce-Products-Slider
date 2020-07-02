@@ -414,7 +414,7 @@ function wcps_metabox_content_layouts($post_id){
         <?php
         if($import_layouts != 'done'):
             ?>
-            <p><a target="_blank" class="button" href="<?php echo admin_url().'edit.php?post_type=wcps_layout'; ?>"><?php echo __('Import layouts','woocommerce-products-slider'); ?></a> </p>
+            <p><a target="_blank" class="button" href="<?php echo admin_url().'edit.php?post_type=wcps&page=import_layouts'; ?>"><?php echo __('Import layouts','woocommerce-products-slider'); ?></a> </p>
             <?php
         endif;
 

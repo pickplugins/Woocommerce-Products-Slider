@@ -143,7 +143,8 @@ then paste this shortcode anywhere in your page to display slider<br />
 
     = 1.13.14 =
     * 2020-07-01 remove - remove import layout notice.
-
+    * 2020-07-02 add - free and pro layouts filter at import layout page.
+    * 2020-07-02 add - Search by keyword added at import layout page.
 
 
     = 1.13.13 =

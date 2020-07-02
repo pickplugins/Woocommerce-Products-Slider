@@ -27,7 +27,7 @@ function wcps_ajax_fetch_block_hub_by_id(){
 
     $html = '';
     $api_params = array(
-        'block_hub_remote_action' => 'blockSearchByID',
+        'wcps_remote_action' => 'layoutSearchByID',
         'post_id' => $post_id,
         'license_key' => $license_key,
 
