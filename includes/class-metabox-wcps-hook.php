@@ -1632,7 +1632,7 @@ if(!function_exists('wcps_metabox_content_slider_options')) {
                 'options'		=> array(
                     array(
                         'id'		=> 'prev',
-                        'parent'		=> 'wcps_options[slider]',
+                        'parent'		=> 'wcps_options[slider][navigation_text]',
                         'title'		=> __('Previous text','woocommerce-products-slider'),
                         'details'	=> __('Set previous icon, you could use <a href="https://fontawesome.com/icons">fontawesome</a> icon html here.','woocommerce-products-slider'),
                         'type'		=> 'text',
@@ -1642,7 +1642,7 @@ if(!function_exists('wcps_metabox_content_slider_options')) {
                     ),
                     array(
                         'id'		=> 'next',
-                        'parent'		=> 'wcps_options[slider]',
+                        'parent'		=> 'wcps_options[slider][navigation_text]',
                         'title'		=> __('Next text','woocommerce-products-slider'),
                         'details'	=> __('Set next icon, you could use <a href="https://fontawesome.com/icons">fontawesome</a> icon html here','woocommerce-products-slider'),
                         'type'		=> 'text',

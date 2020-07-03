@@ -22,10 +22,8 @@ function wcps_ajax_fetch_block_hub_by_id(){
     $post_id = isset($_POST['post_id']) ? sanitize_text_field($_POST['post_id']) : 0;
 
     $wcps_settings = get_option('wcps_settings');
-
     $license_key = isset($wcps_settings['license_key']) ? $wcps_settings['license_key'] : '';
 
-    $html = '';
     $api_params = array(
         'wcps_remote_action' => 'layoutSearchByID',
         'post_id' => $post_id,
