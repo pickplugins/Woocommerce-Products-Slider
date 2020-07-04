@@ -130,7 +130,7 @@ class class_wcps_metabox{
             'priority' => 3,
             'active' => ($current_tab == 'query_product') ? true : false,
             'data_visible' => 'products',
-            'hidden' => ($slider_for == 'categories')? true : false || ($slider_for == 'orders')? true : false || ($slider_for == 'dokan_vendors')? true : false || ($slider_for == 'edd_downloads')? true : false,
+            'hidden' => (($slider_for == 'categories') ? true : false) || (($slider_for == 'orders') ? true : false) || (($slider_for == 'dokan_vendors') ? true : false) || (($slider_for == 'edd_downloads') ? true : false),
         );
 
         $wcps_settings_tabs[] = array(
@@ -139,7 +139,7 @@ class class_wcps_metabox{
             'priority' => 3,
             'active' => ($current_tab == 'query_orders') ? true : false,
             'data_visible' => 'orders',
-            'hidden' => ($slider_for == 'products')? true : false || ($slider_for == 'categories')? true : false || ($slider_for == 'dokan_vendors')? true : false || ($slider_for == 'edd_downloads')? true : false,
+            'hidden' => (($slider_for == 'products') ? true : false) || (($slider_for == 'categories') ? true : false) || (($slider_for == 'dokan_vendors') ? true : false) || (($slider_for == 'edd_downloads') ? true : false),
         );
 
         $wcps_settings_tabs[] = array(
@@ -148,7 +148,7 @@ class class_wcps_metabox{
             'priority' => 3,
             'active' => ($current_tab == 'query_categories') ? true : false,
             'data_visible' => 'categories',
-            'hidden' => ($slider_for == 'products')? true : false || ($slider_for == 'orders')? true : false || ($slider_for == 'dokan_vendors')? true : false || ($slider_for == 'edd_downloads')? true : false,
+            'hidden' => (($slider_for == 'products') ? true : false) || (($slider_for == 'orders') ? true : false) || (($slider_for == 'dokan_vendors') ? true : false) || (($slider_for == 'edd_downloads') ? true : false),
         );
 
         $wcps_settings_tabs[] = array(
