@@ -39,4 +39,50 @@ jQuery(document).ready(function($){
 
     })
 
+
+
+    $(document).on('mouseover','.block-thumb',function(){
+
+
+
+        imgHeight = $(this).children('img').height();
+        wrapHeight = $(this).height();
+
+        if (imgHeight > wrapHeight) {
+            var animationOffset = wrapHeight - imgHeight;
+            var speed = 2000;
+            $(this).children('img').animate({
+                "marginTop": animationOffset + "px"
+            }, speed);
+        }
+
+
+    })
+
+
+    $(document).on('mouseout','.block-thumb',function(){
+
+
+
+        imgHeight = $(this).children('img').height();
+        wrapHeight = $(this).height();
+
+        //console.log(wrapHeight);
+        //console.log(imgHeight);
+
+        if (imgHeight > wrapHeight) {
+
+            animationOffset = 0;
+            var speed = 1000;
+            $(this).children('img').animate({
+                "marginTop": animationOffset + "px"
+            }, speed);
+
+        }
+
+
+    })
+
+
+
 });
