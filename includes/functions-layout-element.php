@@ -84,6 +84,11 @@ function wcps_layout_element_title_text($post_title, $args){
 add_action('wcps_layout_element_thumbnail', 'wcps_layout_element_thumbnail', 10);
 function wcps_layout_element_thumbnail($args){
 
+    $wcps_id = isset($args['wcps_id']) ? $args['wcps_id'] : '';
+
+    $wcps_options = get_post_meta($wcps_id,'wcps_options', true);
+    $lazy_load = isset($wcps_options['slider']['lazy_load']) ? $wcps_options['slider']['lazy_load'] : 'false';
+
     $element_index = isset($args['element_index']) ? $args['element_index'] : '';
     $element_class = !empty($element_index) ? 'wcps-items-thumb element-'.$element_index : 'wcps-items-thumb';
     $element_class = apply_filters('wcps_layout_element_thumbnail_class', $element_class, $args);
@@ -104,19 +109,38 @@ function wcps_layout_element_thumbnail($args){
     //echo '<pre>'.var_export($elementData, true).'</pre>';
 
     if(!empty( get_the_post_thumbnail($product_id, $thumb_size))){
-        ?>
+
+        $wcps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), $thumb_size);
+        $thumb_image_url = isset($wcps_thumb[0]) ? $wcps_thumb[0] : '';
+        $thumb_image_url = !empty($thumb_image_url) ? $thumb_image_url : $default_thumb_src;
+
+
+
+        if($lazy_load == 'true'){
+            ?>
+            <div class=" <?php echo $element_class; ?>">
+                <a href="<?php echo $product_url; ?>">
+                    <img class="owl-lazy"  alt="<?php echo get_the_title(); ?>" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" />
+                </a>
+            </div>
+            <?php
+        }else{
+            ?>
             <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><?php echo get_the_post_thumbnail($product_id, $thumb_size); ?></a>
             </div>
-        <?php
+            <?php
+        }
+
+
 
     }else{
         $wcps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), $thumb_size);
-        $member_image_url = isset($wcps_thumb[0]) ? $wcps_thumb[0] : '';
-        $member_image_url = !empty($member_image_url) ? $member_image_url : $default_thumb_src;
-        $member_image_url = apply_filters('wcps_layout_element_thumbnail_src', $member_image_url, $args);
+        $thumb_image_url = isset($wcps_thumb[0]) ? $wcps_thumb[0] : '';
+        $thumb_image_url = !empty($thumb_image_url) ? $thumb_image_url : $default_thumb_src;
+        $thumb_image_url = apply_filters('wcps_layout_element_thumbnail_src', $thumb_image_url, $args);
 
         ?>
-            <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><img src="<?php echo $member_image_url; ?>" /></a></div>
+            <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><img class="owl-lazy" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" /></a></div>
 
         <?php
     }

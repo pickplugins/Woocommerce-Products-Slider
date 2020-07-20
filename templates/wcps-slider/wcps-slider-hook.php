@@ -834,6 +834,7 @@ function wcps_slider_main_scripts( $args){
     $navigation_text_prev = !empty($slider_option['navigation_text']['prev']) ? $slider_option['navigation_text']['prev'] : $navigation_text_prev;
     $navigation_text_next = !empty($slider_option['navigation_text']['next']) ? $slider_option['navigation_text']['next'] : $navigation_text_next;
 
+    //var_dump($slider_navigation);
 
     ?>
         <script>
@@ -845,19 +846,19 @@ function wcps_slider_main_scripts( $args){
                     responsive:{
                         0:{
                             items:<?php echo $slider_column_small; ?>,
-                            nav:true
+                            nav:<?php echo $slider_navigation; ?>
                         },
                         600:{
                             items:<?php echo $slider_column_medium; ?>,
-                            nav:true
+                            nav:<?php echo $slider_navigation; ?>
                         },
                         900:{
                             items:<?php echo $slider_column_medium; ?>,
-                            nav:true
+                            nav:<?php echo $slider_navigation; ?>
                         },
                         1000:{
                             items:<?php echo $slider_column_large; ?>,
-                            nav:true,
+                            nav:<?php echo $slider_navigation; ?>,
                         }
                     },
                     autoplay:<?php echo $slider_auto_play; ?>,
