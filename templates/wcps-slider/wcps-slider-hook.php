@@ -782,6 +782,12 @@ function wcps_slider_main_scripts( $args){
     $slider_column_medium = isset($slider_option['column_medium']) ? $slider_option['column_medium'] : 2;
     $slider_column_small = isset($slider_option['column_small']) ? $slider_option['column_small'] : 1;
 
+    $slider_slideby_large = isset($slider_option['slideby_large']) ? $slider_option['slideby_large'] : 3;
+    $slider_slideby_medium = isset($slider_option['slideby_medium']) ? $slider_option['slideby_medium'] : 2;
+    $slider_slideby_small = isset($slider_option['slideby_small']) ? $slider_option['slideby_small'] : 1;
+
+
+
     $slider_slide_speed = isset($slider_option['slide_speed']) ? $slider_option['slide_speed'] : 1000;
     $slider_pagination_speed = isset($slider_option['pagination_speed']) ? $slider_option['pagination_speed'] : 1200;
 
@@ -846,18 +852,23 @@ function wcps_slider_main_scripts( $args){
                     responsive:{
                         0:{
                             items:<?php echo $slider_column_small; ?>,
-                            nav:<?php echo $slider_navigation; ?>
+                            slideBy:<?php echo $slider_slideby_small; ?>,
+                            nav:<?php echo $slider_navigation; ?>,
+
                         },
                         600:{
                             items:<?php echo $slider_column_medium; ?>,
-                            nav:<?php echo $slider_navigation; ?>
+                            slideBy:<?php echo $slider_slideby_medium; ?>,
+                            nav:<?php echo $slider_navigation; ?>,
                         },
                         900:{
                             items:<?php echo $slider_column_medium; ?>,
-                            nav:<?php echo $slider_navigation; ?>
+                            slideBy:<?php echo $slider_slideby_medium; ?>,
+                            nav:<?php echo $slider_navigation; ?>,
                         },
                         1000:{
                             items:<?php echo $slider_column_large; ?>,
+                            slideBy:<?php echo $slider_slideby_large; ?>,
                             nav:<?php echo $slider_navigation; ?>,
                         }
                     },
@@ -873,6 +884,7 @@ function wcps_slider_main_scripts( $args){
                     nav:<?php echo $slider_navigation; ?>,
                     navText : ['<?php echo $navigation_text_prev; ?>','<?php echo $navigation_text_next; ?>'],
                     navSpeed:<?php echo $slider_slide_speed; ?>,
+                    slideBy:<?php echo $slider_slideby_large; ?>,
                     dots:<?php echo $slider_pagination; ?>,
                     dotsSpeed:<?php echo $slider_pagination_speed; ?>,
                     mouseDrag:<?php echo $slider_mouse_drag; ?>,

@@ -1397,6 +1397,12 @@ if(!function_exists('wcps_metabox_content_slider_options')) {
         $slider_column_medium = isset($slider_option['column_medium']) ? $slider_option['column_medium'] : 2;
         $slider_column_small = isset($slider_option['column_small']) ? $slider_option['column_small'] : 1;
 
+        $slider_slideby_large = isset($slider_option['slideby_large']) ? $slider_option['slideby_large'] : 3;
+        $slider_slideby_medium = isset($slider_option['slideby_medium']) ? $slider_option['slideby_medium'] : 2;
+        $slider_slideby_small = isset($slider_option['slideby_small']) ? $slider_option['slideby_small'] : 1;
+
+
+
 
         $slider_slide_speed = isset($slider_option['slide_speed']) ? $slider_option['slide_speed'] : 1000;
         $slider_pagination_speed = isset($slider_option['pagination_speed']) ? $slider_option['pagination_speed'] : 1200;
@@ -1481,6 +1487,48 @@ if(!function_exists('wcps_metabox_content_slider_options')) {
             $settings_tabs_field->generate_field($args);
 
 
+
+            $args = array(
+                'id'		=> 'slideby',
+                'title'		=> __('Slide by ','woocommerce-products-slider'),
+                'details'	=> __('Slide by count.','woocommerce-products-slider'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'slideby_large',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In desktop','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 1200px, ex: 3','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_slideby_large,
+                        'default'		=> 3,
+                        'placeholder'   => '3',
+                    ),
+                    array(
+                        'id'		=> 'slideby_medium',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In tablet & small desktop','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 992px, ex: 2','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_slideby_medium,
+                        'default'		=> 2,
+                        'placeholder'   => '2',
+                    ),
+                    array(
+                        'id'		=> 'slideby_small',
+                        'parent'		=> 'wcps_options[slider]',
+                        'title'		=> __('In mobile','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 576px, ex: 1','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $slider_slideby_small,
+                        'default'		=> 1,
+                        'placeholder'   => '1',
+                    ),
+                ),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
         $args = array(
