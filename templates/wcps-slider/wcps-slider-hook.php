@@ -770,6 +770,13 @@ function wcps_slider_main_scripts( $args){
     $container_margin = isset($container['margin']) ? $container['margin'] : '';
 
     $item_style = isset($wcps_options['item_style']) ? $wcps_options['item_style'] : array();
+    $item_height = isset($wcps_options['item_height']) ? $wcps_options['item_height'] : array();
+
+    $item_height_large = isset($item_height['large']) ? $item_height['large'] : '';
+    $item_height_medium = isset($item_height['medium']) ? $item_height['medium'] : '';
+    $item_height_small = isset($item_height['small']) ? $item_height['small'] : '';
+
+
 
     $item_padding = isset($item_style['padding']) ? $item_style['padding'] : '';
     $item_margin = isset($item_style['margin']) ? $item_style['margin'] : '10px';
@@ -901,9 +908,19 @@ function wcps_slider_main_scripts( $args){
 
         <style type="text/css">
             .wcps-container-<?php echo $wcps_id; ?>{
+            <?php if(!empty($container_padding)): ?>
                 padding: <?php echo $container_padding; ?>;
+            <?php endif; ?>
+            <?php if(!empty($container_margin)): ?>
                 margin: <?php echo $container_margin; ?>;
-                background: <?php echo $container_background_color; ?> url(<?php echo $container_background_img_url; ?>) repeat scroll 0 0;
+            <?php endif; ?>
+            <?php if(!empty($container_background_color)): ?>
+                background-color: <?php echo $container_background_color; ?>;
+            <?php endif; ?>
+            <?php if(!empty($container_background_img_url)): ?>
+                background-image: url(<?php echo $container_background_img_url; ?>) repeat scroll 0 0;
+            <?php endif; ?>
+
                 position: relative;
                 overflow: hidden;
             }
@@ -944,11 +961,46 @@ function wcps_slider_main_scripts( $args){
                 display: none;
             }
             .wcps-container-<?php echo $wcps_id; ?> .item {
+            <?php if(!empty($item_padding)): ?>
                 padding: <?php echo $item_padding; ?>;
+            <?php endif; ?>
+            <?php if(!empty($item_margin)): ?>
                 margin: <?php echo $item_margin; ?>;
+            <?php endif; ?>
+            <?php if(!empty($item_background_color)): ?>
                 background: <?php echo $item_background_color; ?>;
+            <?php endif; ?>
+            <?php if(!empty($item_text_align)): ?>
                 text-align: <?php echo $item_text_align; ?>;
+            <?php endif; ?>
+
             }
+            @media only screen and ( min-width: 0px ) and ( max-width: 767px ) {
+                .wcps-container-<?php echo $wcps_id; ?> .item {
+                <?php if(!empty($item_height_small)): ?>
+                    height: <?php echo $item_height_small; ?>;
+                <?php endif; ?>
+                }
+            }
+            @media only screen and ( min-width: 768px ) and ( max-width: 1023px ) {
+                .wcps-container-<?php echo $wcps_id; ?> .item {
+                <?php if(!empty($item_height_medium)): ?>
+                    height: <?php echo $item_height_medium; ?>;
+                <?php endif; ?>
+
+                }
+            }
+            @media only screen and (min-width: 1024px ){
+                .wcps-container-<?php echo $wcps_id; ?> .item {
+                <?php if(!empty($item_height_large)): ?>
+                    height: <?php echo $item_height_large; ?>;
+                <?php endif; ?>
+
+                }
+            }
+
+
+
             #wcps-<?php echo $wcps_id; ?> .wcps-items{
                 padding-top:45px;
             }
@@ -1021,7 +1073,9 @@ function wcps_slider_main_scripts( $args){
                 margin: 30px 0 0;
             }
             #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot{
+            <?php if(!empty($dots_background_color)): ?>
                 background: <?php echo $dots_background_color; ?>;
+            <?php endif; ?>
                 border-radius: 20px;
                 display: inline-block;
                 height: 15px;
@@ -1030,11 +1084,17 @@ function wcps_slider_main_scripts( $args){
                 outline: none;
             }
             #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot.active, #wcps-<?php echo $wcps_id; ?> .owl-dots .owl-dot:hover{
+            <?php if(!empty($dots_active_background_color)): ?>
                 background: <?php echo $dots_active_background_color; ?>;
+            <?php endif; ?>
             }
             #wcps-<?php echo $wcps_id; ?> .owl-nav button{
+            <?php if(!empty($navigation_background_color)): ?>
                 background: <?php echo $navigation_background_color; ?>;
+            <?php endif; ?>
+            <?php if(!empty($navigation_color)): ?>
                 color: <?php echo $navigation_color; ?>;
+            <?php endif; ?>
                 margin: 0 5px;
                 outline: none;
             }

@@ -146,6 +146,14 @@ if(!function_exists('wcps_metabox_content_style')) {
         $item_background_color = isset($item_style['background_color']) ? $item_style['background_color'] : '';
         $item_text_align = isset($item_style['text_align']) ? $item_style['text_align'] : '';
 
+        $item_height = isset($wcps_options['item_height']) ? $wcps_options['item_height'] : array();
+
+        $item_height_large = isset($item_height['large']) ? $item_height['large'] : '';
+        $item_height_medium = isset($item_height['medium']) ? $item_height['medium'] : '';
+        $item_height_small = isset($item_height['small']) ? $item_height['small'] : '';
+
+
+
         $container = isset($wcps_options['container']) ? $wcps_options['container'] : array();
         $container_background_img_url = isset($container['background_img_url']) ? $container['background_img_url'] : '';
         $container_background_color = isset($container['background_color']) ? $container['background_color'] : '';
@@ -362,6 +370,60 @@ if(!function_exists('wcps_metabox_content_style')) {
             );
 
             $settings_tabs_field->generate_field($args);
+
+
+
+
+
+
+
+
+            $args = array(
+                'id'		=> 'slider',
+                'title'		=> __('Item height ','woocommerce-products-slider'),
+                'details'	=> __('Set slider item height.','woocommerce-products-slider'),
+                'type'		=> 'option_group',
+                'options'		=> array(
+                    array(
+                        'id'		=> 'large',
+                        'parent'		=> 'wcps_options[item_height]',
+                        'title'		=> __('In desktop','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 1200px, ex: 180px','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $item_height_large,
+                        'default'		=> '',
+                        'placeholder'   => '180px',
+                    ),
+                    array(
+                        'id'		=> 'medium',
+                        'parent'		=> 'wcps_options[item_height]',
+                        'title'		=> __('In tablet & small desktop','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 992px, ex: 150px','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $item_height_medium,
+                        'default'		=> '',
+                        'placeholder'   => '150px',
+                    ),
+                    array(
+                        'id'		=> 'small',
+                        'parent'		=> 'wcps_options[item_height]',
+                        'title'		=> __('In mobile','woocommerce-products-slider'),
+                        'details'	=> __('min-width: 576px, ex: 130px','woocommerce-products-slider'),
+                        'type'		=> 'text',
+                        'value'		=> $item_height_small,
+                        'default'		=> '',
+                        'placeholder'   => '130px',
+                    ),
+                ),
+
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
+
+
 
 
 

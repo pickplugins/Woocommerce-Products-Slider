@@ -4,7 +4,7 @@
 	Tags: product slider, woocommerce slider, carousel slider, product category slider, woo slider, carousel slider,  woocommerce product slider
 	Requires at least: 3.8
 	Tested up to: 5.4
-	Stable tag: 1.13.19
+	Stable tag: 1.13.20
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,9 @@ then paste this shortcode anywhere in your page to display slider<br />
 5. screenshot-5
 
 == Changelog ==
+
+    = 1.13.20 =
+    * 2020-08-08 add - item wrapper custom height
 
     = 1.13.19 =
     * 2020-07-19 fix - thumbnail lazy loading issue fixed.
