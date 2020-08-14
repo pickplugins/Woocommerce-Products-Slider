@@ -45,7 +45,7 @@
 		<link>http://localhost/wp/wcps/128/</link>
 		<pubDate>Mon, 01 Feb 2016 17:48:35 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=128</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=128</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -335,7 +335,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -387,7 +387,7 @@
 		<link>http://localhost/wp/wcps/theme-flip-x/</link>
 		<pubDate>Tue, 08 Mar 2016 14:01:58 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=169</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=169</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -665,7 +665,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -733,7 +733,7 @@
 		<link>http://localhost/wp/wcps/theme-flip-y/</link>
 		<pubDate>Tue, 08 Mar 2016 14:03:17 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=171</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=171</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1011,7 +1011,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -1079,7 +1079,7 @@
 		<link>http://localhost/wp/wcps/theme-zoomout/</link>
 		<pubDate>Tue, 08 Mar 2016 14:06:41 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=175</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=175</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1357,7 +1357,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -1425,7 +1425,7 @@
 		<link>http://localhost/wp/wcps/theme-spinright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:07:15 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=177</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=177</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1703,7 +1703,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -1771,7 +1771,7 @@
 		<link>http://localhost/wp/wcps/theme-spinleft/</link>
 		<pubDate>Tue, 08 Mar 2016 14:07:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=179</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=179</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2049,7 +2049,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -2117,7 +2117,7 @@
 		<link>http://localhost/wp/wcps/theme-spinrightzoom/</link>
 		<pubDate>Tue, 08 Mar 2016 14:09:17 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=181</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=181</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2395,7 +2395,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -2463,7 +2463,7 @@
 		<link>http://localhost/wp/wcps/theme-spinrightzoom-2/</link>
 		<pubDate>Tue, 08 Mar 2016 14:12:38 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=182</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=182</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2741,7 +2741,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -2809,7 +2809,7 @@
 		<link>http://localhost/wp/wcps/theme-spinrightfast/</link>
 		<pubDate>Tue, 08 Mar 2016 14:13:54 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=183</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=183</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -3087,7 +3087,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -3155,7 +3155,7 @@
 		<link>http://localhost/wp/wcps/theme-spinleftfast/</link>
 		<pubDate>Tue, 08 Mar 2016 14:14:44 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=184</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=184</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -3433,7 +3433,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -3501,7 +3501,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgoleft/</link>
 		<pubDate>Tue, 08 Mar 2016 14:15:30 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=185</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=185</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -3779,7 +3779,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -3847,7 +3847,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgotop/</link>
 		<pubDate>Tue, 08 Mar 2016 14:16:37 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=187</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=187</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -4125,7 +4125,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -4193,7 +4193,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgobottom/</link>
 		<pubDate>Tue, 08 Mar 2016 14:17:05 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=188</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=188</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -4471,7 +4471,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -4539,7 +4539,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgoleftconetntinright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:18:07 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=189</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=189</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -4817,7 +4817,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -4885,7 +4885,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgotopconetntinright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:19:17 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=191</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=191</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -5163,7 +5163,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -5231,7 +5231,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbmiddle/</link>
 		<pubDate>Tue, 08 Mar 2016 14:20:21 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=193</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=193</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -5509,7 +5509,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -5577,7 +5577,7 @@
 		<link>http://localhost/wp/wcps/theme-zoomin/</link>
 		<pubDate>Tue, 08 Mar 2016 14:06:06 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=173</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=173</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -5855,7 +5855,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -5923,7 +5923,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgoright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:16:05 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=186</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=186</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -6201,7 +6201,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -6269,7 +6269,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgobottomconetntinright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:18:37 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=190</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=190</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -6547,7 +6547,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -6615,7 +6615,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbgorightconetntinright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:19:47 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=192</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=192</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -6893,7 +6893,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -6961,7 +6961,7 @@
 		<link>http://localhost/wp/wcps/recently-visited__trashed/</link>
 		<pubDate>Sat, 05 Mar 2016 01:31:01 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=163</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=163</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -7299,7 +7299,7 @@
 		<link>http://localhost/wp/wcps/theme-contentbottom/</link>
 		<pubDate>Tue, 08 Mar 2016 14:21:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=195</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=195</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -7577,7 +7577,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -7645,7 +7645,7 @@
 		<link>http://localhost/wp/wcps/theme-contentinbottom/</link>
 		<pubDate>Tue, 08 Mar 2016 14:23:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=197</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=197</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -7923,7 +7923,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -7991,7 +7991,7 @@
 		<link>http://localhost/wp/wcps/theme-contentinright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:24:15 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=199</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=199</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -8269,7 +8269,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -8337,7 +8337,7 @@
 		<link>http://localhost/wp/wcps/theme-halfthumbright/</link>
 		<pubDate>Tue, 08 Mar 2016 14:25:05 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=201</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=201</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -8615,7 +8615,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -8683,7 +8683,7 @@
 		<link>http://localhost/wp/wcps/auto-slide__trashed/</link>
 		<pubDate>Mon, 29 Jan 2018 16:18:21 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=221</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=221</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -9009,7 +9009,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -9118,7 +9118,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbskew/</link>
 		<pubDate>Tue, 08 Mar 2016 14:21:01 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=194</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=194</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -9396,7 +9396,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -9464,7 +9464,7 @@
 		<link>http://localhost/wp/wcps/theme-contentmiddle/</link>
 		<pubDate>Tue, 08 Mar 2016 14:22:29 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=196</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=196</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -9742,7 +9742,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -9810,7 +9810,7 @@
 		<link>http://localhost/wp/wcps/theme-contentinleft/</link>
 		<pubDate>Tue, 08 Mar 2016 14:23:51 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=198</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=198</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -10088,7 +10088,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -10156,7 +10156,7 @@
 		<link>http://localhost/wp/wcps/theme-halfthumbleft/</link>
 		<pubDate>Tue, 08 Mar 2016 14:24:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=200</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=200</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -10434,7 +10434,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -10502,7 +10502,7 @@
 		<link>http://localhost/wp/wcps/theme-thumbrounded/</link>
 		<pubDate>Tue, 08 Mar 2016 14:25:30 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=202</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=202</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -10780,7 +10780,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>
@@ -10848,7 +10848,7 @@
 		<link>http://localhost/wp/wcps/213__trashed/</link>
 		<pubDate>Sun, 13 Nov 2016 05:12:43 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=213</guid>
+		<guid isPermaLink="false">https://www.pickplugins.com/demo/woocommerce-products-slider/?post_type=wcps&#038;p=213</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -11146,7 +11146,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_items_empty_thumb]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://www.pickplugins.com/demo/woocommerce-products-slider/wp-content/plugins/woocommerce-products-slider/assets/front/images/no-thumb.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[wcps_query_order]]></wp:meta_key>

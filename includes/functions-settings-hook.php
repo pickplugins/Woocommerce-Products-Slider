@@ -288,7 +288,7 @@ if(!function_exists('wcps_settings_content_buy_pro')) {
 
             <p><?php echo __('If you love our plugin and want more feature please consider to buy pro version.', 'woocommerce-products-slider'); ?></p>
             <a class="button" href="https://www.pickplugins.com/item/woocommerce-products-slider-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'woocommerce-products-slider'); ?></a>
-            <a class="button" href="http://www.pickplugins.com/demo/woocommerce-products-slider/?ref=dashobard"><?php echo __('See all demo', 'woocommerce-products-slider'); ?></a>
+            <a class="button" href="https://www.pickplugins.com/demo/woocommerce-products-slider/?ref=dashobard"><?php echo __('See all demo', 'woocommerce-products-slider'); ?></a>
 
             <h2><?php echo __('See the differences','woocommerce-products-slider'); ?></h2>
 
