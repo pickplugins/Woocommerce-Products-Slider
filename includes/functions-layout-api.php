@@ -47,9 +47,13 @@ function wcps_ajax_fetch_block_hub_by_id(){
     }
     else{
 
-        $response_data = unserialize(wp_remote_retrieve_body($server_response));
+        $response_data = json_decode(wp_remote_retrieve_body($server_response), true);
 
         //$response_data = json_decode($response_data);
+
+        //error_log(serialize($response_data));
+
+
 
         $post_title = isset($response_data['post_title']) ? ($response_data['post_title']) : '';
         $post_id = isset($response_data['post_id']) ? ($response_data['post_id']) : '';
@@ -61,7 +65,7 @@ function wcps_ajax_fetch_block_hub_by_id(){
         $post_found = isset($response_data['post_found']) ? ($response_data['post_found']) : 'no';
 
 
-        //error_log(serialize($layout_elements_data));
+        //error_log(serialize($response_data));
 
 
 //        $post_found = isset($response_data->post_found) ? sanitize_text_field($response_data->post_found) : 'no';

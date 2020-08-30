@@ -17,6 +17,11 @@ jQuery(document).ready(function($){
             },
             success: function( response ) {
                 var data = JSON.parse( response );
+
+                //console.log(wcps_ajax);
+                //console.log(post_id);
+
+
                 post_data = data['post_data'];
                 download_count = data['download_count'];
                 is_saved = data['is_saved'];
