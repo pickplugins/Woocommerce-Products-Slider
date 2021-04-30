@@ -225,66 +225,24 @@ function wcps_recently_viewed_products(){
     $viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) : array();
     $viewed_products = array_filter( array_map( 'absint', $viewed_products ) );
 
+    $viewed_products = wcps_recursive_sanitize_arr($viewed_products);
 
     return $viewed_products;
 }
 
 
+function wcps_recursive_sanitize_arr($array) {
 
-function wcps_layout_data($layout){
+    foreach ( $array as $key => &$value ) {
+        if ( is_array( $value ) ) {
+            $value = wcps_recursive_sanitize_arr($value);
+        }
+        else {
+            $value = sanitize_text_field( $value );
+        }
+    }
 
-    $layout_data = array();
-
-    ob_start();
-    ?>.__ID__ {vertical-align: top;}.__ID__ .layer-media{}.__ID__ .layer-content {padding: 5px 10px;}<?php
-
-    $layout_data['flat']['css'] = ob_get_clean();
-    $layout_data['flat']['preview_img'] = 'https://i.imgur.com/wLGFEu1.png';
-
-
-    ob_start();
-    ?>.__ID__ {overflow: hidden;position: relative;vertical-align: top;}.__ID__:hover .layer-media {-webkit-transform: scale(0);transform: scale(0);opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}.__ID__ .layer-media {-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;left: 0;top: 0;width: 100%;}.__ID__:hover .layer-content{opacity: 1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}.__ID__ .layer-content {left: 0;opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";position: absolute;top: 0;width: 100%;-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;}<?php
-
-    $layout_data['zoomout']['css'] = ob_get_clean();
-    $layout_data['zoomout']['preview_img'] = 'https://i.imgur.com/HmVriCY.gif';
-
-
-
-
-    ob_start();
-    ?>.__ID__{}.__ID__ .layer-media {background: rgb(255, 255, 255) none repeat scroll 0 0;border-radius: 50%;overflow: hidden;}.__ID__ .layer-media .thumb {height:240px;}.__ID__ .layer-content{}<?php
-
-    $layout_data['thumbrounded']['css'] = ob_get_clean();
-    $layout_data['thumbrounded']['preview_img'] = 'https://i.imgur.com/QlxfXdW.png';
-
-
-    ob_start();
-    ?>.__ID__{ overflow: hidden; position: relative; vertical-align: top; } .__ID__:hover .layer-media{ -webkit-transform: scale(1.5); transform: scale(1.5); opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; } .__ID__ .layer-media{ -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; left: 0; top: 0; width: 100%; } .__ID__:hover .layer-content{ opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; } .__ID__ .layer-content{ opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; position: absolute; top: 0; width: 100%; -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; }<?php
-
-    $layout_data['zoomin']['css'] = ob_get_clean();
-    $layout_data['zoomin']['preview_img'] = 'https://i.imgur.com/v2wqjFi.gif';
-
-
-
-    ob_start();
-    ?>.__ID__{ overflow: hidden; position: relative; vertical-align: top; } .__ID__:hover .layer-media{ -webkit-transform: rotate(-30deg); transform: rotate(-30deg); opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; } .__ID__ .layer-media{ -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; left: 0; top: 0; width: 100%; } .__ID__:hover .layer-content{ opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; } .__ID__ .layer-content{ left: 0; opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; position: absolute; top: 0; width: 100%; -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; }<?php
-
-    $layout_data['spinleft']['css'] = ob_get_clean();
-    $layout_data['spinleft']['preview_img'] = 'https://i.imgur.com/tBzV6di.gif';
-
-    ob_start();
-    ?>.__ID__{ overflow: hidden; position: relative; vertical-align: top; } .__ID__:hover .layer-media{ z-index:9; } .__ID__ .layer-media{ -webkit-transition: all 0.4s ease 0s; transition: all 0.4s ease 0s; left: 0; top: 0; width: 100%; } .__ID__:hover .layer-content{ } .__ID__ .layer-content{ background: rgba(33, 33, 33, 0.63) none repeat scroll 0 0; bottom: 0; color: rgb(255, 255, 255); left: 0; position: absolute; -webkit-transition: all 1s ease 0s; transition: all 1s ease 0s; width: 100%; padding: 10px 0; }<?php
-
-    $layout_data['contentbottom']['css'] = ob_get_clean();
-    $layout_data['contentbottom']['preview_img'] = 'https://i.imgur.com/sUfqp9d.png';
-
-
-
-    $layout_data = apply_filters('wcps_layout_data', $layout_data);
-
-
-    return isset($layout_data[$layout]) ? $layout_data[$layout] : array();
-
+    return $array;
 }
 
 
@@ -304,6 +262,8 @@ function wcps_track_product_view() {
             $viewed_products = array();
         else
             $viewed_products = (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] );
+
+            $viewed_products = wcps_recursive_sanitize_arr($viewed_products);
 
         if ( ! in_array( $post->ID, $viewed_products ) ) {
             $viewed_products[] = $post->ID;

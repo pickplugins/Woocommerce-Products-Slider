@@ -770,6 +770,6 @@ add_action('wcps_settings_save', 'wcps_settings_save');
 
 function wcps_settings_save(){
 
-    $wcps_settings = isset($_POST['wcps_settings']) ?  stripslashes_deep($_POST['wcps_settings']) : array();
+    $wcps_settings = isset($_POST['wcps_settings']) ?  wcps_recursive_sanitize_arr($_POST['wcps_settings']) : array();
     update_option('wcps_settings', $wcps_settings);
 }

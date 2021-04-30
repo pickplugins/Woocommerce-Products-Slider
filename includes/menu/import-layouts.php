@@ -25,14 +25,14 @@ wp_enqueue_script('wcps_js');
 
         <div class="wp-filter">
             <ul class="filter-links">
-                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=latest" class="<?php if($tabs == 'latest') echo 'current'; ?>" aria-current="page"><?php _e('Latest', 'woocommerce-products-slider'); ?></a> </li>
-                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=free" class="<?php if($tabs == 'free') echo 'current'; ?>" aria-current="page"><?php _e('Free', 'woocommerce-products-slider'); ?></a> </li>
-                <li class=""><a href="<?php echo $_SERVER['REQUEST_URI']; ?>&tabs=pro" class="<?php if($tabs == 'pro') echo 'current'; ?>" aria-current="page"><?php _e('Premium', 'woocommerce-products-slider'); ?></a> </li>
+                <li class=""><a href="<?php echo esc_url_raw($_SERVER['REQUEST_URI']); ?>&tabs=latest" class="<?php if($tabs == 'latest') echo 'current'; ?>" aria-current="page"><?php _e('Latest', 'woocommerce-products-slider'); ?></a> </li>
+                <li class=""><a href="<?php echo esc_url_raw($_SERVER['REQUEST_URI']); ?>&tabs=free" class="<?php if($tabs == 'free') echo 'current'; ?>" aria-current="page"><?php _e('Free', 'woocommerce-products-slider'); ?></a> </li>
+                <li class=""><a href="<?php echo esc_url_raw($_SERVER['REQUEST_URI']); ?>&tabs=pro" class="<?php if($tabs == 'pro') echo 'current'; ?>" aria-current="page"><?php _e('Premium', 'woocommerce-products-slider'); ?></a> </li>
             </ul>
             <form class="block-search-form">
                 <span class="loading"></span>
                 <input id="block-keyword" type="search" placeholder="<?php _e('Start typing...', 'wp-block-hub'); ?>"
-                       value="<?php echo $keyword; ?>">
+                       value="<?php echo esc_html($keyword); ?>">
             </form>
         </div>
 

@@ -105,8 +105,9 @@ function wcps_layout_element_thumbnail($args){
 
     $thumb_size = isset($elementData['thumb_size']) ? $elementData['thumb_size'] : 'full';
     $default_thumb_src = isset($elementData['default_thumb_src']) ? $elementData['default_thumb_src'] : '';
+    $thumb_link_to = isset($elementData['link_to']) ? $elementData['link_to'] : '';
 
-    //echo '<pre>'.var_export($elementData, true).'</pre>';
+    //echo '<pre>'.var_export($product_url, true).'</pre>';
 
     if(!empty( get_the_post_thumbnail($product_id, $thumb_size))){
 
@@ -119,14 +120,30 @@ function wcps_layout_element_thumbnail($args){
         if($lazy_load == 'true'){
             ?>
             <div class=" <?php echo $element_class; ?>">
-                <a href="<?php echo $product_url; ?>">
+                <?php if(!empty($product_url)): ?>
+                    <a href="<?php echo $product_url; ?>">
+                        <img class="owl-lazy"  alt="<?php echo get_the_title(); ?>" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" />
+                    </a>
+                <?php else: ?>
                     <img class="owl-lazy"  alt="<?php echo get_the_title(); ?>" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" />
-                </a>
-            </div>
+
+                <?php endif; ?>
+
+                </div>
             <?php
         }else{
             ?>
-            <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><?php echo get_the_post_thumbnail($product_id, $thumb_size); ?></a>
+            <div class=" <?php echo $element_class; ?>">
+                <?php if(!empty($product_url)): ?>
+                    <a href="<?php echo $product_url; ?>">
+                        <?php echo get_the_post_thumbnail($product_id, $thumb_size); ?>
+                    </a>
+                <?php else: ?>
+                    <?php echo get_the_post_thumbnail($product_id, $thumb_size); ?>
+
+                <?php endif; ?>
+
+
             </div>
             <?php
         }
@@ -140,7 +157,19 @@ function wcps_layout_element_thumbnail($args){
         $thumb_image_url = apply_filters('wcps_layout_element_thumbnail_src', $thumb_image_url, $args);
 
         ?>
-            <div class=" <?php echo $element_class; ?>"><a href="<?php echo $product_url; ?>"><img class="owl-lazy" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" /></a></div>
+            <div class=" <?php echo $element_class; ?>">
+                <?php if(!empty($product_url)): ?>
+
+                    <a href="<?php echo $product_url; ?>">
+                        <img class="owl-lazy" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" />
+                    </a>
+                <?php else: ?>
+                    <img class="owl-lazy" data-src="<?php echo $thumb_image_url; ?>" src="<?php echo $default_thumb_src; ?>" />
+
+                <?php endif; ?>
+
+
+            </div>
 
         <?php
     }
@@ -169,6 +198,11 @@ function wcps_layout_element_thumbnail_url($permalink, $args){
         }else{
             $permalink = get_permalink($product_id);
         }
+
+    }elseif ($link_to == 'none'){
+
+        $permalink = '';
+
 
     }
 

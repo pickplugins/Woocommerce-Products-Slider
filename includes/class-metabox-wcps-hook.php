@@ -515,7 +515,7 @@ function wcps_metabox_content_layouts($post_id){
                 $product_thumb_url = isset($product_thumb['0']) ? esc_url_raw($product_thumb['0']) : '';
 
                 $layout_options = get_post_meta($post_id,'layout_options', true);
-                $layout_preview_img = !empty($layout_options['layout_preview_img']) ? $layout_options['layout_preview_img'] : 'https://i.imgur.com/JyurCtY.jpg';
+                $layout_preview_img = !empty($layout_options['layout_preview_img']) ? $layout_options['layout_preview_img'] : wcps_plugin_url.'assets/front/images/no-thumb.png';
 
                 $product_thumb_url = !empty( $product_thumb_url ) ? $product_thumb_url : $layout_preview_img;
 
@@ -2536,7 +2536,7 @@ add_action('wcps_metabox_save','wcps_metabox_save');
 
 function wcps_metabox_save($job_id){
 
-    $wcps_options = isset($_POST['wcps_options']) ? stripslashes_deep($_POST['wcps_options']) : '';
+    $wcps_options = isset($_POST['wcps_options']) ? wcps_recursive_sanitize_arr($_POST['wcps_options']) : '';
     update_post_meta($job_id, 'wcps_options', $wcps_options);
 
 }

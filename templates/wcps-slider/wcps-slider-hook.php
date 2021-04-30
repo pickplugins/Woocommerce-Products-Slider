@@ -280,6 +280,9 @@ function wcps_slider_main_items($args){
 
 
 
+
+
+
 add_action('wcps_slider_item', 'wcps_slider_item', 10);
 
 function wcps_slider_item($args){
@@ -297,6 +300,9 @@ function wcps_slider_item($args){
 
     ?>
     <div class="<?php echo $wcps_item_class; ?>">
+
+        <?php do_action('wcps_slider_item_start', $args); ?>
+
         <div class="elements-wrapper layout-<?php echo $item_layout_id; ?>">
             <?php
             if(!empty($layout_elements_data))
@@ -316,6 +322,7 @@ function wcps_slider_item($args){
                 }
             ?>
         </div>
+        <?php do_action('wcps_slider_item_end', $args); ?>
     </div>
     <?php
 
